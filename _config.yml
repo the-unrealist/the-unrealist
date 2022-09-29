@@ -1,3 +1,7 @@
 theme: minima
 title: wumbo's unreal blog
 description: Just sharing stuff I've learned while I teach myself Unreal Engine 5
+readme_index:
+  enabled:          true
+  remove_originals: true
+  with_frontmatter: false
