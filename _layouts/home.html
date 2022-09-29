@@ -27,6 +27,9 @@ layout: default
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%}
+        {% if post.excerpt != post.content %}
+        <a href="{{ site.baseurl }}{{ post.url }}">Read more</a>
+        {% endif %}
       </li>
       {%- endfor -%}
     </ul>
