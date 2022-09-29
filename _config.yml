@@ -1,4 +1,4 @@
 theme: minima
 title: wumbo.land
-subtitle: Unreal Engine 5 Tutorials & Dev Blog
 permalink: /:slug/
+show_excerpts: true
