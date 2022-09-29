@@ -2,3 +2,6 @@ theme: minima
 title: The Unrealist
 permalink: /:slug/
 show_excerpts: true
+author:
+  name: Matt
+  email: matt@unrealist.org
