@@ -21,13 +21,15 @@ For that reason, **this tutorial assumes you have a basic understanding of Commo
   * Creating a Common Tab List Widget
   * Linking a Tab List Widget to a Switcher
   * Adding Gamepad Input Actions
+* [Carousels](#carousels)
+  * Common Widget Carousel
 
 ## Switchers
 A switcher is a widget that displays one child widget at a time and can switch to another child widget. It can act as a standalone widget or be linked to a tab list for a tabbed experience.
 
 <details open style="margin-bottom: 1em;">
   <summary class="toggle-link">Show/hide animated preview</summary>
-  <img src="/assets/images/basic-switcher.gif" style="height: 384px;">
+  <img src="/assets/images/basic-switcher.gif" style="height: 384px;" alt="Animated GIF demonstrating a switcher using the default Fade transition effect as it switches between 4 visually distinct panels">
   <p><small><a href="https://www.flaticon.com/free-icons/fruit" title="fruit icons">Fruit icons created by Prosymbols - Flaticon</a></small></p>
 </details>
 
@@ -65,7 +67,19 @@ For both widgets above, there are four transition animations you can use:
 
 The only other transition parameters you can adjust are the curve type and duration. Anything else will require modifying `SCommonAnimatedSwitcher.cpp` in the Common UI plugin's C++ source.
 
+For your convenience, here's an overview of all relevant functions you can use in Blueprints.
+<img src="/assets/images/switcher-blueprint-functions.png" alt="Screenshot of a collection of Blueprint nodes in clockwise order starting from top left: Activate Next Widget, Activate Previous Widget, Is Currently Switching, Has Widgets, Set Active Widget Index, Set Active Widget, and Set Disable Transition Animation.">
+
 Finally, there's the **[Common Visibility Switcher](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonVisibilitySwitcher/)** which is a bit different from above in that it is derived from UMG Overlay widget and is identical to UMG Widget Switcher in that there are no animations and only one widget can be visible at a time. However, it does activate widgets whenever they become visible.
 
 ## Tabs
 Coming soon
+
+## Carousels
+A carousel is different from a switcher in that both the previous and next widgets are simultaneously visible during the transition. A switcher waits for the previous widget to fade out or move out of sight before bringing in the next widget. A carousel is much more like a scroll box where widgets are scrolled into and out of view.
+
+Common UI has a **[Common Widget Carousel](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonWidgetCarousel/)** that may be optionally linked to a **[Common Widget Carousel Nav Bar](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonWidgetCarouselNavBar/)**.
+
+Unfortunately, I was not able to get it to appear in my UI. It does scroll through widgets as expected so it does technically "work", but for some reason it never gets painted onto the screen in the editor or game. I spent a long time debugging and analyzing the source and still couldn't understand why it's not visible. 
+
+At this point, I believe it's bugged and probably cannot be used yet. If anyone knows how to make it work, please let me know on Twitter: [@unrealist_matt](https://twitter.com/unrealist_matt) :)
