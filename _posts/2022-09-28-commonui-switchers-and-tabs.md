@@ -28,6 +28,8 @@ A switcher is a widget that displays one child widget at a time and can switch t
   <p><small><a href="https://www.flaticon.com/free-icons/fruit" title="fruit icons">Fruit icons created by Prosymbols - Flaticon</a></small></p>
 </details>
 
+<br/>
+
 The **[Common Animated Switcher](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonAnimatedSwitcher/)** is derived from UMG Widget Switcher and animates the transition between child widgets.
 
 At the time of writing, this widget describes itself as "a widget switcher that activates / deactivates CommonActivatableWidgets, allowing for associated animations to trigger."
@@ -37,12 +39,17 @@ This is incorrect! The Common Animated Switcher does *not* activate widgets.
 That's where the **[Common Activatable Widget Switcher](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonActivatableWidgetSwitcher/)** comes in. It is derived from the Common Animated Switcher, and makes it so that it _does_ activate widgets. Keep in mind that the next widget is not activated until the current widget has transitioned fully out of view.
 
 For both widgets above, there are four transition animations you can use:
-| Transition | Behavior |
-| ---------- | -------- |
-| Fade Only   | Fade transition only with no movement |
-| Horizontal | Increasing the active index goes right, decreasing goes left |
-| Vertical | Increasing the active index goes up, decreasing goes down |
-| Zoom | Increasing the active index zooms in, decreasing zooms out |
+<table>
+ <thead>
+  <tr><th>Transition</th><th>Behavior</th></tr>
+ </thead>
+ <tbody>
+  <tr><td>Fade Only</td><td>Fade transition only with no movement</td></tr>
+  <tr><td>Horizontal</td><td>Increasing the active index goes right, decreasing goes left</td></tr>
+  <tr><td>Vertical</td><td>Increasing the active index goes up, decreasing goes down</td></tr>
+  <tr><td>Zoom</td><td>Increasing the active index zooms in, decreasing zooms out</td></tr>
+ </tbody>
+</table>
 
 The only other transition parameters you can adjust are the curve type and duration. Anything else will require modifying `SCommonAnimatedSwitcher.cpp` in the Common UI plugin's C++ source.
 
