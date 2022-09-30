@@ -1,11 +1,10 @@
 ---
 layout: post
 tags: unreal commonui umg
+title: "Common UI: Switchers and Tabs"
 categories: [Common UI]
 author: Matt
 ---
-
-# Common UI: Switchers and Tabs
 
 Learn more about the types of switchers in the **Common UI plugin** and how to leverage them to create tabs.
 
