@@ -1,5 +1,6 @@
 theme: minima
 title: The Unrealist
+description: Description here
 permalink: /:slug/
 show_excerpts: true
 author:
