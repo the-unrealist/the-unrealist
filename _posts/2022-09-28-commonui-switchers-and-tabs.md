@@ -13,5 +13,5 @@ Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engin
 ## Switchers
 <details open>
   <summary>Show/hide animated preview</summary>
-  <img src="{{site.baseurl}}/assets/images/basic-switcher.gif">
+  <img src="/assets/images/basic-switcher.gif" style="height: 384px;">
 </details>
