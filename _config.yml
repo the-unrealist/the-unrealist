@@ -4,5 +4,6 @@ permalink: /:slug/
 show_excerpts: true
 author:
   name: Matt
+  email: matt@unrealist.org
 social_links:
     twitter: unrealist_matt
