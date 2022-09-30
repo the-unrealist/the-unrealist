@@ -25,6 +25,7 @@ A switcher is a widget that displays one child widget at a time and can switch t
 <details open>
   <summary class="toggle-link">Show/hide animated preview</summary>
   <img src="/assets/images/basic-switcher.gif" style="height: 384px;">
+  <p><small><a href="https://www.flaticon.com/free-icons/fruit" title="fruit icons">Fruit icons created by Prosymbols - Flaticon</a></small></p>
 </details>
 
 The **[Common Animated Switcher](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonAnimatedSwitcher/)** is derived from UMG Widget Switcher and animates the transition between child widgets.
