@@ -14,15 +14,8 @@ For that reason, **this tutorial assumes you have a basic understanding of Commo
 
 ## Table of Contents
 * [Switchers](#switchers)
-  * Common Animated Switcher
-  * Common Activatable Widget Switcher
-  * Common Visibility Switcher
 * [Tabs](#tabs)
-  * Creating a Common Tab List Widget
-  * Linking a Tab List Widget to a Switcher
-  * Adding Gamepad Input Actions
 * [Carousels](#carousels)
-  * Common Widget Carousel
 
 ## Switchers
 A switcher is a widget that displays one child widget at a time and can switch to another child widget. It can act as a standalone widget or be linked to a tab list for a tabbed experience.
@@ -73,7 +66,38 @@ For your convenience, here's an overview of all relevant functions you can use i
 Finally, there's the **[Common Visibility Switcher](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonVisibilitySwitcher/)** which is a bit different from above in that it is derived from UMG Overlay widget and is identical to UMG Widget Switcher in that there are no animations and only one widget can be visible at a time. However, it does activate widgets whenever they become visible.
 
 ## Tabs
-Coming soon
+To create a tabbed experience, a **[Common Tab List Widget](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonTabListWidgetBase/)** must be linked to a switcher. Only the Common Animated Switcher or Common Activatable Widget Switcher may be used with a tab list. Generally, you'll want to use the Common Activatable Widget Switcher so that the input can be routed to the tab page's contents.
+
+<<TODO: preview gif here>>
+
+Common UI doesn't provide a usable tab list widget out of the box, so there is a multi-step process to get it to work.
+
+### The Short Way
+At the bare minimum, you'll need to:
+1. Create a tab button widget blueprint derived from Common Button Base.
+2. Create a tab list widget blueprint derived from Common Tab List Widget. Override **Handle Tab Creation** to add the new tab button to a container (i.e., Horizontal Box).
+4. Add a Common Activatable Widget Switcher and populate it with the page contents.
+5. Call **Set Linked Switcher** in the tab list to link it to the switcher.
+6. Call **Register Tab** in the tab list to add a tab button for each page.
+
+### The Long Way: A Reusable Tabbed Switcher
+In this tutorial, I'll demonstrate all the above steps by creating a **reusable tabbed switcher** that reads from a Data Table.
+
+#### 1. Data Table
+Create a structure (Blueprints -> Structure) and name it **Tab**. Add a Text property for the tab button label and a User Widget Class Reference for the tab content.
+
+<img src="/assets/images/tab-struct.png" alt="Screenshot of a structure with a Text property named Label and a User Widget Class Reference property named Content">
+
+#### 2. Tab Buttons
+TODO
+
+#### 3. Tab List
+TODO
+
+#### 4. Tab Container
+
+### Button Groups
+TODO
 
 ## Carousels
 A carousel is different from a switcher in that both the previous and next widgets are simultaneously visible during the transition. A switcher waits for the previous widget to fade out or move out of sight before bringing in the next widget. A carousel is much more like a scroll box where widgets are scrolled into and out of view.
