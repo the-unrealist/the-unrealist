@@ -16,9 +16,7 @@ For that reason, **this tutorial assumes you have a basic understanding of Commo
 
 ## Table of Contents
 * [Switchers](#switchers)
-* [Tab List](#tab-list)
-* [Tabbed Switcher](#tabbed-switcher)
-* [Tab Button Groups](#tab-button-groups)
+* [Tabs](#tabs)
 * [Carousels](#carousels)
 
 ## Switchers
@@ -69,67 +67,49 @@ For your convenience, here's an overview of all relevant functions you can use i
 
 Finally, there's the **[Common Visibility Switcher](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonVisibilitySwitcher/)** which is a bit different from above in that it is derived from UMG Overlay widget and is identical to UMG Widget Switcher in that there are no animations and only one widget can be visible at a time. However, it does activate widgets whenever they become visible.
 
-## Tab List
+## Tabs
 To create a tabbed experience, a **[Common Tab List Widget](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonTabListWidgetBase/)** must be linked to a switcher. Only the Common Animated Switcher or Common Activatable Widget Switcher may be used with a tab list. Generally, you'll want to use the Common Activatable Widget Switcher so that the input can be routed to the tab page's contents.
 
 <<TODO: preview gif here>>
 
 Common UI doesn't provide a usable tab list widget out of the box, so there is a multi-step process to get it to work.
 
-At the bare minimum, you'll need to:
-1. Create a tab button widget blueprint derived from Common Button Base.
-2. Create a tab list widget blueprint derived from Common Tab List Widget Base. Override *Handle Tab Creation* to add the new tab button to a container (i.e., Horizontal Box).
-4. Add a Common Activatable Widget Switcher and populate it with the page contents.
-5. Call *Set Linked Switcher* in the tab list to link it to the switcher.
-6. Call *Register Tab* in the tab list to add a tab button for each page.
+### 1. Create Tab Buttons
+Create a button widget based on `CommonButtonBase` for each tab.
 
-## Tabbed Switcher
-In this tutorial, I'll demonstrate how to create a **reusable tabbed switcher** that reads from a Data Table.
+<< TODO: Add screenshot here >>
 
-### 1. Data Table
-Create a structure (Blueprints -> Structure) and name it as `Tab`. Add a Text property for the tab button label and a User Widget Class Reference for the tab content.
+### 2. Create Tab List
+Create a Blueprint class based on `CommonTabListWidgetBase`. This will be the container for the tab buttons.
 
-<img src="/assets/images/tab-struct.png" alt="Screenshot of a structure with a Text property named Label and a User Widget Class Reference property named Content">
-
-### 2. Tab Buttons
-Create a Blueprint class based on `CommonButtonStyle` and name it as `TabButtonStyle`. The button linked to the current tab will be in the _Selected_ state, and you can customize what this looks like in the style.
-
-Now, create another Blueprint class based on `CommonButtonBase` and name it as `TabButton`. Go into the Graph view and add a Text variable named `Label`.
-
-<img src="/assets/images/add-label-property-to-button.png" alt="Screenshot of the variables window for TabButton widget with a Text variable named Label">
-
-Go back to the Designer view and set up the button layout. I added an Overlay and Common Text with the Text property bound to `Label`.
-
-<img src="/assets/images/tab-button-designer.png" alt="Screenshot of the Designer view of the TabButton widget showing the button set up as described earlier">
-
-### 3. Tab List
-Create a Blueprint class based on `CommonTabListWidgetBase` and name it as `TabList`.
-
-Add a Horizontal Box to the hierarchy and make it a variable. This box will contain the tab buttons. A Vertical Box can be used instead for vertical tabs.
+Add a Horizontal Box to the hierarchy and make it a variable. A Vertical Box can be used instead for vertical tabs.
 
 <img src="/assets/images/tab-list-hierarchy.png" alt="Screenshot of the hierarchy for TabList. A Horizontal Box is the only child widget.">
 
-Open the Graph view. Override _Handle Tab Creation_ to add the tab button to the container. Since we are given with just the Tab Name ID, we will need to look up the data table and provide the label text here. Let's add a Data Table object reference variable named `TabsDataTable`.
+Open the Graph view. Override _Handle Tab Creation_ to add the tab button to the container, and override _Handle Tab Removal_ to remove the button from the container.
 
-To implement this function, we need to:
-1. Add the given button widget to the container as a child.
-2. Look up the data table using the Tab Name ID as the row name.
-3. Cast the given widget to a `TabButton` and set the `Label` property of the `TabButton` with the text from the data table row.
+<img src="/assets/images/tab-list-overrides.png" alt="Screenshot of the implementation of the overriden Handle Tab Removal and Handle Tab Creation functions in Blueprints. The Event Handle Tab Creation node is linked to Add Child node, and the Event Handle Tab Removal node is linked to Remove Child node. For both nodes, the Target pin is linked to the container widget. The Content pin is linked to the event's Tab Button pin.">
 
-<img src="/assets/images/handle-tab-creation-implementation.png" alt="Screenshot of the implementation of the overridden Handle Tab Creation function in Blueprints. The nodes are described above.">
+### 3. Linking to a Switcher
+Open (or create) the widget that contains both the tab list and switcher. In the _On Initialized_ event of this widget, link the tab list to the switcher.
 
-Override _Handle Tab Removal_ to remove the button from the container.
+<img src="/assets/images/set-linked-switcher.png" alt="Screenshot of implementation for On Initialized event. The exec pin is linked to Set Linked Switcher function with the tab list as the target and the switcher as the Common Switcher.">
 
-<img src="/assets/images/tab-removal-impl.png" alt="Screenshot of the implementation of the overriden Handle Tab Removal function in Blueprints. It is linked to Remove Child node. The Target pin is linked to the container widget. The Content pin is linked to the function's Tab Button pin.">
+### 4. Register Tabs
+The switcher first needs to be populated with a widget representing each page.
 
-### 4. Tab Container
-TODO
+<img src="/assets/images/tab-switcher-hierarchy.png" alt="Screenshot of a widget hierarchy showing a Vertical Box with two children: a tab list and a Common Activatable Widget Switcher">
 
-### 5. Tab Button Group
-TODO
+Now, we can register the tabs. To register a tab, you need to specify a unique identifier, the tab button widget, and the content widget.
 
-### 6. Gamepad Input (Optional)
-TODO
+<img src="/assets/images/register-tabs.png" alt="Sreenshot of Register Tab function being called for each tab page.">
+
+### 5. Button Group
+At this point, the tabs work but you'll notice that a tab button will appear to be permanently "selected" even when another tab is selected. When a tab button is selected, all other tabs will need to be unselected. A button group will automatically handle this for us.
+
+Unfortunately, this part needs to be done in C++ because `UCommonButtonGroupBase` is not blueprintable.
+
+<< TODO >>
 
 ## Carousels
 A carousel is different from a switcher in that both the previous and next widgets are simultaneously visible during the transition. A switcher waits for the previous widget to fade out or move out of sight before bringing in the next widget. A carousel is much more like a scroll box where widgets are scrolled into and out of view.
