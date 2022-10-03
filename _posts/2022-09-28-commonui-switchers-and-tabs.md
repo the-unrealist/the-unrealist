@@ -111,6 +111,10 @@ Unfortunately, this part needs to be done in C++ because `UCommonButtonGroupBase
 
 << TODO >>
 
+### 6. Gamepad Input
+
+<< TODO >>
+
 ## Carousels
 A carousel is different from a switcher in that both the previous and next widgets are simultaneously visible during the transition. A switcher waits for the previous widget to fade out or move out of sight before bringing in the next widget. A carousel is much more like a scroll box where widgets are scrolled into and out of view.
 
