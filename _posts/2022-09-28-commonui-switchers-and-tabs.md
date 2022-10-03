@@ -74,12 +74,12 @@ To create a tabbed experience, a **[Common Tab List Widget](https://docs.unreale
 
 Common UI doesn't provide a usable tab list widget out of the box, so there is a multi-step process to get it to work.
 
-### 1. Create Tab Buttons
+### 1. Tab Buttons
 Create a button widget based on `CommonButtonBase` for each tab.
 
 << TODO: Add screenshot here >>
 
-### 2. Create Tab List
+### 2. Tab List
 Create a Blueprint class based on `CommonTabListWidgetBase`. This will be the container for the tab buttons.
 
 Add a Horizontal Box to the hierarchy and make it a variable. A Vertical Box can be used instead for vertical tabs.
