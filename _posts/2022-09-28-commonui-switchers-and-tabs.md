@@ -68,16 +68,26 @@ For your convenience, here's an overview of all relevant functions you can use i
 Finally, there's the **[Common Visibility Switcher](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonVisibilitySwitcher/)** which is a bit different from above in that it is derived from UMG Overlay widget and is identical to UMG Widget Switcher in that there are no animations and only one widget can be visible at a time. However, it does activate widgets whenever they become visible.
 
 ## Tabs
-To create a tabbed experience, a **[Common Tab List Widget](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonTabListWidgetBase/)** must be linked to a switcher. Only the Common Animated Switcher or Common Activatable Widget Switcher may be used with a tab list. Generally, you'll want to use the Common Activatable Widget Switcher so that the input can be routed to the tab page's contents.
+To create a tabbed experience, a **[Common Tab List Widget](https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonTabListWidgetBase/)** must be linked to a switcher. Only the Common Animated Switcher or Common Activatable Widget Switcher may be used with a tab list. Generally, you'll want to use the Common Activatable Widget Switcher so that the input can be routed to the tab page's contents. 
 
-<<TODO: preview gif here>>
+<details open style="margin-bottom: 1em;">
+  <summary class="toggle-link">Show/hide animated preview</summary>
+  <img src="/assets/images/tab-demo.gif" alt="Animated GIF demonstrating tabs linked to a switcher">
+</details>
+
+Set the value for _Transition Duration_ to 0 for instant switching.
+
+<details open style="margin-bottom: 1em;">
+  <summary class="toggle-link">Show/hide animated preview</summary>
+  <img src="/assets/images/tab-demo-instant.gif" alt="Animated GIF demonstrating tabs linked to a switcher with no transition animation">
+</details>
 
 Common UI doesn't provide a usable tab list widget out of the box, so there is a multi-step process to get it to work.
 
 ### 1. Tab Buttons
-Create a button widget based on `CommonButtonBase` for each tab.
+Create a button widget based on `CommonButtonBase` for each tab. There's a unique style for each tab in my demo, but you likely will have one style for all tab buttons.
 
-<< TODO: Add screenshot here >>
+<img src="/assets/images/tab-buttons.png" alt="A tab button widget and style for each tab in my demo: Cucumber, Kiwi, Melon, and Orange">
 
 ### 2. Tab List
 Create a Blueprint class based on `CommonTabListWidgetBase`. This will be the container for the tab buttons.
@@ -103,6 +113,8 @@ The switcher first needs to be populated with a widget representing each page.
 Now, we can register the tabs. To register a tab, you need to specify a unique identifier, the tab button widget, and the content widget.
 
 <img src="/assets/images/register-tabs.png" alt="Sreenshot of Register Tab function being called for each tab page.">
+
+You're all done here! Read on if you want to add support for gamepads.
 
 ### 5. Gamepad Input
 
