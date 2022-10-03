@@ -125,7 +125,10 @@ Override _Handle Tab Removal_ to remove the button from the container.
 ### 4. Tab Container
 TODO
 
-## Tab Button Groups
+### 5. Tab Button Group
+TODO
+
+### 6. Gamepad Input (Optional)
 TODO
 
 ## Carousels
