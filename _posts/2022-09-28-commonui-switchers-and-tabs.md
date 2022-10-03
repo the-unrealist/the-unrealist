@@ -12,8 +12,6 @@ Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engin
 
 For that reason, **this tutorial assumes you have a basic understanding of Common UI including setting up inputs and styling**.
 
-⚠️ **THIS TUTORIAL IS A WORK IN PROGRESS AND IS NOT FINISHED YET!** ⚠️
-
 ## Table of Contents
 * [Switchers](#switchers)
 * [Tabs](#tabs)
@@ -116,9 +114,9 @@ Now, we can register the tabs. To register a tab, you need to specify a unique i
 
 You're all done here! Read on if you want to add support for gamepads.
 
-### 5. Gamepad Input
+### 5. Gamepad Input (Optional)
 
-<< TODO >>
+TODO: Add content here. (Sorry!)
 
 ## Carousels
 A carousel is different from a switcher in that both the previous and next widgets are simultaneously visible during the transition. A switcher waits for the previous widget to fade out or move out of sight before bringing in the next widget. A carousel is much more like a scroll box where widgets are scrolled into and out of view.
