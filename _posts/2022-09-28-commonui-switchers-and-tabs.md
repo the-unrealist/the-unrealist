@@ -104,14 +104,7 @@ Now, we can register the tabs. To register a tab, you need to specify a unique i
 
 <img src="/assets/images/register-tabs.png" alt="Sreenshot of Register Tab function being called for each tab page.">
 
-### 5. Button Group
-At this point, the tabs work but you'll notice that a tab button will appear to be permanently "selected" even when another tab is selected. When a tab button is selected, all other tabs will need to be unselected. A button group will automatically handle this for us.
-
-Unfortunately, this part needs to be done in C++ because `UCommonButtonGroupBase` is not blueprintable.
-
-<< TODO >>
-
-### 6. Gamepad Input
+### 5. Gamepad Input
 
 << TODO >>
 
