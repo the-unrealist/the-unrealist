@@ -27,14 +27,48 @@ The Common UI plugin was originally developed for Fortnite and the action bar we
 In case you're not aware, this article is part of a series about the [Common UI plugin](https://docs.unrealengine.com/5.0/en-US/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine/).
 Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engine.
 
-## Table of Contents
-* Overview
-* Common Bound Action Button
-* Common Bound Action Bar
-* How to add actions to the bar
-* Hold progress ring material example
-* C++ enhancements 
-  * Switch button style based on platform traits
-  * Multiple action bars
+## Set-up
+### 1. Common Bound Action Button
+First, we'll need to build our own button widget that will be used by the action bar for each available action. Go ahead and create a new Widget Blueprint based on `CommonBoundActionButton`.
 
-THIS ARTICLE IS A WORK-IN-PROGRESS - PLEASE COME BACK LATER!
+<img src="/assets/images/new-widget-commonboundactionbutton.png" alt="A screenshot showing that CommonBoundActionButton is selected as the widget blueprint's parent class">
+
+Just like with the `CommonButtonBase`, we'll need to provide a layout for the button. In the **Bind Widgets** panel, the properties that are required by the parent `CommonBoundActionButton` class are listed here.
+
+<img src="/assets/images/bound-action-button-bind-widgets.png" alt="Bind Widgets panel showing a Common Text property named Text_ActionName is required, and a Common Action Widget property named InputActionWidget is optional.">
+
+This means our button must have a Common Text widget and it must be named `Text_ActionName`, or else, it will fail to compile. 
+
+Let's start off with an Overlay and a Common Text.
+
+<img src="/assets/images/bound-action-button-initial-layout.png" alt="A screenshot of the hierarchy panel for the button showing a Common Text widget wrapped in an Overlay panel.">
+
+At this point, if we go back to the Bind Widgets panel, we will see a checkmark indicating that the property is bound.
+
+<img src="/assets/images/bound-action-button-bind-widgets-2.png" alt="Bind Widgets panel showing a checkmark next to the Common Text property.">
+
+This part is optional, but in this tutorial we'll add a Common Action Widget, name it `InputActionWidget`, and put it in a Horizontal Box along with the text.
+
+<img src="/assets/images/bound-action-button-layout-with-icon.png" alt="A screenshot of the hierarchy panel for the button showing a Common Action Widget and a Common Text widget wrapped together in a Horizontal Box.">
+
+The Bind Widgets panel will update to confirm that the icon is also bound.
+
+<img src="/assets/images/bound-action-button-bind-widgets-4.png" alt="Bind Widgets panel showing a checkmark next to the Common Text property and the Common Action Widget property.">
+
+There are additional properties that can be set in the Details panel for the Common Action Widget.
+
+<img src="/assets/images/common-action-widget-details.png" alt="Details panel showing properties under the Common Action Widget category. The properties are Progress Material Brush, Progress Material Param, Icon Rim Brush, and an array of Input Actions.">
+
+<table>
+ <thead>
+  <tr><th>Property</th><th>Description</th></tr>
+ </thead>
+ <tbody>
+  <tr><td>Progress Material Brush</td><td>The material used to draw the progress indicator for actions that require holding down input. This is drawn on top of the button icon.</td></tr>
+  <tr><td>Progress Material Param</td><td>The name of a scalar parameter used by the material. A percentage value between 0-1 will be provided via this parameter.</td></tr>
+  <tr><td>Icon Rim Brush</td><td>This is the image or material that's drawn behind the button icon. Typically used to display the button outline.</td>
+ </tbody>
+</table>
+
+### 2. Common Bound Action Bar
+TODO
