@@ -33,7 +33,7 @@ First, we'll need to build our own button widget that will be used by the action
 
 <img src="/assets/images/new-widget-commonboundactionbutton.png" alt="A screenshot showing that CommonBoundActionButton is selected as the widget blueprint's parent class">
 
-Just like with the `CommonButtonBase`, we'll need to provide a layout for the button. In the **Bind Widgets** panel, the properties that are required by the parent `CommonBoundActionButton` class are listed here.
+Just like with the `CommonButtonBase`, we'll need to provide a layout for the button. In the **Bind Widgets** panel, the properties required by the parent `CommonBoundActionButton` class are listed here.
 
 <img src="/assets/images/bound-action-button-bind-widgets.png" alt="Bind Widgets panel showing a Common Text property named Text_ActionName is required, and a Common Action Widget property named InputActionWidget is optional.">
 
