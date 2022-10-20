@@ -47,7 +47,7 @@ At this point, if we go back to the Bind Widgets panel, we will see a checkmark 
 
 <img src="/assets/images/bound-action-button-bind-widgets-2.png" alt="Bind Widgets panel showing a checkmark next to the Common Text property.">
 
-This part is optional, but in this tutorial we'll add a Common Action Widget, name it `InputActionWidget`, and put it in a Horizontal Box along with the text.
+This part is optional, but in this tutorial we'll add a Common Action Widget, name it `InputActionWidget`, and put it in a Horizontal Box along with the text. This widget will automatically display the input icon associated with the action.
 
 <img src="/assets/images/bound-action-button-layout-with-icon.png" alt="A screenshot of the hierarchy panel for the button showing a Common Action Widget and a Common Text widget wrapped together in a Horizontal Box.">
 
