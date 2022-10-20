@@ -9,7 +9,7 @@ author: Matt
 When the user interface is open in most modern games, you'll find a list of actions available to the player.
 This is typically a horizontal bar located at the bottom of the screen.
 
-Here's a few:
+Here are some examples:
 
 **Destiny**
 
