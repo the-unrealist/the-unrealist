@@ -83,7 +83,7 @@ Set the value for _Transition Duration_ to 0 for instant switching.
 Common UI doesn't provide a usable tab list widget out of the box, so there is a multi-step process to get it to work.
 
 ### 1. Tab Buttons
-Create a button widget based on `CommonButtonBase` for each tab, or create a generic one and look up a string table based on the Tab Name ID input in the Handle Tab Creation event (shown below). In this tutorial, I'm doing it in the simplest way possible which is to have a separate button widget for each tab. There's a unique style for each tab in my demo, but you likely will have one just style for all tab buttons.
+Create a button widget based on `CommonButtonBase` for each tab, or create a generic one and look up a data table based on the Tab Name ID input in the Handle Tab Creation event (shown below). In this tutorial, I'm doing it in the simplest way possible which is to have a separate button widget for each tab. There's a unique style for each tab in my demo, but you likely will have one just style for all tab buttons.
 
 <img src="/assets/images/tab-buttons.png" alt="A tab button widget and style for each tab in my demo: Cucumber, Kiwi, Melon, and Orange">
 
