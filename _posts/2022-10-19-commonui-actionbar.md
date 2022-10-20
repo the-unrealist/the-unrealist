@@ -11,7 +11,7 @@ This is typically a horizontal bar located at the bottom of the screen.
 
 Here are some examples:
 
-**Destiny**
+**Destiny 2**
 
 <img src="/assets/images/action-bar-destiny2.png" alt="Screenshot of the action bar in Destiny 2 showing the following actions: Toggle Subscreen bound to the S key, Gear Stats bound to the E key, and Dismiss bound to the Escape key">
 
