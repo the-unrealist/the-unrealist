@@ -27,7 +27,7 @@ The Common UI plugin was originally developed for Fortnite and the action bar we
 In case you're not aware, this article is part of a series about the [Common UI plugin](https://docs.unrealengine.com/5.0/en-US/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine/).
 Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engine.
 
-## Set-up
+## Setup
 ### 1. Common Bound Action Button
 First, we'll need to build our own button widget that will be used by the action bar for each available action. Go ahead and create a new Widget Blueprint based on `CommonBoundActionButton`.
 
@@ -82,8 +82,32 @@ The action bar works out of the box so there's nothing else you need to do here.
 ## Registering Actions
 TODO
 
-## Button Icons
-TODO
+## Input Action Icons
+Let's do a quick run through on how to set up input action icons for each controller type.
+
+Create a Blueprint and select `CommonInputBaseControllerData` as the parent class. 
+
+<img src="/assets/images/common-input-base-controller-data.png" alt="New Blueprint dialog with the Common Input Base Controller Data selected as the parent class">
+
+We'll create one to represent the Generic gamepad which is used as the default in case we do not have one specific to the gamepad that's being used. Import an icon for each button as a texture.
+
+This needs to be done for each input device you want to support.
+
+<img src="/assets/images/generic-gamepad-brushes.png" alt="Content browser for a folder containing a Common Input Base Controller Data asset named Generic Gamepad Brushes and a texture representing each one of the four face buttons of a gamepad.">
+
+In the Blueprint, add an entry for each input type to the **Input Brush Data Map**.
+
+<img src="/assets/images/generic-gamepad-brushes-data.png" alt="Details view for the Common Input Base Controller Data asset with the Input Brush Data Map expanded to show entries mapping each one of the four face buttons of a gamepad to its texture.">
+
+For the Generic gamepad, the **Input Type** is set to **Gamepad** and the **Gamepad Name** is set to **Generic**. If you have source code access to consoles in Unreal Engine, then you'll see other options for gamepads belonging to specific consoles such as the Xbox or Nintendo Switch here.
+
+<img src="/assets/images/generic-gamepad-brushes-data-2.png" alt="Details view for the Common Input Base Controller Data asset with the Input Type set to Gamepad and the Gamepad Name set to Generic.">
+
+Now, open **Project Settings > Game > Common Input Settings**. For each supported platform (Windows in this example), add a reference to each Controller Data asset you created. Make sure the **Default Gamepad Name** is set to **Generic** (or whatever was set in the Controller Data asset) or it will not work!
+
+<img src="/assets/images/project-settings-common-input-settings.png" alt="Common Input Settings in Project Settings showing the Controller Data array with one entry pointing to Generic Gamepad Brushes asset and another pointing to Keyboard Brushes asset.">
+
+At this point, Common Acton Widgets will automatically display the appropriate icon based on the active input device.
 
 ## Progress Indicator Material Example
 TODO
