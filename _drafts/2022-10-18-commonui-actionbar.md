@@ -66,9 +66,24 @@ There are additional properties that can be set in the Details panel for the Com
  <tbody>
   <tr><td>Progress Material Brush</td><td>The material used to draw the progress indicator for actions that require holding down input. This is drawn on top of the button icon.</td></tr>
   <tr><td>Progress Material Param</td><td>The name of a scalar parameter used by the material. A percentage value between 0-1 will be provided via this parameter.</td></tr>
-  <tr><td>Icon Rim Brush</td><td>This is the image or material that's drawn behind the button icon. Typically used to display the button outline.</td>
+  <tr><td>Icon Rim Brush</td><td>The image or material that's drawn behind the button icon. Typically used to display the button outline.</td></tr>
  </tbody>
 </table>
 
 ### 2. Common Bound Action Bar
+Put the Common Bound Action Bar wherever it makes sense in a widget blueprint. A good place is in your game's root UI container widget. For this tutorial, we'll put it underneath a Common Activatable Widget Stack that we'll use to push activatable widgets.
+
+<img src="/assets/images/action-bar-sample-layout.png" alt="A screenshot of the widget blueprint designer showing a Vertical Box with a Common Activatable Widget Stack and a Common Bound Action Bar.">
+
+Under **Entry Layout** in the Details panel, set the **Action Button Class** to the button widget we created earlier. Under **Dynamic Entry Box**, the **Entry Box Type** property sets how the buttons are laid out. This can be further customized with the properties under the Entry Layout category.
+
+The action bar works out of the box so there's nothing else you need to do here.
+
+## Registering Actions
+TODO
+
+## Button Icons
+TODO
+
+## Progress Indicator Material Example
 TODO
