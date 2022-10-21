@@ -4,10 +4,10 @@ tags: unreal commonui umg
 title: "Common UI: Action Bar"
 categories: [Common UI]
 author: Matt
+excerpt: "When the user interface is open in most modern games, you'll find a list of actions available to the player. This is typically a horizontal bar located at the bottom of the screen. This tutorial explains how to create one with the Common UI plugin."
 ---
 
-When the user interface is open in most modern games, you'll find a list of actions available to the player.
-This is typically a horizontal bar located at the bottom of the screen.
+When the user interface is open in most modern games, you'll find a list of actions available to the player. This is typically a horizontal bar located at the bottom of the screen.
 
 Here are some examples:
 
@@ -26,6 +26,13 @@ And, of course... **Fortnite**!
 The Common UI plugin was originally developed for Fortnite and the action bar we'll be creating in this tutorial is the same as the one used in the game! 
 In case you're not aware, this article is part of a series about the [Common UI plugin](https://docs.unrealengine.com/5.0/en-US/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine/).
 Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engine.
+
+## Table of Contents
+* [Setup](#setup)
+  * [1. Common Bound Action Button](#1-common-bound-action-button)
+  * [2. Common Bound Action Bar](#2-common-bound-action-bar)
+* [Input Action Icons](#input-action-icons)
+* [Registering Actions](#registering-actions)
 
 ## Setup
 ### 1. Common Bound Action Button
@@ -66,7 +73,7 @@ There are additional properties that can be set in the Details panel for the Com
  <tbody>
   <tr><td>Progress Material Brush</td><td>The material used to draw the progress indicator for actions that require holding down input. This is drawn on top of the button icon.</td></tr>
   <tr><td>Progress Material Param</td><td>The name of a scalar parameter used by the material. A percentage value between 0-1 will be provided via this parameter.</td></tr>
-  <tr><td>Icon Rim Brush</td><td>The image or material that's drawn behind the button icon. Typically used to display the button outline.</td></tr>
+  <tr><td>Icon Rim Brush</td><td>The image or material that's drawn behind the button icon.</td></tr>
  </tbody>
 </table>
 
@@ -78,9 +85,6 @@ Put the Common Bound Action Bar wherever it makes sense in a widget blueprint. A
 Under **Entry Layout** in the Details panel, set the **Action Button Class** to the button widget we created earlier. Under **Dynamic Entry Box**, the **Entry Box Type** property sets how the buttons are laid out. This can be further customized with the properties under the Entry Layout category.
 
 The action bar works out of the box so there's nothing else you need to do here.
-
-## Registering Actions
-TODO
 
 ## Input Action Icons
 Let's do a quick run through on how to set up input action icons for each controller type.
@@ -103,11 +107,11 @@ For the Generic gamepad, the **Input Type** is set to **Gamepad** and the **Game
 
 <img src="/assets/images/generic-gamepad-brushes-data-2.png" alt="Details view for the Common Input Base Controller Data asset with the Input Type set to Gamepad and the Gamepad Name set to Generic.">
 
-Now, open **Project Settings > Game > Common Input Settings**. For each supported platform (Windows in this example), add a reference to each Controller Data asset you created. Make sure the **Default Gamepad Name** is set to **Generic** (or whatever was set in the Controller Data asset) or it will not work!
+Now, open **Project Settings > Game > Common Input Settings**. For each supported platform (Windows in this example), add a reference to the relevant Controller Data assets. On platforms that support generic gamepads (e.g., Windows), make sure the **Default Gamepad Name** is set to **Generic**, otherwise, use the selected name in the Controller Data asset.
 
 <img src="/assets/images/project-settings-common-input-settings.png" alt="Common Input Settings in Project Settings showing the Controller Data array with one entry pointing to Generic Gamepad Brushes asset and another pointing to Keyboard Brushes asset.">
 
 At this point, Common Acton Widgets will automatically display the appropriate icon based on the active input device.
 
-## Progress Indicator Material Example
-TODO
+## Registering Actions
+Coming soon!
