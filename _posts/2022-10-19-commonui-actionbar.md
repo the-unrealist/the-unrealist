@@ -78,7 +78,7 @@ There are additional properties that can be set in the Details panel for the Com
 </table>
 
 ### 2. Common Bound Action Bar
-Put the Common Bound Action Bar wherever it makes sense in a widget blueprint. A good place is in your game's root UI container widget. For this tutorial, we'll put it underneath a Common Activatable Widget Stack that we'll use to push activatable widgets.
+Put the Common Bound Action Bar wherever it makes sense in a widget blueprint. A good place is in your game's root UI container widget. In this tutorial, we'll put it underneath a Common Activatable Widget Stack that we'll use to push activatable widgets.
 
 <img src="/assets/images/action-bar-sample-layout.png" alt="A screenshot of the widget blueprint designer showing a Vertical Box with a Common Activatable Widget Stack and a Common Bound Action Bar.">
 
@@ -117,10 +117,10 @@ At this point, Common Acton Widgets will automatically display the appropriate i
 ### Back Handler
 **Common Activatable Widgets** can register a binding for the default Back input action by setting **Is Back Handler** to true. The default behavior is to deactivate the widget. This can be changed by overriding the **On Handle Back Action** function of the Common Activatable Widget. 
 
-To display the Back input action in the Action Bar, both **Back > Is Back Action Displayed in Action Bar** *and* **Input > Display in Action Bar** need to be set to true.
+To display the Back input action in the Action Bar, both **Is Back Action Displayed in Action Bar** *and* **Display in Action Bar** need to be set to true.
 
 ### Custom Actions
-While it's straightforward to handle the Back action, it gets a rather tricky if you want to bind more inputs. This will require C++, but there is a workaround if you want to do it in Blueprints only. The workaround is to add invisible (zero-width) Common Buttons to a Common Activatable Widget. 
+While it's straightforward to handle the Back input, it gets a rather tricky if you want to bind more inputs. This will require C++, but there is a workaround if you want to do it in Blueprints only. The workaround is to add invisible (zero-width) Common Buttons to a Common Activatable Widget. 
 
 Otherwise, you'll need to jump into C++ and call `RegisterUIActionBinding` in `UCommonUserWidget`, which is, unfortunately, not exposed to Blueprints.
 
