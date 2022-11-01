@@ -114,4 +114,26 @@ Now, open **Project Settings > Game > Common Input Settings**. For each supporte
 At this point, Common Acton Widgets will automatically display the appropriate icon based on the active input device.
 
 ## Registering Actions
-Coming soon!
+### Back Handler
+**Common Activatable Widgets** can register a binding for the default Back input action by setting **Is Back Handler** to true. The default behavior is to deactivate the widget. This can be changed by overriding the **On Handle Back Action** function of the Common Activatable Widget. 
+
+To display the Back input action in the Action Bar, both **Back > Is Back Action Displayed in Action Bar** *and* **Input > Display in Action Bar** need to be set to true.
+
+### Custom Actions
+While it's straightforward to handle the Back action, it gets a rather tricky if you want to bind more inputs. This will require C++, but there is a workaround if you want to do it in Blueprints only. The workaround is to add invisible (zero-width) Common Buttons to a Common Activatable Widget. 
+
+Otherwise, you'll need to jump into C++ and call `RegisterUIActionBinding` in `UCommonUserWidget`, which is, unfortunately, not exposed to Blueprints.
+
+It's not difficult to resolve this issue. My solution is to create a C++ class based on `UCommonActivatableWidget` and add `BlueprintCallable` functions so that I can register input bindings entirely in Blueprints as you can see below:
+
+<img src="/assets/images/extendedactivatablewidgetfunctions.png" alt="Screenshot of custom Blueprint functions: Register Binding, Unregister Binding, and Unregister All Bindings">
+
+First, you'll need to add `CommonUI` and `CommonInput` to `PublicDependencyModuleNames` for your game's module. Then, add `ExtendedCommonActivatableWidget.h` and `ExtendedCommonActivatableWidget.cpp` to your game's source.
+
+{% gist 0297fbda19afe1e4d0f3afba92104ffd %}
+
+The purpose of `FInputActionBindingHandle` is to represent an opaque Blueprintable handle provided by `RegisterBinding` that can be used to unregister the binding. This is optional as all bindings created by the widget will be unregistered when it's destroyed, but can be useful in some cases.
+
+Hope this helps!
+
+<img src="/assets/images/action-bar-demo.png" alt="Screenshot of an Action Bar created with my custom C++ class that I shared above">
