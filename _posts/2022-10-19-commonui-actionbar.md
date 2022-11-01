@@ -126,7 +126,7 @@ Otherwise, you'll need to jump into C++ and call `RegisterUIActionBinding` in `U
 
 It's not difficult to resolve this issue. My solution is to create a C++ class based on `UCommonActivatableWidget` and add `BlueprintCallable` functions so that I can register input bindings entirely in Blueprints as you can see below:
 
-<img src="/assets/images/extendedactivatablewidgetfunctions.png" alt="Screenshot of custom Blueprint functions: Register Binding, Unregister Binding, and Unregister All Bindings">
+<img src="/assets/images/extendedactivatablewidgetfunctions3.png" alt="Screenshot of custom Blueprint functions: Register Binding, Unregister Binding, and Unregister All Bindings">
 
 First, you'll need to add `CommonUI` and `CommonInput` to `PublicDependencyModuleNames` for your game's module. Then, add `ExtendedCommonActivatableWidget.h` and `ExtendedCommonActivatableWidget.cpp` to your game's source.
 
