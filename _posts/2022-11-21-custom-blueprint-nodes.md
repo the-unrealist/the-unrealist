@@ -171,6 +171,7 @@ bool bIsValidSubclass = Blueprint->ParentClass && Blueprint->ParentClass->IsChil
 ```
 
 ### Blueprint Implements an Interface
+Unlike `Blueprint->GeneratedClass->ImplementsInterface(...)`, the following code will detect interfaces added via the Blueprint editor — even before the Blueprint has been compiled.
 ```cpp
 TArray<UClass*> ImplementedInterfaces;
 FBlueprintEditorUtils::FindImplementedInterfaces(Blueprint, true, ImplementedInterfaces);
