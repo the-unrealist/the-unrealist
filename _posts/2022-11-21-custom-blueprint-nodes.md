@@ -11,7 +11,7 @@ There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/
 
 ## Table of Contents
 1. [Introduction](#Introduction)
-2. [`IsCompatibleWithGraph`](#iscompatiblewithgraph)
+2. [Graph Compatibility](#graph-compatibility)
    - [Check for Event Graph](#check-for-event-graph)
    - [Check for Functions](#check-for-functions)
    - [Require World Context](#require-world-context)
