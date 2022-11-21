@@ -1,7 +1,7 @@
 theme: minima
 title: Citrus Game Dev Notebook
 permalink: /:slug/
-show_excerpts: true
+show_excerpts: false
 author:
   name: Matt
   email: matt@unrealist.org
