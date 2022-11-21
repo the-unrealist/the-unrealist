@@ -105,7 +105,7 @@ void UK2Node_Custom::GetMenuActions(FBlueprintActionDatabaseRegistrar& ActionReg
 It'll appear at the bottom of the actions list labeled as the class name. Clicking on it will spawn a default node without any pins.
 <img src="/assets/images/empty_node.png" alt="A screenshot of a custom node in Blueprints. It has no pins.">
 
-## `IsCompatibleWithGraph`
+## Graph Compatibility
 By default, you can spawn your node in any Blueprint graph including construction scripts, functions, and macros. Override `IsCompatibleWithGraph` to restrict placement on certain graphs or even Blueprint classes.
 
 ```cpp
