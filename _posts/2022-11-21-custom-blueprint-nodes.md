@@ -293,6 +293,9 @@ TSharedPtr<INameValidatorInterface> UK2Node_Custom::MakeNameValidator() const
 
 ### Colors
 Override these functions to set the color of the node. `GetNodeTitleColor` provides the color for the title bar. `GetNodeBodyTintColor` is not used by any Blueprint node, but it does work if you want to make your node stand out!
+
+<img src="/assets/images/colorful_nodes.png" alt="A series of nodes in various colors">
+
 ```cpp
 virtual FLinearColor GetNodeTitleColor() const override;
 virtual FLinearColor GetNodeBodyTintColor() const override;
