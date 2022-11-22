@@ -7,6 +7,8 @@ author: Matt
 excerpt: "A reference guide to creating custom Blueprint nodes in C++."
 ---
 
+<img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-Blueprints-blue" alt="Blueprints">
+
 There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/) on creating custom Blueprint nodes. This article is intended as a supplement to the tutorial by providing additional information and reference tables, and for that reason, I recommend everyone to read the tutorial first.
 
 ## Table of Contents
