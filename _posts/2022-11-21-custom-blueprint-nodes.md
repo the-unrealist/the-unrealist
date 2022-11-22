@@ -22,6 +22,7 @@ There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/
 3. [Node Appearance](#node-appearance)
    - [Title](#title)
    - [Menu Category](#menu-category)
+   - [Text Caching](#text-caching)
 
 #### More Sections Coming Soon
 4. Pins
@@ -188,8 +189,32 @@ Coming soon
 ## Node Appearance
 There are various functions that can be overriden to customize how your node appears in a graph.
 
-### Caching
-These functions are frequently called and generating a `FText` can be expensive. For this reason, it's recommended to cache text with `FNodeTextCache`.
+### Title
+The title of the node. This can vary based on where it's being displayed.
+```cpp
+virtual FText GetNodeTitle(ENodeTitleType::Type TitleType) const override;
+```
+
+<table>
+   <thead>
+      <tr><th>Title Type</th><th>Description</th></tr>
+   </thead>
+   <tbody>
+      <tr><td><code>FullTitle</code></td><td>Displayed on the node</td></tr>
+      <tr><td><code>ListView</code></td><td>TODO</td></tr>
+      <tr><td><code>EditableTitle</code></td><td>TODO</td></tr>
+      <tr><td><code>MenuTitle</code></td><td>Displayed in the Blueprint actions menu and context menus</td></tr>
+   </tbody>
+</table>
+
+### Menu Category
+The category to put the node under in the Blueprint actions menu. An empty value will place the node under the top-level category. Subcategories are created by using the pipe `|` character as a delimiter, i.e. `"Category|Subcategory"`.
+```cpp
+virtual FText GetMenuCategory() const override;
+```
+
+### Text Caching
+These functions are frequently called and generating a `FText` can be expensive. For this reason, it's recommended to cache text with `FNodeTextCache`. Some user actions like changing the input pin connections will automatically mark the cache as dirty, but you can force it to refresh when necessary with the `MarkAsDirty` function.
 
 ```cpp
 // K2Node_Custom.h
@@ -208,22 +233,4 @@ FText UK2Node_Custom::GetNodeTitle(ENodeTitleType::Type TitleType) const
     }
     return NodeTitleCache;
 }
-```
-
-### Title
-The title of the node. This can vary based on where it's being displayed.
-```cpp
-virtual FText GetNodeTitle(ENodeTitleType::Type TitleType) const override;
-```
-|Title Type |Description            |
-|-----------|-----------------------|
-|`FullTitle`|Displayed on the node  |
-|`ListView`|TODO                    |
-|`EditableTitle`|TODO               |
-|`MenuTitle`|Displayed in the Blueprint actions menu and context menus|
-
-### Menu Category
-The category to put the node under in the Blueprint actions menu. An empty value will place the node under the top-level category. Subcategories are created by using the pipe `|` character as a delimiter, i.e. `"Category|Subcategory"`.
-```cpp
-virtual FText GetMenuCategory() const override;
 ```
