@@ -6,6 +6,7 @@ categories: [Common UI]
 author: Matt
 excerpt: "When the user interface is open in most modern games, you'll find a list of actions available to the player. This is typically a horizontal bar located at the bottom of the screen. This tutorial explains how to create one with the Common UI plugin."
 ---
+<img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-UMG-blueviolet" alt="UMG">
 
 When the user interface is open in most modern games, you'll find a list of actions available to the player. This is typically a horizontal bar located at the bottom of the screen.
 
