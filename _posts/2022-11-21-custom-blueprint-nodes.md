@@ -7,7 +7,7 @@ author: Matt
 excerpt: "A reference guide to creating custom Blueprint nodes in C++."
 ---
 
-<img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-Blueprints-blue" alt="Blueprints">
+<img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-Blueprints-blue" alt="Blueprints"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
 
 There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/) on creating custom Blueprint nodes. This article is intended as a supplement to the tutorial by providing additional information and reference tables, and for that reason, I recommend everyone to read the tutorial first.
 
@@ -15,7 +15,8 @@ There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/
 1. [Introduction](#introduction)
 2. [Graph Compatibility](#graph-compatibility)
    - [Check for Event Graph](#check-for-event-graph)
-   - [Check for Functions](#check-for-functions)
+   - [Check for Function Graph](#check-for-function-graph)
+   - [Check for Macro Graph](#check-for-macro-graph)
    - [Require World Context](#require-world-context)
    - [Blueprint Derives From a Class](#blueprint-derives-from-a-class)
    - [Blueprint Implements Interface](#blueprint-implements-an-interface)
@@ -157,13 +158,13 @@ If your node expands into multiple distinct nodes (i.e. events), then you need t
 bool bIsEventGraph = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Ubergraph;
 ```
 
-### Check for Functions
+### Check for Function Graph
 If your node expands into latent actions, then you need to prevent it from being placed in functions.
 ```cpp
 bool bIsFunction = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Function;
 ```
 
-### Check for Macros
+### Check for Macro Graph
 Unlike Event Graphs, macros can only have one input node. If your node expands into multiple input nodes, then you need to prevent it from being placed in macros.
 ```cpp
 bool bIsMacro = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Macro;
