@@ -22,12 +22,17 @@ There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/
 3. [Node Customization](#node-customization)
    - [Title](#title)
    - [Menu Category](#menu-category)
+   - [Tooltips](#tooltips)
+   - [Keywords](#keywords)
+   - [Compact Nodes](#compact-nodes)
    - [Can Rename Node](#can-rename-node)
+   - [Colors](#colors)
    - [Text Caching](#text-caching)
 
 #### More Sections Coming Soon
 4. Pins
     - Creating Pins
+    - Wildcard Pins
     - Owner Pin
     - World Context Pin
     - User Defined Pins
@@ -210,6 +215,32 @@ The category to put the node under in the Blueprint actions menu. By default or 
 virtual FText GetMenuCategory() const override;
 ```
 
+### Tooltips
+The tooltip appears in both the graph and the Blueprint actions menu. The tooltip heading is the smaller text above the tooltip text. It's visible only after a node was placed. Unreal Editor uses it to display information of some status that may affect how the node behaves, such as "Replicated" when a variable is replicated.
+
+<img src="/assets/images/node_tooltip.png" alt="A screenshot of a custom node with its tooltip visible.">
+
+```cpp
+virtual FText GetTooltipText() const override;
+virtual FText GetToolTipHeading() const override;
+```
+
+### Keywords
+This defines the keywords to help users find this action using the search box in the Blueprint actions menu.
+```cpp
+virtual FText GetKeywords() const override;
+```
+
+### Compact Nodes
+These nodes have the title centered and in a larger font. To make the node compact, override `ShouldDrawCompact` to return `true`. By default, `GetCompactNodeTitle` uses the full title of the node, but you can override `GetCompactNodeTitle` to change this.
+
+<img src="/assets/images/compact_nodes.png" alt="Examples of compact nodes (Add integers, subsystem, and boolean OR nodes)">
+
+```cpp
+virtual bool ShouldDrawCompact() const override;
+virtual FText GetCompactNodeTitle() const override;
+```
+
 ### Can Rename Node
 `GetCanRenameNode` can be overridden to enable users to rename nodes. You must also override `MakeNameValidator` function to provide a name validator or it will cause the editor to crash. You'll need to store the value in a field in `OnRenameNode` and return it in `GetNodeTitle` when the title type is `EditableTitle`.
 ```cpp
@@ -259,8 +290,15 @@ TSharedPtr<INameValidatorInterface> UK2Node_Custom::MakeNameValidator() const
 }
 ```
 
+### Colors
+Override these functions to set the color of the node. `GetNodeTitleColor` provides the color for the title bar. `GetNodeBodyTintColor` is not used by any Blueprint node, but it does work if you want to make your node stand out!
+```cpp
+virtual FLinearColor GetNodeTitleColor() const override;
+virtual FLinearColor GetNodeBodyTintColor() const override;
+```
+
 ### Text Caching
-These functions are frequently called and generating a `FText` can be expensive. For this reason, it's recommended to cache text with `FNodeTextCache`. Some user actions like changing the input pin connections will automatically mark the cache as dirty. If needed, you can refresh the cache with the `MarkAsDirty` function.
+Many of the customization functions mentioned in this reference guide are frequently called and generating a `FText` can be expensive. For this reason, it's recommended to cache text with `FNodeTextCache`. Some user actions like changing the input pin connections will automatically mark the cache as dirty. If needed, you can refresh the cache with the `MarkAsDirty` function.
 ```cpp
 // K2Node_Custom.h
 
