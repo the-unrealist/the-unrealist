@@ -19,6 +19,9 @@ There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/
    - [Require World Context](#require-world-context)
    - [Blueprint Derives From a Class](#blueprint-derives-from-a-class)
    - [Blueprint Implements Interface](#blueprint-implements-an-interface)
+3. [Node Appearance](#node-appearance)
+   - [Title](#title)
+   - [Menu Category](#menu-category)
 
 #### More Sections Coming Soon
 4. Pins
@@ -27,12 +30,11 @@ There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/
     - World Context Pin
     - User Defined Pins
     - Changing pins based on value
-5. Node Appearance
-6. `ExpandNode`
-7. Latent Nodes
-8. Node Attributes
-9. Tunnels and composite nodes
-10. `UBlueprintNodeSpawner`
+5. `ExpandNode`
+6. Latent Nodes
+7. Node Attributes
+8. Tunnels and composite nodes
+9. `UBlueprintNodeSpawner`
 
 ## Introduction
 The Unreal Editor provides a general-purpose graph system that is used by Blueprints, materials, Niagara, and other graph-based features. In this tutorial, we'll focus on `UK2Node` from which all Blueprint nodes are derived.
@@ -178,4 +180,50 @@ Unlike `Blueprint->GeneratedClass->ImplementsInterface(...)`, the following code
 TArray<UClass*> ImplementedInterfaces;
 FBlueprintEditorUtils::FindImplementedInterfaces(Blueprint, true, ImplementedInterfaces);
 bool bImplementsInterface = ImplementedInterfaces.Contains(UBlendableInterface::StaticClass());
+```
+
+## Pins
+Coming soon
+
+## Node Appearance
+There are various functions that can be overriden to customize how your node appears in a graph.
+
+### Caching
+These functions are frequently called and generating a `FText` can be expensive. For this reason, it's recommended to cache text with `FNodeTextCache`.
+
+```cpp
+// K2Node_Custom.h
+
+private:
+    FNodeTextCache NodeTitleCache;
+```
+```cpp
+// K2Node_Custom.cpp
+
+FText UK2Node_Custom::GetNodeTitle(ENodeTitleType::Type TitleType) const
+{
+    if (NodeTitleCache.IsOutOfDate(this))
+    {
+        NodeTitleCache.SetCachedText(NSLOCTEXT("Citrus", "NodeTitle", "Custom Node Title"), this);
+    }
+    return NodeTitleCache;
+}
+```
+
+### Title
+The title of the node. This can vary based on where it's being displayed.
+```cpp
+virtual FText GetNodeTitle(ENodeTitleType::Type TitleType) const override;
+```
+|Title Type |Description            |
+|-----------|-----------------------|
+|`FullTitle`|Displayed on the node  |
+|`ListView`|TODO                    |
+|`EditableTitle`|TODO               |
+|`MenuTitle`|Displayed in the Blueprint actions menu and context menus|
+
+### Menu Category
+The category to put the node under in the Blueprint actions menu. An empty value will place the node under the top-level category. Subcategories are created by using the pipe `|` character as a delimiter, i.e. `"Category|Subcategory"`.
+```cpp
+virtual FText GetMenuCategory() const override;
 ```
