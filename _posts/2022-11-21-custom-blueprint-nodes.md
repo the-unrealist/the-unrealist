@@ -11,7 +11,7 @@ excerpt: "A reference guide to creating custom Blueprint nodes in C++."
 
 There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/) on creating custom Blueprint nodes. This article is intended as a supplement to the tutorial by providing additional information and reference tables, and for that reason, I recommend everyone to read the tutorial first.
 
-# Table of Contents
+## Table of Contents
 1. [Introduction](#introduction)
 2. [Graph Compatibility](#graph-compatibility)
    - [Check for Event Graph](#check-for-event-graph)
@@ -25,7 +25,7 @@ There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/
    - [Can Rename Node](#can-rename-node)
    - [Text Caching](#text-caching)
 
-### More Sections Coming Soon
+#### More Sections Coming Soon
 4. Pins
     - Creating Pins
     - Owner Pin
@@ -38,7 +38,7 @@ There's this fantastic [tutorial](https://www.gamedev.net/tutorials/programming/
 8. Tunnels and composite nodes
 9. `UBlueprintNodeSpawner`
 
-# Introduction
+## Introduction
 The Unreal Editor provides a general-purpose graph system that is used by Blueprints, materials, Niagara, and other graph-based features. In this tutorial, we'll focus on `UK2Node` from which all Blueprint nodes are derived.
 
 All Blueprint nodes need to be in a `UncookedOnly` module. Create a new module and set the `Type` to `UncookedOnly` in the `uproject` or `uplugin` file.
@@ -111,7 +111,7 @@ void UK2Node_Custom::GetMenuActions(FBlueprintActionDatabaseRegistrar& ActionReg
 It'll appear at the bottom of the actions list labeled as the class name. Clicking on it will spawn a default node without any pins.
 <img src="/assets/images/empty_node.png" alt="A screenshot of a custom node in Blueprints. It has no pins.">
 
-# Graph Compatibility
+## Graph Compatibility
 By default, you can spawn your node in any Blueprint graph including construction scripts, functions, and macros. Override `IsCompatibleWithGraph` to restrict placement on certain graphs or even Blueprint classes.
 
 ```cpp
@@ -140,43 +140,43 @@ bool UK2Node_Custom::IsCompatibleWithGraph(const UEdGraph* TargetGraph) const
 
 You may want to use one or more of the following booleans in your implementation of `IsCompatibleWithGraph`:
 
-## Check for Construction Script
+### Check for Construction Script
 Construction scripts execute in the editor, so you may need this if your node is intended to not execute at edit time.
 ```cpp
 bool bIsConstructionScript = FBlueprintEditorUtils::FindUserConstructionScript(Blueprint) == TargetGraph;
 ```
 
-## Check for Event Graph
+### Check for Event Graph
 If your node expands into multiple distinct nodes (i.e. events), then you need to require it to be placed in only Event Graphs.
 ```cpp
 bool bIsEventGraph = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Ubergraph;
 ```
 
-## Check for Functions
+### Check for Functions
 If your node expands into latent actions, then you need to prevent it from being placed in functions.
 ```cpp
 bool bIsFunction = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Function;
 ```
 
-## Check for Macros
+### Check for Macros
 Unlike Event Graphs, macros can only have one input node. If your node expands into multiple input nodes, then you need to prevent it from being placed in macros.
 ```cpp
 bool bIsMacro = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Macro;
 ```
 
-## Require World Context
+### Require World Context
 Blueprint function libraries don't have a world context. If your node requires a world context, then you may want to check for this. Alternatively, you can expose the World Context pin as needed. Read more about this in the Pins section.
 ```cpp
 bool bHasWorldContext = Blueprint->GeneratedClass->GetDefaultObject()->ImplementsGetWorld();
 ```
 
-## Blueprint Derives From a Class
+### Blueprint Derives From a Class
 If your node is relevant only to a class, you can check to see if the Blueprint is derived from a class.
 ```cpp
 bool bIsValidSubclass = Blueprint->ParentClass && Blueprint->ParentClass->IsChildOf(UMyClass::StaticClass());
 ```
 
-## Blueprint Implements an Interface
+### Blueprint Implements an Interface
 Unlike `Blueprint->GeneratedClass->ImplementsInterface(...)`, the following code will detect interfaces added via the Blueprint editor — even before the Blueprint has been compiled.
 ```cpp
 TArray<UClass*> ImplementedInterfaces;
@@ -184,13 +184,10 @@ FBlueprintEditorUtils::FindImplementedInterfaces(Blueprint, true, ImplementedInt
 bool bImplementsInterface = ImplementedInterfaces.Contains(UBlendableInterface::StaticClass());
 ```
 
-# Pins
-Coming soon
-
-# Node Customization
+## Node Customization
 There are various functions that can be overriden to customize how your node appears in graphs and menus.
 
-## Title
+### Title
 The title of the node. This can vary based on where it's being displayed. By default, this is the class name for all title types.
 ```cpp
 virtual FText GetNodeTitle(ENodeTitleType::Type TitleType) const override;
@@ -207,13 +204,13 @@ virtual FText GetNodeTitle(ENodeTitleType::Type TitleType) const override;
    </tbody>
 </table>
 
-## Menu Category
+### Menu Category
 The category to put the node under in the Blueprint actions menu. By default or when it's an empty value, the action is placed under the top-level category. Subcategories are created by using the pipe `|` character as a delimiter, i.e. `"Category|Subcategory"`.
 ```cpp
 virtual FText GetMenuCategory() const override;
 ```
 
-## Can Rename Node
+### Can Rename Node
 `GetCanRenameNode` can be overridden to enable users to rename nodes. You must also override `MakeNameValidator` function to provide a name validator or it will cause the editor to crash. You'll need to store the value in a field in `OnRenameNode` and return it in `GetNodeTitle` when the title type is `EditableTitle`.
 ```cpp
 // K2Node_Custom.h
@@ -262,7 +259,7 @@ TSharedPtr<INameValidatorInterface> UK2Node_Custom::MakeNameValidator() const
 }
 ```
 
-## Text Caching
+### Text Caching
 These functions are frequently called and generating a `FText` can be expensive. For this reason, it's recommended to cache text with `FNodeTextCache`. Some user actions like changing the input pin connections will automatically mark the cache as dirty. If needed, you can refresh the cache with the `MarkAsDirty` function.
 ```cpp
 // K2Node_Custom.h
