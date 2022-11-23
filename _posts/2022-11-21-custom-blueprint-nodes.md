@@ -26,10 +26,16 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
    - [Menu Category](#menu-category)
    - [Tooltips](#tooltips)
    - [Keywords](#keywords)
-   - [Compact Nodes](#compact-nodes)
+   - [Appearance](#appearance)
+       - [Colors](#colors)
+       - [Compact Node](#compact-node)
+       - [Bead Node](#bead-node)
+       - [Variable Node](#variable-node)
+       - [Control Point / Knot](#control-point--knot)
+       - [Icons](#icons)
    - [Can Rename Node](#can-rename-node)
-   - [Colors](#colors)
    - [Text Caching](#text-caching)
+   - [Purity](#purity)
 
 #### More Sections Coming Soon
 4. Pins
@@ -233,8 +239,20 @@ This defines the keywords to help users find this action using the search box in
 virtual FText GetKeywords() const override;
 ```
 
-### Compact Nodes
-These nodes have the title centered and in a larger font. To make the node compact, override `ShouldDrawCompact` to return `true`. By default, `GetCompactNodeTitle` uses the full title of the node, but you can override `GetCompactNodeTitle` to change this.
+### Appearance
+
+#### Colors
+Override these functions to set the color of the node. `GetNodeTitleColor` provides the color for the title bar. `GetNodeBodyTintColor` is not used by any Blueprint node, but it does work if you want to make your node stand out!
+
+<img src="/assets/images/colorful_nodes.png" alt="A series of nodes in various colors">
+
+```cpp
+virtual FLinearColor GetNodeTitleColor() const override;
+virtual FLinearColor GetNodeBodyTintColor() const override;
+```
+
+#### Compact Node
+This makes the title centered in the node and displayed in a larger font. To make the node compact, override `ShouldDrawCompact` to return `true`. By default, `GetCompactNodeTitle` uses the full title of the node, but you can override `GetCompactNodeTitle` to change this.
 
 <img src="/assets/images/compact_nodes.png" alt="Examples of compact nodes (Add integers, subsystem, and boolean OR nodes)">
 
@@ -243,13 +261,50 @@ virtual bool ShouldDrawCompact() const override;
 virtual FText GetCompactNodeTitle() const override;
 ```
 
+#### Bead Node
+This node has no fixed location. It is always located in the middle between the input node and the output node. No Blueprint nodes use this as of Unreal Engine 5, and it appears to be a legacy option.
+```cpp
+virtual bool ShouldDrawAsBead() const override { return true; }
+```
+
+#### Variable Node
+This makes the node appear as a variable node. In other words, the title is hidden and only the pins are visible.
+```cpp
+virtual bool DrawNodeAsVariable() const override { return true; }
+```
+
+#### Control Point / Knot
+This makes the node appear as a knot like reroute nodes. Your node needs to have just one input and one output pin. You also need to provide the input and output pin (typically `0` and `1` respectively).
+```cpp
+virtual bool ShouldDrawNodeAsControlPointOnly(int32& OutInputPinIndex, int32& OutOutputPinIndex) const override
+{
+    OutInputPinIndex = 0;
+    OutOutputPinIndex = 1;
+    return true;
+}
+```
+
+#### Icons
+Override `GetIconAndTint` to set the icon that appears on the title bar. `ShowPaletteIconOnNode` controls whether this icon is visible. `GetCornerIcon` sets the icon that appears on the top-right corner of the node.
+```cpp
+virtual FSlateIcon GetIconAndTint(FLinearColor& OutColor) const override
+{
+     static const FSlateIcon Icon = FSlateIcon("EditorStyle", "GraphEditor.Default_16x");
+     return Icon;
+}
+virtual bool ShowPaletteIconOnNode() const override { return false; }
+virtual FName GetCornerIcon() const override { return TEXT("Graph.Latent.LatentIcon"); }
+```
+
 ### Can Rename Node
-`GetCanRenameNode` can be overridden to enable users to rename nodes. You must also override `MakeNameValidator` function to provide a name validator or it will cause the editor to crash. You'll need to store the value in a field in `OnRenameNode` and return it in `GetNodeTitle` when the title type is `EditableTitle`.
+Set `bCanRenameNode` to `1` to allow users to rename the node. Alternatively, you may override `GetCanRenameNode` to return `true`. Beware that `bCanRenameNode` exists only when the `WITH_EDITORONLY_DATA` flag exists, so you'll need to put it in between `#if WITH_EDITORONLY_DATA` and `#endif` just like in the example below.
+
+You must also override `MakeNameValidator` function to provide a name validator or it will cause the editor to crash. You'll need to store the value in a field in `OnRenameNode` and return it in `GetNodeTitle` when the title type is `EditableTitle`.
 ```cpp
 // K2Node_Custom.h
 
 public:
-    virtual bool GetCanRenameNode() const override;
+    UK2Node_Custom();
     virtual FText GetNodeTitle(ENodeTitleType::Type TitleType) const override;
     virtual void OnRenameNode(const FString& NewName) override;
     virtual TSharedPtr<INameValidatorInterface> MakeNameValidator() const override;
@@ -261,12 +316,10 @@ private:
 ```cpp
 // K2Node_Custom.cpp
 
-bool UK2Node_Custom::GetCanRenameNode() const
+UK2Node_Custom::UK2Node_Custom()
 {
 #if WITH_EDITORONLY_DATA
-    return true;
-#else
-    return false;
+    bCanRenameNode = 1;
 #endif
 }
 
@@ -292,16 +345,6 @@ TSharedPtr<INameValidatorInterface> UK2Node_Custom::MakeNameValidator() const
 }
 ```
 
-### Colors
-Override these functions to set the color of the node. `GetNodeTitleColor` provides the color for the title bar. `GetNodeBodyTintColor` is not used by any Blueprint node, but it does work if you want to make your node stand out!
-
-<img src="/assets/images/colorful_nodes.png" alt="A series of nodes in various colors">
-
-```cpp
-virtual FLinearColor GetNodeTitleColor() const override;
-virtual FLinearColor GetNodeBodyTintColor() const override;
-```
-
 ### Text Caching
 Many of the customization functions mentioned in this reference guide are frequently called and generating a `FText` can be expensive. For this reason, it's recommended to cache text with `FNodeTextCache`. Some user actions like changing the input pin connections will automatically mark the cache as dirty. If needed, you can refresh the cache with the `MarkAsDirty` function.
 ```cpp
@@ -321,4 +364,10 @@ FText UK2Node_Custom::GetNodeTitle(ENodeTitleType::Type TitleType) const
     }
     return NodeTitleCache;
 }
+```
+
+### Purity
+To make the compiler recognize this node as being pure, override `IsNodePure` to return `true`.
+```cpp
+virtual bool IsNodePure() const override;
 ```
