@@ -465,4 +465,7 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
     <tr><td>Wildcard</td><td><code>PC_Wildcard</code></td><td>If the pin represents an index in a list, use <code>PSC_Index</code> to allow Integer, Bool, Byte, and Enum values</td><td>-</td></tr>
   </tbody>
 </table>
-<small>*This pin accepts any object reference that implements the specified interface.<br/><br/><code>PC_MCDelegate</code> (Multicast Delegate) and <code>PC_FieldPath</code> (Property Reference) are not fully supported by the editor and therefore should not be used.</small>
+
+*This pin accepts a reference to an object that implements the specified interface.
+
+<code>PC_MCDelegate</code> (Multicast Delegate) and <code>PC_FieldPath</code> (Property Reference) are not fully supported by the editor and therefore should not be used.</small>
