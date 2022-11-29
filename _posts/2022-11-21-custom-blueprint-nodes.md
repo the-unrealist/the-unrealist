@@ -36,6 +36,7 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
    - [Can Rename Node](#can-rename-node)
    - [Text Caching](#text-caching)
    - [Purity](#purity)
+   - [Node Details](#node-details)
 
 #### More Sections Coming Soon
 4. Pins
@@ -370,4 +371,13 @@ FText UK2Node_Custom::GetNodeTitle(ENodeTitleType::Type TitleType) const
 To make the compiler recognize this node as being pure, override `IsNodePure` to return `true`.
 ```cpp
 virtual bool IsNodePure() const override;
+```
+
+### Node Details
+If enabled, all visible properties appear in the details window when the node is selected. A property is visible when it has any of the "Edit" or "Visible" specifiers such as `EditAnywhere` or `VisibleAnywhere`.
+```cpp
+virtual bool ShouldShowNodeProperties() const override { return true; }
+	
+UPROPERTY(EditAnywhere, Category="My Custom Node")
+UObject* CustomProperty;
 ```
