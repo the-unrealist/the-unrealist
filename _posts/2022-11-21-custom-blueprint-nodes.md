@@ -37,10 +37,11 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
    - [Text Caching](#text-caching)
    - [Purity](#purity)
    - [Node Details](#node-details)
+4. [Pins](#pins)
+   - [Creating Pins](#creating-pins)
 
 #### More Sections Coming Soon
 4. Pins
-    - Creating Pins
     - Wildcard Pins
     - Owner Pin
     - World Context Pin
@@ -381,3 +382,48 @@ virtual bool ShouldShowNodeProperties() const override { return true; }
 UPROPERTY(EditAnywhere, Category="My Custom Node")
 UObject* CustomProperty;
 ```
+
+## Pins
+### Creating Pins
+`AllocateDefaultPins` is called whenever the node needs to be created for a multitude of reasons, i.e., spawning the node or reopening its containing Blueprint graph. Override this function and call `CreatePin` to create the input and output pins.
+
+There are many overrides for `CreatePin` with different sets of parameters, but you'll likely use one of the following:
+```cpp
+UEdGraphPin* CreatePin(EEdGraphPinDirection Dir, const FName PinCategory, const FName PinName, const FCreatePinParams& PinParams = FCreatePinParams());
+UEdGraphPin* CreatePin(EEdGraphPinDirection Dir, const FName PinCategory, const FName PinSubCategory, const FName PinName, const FCreatePinParams& PinParams = FCreatePinParams());
+UEdGraphPin* CreatePin(EEdGraphPinDirection Dir, const FName PinCategory, UObject* PinSubCategoryObject, const FName PinName, const FCreatePinParams& PinParams = FCreatePinParams());
+```
+
+<table>
+  <thead>
+    <tr><th>Parameter</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Dir</code></td>
+      <td>Specifies whether this pin is an input (<code>EGPD_Input</code>) or output (<code>EGPD_Output</code>) pin.</td>
+    </tr>
+    <tr>
+      <td><code>PinCategory</code></td>
+      <td>TODO</td>
+    </tr>
+    <tr>
+      <td><code>PinSubCategory</code></td>
+      <td>TODO</td>
+    </tr>
+    <tr>
+      <td><code>PinSubCategoryObject</code></td>
+      <td>TODO</td>
+    </tr>
+    <tr>
+      <td><code>PinName</code></td>
+      <td>TODO</td>
+    </tr>
+    <tr>
+      <td><code>PinParams</code></td>
+      <td>TODO</td>
+    </tr>
+  </tbody>
+</table>
+
+This section is a work-in-progress. Please come back later.
