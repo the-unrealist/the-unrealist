@@ -456,7 +456,13 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
     <tr><td>Text</td><td><code>PC_Text</code></td><td>-</td><td>-</td></tr>
     <tr><td>Class Reference</td><td><code>PC_Class</code></td><td>For "self", use <code>PN_Self</code></td><td><code>UClass*</code> for the class type</td></tr>
     <tr><td>Soft Class Reference</td><td><code>PC_SoftClass</code></td><td>-</td><td><code>UClass*</code> for the class type</td></tr>
+    <tr><td>Object Reference</td><td><code>PC_Object</code></td><td>For "self", use <code>PN_Self</code></td><td><code>UClass*</code> for the class type</td></tr>
+    <tr><td>Soft Object Reference</td><td><code>PC_SoftObject</code></td><td>-</td><td><code>UClass*</code> for the class type</td></tr>
+    <tr><td>Struct</td><td><code>PC_Struct</code></td><td>-</td><td><code>UScriptStruct*</code> for the struct type</td></tr>
+    <tr><td>Enum</td><td><code>PC_Enum</code></td><td>-</td><td><code>UEnum*</code> for the enum type</td></tr>
+    <tr><td>Delegate (Event)</td><td><code>PC_Delegate</code></td><td>-</td><td><code>UFunction*</code> for the function signature, or <code>nullptr</code> to accept any function/event</td></tr>
+    <tr><td>Interface*</td><td><code>PC_Interface</code></td><td>-</td><td><code>UClass*</code> for the interface type</td></tr>
+    <tr><td>Wildcard</td><td><code>PC_Wildcard</code></td><td>If the pin represents an index in a list, use <code>PSC_Index</code> to allow Integer, Bool, Byte, and Enum values</td><td>-</td></tr>
   </tbody>
 </table>
-
-This section is a work-in-progress. Please come back later.
+<small>*This pin accepts any object reference that implements the specified interface.<br/><br/><code>PC_MCDelegate</code> (Multicast Delegate) and <code>PC_FieldPath</code> (Property Reference) are not fully supported by the editor and therefore should not be used.</small>
