@@ -40,6 +40,7 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
 4. [Pins](#pins)
    - [Creating Pins](#creating-pins)
        - [Pin Categories](#pin-categories)
+       - [Special Pin Names](#special-pin-names)
 
 #### More Sections Coming Soon
 4. Pins
@@ -406,19 +407,19 @@ UEdGraphPin* CreatePin(EEdGraphPinDirection Dir, const FName PinCategory, UObjec
     </tr>
     <tr>
       <td><code>PinCategory</code></td>
-      <td>This is the main type of the pin. Consult the Pin Categories table below for a list of available categories.</td>
+      <td>This is the main type of the pin. Refer to the Pin Categories table below for a list of available categories.</td>
     </tr>
     <tr>
       <td><code>PinSubCategory</code></td>
-      <td>The sub-type of the pin. This is used by a small number of pin types. Consult the Pin Categories table below for more information.</td>
+      <td>The sub-type of the pin. This is used by a small number of pin types. Refer to the Pin Categories table below for more information.</td>
     </tr>
     <tr>
       <td><code>PinSubCategoryObject</code></td>
-      <td>The sub-type of the pin using the provided object. For example, if the pin is a class reference, then this would be the class.</td>
+      <td>The sub-type of the pin using the provided object. For example, if the pin is a class reference, then this would be the class type.</td>
     </tr>
     <tr>
       <td><code>PinName</code></td>
-      <td>A name for the pin. The name needs to be unique within the node.</td>
+      <td>A name for the pin. The name needs to be unique within the node. Certain names have special meaning. Refer to the Special Pin Names table below for more information.</td>
     </tr>
     <tr>
       <td><code>PinParams</code></td>
@@ -469,3 +470,8 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
 *This pin accepts a reference to an object that implements the specified interface.
 
 <code>PC_MCDelegate</code> (Multicast Delegate) and <code>PC_FieldPath</code> (Property Reference) are not fully supported by the editor and therefore should not be used.</small>
+
+#### Special Pin Names
+Some names have a special meaning and require the pin to have a specific category and direction.
+
+TODO: Create table
