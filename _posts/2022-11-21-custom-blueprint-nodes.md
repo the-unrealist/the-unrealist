@@ -469,7 +469,7 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
 
 *This pin accepts a reference to an object that implements the specified interface.
 
-<code>PC_MCDelegate</code> (Multicast Delegate) and <code>PC_FieldPath</code> (Property Reference) are not fully supported by the editor and therefore should not be used.</small>
+<code>PC_MCDelegate</code> (Multicast Delegate) and <code>PC_FieldPath</code> (Property Reference) are not fully supported by the editor and therefore should not be used.
 
 #### Special Pin Names
 Some names have a special meaning and require the pin to have a specific category and direction.
