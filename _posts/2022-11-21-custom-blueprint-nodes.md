@@ -447,8 +447,8 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
   <tbody>
     <tr><td>Exec</td><td><code>PC_Exec</code></td><td>-</td><td>-</td></tr>
     <tr><td>Boolean</td><td><code>PC_Boolean</code></td><td>-</td><td>-</td></tr>
-    <tr><td>Byte</td><td><code>PC_Byte</code></td><td>-</td><td>-</td></tr>
-    <tr><td>Integer</td><td><code>PC_Int</code></td><td>-</td><td>-</td></tr>
+    <tr><td>Byte</td><td><code>PC_Byte</code></td><td>For bitmask, use <code>PSC_Bitmask</code></td><td>-</td></tr>
+    <tr><td>Integer</td><td><code>PC_Int</code></td><td>For bitmask, use <code>PSC_Bitmask</code></td><td>-</td></tr>
     <tr><td>Integer64</td><td><code>PC_Int64</code></td><td>-</td><td>-</td></tr>
     <tr><td>Float</td><td><code>PC_Real</code></td><td><table style="margin: 0;"><tbody><tr><td>Single-precision</td><td><code>PC_Float</code></td></tr><tr><td>Double-precision</td><td><code>PC_Double</code></td></tr></tbody></table></td><td>-</td></tr>
     <tr><td>Name</td><td><code>PC_Name</code></td><td>-</td><td>-</td></tr>
