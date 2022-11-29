@@ -450,11 +450,11 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
     <tr><td>Byte</td><td><code>PC_Byte</code></td><td>-</td><td>-</td></tr>
     <tr><td>Integer</td><td><code>PC_Int</code></td><td>-</td><td>-</td></tr>
     <tr><td>Integer64</td><td><code>PC_Int64</code></td><td>-</td><td>-</td></tr>
-    <tr><td>Float</td><td><code>PC_Real</code></td><td><table><tbody><tr><td>Single-precision</td><td><code>PC_Float</code></td></tr><tr><td>Double-precision</td><td><code>PC_Double</code></td></tr></tbody></table></td><td>-</td></tr>
+    <tr><td>Float</td><td><code>PC_Real</code></td><td><table style="margin: 0;"><tbody><tr><td>Single-precision</td><td><code>PC_Float</code></td></tr><tr><td>Double-precision</td><td><code>PC_Double</code></td></tr></tbody></table></td><td>-</td></tr>
     <tr><td>Name</td><td><code>PC_Name</code></td><td>-</td><td>-</td></tr>
     <tr><td>String</td><td><code>PC_String</code></td><td>-</td><td>-</td></tr>
     <tr><td>Text</td><td><code>PC_Text</code></td><td>-</td><td>-</td></tr>
-    <tr><td>Class Reference</td><td><code>PC_Class</code></td><td>For "self", use <code>PN_Self</code>.</td><td><code>UClass*</code> for the class type</td></tr>
+    <tr><td>Class Reference</td><td><code>PC_Class</code></td><td>For "self", use <code>PN_Self</code></td><td><code>UClass*</code> for the class type</td></tr>
     <tr><td>Soft Class Reference</td><td><code>PC_SoftClass</code></td><td>-</td><td><code>UClass*</code> for the class type</td></tr>
   </tbody>
 </table>
