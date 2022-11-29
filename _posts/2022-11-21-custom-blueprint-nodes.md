@@ -39,6 +39,7 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
    - [Node Details](#node-details)
 4. [Pins](#pins)
    - [Creating Pins](#creating-pins)
+       - [Pin Categories](#pin-categories)
 
 #### More Sections Coming Soon
 4. Pins
@@ -405,24 +406,46 @@ UEdGraphPin* CreatePin(EEdGraphPinDirection Dir, const FName PinCategory, UObjec
     </tr>
     <tr>
       <td><code>PinCategory</code></td>
-      <td>TODO</td>
+      <td>This is the main type of the pin. Consult the Pin Categories table below for a list of available categories.</td>
     </tr>
     <tr>
       <td><code>PinSubCategory</code></td>
-      <td>TODO</td>
+      <td>The sub-type of the pin. This is used by a small number of pin types. Consult the Pin Categories table below for more information.</td>
     </tr>
     <tr>
       <td><code>PinSubCategoryObject</code></td>
-      <td>TODO</td>
+      <td>The sub-type of the pin using the provided object. For example, if the pin is a class reference, then this would be the class.</td>
     </tr>
     <tr>
       <td><code>PinName</code></td>
-      <td>TODO</td>
+      <td>A name for the pin. The name needs to be unique within the node.</td>
     </tr>
     <tr>
       <td><code>PinParams</code></td>
-      <td>TODO</td>
+      <td>
+          Additional parameters for the pin.<br/><br/>
+          <table>
+            <tbody>
+              <tr><td><code>ContainerType</code></td><td>Sets whether this pin is an array, set, map, or a single value.</td></tr>
+              <tr><td><code>bIsReference</code></td><td>Sets whether to pass the value as a reference.</td></tr>
+              <tr><td><code>bIsConst</code></td><td>Sets whether the value is immutable.</td></tr>
+              <tr><td><code>Index</code></td><td>Sets the position of this pin in the pin list. By default, pins are appended to the list.</td></tr>
+              <tr><td><code>ValueTerminalType</code></td><td>TODO</td></tr>
+            </tbody>
+          </table>
+      </td>
     </tr>
+  </tbody>
+</table>
+
+#### Pin Categories
+
+<table>
+  <thead>
+    <tr><th>Name</th><th><code>PinCategory</code></th><th><code>PinSubCategory</code></th><th><code>PinSubCategoryObject</code></th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Exec</td><td><code>PC_Exec</code></td><td>-</td><td>-</td></tr>
   </tbody>
 </table>
 
