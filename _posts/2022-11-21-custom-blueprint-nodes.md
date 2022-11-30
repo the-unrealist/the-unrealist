@@ -43,7 +43,7 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
 4. [Pins](#pins)
    - [Create Pins](#create-pins)
        - [Pin Categories](#pin-categories)
-       - [Special Pin Names](#special-pin-names)
+       - [Reserved Pin Names](#reserved-pin-names)
        - [Simple Example](#simple-example)
 
 #### More Sections Coming Soon
@@ -471,7 +471,7 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
 
 *This pin accepts a reference to an object that implements the specified interface.
 
-#### Special Pin Names
+#### Reserved Pin Names
 There are many "reserved" pin names defined in `UEdGraphSchema_K2`. Some of the common ones are:
 
 <table>
