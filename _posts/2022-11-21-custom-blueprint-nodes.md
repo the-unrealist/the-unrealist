@@ -431,7 +431,7 @@ UEdGraphPin* CreatePin(EEdGraphPinDirection Dir, const FName PinCategory, UObjec
               <tr><td><code>bIsReference</code></td><td>Sets whether to pass the value as a reference.</td></tr>
               <tr><td><code>bIsConst</code></td><td>Sets whether the value is immutable.</td></tr>
               <tr><td><code>Index</code></td><td>Sets the position of this pin in the pin list. By default, pins are appended to the list.</td></tr>
-              <tr><td><code>ValueTerminalType</code></td><td>TODO</td></tr>
+              <tr><td><code>ValueTerminalType</code></td><td>Sets the value type if the container type is a map.</td></tr>
             </tbody>
           </table>
       </td>
