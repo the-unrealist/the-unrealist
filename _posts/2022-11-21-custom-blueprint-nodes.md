@@ -472,6 +472,16 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
 <code>PC_MCDelegate</code> (Multicast Delegate) and <code>PC_FieldPath</code> (Property Reference) are not fully supported by the editor and therefore should not be used.
 
 #### Special Pin Names
-Some names have a special meaning and require the pin to have a specific category and direction.
+Some names have a special meaning and require the pin to have a specific category and direction. These names are also defined in `UEdGraphSchema_K2`. Only commonly used names are included in this table.
 
-TODO: Create table
+<table>
+  <thead>
+    <tr><th>Name</th><th>Input / Output</th><th>Pin Category</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>PN_Execute</code><br/>Unnamed input exec pin</td><td>Input</td><td><code>PC_Exec</code></td></tr>
+    <tr><td><code>PN_Then</code><br/>Unnamed output exec pin</td><td>Output</td><td><code>PC_Exec</code></td></tr>
+    <tr><td><code>PN_Self</code><br/>Defaults to self</td><td>Input</td><td><code>PC_Object</code></td></tr>
+    <tr><td><code>PN_ReturnValue</code><br/>The return object</td><td>Output</td><td><code>PC_Object</code></td></tr>
+  </tbody>
+</table>
