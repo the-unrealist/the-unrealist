@@ -456,9 +456,9 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
     <tr><td>Name</td><td><code>PC_Name</code></td><td>-</td><td>-</td></tr>
     <tr><td>String</td><td><code>PC_String</code></td><td>-</td><td>-</td></tr>
     <tr><td>Text</td><td><code>PC_Text</code></td><td>-</td><td>-</td></tr>
-    <tr><td>Class Reference</td><td><code>PC_Class</code></td><td>For "self", use <code>PN_Self</code></td><td><code>UClass*</code> for the class type</td></tr>
+    <tr><td>Class Reference</td><td><code>PC_Class</code></td><td>For "self", use <code>PSC_Self</code></td><td><code>UClass*</code> for the class type</td></tr>
     <tr><td>Soft Class Reference</td><td><code>PC_SoftClass</code></td><td>-</td><td><code>UClass*</code> for the class type</td></tr>
-    <tr><td>Object Reference</td><td><code>PC_Object</code></td><td>For "self", use <code>PN_Self</code></td><td><code>UClass*</code> for the class type</td></tr>
+    <tr><td>Object Reference</td><td><code>PC_Object</code></td><td>For "self", use <code>PSC_Self</code></td><td><code>UClass*</code> for the class type</td></tr>
     <tr><td>Soft Object Reference</td><td><code>PC_SoftObject</code></td><td>-</td><td><code>UClass*</code> for the class type</td></tr>
     <tr><td>Struct</td><td><code>PC_Struct</code></td><td>-</td><td><code>UScriptStruct*</code> for the struct type</td></tr>
     <tr><td>Enum</td><td><code>PC_Enum</code></td><td>-</td><td><code>UEnum*</code> for the enum type</td></tr>
