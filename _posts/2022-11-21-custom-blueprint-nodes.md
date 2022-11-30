@@ -44,6 +44,7 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
    - [Create Pins](#create-pins)
        - [Pin Categories](#pin-categories)
        - [Special Pin Names](#special-pin-names)
+       - [Simple Example](#simple-example)
 
 #### More Sections Coming Soon
 4. Pins
@@ -471,7 +472,7 @@ Pin categories and subcategories are defined in `UEdGraphSchema_K2`.
 *This pin accepts a reference to an object that implements the specified interface.
 
 #### Special Pin Names
-Some names have a special meaning and require the pin to have a specific category and direction. These names are also defined in `UEdGraphSchema_K2`. Only commonly used names are included in this table.
+There are many "reserved" pin names defined in `UEdGraphSchema_K2`. Some of the common ones are:
 
 <table>
   <thead>
@@ -480,7 +481,37 @@ Some names have a special meaning and require the pin to have a specific categor
   <tbody>
     <tr><td><code>PN_Execute</code><br/>Unnamed input exec pin</td><td>Input</td><td><code>PC_Exec</code></td></tr>
     <tr><td><code>PN_Then</code><br/>Unnamed output exec pin</td><td>Output</td><td><code>PC_Exec</code></td></tr>
-    <tr><td><code>PN_Self</code><br/>Defaults to self</td><td>Input</td><td><code>PC_Object</code></td></tr>
     <tr><td><code>PN_ReturnValue</code><br/>The return object</td><td>Output</td><td><code>PC_Object</code></td></tr>
   </tbody>
 </table>
+
+#### Simple Example
+Here's an example of a simple node. Examples of more advanced pins are provided in later sections.
+
+<img src="/assets/images/example_node.png" alt="An example node with input and output exec pins and a floating point input pin">
+
+```cpp
+// K2Node_CustomBlueprintNode.h
+
+public:
+    virtual void AllocateDefaultPins() override;
+```
+```cpp
+
+// K2Node_CustomBlueprintNode.cpp
+
+void UK2Node_CustomBlueprintNode::AllocateDefaultPins()
+{
+    Super::AllocateDefaultPins();
+
+    // Input exec pin
+    CreatePin(EGPD_Input, UEdGraphSchema_K2::PC_Exec, UEdGraphSchema_K2::PN_Execute);
+
+    // Output exec pin
+    CreatePin(EGPD_Output, UEdGraphSchema_K2::PC_Exec, UEdGraphSchema_K2::PN_Then);
+
+    // Example float input pin
+    static FName ExamplePinName = TEXT("Some Value");
+    CreatePin(EGPD_Input, UEdGraphSchema_K2::PC_Real, UEdGraphSchema_K2::PC_Double, ExamplePinName);
+}
+```
