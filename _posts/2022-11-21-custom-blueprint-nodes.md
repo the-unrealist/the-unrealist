@@ -41,7 +41,7 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
    - [Purity](#purity)
    - [Node Details](#node-details)
 4. [Pins](#pins)
-   - [Creating Pins](#creating-pins)
+   - [Create Pins](#create-pins)
        - [Pin Categories](#pin-categories)
        - [Special Pin Names](#special-pin-names)
 
@@ -387,7 +387,7 @@ UObject* CustomProperty;
 ```
 
 ## Pins
-### Creating Pins
+### Create Pins
 `AllocateDefaultPins` is called whenever the node needs to be created for a multitude of reasons, i.e., spawning the node or reopening its containing Blueprint graph. Override this function and call `CreatePin` to create the input and output pins.
 
 There are many overrides for `CreatePin` with different sets of parameters, but you'll likely use one of the following:
