@@ -29,9 +29,9 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
        - [Control Point / Knot](#control-point--knot)
        - [Icons](#icons)
    - [Can Rename Node](#can-rename-node)
-   - [Text Caching](#text-caching)
    - [Purity](#purity)
    - [Node Details](#node-details)
+   - [Text Caching](#text-caching)
 3. [Pins](#pins)
    - [Create Pins](#create-pins)
        - [Pin Categories](#pin-categories)
@@ -280,6 +280,21 @@ TSharedPtr<INameValidatorInterface> UK2Node_Custom::MakeNameValidator() const
 }
 ```
 
+### Purity
+To make the compiler recognize this node as being pure, override `IsNodePure` to return `true`.
+```cpp
+virtual bool IsNodePure() const override { return true; }
+```
+
+### Node Details
+If enabled, all visible properties appear in the details window when the node is selected. A property is visible when it has any of the "Edit" or "Visible" specifiers such as `EditAnywhere` or `VisibleAnywhere`.
+```cpp
+virtual bool ShouldShowNodeProperties() const override { return true; }
+	
+UPROPERTY(EditAnywhere, Category="My Custom Node")
+UObject* CustomProperty;
+```
+
 ### Text Caching
 Many of the customization functions mentioned in this reference guide are frequently called and generating a `FText` can be expensive. For this reason, it's recommended to cache text with `FNodeTextCache`. Some user actions like changing the input pin connections will automatically mark the cache as dirty. If needed, you can refresh the cache with the `MarkAsDirty` function.
 ```cpp
@@ -299,21 +314,6 @@ FText UK2Node_Custom::GetNodeTitle(ENodeTitleType::Type TitleType) const
     }
     return NodeTitleCache;
 }
-```
-
-### Purity
-To make the compiler recognize this node as being pure, override `IsNodePure` to return `true`.
-```cpp
-virtual bool IsNodePure() const override;
-```
-
-### Node Details
-If enabled, all visible properties appear in the details window when the node is selected. A property is visible when it has any of the "Edit" or "Visible" specifiers such as `EditAnywhere` or `VisibleAnywhere`.
-```cpp
-virtual bool ShouldShowNodeProperties() const override { return true; }
-	
-UPROPERTY(EditAnywhere, Category="My Custom Node")
-UObject* CustomProperty;
 ```
 
 ## Pins
