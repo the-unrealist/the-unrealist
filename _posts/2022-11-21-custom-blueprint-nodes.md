@@ -45,10 +45,10 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
        - [Pin Categories](#pin-categories)
        - [Reserved Pin Names](#reserved-pin-names)
        - [Simple Example](#simple-example)
+   - [Wildcard Pins](#wildcard-pins)
 
 #### More Sections Coming Soon
 4. Pins
-    - Wildcard Pins
     - Owner Pin
     - World Context Pin
     - User Defined Pins
@@ -497,7 +497,6 @@ public:
     virtual void AllocateDefaultPins() override;
 ```
 ```cpp
-
 // K2Node_CustomBlueprintNode.cpp
 
 void UK2Node_CustomBlueprintNode::AllocateDefaultPins()
@@ -515,3 +514,71 @@ void UK2Node_CustomBlueprintNode::AllocateDefaultPins()
     CreatePin(EGPD_Input, UEdGraphSchema_K2::PC_Real, UEdGraphSchema_K2::PC_Double, ExamplePinName);
 }
 ```
+
+### Wildcard Pins
+There's some work required to make wildcard pins behave as expected. If you create the pin and do nothing else, then the type of the pin will not change when another node is connected to it. This means we need to override `NotifyPinConnectionListChanged` to check the wildcard pin and set its type if it's connected to another node. This function is called each time a pin is connected or disconnected, so it's the perfect place to put our type checking logic.
+
+In this example, we'll create a wildcard input and output pin. Our goal is to make the output pin type match the input pin type. By the way, it's a good practice to define the pin name outside the function but to make it simple, the pin names are inlined.
+```cpp
+// K2Node_CustomBlueprintNode.cpp
+
+void UK2Node_CustomBlueprintNode::AllocateDefaultPins()
+{
+    Super::AllocateDefaultPins();
+
+    CreatePin(EGPD_Input, UEdGraphSchema_K2::PC_Exec, UEdGraphSchema_K2::PN_Execute);
+    CreatePin(EGPD_Output, UEdGraphSchema_K2::PC_Exec, UEdGraphSchema_K2::PN_Then);
+
+    CreatePin(EGPD_Input, UEdGraphSchema_K2::PC_Wildcard, TEXT("WildcardInput"));
+    CreatePin(EGPD_Output, UEdGraphSchema_K2::PC_Wildcard, TEXT("WildcardOutput"));
+}
+```
+
+Override `NotifyPinConnectionListChanged`. Let's begin by checking both the input and output pin and reset their type to wildcard if they're both disconnected. We want to check for both at the same time because we don't want to reset the pin type if either pin is already connected to another node. Next, if either wildcard pin is connected, we want to check the pin that was connected to it. If it's also a wildcard, then we still don't know the type and must do nothing. Finally, when the wildcard pin's type has changed, we change all other wildcard pins to have the same type and break any pin connections that are no longer valid.
+```cpp
+// K2Node_CustomBlueprintNode.h
+
+public:
+    virtual void NotifyPinConnectionListChanged(UEdGraphPin* Pin) override;
+```
+```cpp
+// K2Node_CustomBlueprintNode.cpp
+
+void UK2Node_CustomBlueprintNode::NotifyPinConnectionListChanged(UEdGraphPin* Pin)
+{
+    Super::NotifyPinConnectionListChanged(Pin);
+
+    UEdGraphPin* InputPin = FindPin(TEXT("WildcardInput"));
+    UEdGraphPin* OutputPin = FindPin(TEXT("WildcardOutput"));
+    
+    if (InputPin->LinkedTo.Num() == 0 && OutputPin->LinkedTo.Num() == 0)
+    {
+        // Reset input pin to wildcard
+        InputPin->PinType.PinCategory = UEdGraphSchema_K2::PC_Wildcard;
+        InputPin->PinType.PinSubCategory = TEXT("");
+        InputPin->PinType.PinSubCategoryObject = nullptr;
+
+        // Reset output pin to wildcard
+        OutputPin->PinType.PinCategory = UEdGraphSchema_K2::PC_Wildcard;
+        OutputPin->PinType.PinSubCategory = TEXT("");
+        OutputPin->PinType.PinSubCategoryObject = nullptr;
+    }
+    else if ((Pin == InputPin || Pin == OutputPin) && Pin->LinkedTo.Num() > 0 && Pin->LinkedTo[0]->PinType.PinCategory != UEdGraphSchema_K2::PC_Wildcard)
+    {
+        // Set the wildcard pin type to the connected pin type.
+        Pin->PinType = Pin->LinkedTo[0]->PinType;
+
+        // Update all wildcard pins to have the same type.
+        InputPin->PinType = Pin->PinType;
+        OutputPin->PinType = Pin->PinType;
+
+        // Break any connection if it's no longer valid.
+        UEdGraphSchema_K2::ValidateExistingConnections(InputPin);
+        UEdGraphSchema_K2::ValidateExistingConnections(OutputPin);
+    }
+}
+```
+
+This screenshot demonstrates the logic we implemented in `NotifyPinConnectionListChanged`:
+
+<img src="/assets/images/wildcard_pins.png" alt="A screenshot of a custom node with wildcard pins">
