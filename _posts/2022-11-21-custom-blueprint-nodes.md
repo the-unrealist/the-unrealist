@@ -491,13 +491,13 @@ Here's an example of a simple node. Examples of more advanced pins are provided 
 <img src="/assets/images/example_node.png" alt="An example node with input and output exec pins and a floating point input pin">
 
 ```cpp
-// K2Node_CustomBlueprintNode.h
+// K2Node_Custom.h
 
 public:
     virtual void AllocateDefaultPins() override;
 ```
 ```cpp
-// K2Node_CustomBlueprintNode.cpp
+// K2Node_Custom.cpp
 
 void UK2Node_CustomBlueprintNode::AllocateDefaultPins()
 {
@@ -520,7 +520,7 @@ There's some work required to make wildcard pins behave as expected. If you crea
 
 In this example, we'll create a wildcard input and output pin. Our goal is to make the output pin type match the input pin type. By the way, it's a good practice to define the pin name outside the function but to make it simple, the pin names are inlined.
 ```cpp
-// K2Node_CustomBlueprintNode.cpp
+// K2Node_Custom.cpp
 
 void UK2Node_CustomBlueprintNode::AllocateDefaultPins()
 {
@@ -536,13 +536,13 @@ void UK2Node_CustomBlueprintNode::AllocateDefaultPins()
 
 Override `NotifyPinConnectionListChanged`. Let's begin by checking both the input and output pin and reset their type to wildcard if they're both disconnected. We want to check for both at the same time because we don't want to reset the pin type if either pin is already connected to another node. Next, if either wildcard pin is connected, we want to check the pin that was connected to it. If it's also a wildcard, then we still don't know the type and must do nothing. Finally, when the wildcard pin's type has changed, we change all other wildcard pins to have the same type and break any pin connections that are no longer valid.
 ```cpp
-// K2Node_CustomBlueprintNode.h
+// K2Node_Custom.h
 
 public:
     virtual void NotifyPinConnectionListChanged(UEdGraphPin* Pin) override;
 ```
 ```cpp
-// K2Node_CustomBlueprintNode.cpp
+// K2Node_Custom.cpp
 
 void UK2Node_CustomBlueprintNode::NotifyPinConnectionListChanged(UEdGraphPin* Pin)
 {
