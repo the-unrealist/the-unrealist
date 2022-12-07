@@ -16,15 +16,7 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
 
 ## Table of Contents
 1. [Create a Node](#create-a-node)
-2. [Graph Compatibility](#graph-compatibility)
-   - [Check for Construction Script](#check-for-construction-script)
-   - [Check for Event Graph](#check-for-event-graph)
-   - [Check for Function Graph](#check-for-function-graph)
-   - [Check for Macro Graph](#check-for-macro-graph)
-   - [Require World Context](#require-world-context)
-   - [Blueprint Derives From a Class](#blueprint-derives-from-a-class)
-   - [Blueprint Implements an Interface](#blueprint-implements-an-interface)
-3. [Node Customization](#node-customization)
+2. [Node Customization](#node-customization)
    - [Title](#title)
    - [Menu Category](#menu-category)
    - [Tooltips](#tooltips)
@@ -40,12 +32,20 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
    - [Text Caching](#text-caching)
    - [Purity](#purity)
    - [Node Details](#node-details)
-4. [Pins](#pins)
+3. [Pins](#pins)
    - [Create Pins](#create-pins)
        - [Pin Categories](#pin-categories)
        - [Reserved Pin Names](#reserved-pin-names)
        - [Simple Example](#simple-example)
    - [Wildcard Pins](#wildcard-pins)
+4. [Graph Compatibility](#graph-compatibility)
+   - [Check for Construction Script](#check-for-construction-script)
+   - [Check for Event Graph](#check-for-event-graph)
+   - [Check for Function Graph](#check-for-function-graph)
+   - [Check for Macro Graph](#check-for-macro-graph)
+   - [Require World Context](#require-world-context)
+   - [Blueprint Derives From a Class](#blueprint-derives-from-a-class)
+   - [Blueprint Implements an Interface](#blueprint-implements-an-interface)
 
 #### More Sections Coming Soon
 4. Pins
@@ -130,78 +130,7 @@ void UK2Node_Custom::GetMenuActions(FBlueprintActionDatabaseRegistrar& ActionReg
 It'll appear at the bottom of the actions list labeled as the class name. Clicking on it will spawn a default node without any pins.
 <img src="/assets/images/empty_node.png" alt="A screenshot of a custom node in Blueprints. It has no pins.">
 
-## Graph Compatibility
-By default, you can spawn your node in any Blueprint graph including construction scripts, functions, and macros. Override `IsCompatibleWithGraph` to restrict placement on certain graphs or even Blueprint classes.
 
-```cpp
-// K2Node_Custom.h
-
-virtual bool IsCompatibleWithGraph(UEdGraph const* Graph) const override;
-```
-  
-```cpp
-// K2Node_Custom.cpp
-
-bool UK2Node_Custom::IsCompatibleWithGraph(const UEdGraph* TargetGraph) const 
-{
-    UBlueprint* Blueprint = FBlueprintEditorUtils::FindBlueprintForGraph(TargetGraph);
-    if (!Blueprint)
-    {
-        return false;
-    }
-
-    // Don't let this node spawn in construction scripts
-    bool bIsCompatible = FBlueprintEditorUtils::FindUserConstructionScript(Blueprint) != TargetGraph;
-
-    return Super::IsCompatibleWithGraph(TargetGraph) && bIsCompatible;
-}
-```
-
-You may want to use one or more of the following booleans in your implementation of `IsCompatibleWithGraph`:
-
-### Check for Construction Script
-Construction scripts execute in the editor, so you may need this if your node is intended to not execute at edit time.
-```cpp
-bool bIsConstructionScript = FBlueprintEditorUtils::FindUserConstructionScript(Blueprint) == TargetGraph;
-```
-
-### Check for Event Graph
-If your node expands into multiple distinct nodes (i.e. events), then you need to require it to be placed in only Event Graphs.
-```cpp
-bool bIsEventGraph = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Ubergraph;
-```
-
-### Check for Function Graph
-If your node expands into latent actions, then you need to prevent it from being placed in functions.
-```cpp
-bool bIsFunction = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Function;
-```
-
-### Check for Macro Graph
-Unlike Event Graphs, macros can only have one input node. If your node expands into multiple input nodes, then you need to prevent it from being placed in macros.
-```cpp
-bool bIsMacro = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Macro;
-```
-
-### Require World Context
-Blueprint function libraries don't have a world context. If your node requires a world context, then you may want to check for this. Alternatively, you can expose the World Context pin as needed. Read more about this in the Pins section.
-```cpp
-bool bHasWorldContext = Blueprint->GeneratedClass->GetDefaultObject()->ImplementsGetWorld();
-```
-
-### Blueprint Derives From a Class
-If your node is relevant only to a class, you can check to see if the Blueprint is derived from a class.
-```cpp
-bool bIsValidSubclass = Blueprint->ParentClass && Blueprint->ParentClass->IsChildOf(UMyClass::StaticClass());
-```
-
-### Blueprint Implements an Interface
-Unlike `Blueprint->GeneratedClass->ImplementsInterface(...)`, the following code will detect interfaces added via the Blueprint editor — even before the Blueprint has been compiled.
-```cpp
-TArray<UClass*> ImplementedInterfaces;
-FBlueprintEditorUtils::FindImplementedInterfaces(Blueprint, true, ImplementedInterfaces);
-bool bImplementsInterface = ImplementedInterfaces.Contains(UBlendableInterface::StaticClass());
-```
 
 ## Node Customization
 There are various functions that can be overriden to customize how your node appears in graphs and menus.
@@ -582,3 +511,76 @@ void UK2Node_CustomBlueprintNode::NotifyPinConnectionListChanged(UEdGraphPin* Pi
 This screenshot demonstrates the logic we implemented in `NotifyPinConnectionListChanged`:
 
 <img src="/assets/images/wildcard_pins.png" alt="A screenshot of a custom node with wildcard pins">
+
+## Graph Compatibility
+By default, you can spawn your node in any Blueprint graph including construction scripts, functions, and macros. Override `IsCompatibleWithGraph` to restrict placement on certain graphs or even Blueprint classes.
+
+```cpp
+// K2Node_Custom.h
+
+virtual bool IsCompatibleWithGraph(UEdGraph const* Graph) const override;
+```
+  
+```cpp
+// K2Node_Custom.cpp
+
+bool UK2Node_Custom::IsCompatibleWithGraph(const UEdGraph* TargetGraph) const 
+{
+    UBlueprint* Blueprint = FBlueprintEditorUtils::FindBlueprintForGraph(TargetGraph);
+    if (!Blueprint)
+    {
+        return false;
+    }
+
+    // Don't let this node spawn in construction scripts
+    bool bIsCompatible = FBlueprintEditorUtils::FindUserConstructionScript(Blueprint) != TargetGraph;
+
+    return Super::IsCompatibleWithGraph(TargetGraph) && bIsCompatible;
+}
+```
+
+You may want to use one or more of the following booleans in your implementation of `IsCompatibleWithGraph`:
+
+### Check for Construction Script
+Construction scripts execute in the editor, so you may need this if your node is intended to not execute at edit time.
+```cpp
+bool bIsConstructionScript = FBlueprintEditorUtils::FindUserConstructionScript(Blueprint) == TargetGraph;
+```
+
+### Check for Event Graph
+If your node expands into multiple distinct nodes (i.e. events), then you need to require it to be placed in only Event Graphs.
+```cpp
+bool bIsEventGraph = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Ubergraph;
+```
+
+### Check for Function Graph
+If your node expands into latent actions, then you need to prevent it from being placed in functions.
+```cpp
+bool bIsFunction = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Function;
+```
+
+### Check for Macro Graph
+Unlike Event Graphs, macros can only have one input node. If your node expands into multiple input nodes, then you need to prevent it from being placed in macros.
+```cpp
+bool bIsMacro = TargetGraph->GetSchema()->GetGraphType(TargetGraph) == GT_Macro;
+```
+
+### Require World Context
+Blueprint function libraries don't have a world context. If your node requires a world context, then you may want to check for this. Alternatively, you can expose the World Context pin as needed. Read more about this in the Pins section.
+```cpp
+bool bHasWorldContext = Blueprint->GeneratedClass->GetDefaultObject()->ImplementsGetWorld();
+```
+
+### Blueprint Derives From a Class
+If your node is relevant only to a class, you can check to see if the Blueprint is derived from a class.
+```cpp
+bool bIsValidSubclass = Blueprint->ParentClass && Blueprint->ParentClass->IsChildOf(UMyClass::StaticClass());
+```
+
+### Blueprint Implements an Interface
+Unlike `Blueprint->GeneratedClass->ImplementsInterface(...)`, the following code will detect interfaces added via the Blueprint editor — even before the Blueprint has been compiled.
+```cpp
+TArray<UClass*> ImplementedInterfaces;
+FBlueprintEditorUtils::FindImplementedInterfaces(Blueprint, true, ImplementedInterfaces);
+bool bImplementsInterface = ImplementedInterfaces.Contains(UBlendableInterface::StaticClass());
+```
