@@ -47,17 +47,9 @@ There's [this fantastic tutorial on creating custom Blueprint nodes](https://www
    - [Blueprint Derives From a Class](#blueprint-derives-from-a-class)
    - [Blueprint Implements an Interface](#blueprint-implements-an-interface)
 
-#### More Sections Coming Soon
-4. Pins
-    - Owner Pin
-    - World Context Pin
-    - User Defined Pins
-    - Changing pins based on value
-5. `ExpandNode`
-6. Latent Nodes
-7. Node Attributes
-8. Tunnels and composite nodes
-9. `UBlueprintNodeSpawner`
+I plan on writing more about the following when I get the chance:
+- `ExpandNode` (for now, [read this article](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/))
+- Latent Nodes
 
 ## Create a Node
 All Blueprint nodes need to be in a `UncookedOnly` module. Create a new module and set the `Type` to `UncookedOnly` in the `uproject` or `uplugin` file.
