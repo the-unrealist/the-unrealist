@@ -10,11 +10,11 @@ excerpt: "Visualize actor components without physical representation in the Unre
 <img src="https://img.shields.io/badge/Unreal%20Engine-5.1-informational" alt="Written for Unreal Engine 5.1"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
 
 ## Table of Contents
-- [Introduction](#Introduction)
-- [Getting Started](#Getting-Started)
-- [Create the Component Visualizer](#Create-the-Component-Visualizer)
-- [Register the Component Visualizer](#Register-the-Component-Visualizer)
-- [Primitive Drawing Functions](#Primitive-Drawing-Functions)
+- [Introduction](#introduction)
+- [Getting Started](#getting-started)
+- [Create the Component Visualizer](#create-the-component-visualizer)
+- [Register the Component Visualizer](#register-the-component-visualizer)
+- [Primitive Drawing Functions](#primitive-drawing-functions)
 
 ## Introduction
 Working with actor components that don't have a physical representation may be challenging. Recently, I learned about Component Visualizers which makes it possible to draw anything in the Unreal Editor for each component when selected.
