@@ -4,7 +4,7 @@ tags: unreal component component-visualizers
 title: "Visualize Actor Components in the Editor with Component Visualizers"
 categories: [Unreal Editor]
 author: Matt
-excerpt: "Actor components without a physical representation can be visualized in the Unreal Editor with custom Component Visualizers."
+excerpt: "Visualize actor components without physical representation in the Unreal Editor with custom Component Visualizers."
 ---
 
 <img src="https://img.shields.io/badge/Unreal%20Engine-5.1-informational" alt="Written for Unreal Engine 5.1"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
