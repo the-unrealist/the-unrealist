@@ -104,7 +104,7 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
 }
 ```
 
-`FPrimitiveDrawInterface` provides basic drawing functions such as `DrawLine` and `DrawMesh`. Utility functions for drawing boxes, sphere, torus, and other advanced shapes are also available. Check out [Primitive Drawing Functions](#Primitive-Drawing-Functions) for a comprehensive list and examples.
+`FPrimitiveDrawInterface` provides basic drawing functions such as `DrawLine` and `DrawMesh`. Utility functions for drawing boxes, sphere, torus, and other advanced shapes are also available. Check out [Primitive Drawing Functions](#primitive-drawing-functions) for a comprehensive list and examples.
 
 ⚠️ The component's **absolute** location and rotation should be used in the drawing functions. If the relative location is used, then the visualization will be rendered incorrectly when the component's owning actor is selected in the level editor.
 
