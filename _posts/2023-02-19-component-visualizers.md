@@ -15,6 +15,8 @@ excerpt: "Visualize actor components without physical representation in the Unre
 - [Create the Component Visualizer](#create-the-component-visualizer)
 - [Register the Component Visualizer](#register-the-component-visualizer)
 - [Primitive Drawing Functions](#primitive-drawing-functions)
+  - [Examples](#examples)
+  - [Reference List](#drawing-functions-reference-list)
 
 ## Introduction
 Working with actor components that don't have a physical representation may be challenging. Recently, I learned about Component Visualizers which makes it possible to draw anything in the Unreal Editor for each component when selected.
@@ -149,4 +151,77 @@ IMPLEMENT_MODULE(FMyGameEditorModule, MyGameEditor)
 That's it! :)
 
 ## Primitive Drawing Functions
-This is a work-in-progress. Coming soon!
+### Examples
+#### `DrawPoint`
+<img src="/assets/images/component-visualizer-draw-point.png" alt="A screenshot of a yellow point being drawn at the component's location.">
+
+```cpp
+void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component, const FSceneView* View,
+    FPrimitiveDrawInterface* PDI)
+{
+    const UMyComponent* MyComponent = Cast<UMyComponent>(Component);
+    if (!MyComponent)
+    {
+        return;
+    }
+
+    double Thickness = 15;
+    PDI->DrawPoint(MyComponent->GetComponentLocation(), FLinearColor::Yellow, Thickness, SDPG_World);
+}
+```
+
+#### `DrawLine`
+<img src="/assets/images/component-visualizer-draw-line.jpg" alt="A screenshot of a yellow line being drawn on the X axis.">
+
+```cpp
+void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component, const FSceneView* View,
+    FPrimitiveDrawInterface* PDI)
+{
+    const UMyComponent* MyComponent = Cast<UMyComponent>(Component);
+    if (!MyComponent)
+    {
+        return;
+    }
+
+    double Length = 100;
+    double Thickness = 1;
+	
+    FVector Start = MyComponent->GetComponentLocation();
+    FVector End = Start + FRotationMatrix(MyComponent->GetComponentRotation()).GetScaledAxis(EAxis::X) * Length;
+
+    PDI->DrawLine(Start, End, FLinearColor::Yellow, SDPG_World, Thickness);
+}
+```
+
+#### `DrawTranslucentLine`
+
+```cpp
+void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component, const FSceneView* View,
+    FPrimitiveDrawInterface* PDI)
+{
+    const UMyComponent* MyComponent = Cast<UMyComponent>(Component);
+    if (!MyComponent)
+    {
+        return;
+    }
+
+    double Length = 100;
+    double Thickness = 1;
+	
+    FVector Start = MyComponent->GetComponentLocation();
+    FVector End = Start + FRotationMatrix(MyComponent->GetComponentRotation()).GetScaledAxis(EAxis::X) * Length;
+
+    FLinearColor Color(1.0, 1.0, 0.0, 0.5); // RGBA in floating-point format (between 0 and 1)
+    PDI->DrawTranslucentLine(Start, End, Color, SDPG_World, Thickness);
+}
+```
+
+### Drawing Functions Reference List
+#### Primitive Drawing Interface
+- [`DrawPoint`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawPoint/)
+- [`DrawLine`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawLine/)
+- [`DrawTranslucentLine`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawTranslucentLine/)
+- [`DrawSprite`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawSprite/)
+- [`DrawMesh`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawMesh/)
+
+#### Utility Functions
