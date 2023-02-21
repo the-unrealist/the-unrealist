@@ -231,8 +231,6 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
 - [`DrawSphere`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawSphere/)
 - [`DrawCone`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCone/)
 - [`DrawCylinder`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCylinder/)
-
-### Advanced Utility Functions
 - `DrawTorus`
 - [`DrawDisc`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawDisc/)
 - `DrawRectangleMesh`
@@ -249,3 +247,10 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
 - [`DrawWireCone`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireCone/)
 - [`DrawWireSphereCappedCone`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireSphereCappedCone/)
 - [`DrawOrientedWireBox`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawOrientedWireBox/)
+- [`DrawDirectionalArrow`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawDirectionalArrow/)
+- [`DrawConnectedArrow`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawConnectedArrow/)
+- [`DrawWireStar`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireStar/)
+- [`DrawDashedLine`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawDashedLine/)
+- [`DrawWireDiamond`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireDiamond/)
+- [`DrawCoordinateSystem`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCoordinateSystem/)
+- [`DrawFrustumWireframe`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawFrustumWireframe/)
