@@ -224,4 +224,28 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
 - [`DrawSprite`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawSprite/)
 - [`DrawMesh`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawMesh/)
 
-#### Utility Functions
+#### Primitive Utility Functions
+- [`DrawPlane10x10`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawPlane10x10/)
+- [`DrawTriangle`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawTriangle/)
+- [`DrawBox`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawBox/)
+- [`DrawSphere`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawSphere/)
+- [`DrawCone`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCone/)
+- [`DrawCylinder`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCylinder/)
+
+### Advanced Utility Functions
+- `DrawTorus`
+- [`DrawDisc`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawDisc/)
+- `DrawRectangleMesh`
+- [`DrawFlatArrow`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawFlatArrow/)
+- [`DrawWireBox`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireBox/)
+- [`DrawCircle`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCircle/)
+- [`DrawArc`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawArc/)
+- `DrawRectangle`
+- [`DrawWireSphere`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireSphere/)
+- [`DrawWireSphereAutoSides`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireSphereAutoSides/)
+- [`DrawWireCylinder`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireCylinder/)
+- [`DrawWireCapsule`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireCapsule/)
+- [`DrawWireChoppedCone`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireChoppedCone/)
+- [`DrawWireCone`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireCone/)
+- [`DrawWireSphereCappedCone`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireSphereCappedCone/)
+- [`DrawOrientedWireBox`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawOrientedWireBox/)
