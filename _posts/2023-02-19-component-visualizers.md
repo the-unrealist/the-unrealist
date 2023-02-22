@@ -16,6 +16,11 @@ excerpt: "Visualize actor components without physical representation in the Unre
 - [Register the Component Visualizer](#register-the-component-visualizer)
 - [Primitive Drawing Functions](#primitive-drawing-functions)
   - [Examples](#examples)
+    - [`DrawPoint`](#drawpoint)
+    - [`DrawLine`](#drawline)
+    - [`DrawTranslucentLine`](#drawtranslucentline)
+    - [`DrawFlatArrow`](#drawflatarrow)
+    - [`DrawDirectionalArrow`](#drawdirectionalarrow)
   - [Reference List](#drawing-functions-reference-list)
 
 ## Introduction
@@ -245,6 +250,33 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
         GEngine->GeomMaterial->GetRenderProxy(),
         SDPG_World,
         Thickness);
+}
+```
+
+#### `DrawDirectionalArrow`
+<img src="/assets/images/directional-arrow.png" alt="A screenshot of a yellow 3D arrow drawn along the X axis.">
+
+```cpp
+void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component, const FSceneView* View,
+    FPrimitiveDrawInterface* PDI)
+{
+    const UMyComponent* MyComponent = Cast<UMyComponent>(Component);
+    if (!MyComponent)
+    {
+        return;
+    }
+
+    FLinearColor Color = FLinearColor::Yellow;
+    float Length = 100.f;
+    float Width = 20.f;
+    float Thickness = 1.f;
+
+    FMatrix Matrix = FScaleRotationTranslationMatrix(
+        MyComponent->GetComponentScale(),
+        MyComponent->GetComponentRotation(),
+        MyComponent->GetComponentLocation());
+	
+    DrawDirectionalArrow(PDI, Matrix, Color, Length, Width, SDPG_World, Thickness);
 }
 ```
 
