@@ -289,6 +289,14 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
 - [`DrawMesh`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawMesh/)
 
 #### Primitive Utility Functions
+To set the color for most of the geometry functions in this list, you'll need to use `FColoredMaterialRenderProxy`.
+
+```cpp
+// You'll probably want to make this a member of the visualizer class to avoid creating a new one every frame.
+FMaterialRenderProxy* Proxy = new FColoredMaterialRenderProxy(GEngine->GeomMaterial->GetRenderProxy(), FLinearColor::Yellow);
+DrawPlane10x10(PDI, Plane, Radii, UVMin, UVMax, Proxy, SDPG_World);
+```
+
 - [`DrawPlane10x10`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawPlane10x10/)
 - [`DrawTriangle`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawTriangle/)
 - [`DrawBox`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawBox/)
