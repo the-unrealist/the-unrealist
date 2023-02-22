@@ -292,8 +292,9 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
 To set the color for most of the geometry functions in this list, you'll need to use `FColoredMaterialRenderProxy`.
 
 ```cpp
-// You'll probably want to make this a member of the visualizer class to avoid creating a new one every frame.
-FMaterialRenderProxy* Proxy = new FColoredMaterialRenderProxy(GEngine->GeomMaterial->GetRenderProxy(), FLinearColor::Yellow);
+auto* Proxy = new FDynamicColoredMaterialRenderProxy(GEngine->GeomMaterial->GetRenderProxy(), FLinearColor::Yellow);
+PDI->RegisterDynamicResource(Proxy);
+
 DrawPlane10x10(PDI, Plane, Radii, UVMin, UVMax, Proxy, SDPG_World);
 ```
 
