@@ -216,6 +216,38 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
 }
 ```
 
+#### `DrawFlatArrow`
+<img src="/assets/images/draw-flat-arrow.png" alt="A screenshot of a yellow flat arrow drawn along the X axis.">
+
+```cpp
+void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component, const FSceneView* View,
+    FPrimitiveDrawInterface* PDI)
+{
+    const UMyComponent* MyComponent = Cast<UMyComponent>(Component);
+    if (!MyComponent)
+    {
+        return;
+    }
+
+    FVector ComponentLocation = MyComponent->GetComponentLocation();
+    FRotationMatrix ComponentRotation = FRotationMatrix(MyComponent->GetComponentRotation());
+    FColor Color = FColor::Yellow;
+    float Length = 100.f;
+    float Width = 20.f;
+    float Thickness = 1.f;
+
+    DrawFlatArrow(PDI, ComponentLocation,
+        ComponentRotation.GetScaledAxis(EAxis::X),
+        ComponentRotation.GetScaledAxis(EAxis::Y),
+        Color,
+        Length,
+        Width,
+        GEngine->GeomMaterial->GetRenderProxy(),
+        SDPG_World,
+        Thickness);
+}
+```
+
 ### Drawing Functions Reference List
 #### Primitive Drawing Interface
 - [`DrawPoint`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawPoint/)
