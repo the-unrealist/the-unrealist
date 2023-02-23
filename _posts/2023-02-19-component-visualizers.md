@@ -289,7 +289,7 @@ void FMyComponentVisualizer::DrawVisualization(const UActorComponent* Component,
 - [`DrawMesh`](https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawMesh/)
 
 #### Primitive Utility Functions
-To set the color for most of the geometry functions in this list, you'll need to use `FDynamicColoredMaterialRenderProxy`.
+To set the color for most of the geometry functions in this list, you'll need to use `FDynamicColoredMaterialRenderProxy`. This will require adding `RenderCore` to your module's dependencies.
 
 ```cpp
 auto* Proxy = new FDynamicColoredMaterialRenderProxy(GEngine->GeomMaterial->GetRenderProxy(), FLinearColor::Yellow);
