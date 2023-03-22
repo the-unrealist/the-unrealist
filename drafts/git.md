@@ -42,6 +42,15 @@ In order to use Git with Unreal Engine, you must have both **Git** and **Git LFS
 ### Install Git for Windows
 [Download Git for Windows](https://gitforwindows.org/). This is a bundle containing Git plus various tools including Git LFS which you'll need. Run the executable you just downloaded to launch setup.
 
+The default for all settings will be fine, but make sure **Git LFS (Large File Support)** is checked on this step.
+
+[step 3 image]
+
+If you need some extra help, click on the button below to reveal the detailed setup walkthrough.
+
+<details style="margin-bottom: 1em;">
+<summary><span style="cursor: pointer;">Toggle setup walkthrough</span></summary>
+
 [step 1 image]
 
 Click **Next** to continue.
@@ -93,6 +102,8 @@ Click **Install**.
 [step 16 image]
 
 Finally! Git has been installed and configured. Click **Finish** to close setup.
+      
+</details>
 
 ### Verify Installation
 Let's verify that both Git and Git LFS were successfully installed.
