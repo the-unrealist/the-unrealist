@@ -121,3 +121,33 @@ C:\Users\citrus>
 ```
 
 When you see output similar to above, then you're all set and ready for the next step! The version and other details may be different, but that's alright as long you've downloaded the latest version.
+
+## Setup a repo
+### Create a repo
+Open the folder containing your game's `.uproject` file.
+
+[uproject-image-1]
+
+Click on an empty space in the path at the top. Type in `cmd` and then press <kbd>Enter</kbd>. This will open a terminal window pointing to this folder.
+
+[uproject-image-2]
+
+Type `git init` and then press <kbd>Enter</kbd>. This will initialize a Git repo in this folder.
+
+```console
+D:\Games\MyGame\MyGame>git init
+Initialized empty Git repository in D:/Games/MyGame/MyGame/.git/
+```
+
+At this point, no files are tracked. A file is "tracked" when Git begins monitoring the file for changes.
+
+We'll start adding files to be tracked soon but first, we need to create a `.gitignore` file so that only relevant files are tracked. We'll also need to create a `.gitattributes` file which will tell Git that certain file types should be handled by Git LFS instead of Git.
+
+### Add `.gitignore`
+This file tells Git which files should _not_ be tracked. When you clone the repo somewhere else, only tracked files will carry over.
+
+Unreal Engine generates many files that do not need to be tracked. Whenever these "intermediate" files are missing, Unreal Engine will regenerate them. For this reason, we want to make sure only relevant content are tracked and let Unreal Engine regenerate everything else. This significantly reduces the size of the repo.
+
+Open your favorite text editor. Copy and paste everything below and save the file as `.gitignore` in the same folder as your game's `.uproject` file.
+
+TODO: embed gist here
