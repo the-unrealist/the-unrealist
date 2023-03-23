@@ -6,8 +6,10 @@
 2. [Prerequisites](#prerequisites)
    - [Install Git for Windows](#install-git-for-windows)
    - [Verify Installation](#verify-installation)
-3. [Setup a repo](#setup-a-repo)
-   - [
+3. [Setup](#setup)
+   - [Create a repo](#create-a-repo)
+   - [Add .gitignore](#add-gitignore)
+   - [Add .gitattributes](#add-gitattributes)
 
 ## Introduction
 ### What is version control?
@@ -124,7 +126,7 @@ C:\Users\citrus>
 
 When you see output similar to above, then you're all set and ready for the next step! The version and other details may be different, but that's alright as long you've downloaded the latest version.
 
-## Setup a repo
+## Setup
 ### Create a repo
 Open the folder containing your game's `.uproject` file.
 
@@ -151,5 +153,12 @@ This file tells Git which files should _not_ be tracked. When you clone the repo
 Unreal Engine generates many files that do not need to be tracked. Whenever these "intermediate" files are missing, Unreal Engine will regenerate them. For this reason, we want to make sure only relevant content are tracked and let Unreal Engine regenerate everything else. This significantly reduces the size of the repo.
 
 Open your favorite text editor. Copy and paste everything below and save it as a new file named `.gitignore` in the same folder as your game's `.uproject` file (for example, `MyGame.uproject`).
+
+TODO: embed gist here
+
+### Add `.gitattributes`
+This files instructs Git to handle certain files or directories differently. With this file, we can tell Git to hand off binary files to Git LFS.
+
+Once again, with your favorite text editor, copy and paste everything below and save it as a new file named `.gitattributes` in the same folder as above.
 
 TODO: embed gist here
