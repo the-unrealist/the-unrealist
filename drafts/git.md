@@ -3,9 +3,11 @@
    - [Which version control system should I use?](#which-version-control-system-should-i-use)
    - [Git and Git LFS](#git-and-git-lfs)
    - [What's covered in this guide?](#whats-covered-in-this-guide)
-3. [Prerequisites](#prerequisites)
+2. [Prerequisites](#prerequisites)
    - [Install Git for Windows](#install-git-for-windows)
    - [Verify Installation](#verify-installation)
+3. [Setup a repo](#setup-a-repo)
+   - [
 
 ## Introduction
 ### What is version control?
