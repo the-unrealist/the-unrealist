@@ -135,8 +135,8 @@ Click on an empty space in the path at the top. Type in `cmd` and then press <kb
 Type `git init` and then press <kbd>Enter</kbd>. This will initialize a Git repo in this folder.
 
 ```console
-D:\Games\MyGame\MyGame>git init
-Initialized empty Git repository in D:/Games/MyGame/MyGame/.git/
+C:\Games\MyGame\MyGame>git init
+Initialized empty Git repository in C:/Games/MyGame/MyGame/.git/
 ```
 
 At this point, no files are tracked. A file is "tracked" when Git begins monitoring the file for changes.
@@ -148,6 +148,6 @@ This file tells Git which files should _not_ be tracked. When you clone the repo
 
 Unreal Engine generates many files that do not need to be tracked. Whenever these "intermediate" files are missing, Unreal Engine will regenerate them. For this reason, we want to make sure only relevant content are tracked and let Unreal Engine regenerate everything else. This significantly reduces the size of the repo.
 
-Open your favorite text editor. Copy and paste everything below and save the file as `.gitignore` in the same folder as your game's `.uproject` file.
+Open your favorite text editor. Copy and paste everything below and save it as a new file named `.gitignore` in the same folder as your game's `.uproject` file (for example, `MyGame.uproject`).
 
 TODO: embed gist here
