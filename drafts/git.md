@@ -10,6 +10,9 @@
    - [Create a repo](#create-a-repo)
    - [Add .gitignore](#add-gitignore)
    - [Add .gitattributes](#add-gitattributes)
+   - [Enable Git in Unreal Engine](#enable-git-in-unreal-engine)
+   - [Initial commit](#initial-commit)
+4. [Commits](#commmits)
 
 ## Introduction
 ### What is version control?
@@ -162,3 +165,9 @@ This files instructs Git to handle certain files or directories differently. Wit
 Once again, with your favorite text editor, copy and paste everything below and save it as a new file named `.gitattributes` in the same folder as above.
 
 TODO: embed gist here
+
+### Enable Git in Unreal Engine
+TODO
+
+### Initial commit
+TODO
