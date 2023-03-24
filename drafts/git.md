@@ -241,7 +241,7 @@ C:\Games\MyGame\MyGame>
 
 Double check the list to confirm that all of your `.uasset`, `.umap`, and source code files are included in the commit. 
 
-We can see from the output that these two files are handled by LFS:
+In contrast with `git status`, using `git lfs status` lets us verify that binary files will be handled by LFS rather than Git. We can see from the output that these two files are handled by LFS:
 
 ```
 Content/Characters/MyCharacter.uasset (LFS: 014069f)
