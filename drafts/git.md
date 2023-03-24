@@ -197,7 +197,25 @@ Once again, with your favorite text editor, copy and paste everything below and 
 ```
 
 ### Activate source control in Unreal Engine
-TODO
+Open your game in the Unreal Editor. At the bottom right corner, there is a button labeled **Source Control**.
+
+[ue-source-control-2]
+
+Click on it to reveal a menu, then click on **Connect to Source Control**. This will bring up the Source Control Login window.
+
+[ue-source-control-3]
+
+Change the **Provider** to **Git (beta version)**. The value for Git Path should be changed if Git was installed in a different location during Git for Windows setup.
+
+Click on **Accept Settings** to activate Git integration.
+
+[ue-source-control-4]
+
+If everything went well, you'll see a confirmation message pop up.
+
+[ue-source-control-5]
+
+The Source Control button will also have a green checkmark next to it.
 
 ### Initial commit
 TODO
