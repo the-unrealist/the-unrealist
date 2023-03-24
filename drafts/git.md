@@ -17,6 +17,7 @@
    - [Azure Repos](#azure-repos)
 6. [Unreal Editor and Git integration](#unreal-editor-and-git-integration)
    - [Activate source control in the Unreal Editor](#activate-source-control-in-the-unreal-editor)
+   - [Submitting changes](#submitting-changes)
 
 ## Introduction
 ### What is version control?
@@ -312,3 +313,6 @@ If everything went well, you'll see a confirmation message pop up.
 [ue-source-control-5]
 
 The Source Control button will also have a green checkmark next to it.
+
+### Submitting changes
+TODO
