@@ -194,7 +194,7 @@ Content/StarterContent/
 ### Add `.gitattributes`
 A `.gitattributes` file instructs Git to handle certain files or directories differently. With this file, we can tell Git to hand off binary files to Git LFS.
 
-Once again, with your favorite text editor, copy and paste everything below and save it as a new file named `.gitattributes` in the same folder as above.
+Once again, with your favorite text editor, copy and paste everything below and save it as a new file named `.gitattributes` in the same folder as `.gitignore`.
 
 ```gitattributes
 *.uasset filter=lfs diff=lfs merge=lfs -text lockable
