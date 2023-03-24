@@ -151,7 +151,7 @@ At this point, no files are tracked. A file is "tracked" when Git begins monitor
 We'll start adding files to be tracked soon but first, we need to create a `.gitignore` file so that only relevant files are tracked. We'll also need to create a `.gitattributes` file which will tell Git that certain file types should be handled by Git LFS instead of Git.
 
 ### Add `.gitignore`
-This file tells Git which files should _not_ be tracked. When you clone the repo somewhere else, only tracked files will carry over.
+A `.gitignore` file tells Git which files should _not_ be tracked. When you clone the repo somewhere else, only tracked files will carry over.
 
 Unreal Engine generates many files that do not need to be tracked. Whenever these "intermediate" files are missing, Unreal Engine will regenerate them. For this reason, we want to make sure only relevant content are tracked and let Unreal Engine regenerate everything else. This significantly reduces the size of the repo.
 
@@ -160,7 +160,7 @@ Open your favorite text editor. Copy and paste everything below and save it as a
 TODO: embed gist here
 
 ### Add `.gitattributes`
-This files instructs Git to handle certain files or directories differently. With this file, we can tell Git to hand off binary files to Git LFS.
+A `.gitattributes` file instructs Git to handle certain files or directories differently. With this file, we can tell Git to hand off binary files to Git LFS.
 
 Once again, with your favorite text editor, copy and paste everything below and save it as a new file named `.gitattributes` in the same folder as above.
 
