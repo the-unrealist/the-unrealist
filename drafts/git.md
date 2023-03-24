@@ -157,7 +157,34 @@ Unreal Engine generates many files that do not need to be tracked. Whenever thes
 
 Open your favorite text editor. Copy and paste everything below and save it as a new file named `.gitignore` in the same folder as your game's `.uproject` file (for example, `MyGame.uproject`).
 
-TODO: embed gist here
+```gitignore
+# Miscellaneous Visual Studio files.
+.vs/
+.vsconfig
+UpgradeLog.htm
+
+# Miscellaneous JetBrains Rider files.
+.idea/
+
+# Ignore RiderLink Plugin as it can be reinstalled by JetBrains Rider.
+Plugins/Developer/RiderLink/
+
+# Unreal Engine will regenerate the solution file.
+*.sln
+
+# Exclude cached files.
+DerivedDataCache/
+
+# Exclude compiled files.
+Binaries/
+Intermediate/
+
+# Exclude generated config files and autosaves.
+Saved/
+
+# Exclude Unreal Engine starter content because it can be added via Unreal Editor anytime.
+Content/StarterContent/
+```
 
 ### Add `.gitattributes`
 A `.gitattributes` file instructs Git to handle certain files or directories differently. With this file, we can tell Git to hand off binary files to Git LFS.
