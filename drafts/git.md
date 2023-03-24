@@ -10,7 +10,7 @@
    - [Create a repo](#create-a-repo)
    - [Add .gitignore](#add-gitignore)
    - [Add .gitattributes](#add-gitattributes)
-   - [Enable Git in Unreal Engine](#enable-git-in-unreal-engine)
+   - [Activate source control in Unreal Engine](#activate-source-control-in-unreal-engine)
    - [Initial commit](#initial-commit)
 4. [Commits](#commmits)
 
@@ -166,7 +166,7 @@ Once again, with your favorite text editor, copy and paste everything below and 
 
 TODO: embed gist here
 
-### Enable Git in Unreal Engine
+### Activate source control in Unreal Engine
 TODO
 
 ### Initial commit
