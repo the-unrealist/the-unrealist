@@ -11,7 +11,11 @@
    - [Add .gitignore](#add-gitignore)
    - [Add .gitattributes](#add-gitattributes)
    - [Initial commit](#initial-commit)
-4. [Unreal Editor and Git integration](#unreal-editor-and-git-integration)
+4. [Cloud Hosting](#cloud-hosting)
+   - [GitHub vs Azure Repos](#github-vs-azure-repos)
+   - [GitHub](#github)
+   - [Azure Repos](#azure-repos)
+6. [Unreal Editor and Git integration](#unreal-editor-and-git-integration)
    - [Activate source control in the Unreal Editor](#activate-source-control-in-the-unreal-editor)
 
 ## Introduction
@@ -202,43 +206,90 @@ Now, let's create the first commit! Open a terminal in the folder in [the same w
 
 Enter `git add .` to add all eligible files to the commit.
 
-Let's verify that the correct files have been tracked by entering `git status`. The output lists all files that will be included in the commit. If there are any 
+Let's verify that the correct files have been tracked by entering `git lfs status`. The output lists all files that will be included in the commit.
 
 ```console
 C:\Games\MyGame\MyGame>git add .
 
-C:\Games\MyGame\MyGame>git status
-On branch main
+D:\Games\MyGame\MyGame>git lfs status
 
-No commits yet
+Objects to be committed:
 
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-        new file:   .gitattributes
-        new file:   .gitignore
-        new file:   Config/DefaultEditor.ini
-        new file:   Config/DefaultEditorPerProjectUserSettings.ini
-        new file:   Config/DefaultEngine.ini
-        new file:   Config/DefaultGame.ini
-        new file:   Config/DefaultInput.ini
-        new file:   Content/Characters/MyCharacter.uasset
-        new file:   Content/L_MyMap.umap
-        new file:   MyGame.uproject
-        new file:   Source/MyGame.Target.cs
-        new file:   Source/MyGame/MyGame.Build.cs
-        new file:   Source/MyGame/MyGame.cpp
-        new file:   Source/MyGame/MyGame.h
-        new file:   Source/MyGame/MyGameCharacter.cpp
-        new file:   Source/MyGame/MyGameCharacter.h
-        new file:   Source/MyGame/MyGameGameMode.cpp
-        new file:   Source/MyGame/MyGameGameMode.h
-        new file:   Source/MyGameEditor.Target.cs
+        .gitattributes (Git: 1f98718)
+        .gitignore (Git: 20d5661)
+        Config/DefaultEditor.ini (Git: e718c17)
+        Config/DefaultEditorPerProjectUserSettings.ini (Git: 07242cd)
+        Config/DefaultEngine.ini (Git: 93fda30)
+        Config/DefaultGame.ini (Git: ec595ae)
+        Config/DefaultInput.ini (Git: 07593e6)
+        Content/Characters/MyCharacter.uasset (LFS: 014069f)
+        Content/L_MyMap.umap (LFS: bb3cd09)
+        MyGame.uproject (Git: 2940acb)
+        Source/MyGame.Target.cs (Git: 364f3b5)
+        Source/MyGame/MyGame.Build.cs (Git: bc7e337)
+        Source/MyGame/MyGame.cpp (Git: 348acde)
+        Source/MyGame/MyGame.h (Git: 30af2b6)
+        Source/MyGame/MyGameCharacter.cpp (Git: baf5e70)
+        Source/MyGame/MyGameCharacter.h (Git: a739e8d)
+        Source/MyGame/MyGameGameMode.cpp (Git: 3a676c4)
+        Source/MyGame/MyGameGameMode.h (Git: 3df2e75)
+        Source/MyGameEditor.Target.cs (Git: 73f938c)
 
 
 C:\Games\MyGame\MyGame>
 ```
 
-Double check the list to confirm that all of your `.uasset`, `.umap`, and source code files are included in the commit.
+Double check the list to confirm that all of your `.uasset`, `.umap`, and source code files are included in the commit. 
+
+We can see from the output that these two files are handled by LFS:
+
+```
+Content/Characters/MyCharacter.uasset (LFS: 014069f)
+Content/L_MyMap.umap (LFS: bb3cd09)
+```
+
+If everything looks good to you, create the initial commit with `git commit -m "Initial commit"`.
+
+```console
+C:\Games\MyGame\MyGame>git commit -m "Initial commit"
+[main (root-commit) 5f241bf] Initial commit
+ 21 files changed, 210 insertions(+)
+ create mode 100644 .gitattributes
+ create mode 100644 .gitignore
+ create mode 100644 Config/DefaultEditor.ini
+ create mode 100644 Config/DefaultEditorPerProjectUserSettings.ini
+ create mode 100644 Config/DefaultEngine.ini
+ create mode 100644 Config/DefaultGame.ini
+ create mode 100644 Config/DefaultInput.ini
+ create mode 100644 Content/Characters/MyCharacter.uasset
+ create mode 100644 Content/L_MyMap.umap
+ create mode 100644 MyGame.uproject
+ create mode 100644 Source/MyGame.Target.cs
+ create mode 100644 Source/MyGame/MyGame.Build.cs
+ create mode 100644 Source/MyGame/MyGame.cpp
+ create mode 100644 Source/MyGame/MyGame.h
+ create mode 100644 Source/MyGame/MyGameCharacter.cpp
+ create mode 100644 Source/MyGame/MyGameCharacter.h
+ create mode 100644 Source/MyGame/MyGameGameMode.cpp
+ create mode 100644 Source/MyGame/MyGameGameMode.h
+ create mode 100644 Source/MyGameEditor.Target.cs
+ 
+C:\Games\MyGame\MyGame>
+```
+
+If you're new to Git, I recommend reading [the Git tutorial](https://git-scm.com/docs/gittutorial).
+
+It's important to be aware that while you have versioning and change tracking active now, it's still only on your computer. Read the next section to learn about cloud hosting and how you can push your repo to the cloud for free.
+
+## Cloud Hosting
+### GitHub vs Azure Repos
+TODO: Comparison table
+
+### GitHub
+TODO: guide
+
+### Azure Repos
+TODO: guide
 
 ## Unreal Editor and Git integration
 ### Activate source control in the Unreal Editor
