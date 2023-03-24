@@ -10,9 +10,9 @@
    - [Create a repo](#create-a-repo)
    - [Add .gitignore](#add-gitignore)
    - [Add .gitattributes](#add-gitattributes)
-   - [Activate source control in Unreal Engine](#activate-source-control-in-unreal-engine)
    - [Initial commit](#initial-commit)
-4. [Commits](#commmits)
+4. [Unreal Editor and Git integration](#unreal-editor-and-git-integration)
+   - [Activate source control in the Unreal Editor](#activate-source-control-in-the-unreal-editor)
 
 ## Introduction
 ### What is version control?
@@ -184,6 +184,7 @@ Saved/
 
 # Exclude Unreal Engine starter content because it can be added via Unreal Editor anytime.
 Content/StarterContent/
+
 ```
 
 ### Add `.gitattributes`
@@ -196,7 +197,51 @@ Once again, with your favorite text editor, copy and paste everything below and 
 *.umap filter=lfs diff=lfs merge=lfs -text
 ```
 
-### Activate source control in Unreal Engine
+### Initial commit
+Now, let's create the first commit! Open a terminal in the folder in [the same way you did for `git init`](#create-a-repo).
+
+Enter `git add .` to add all eligible files to the commit.
+
+Let's verify that the correct files have been tracked by entering `git status`. The output lists all files that will be included in the commit. If there are any 
+
+```console
+C:\Games\MyGame\MyGame>git add .
+
+C:\Games\MyGame\MyGame>git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .gitattributes
+        new file:   .gitignore
+        new file:   Config/DefaultEditor.ini
+        new file:   Config/DefaultEditorPerProjectUserSettings.ini
+        new file:   Config/DefaultEngine.ini
+        new file:   Config/DefaultGame.ini
+        new file:   Config/DefaultInput.ini
+        new file:   Content/Characters/MyCharacter.uasset
+        new file:   Content/L_MyMap.umap
+        new file:   MyGame.uproject
+        new file:   Source/MyGame.Target.cs
+        new file:   Source/MyGame/MyGame.Build.cs
+        new file:   Source/MyGame/MyGame.cpp
+        new file:   Source/MyGame/MyGame.h
+        new file:   Source/MyGame/MyGameCharacter.cpp
+        new file:   Source/MyGame/MyGameCharacter.h
+        new file:   Source/MyGame/MyGameGameMode.cpp
+        new file:   Source/MyGame/MyGameGameMode.h
+        new file:   Source/MyGameEditor.Target.cs
+
+
+C:\Games\MyGame\MyGame>
+```
+
+Double check the list to confirm that all of your `.uasset`, `.umap`, and source code files are included in the commit.
+
+## Unreal Editor and Git integration
+### Activate source control in the Unreal Editor
 Open your game in the Unreal Editor. At the bottom right corner, there is a button labeled **Source Control**.
 
 [ue-source-control-2]
@@ -216,6 +261,3 @@ If everything went well, you'll see a confirmation message pop up.
 [ue-source-control-5]
 
 The Source Control button will also have a green checkmark next to it.
-
-### Initial commit
-TODO
