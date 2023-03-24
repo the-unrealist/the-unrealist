@@ -193,8 +193,8 @@ A `.gitattributes` file instructs Git to handle certain files or directories dif
 Once again, with your favorite text editor, copy and paste everything below and save it as a new file named `.gitattributes` in the same folder as above.
 
 ```gitattributes
-*.uasset filter=lfs diff=lfs merge=lfs -text
-*.umap filter=lfs diff=lfs merge=lfs -text
+*.uasset filter=lfs diff=lfs merge=lfs -text lockable
+*.umap filter=lfs diff=lfs merge=lfs -text lockable
 ```
 
 ### Initial commit
