@@ -3,7 +3,7 @@
 ## Introduction
 [Lyra](https://docs.unrealengine.com/5.1/en-US/lyra-sample-game-in-unreal-engine/) is a sample game created by Epic Games to demonstrate Unreal Engine frameworks.
 
-This is the first part in a series of technical deep dives for Lyra. In these deep dives, I'll recreate the essence of Lyra step-by-step from scratch. I have no intention of 
+This is the first part in a series of technical deep dives for Lyra. In these deep dives, I'll recreate the essence of Lyra step-by-step from scratch focusing on one feature at a time. I have no intention of 
 covering everything Lyra has to offer, but I will keep going until when I've felt like I've gone far enough, which may be an arbitrary decision. 😊
 
 For this deep dive series, I will assume the reader (that's you) can read C++ and has more than just a surface level understanding of Unreal Engine.
