@@ -23,7 +23,7 @@ Let's begin with a blank C++ project with four targets:
 
 |Target Name|Outcome|
 |-----------|-------|
-|`LyraEditor`|Produces an editor build that includes editor-only content. Use this target to launch the Unreal Editor.|
+|`LyraEditor`|Produces an editor build that contains both the game and the Unreal Editor. Use this target to launch the Unreal Editor.|
 |`LyraServer`|TODO|
 |`LyraClient`|TODO|
 |`LyraGame`|TODO|
