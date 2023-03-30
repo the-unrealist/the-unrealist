@@ -17,7 +17,7 @@ As Lyra is still under development, it's probable for some details in this serie
 [Unreal Engine End User License Agreement](https://www.unrealengine.com/en-US/eula/unreal).**
 
 ## The Initial Project
-**[Chapter Source Code](https://github.com/the-unrealist/lyra-deep-dive)**
+〉〉〉 **[View the source code for this section](https://github.com/the-unrealist/lyra-deep-dive)** 〈〈〈
 
 Let's begin with a blank C++ project with four targets:
 
