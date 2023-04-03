@@ -91,7 +91,6 @@ defaults:
       related: true
       show_date: true
       toc: true
-      classes: wide
   # _pages
   - scope:
       path: "_pages"
