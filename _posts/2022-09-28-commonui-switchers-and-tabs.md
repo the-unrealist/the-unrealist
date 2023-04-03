@@ -6,7 +6,6 @@ tags:
 title: "Common UI: Switchers and Tabs"
 categories:
   - Common UI
-author: Matt
 excerpt: "Let's create switchers and tabs with the Common UI plugin."
 ---
 <img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-UMG-blueviolet" alt="UMG">
