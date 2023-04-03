@@ -39,7 +39,7 @@ TODO
 ### User-Facing Experience Definition Data Asset
 TODO
 
-## Lifecycle Stage 1: Replicated Experience
+## Replicated Experience
 TODO: explain how an experience is replicated to all players. By the end of this section, the experience definition is replicated to all clients when changed.
 
 ### Experience Manager Component
@@ -51,7 +51,7 @@ TODO
 ### Lyra Asset Manager
 TODO
 
-## Stage 2: Load Experience Assets
+## Experience Asset Loading
 TODO: Explain how an experience is loaded. By the end of this section, the experience definition asset and asset sets are loaded, and then all game feature plugins referenced by the definition and any asset sets are loaded too.
 
 ### Experience Manager
@@ -60,13 +60,13 @@ TODO
 ### Experience Manager Component
 TODO
 
-## Stage 3: Execution
+## Execution
 TODO: Execute the experience definition's game feature actions and notify events.
 
 ### Experience Manager Component
 TODO
 
-## Stage 4: Deactivate Experience
+## Deactivation
 TODO
 
 ## Pawn Spawning and World Settings
