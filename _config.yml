@@ -57,7 +57,7 @@ plugins:
 
 author:
   name   : "Matt"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/orange.png"
   bio    : "Unreal Engine Enthusiast"
   links:
     - label: "Twitter"
