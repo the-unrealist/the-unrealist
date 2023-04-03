@@ -147,7 +147,7 @@ Click on an empty space in the path at the top. Type in `cmd` and then press <kb
 Type `git init` and then press <kbd>Enter</kbd>. This will initialize a Git repo in this folder.
 
 ```console
-C:\Games\MyGame\MyGame>git init
+C:\Games\MyGame>git init
 Initialized empty Git repository in C:/Games/MyGame/MyGame/.git/
 ```
 
@@ -210,9 +210,9 @@ Enter `git add .` to add all eligible files to the commit.
 Let's verify that the correct files have been tracked by entering `git lfs status`. The output lists all files that will be included in the commit.
 
 ```console
-C:\Games\MyGame\MyGame>git add .
+C:\Games\MyGame>git add .
 
-D:\Games\MyGame\MyGame>git lfs status
+D:\Games\MyGame>git lfs status
 
 Objects to be committed:
 
@@ -237,7 +237,7 @@ Objects to be committed:
         Source/MyGameEditor.Target.cs (Git: 73f938c)
 
 
-C:\Games\MyGame\MyGame>
+C:\Games\MyGame>
 ```
 
 Double check the list to confirm that all of your `.uasset`, `.umap`, and source code files are included in the commit. 
@@ -252,7 +252,7 @@ Content/L_MyMap.umap (LFS: bb3cd09)
 If everything looks good to you, create the initial commit with `git commit -m "Initial commit"`.
 
 ```console
-C:\Games\MyGame\MyGame>git commit -m "Initial commit"
+C:\Games\MyGame>git commit -m "Initial commit"
 [main (root-commit) 5f241bf] Initial commit
  21 files changed, 210 insertions(+)
  create mode 100644 .gitattributes
@@ -275,7 +275,7 @@ C:\Games\MyGame\MyGame>git commit -m "Initial commit"
  create mode 100644 Source/MyGame/MyGameGameMode.h
  create mode 100644 Source/MyGameEditor.Target.cs
  
-C:\Games\MyGame\MyGame>
+C:\Games\MyGame>
 ```
 
 If you're new to Git, I recommend reading [the Git tutorial](https://git-scm.com/docs/gittutorial).
@@ -284,7 +284,14 @@ It's important to be aware that while you have versioning and change tracking ac
 
 ## Cloud Hosting
 ### GitHub vs Azure Repos
-TODO: Comparison table
+There are many choices for cloud Git repo hosting but only a few support Git LFS. The only ones I'm aware of are [GitHub](https://github.com/) and [Azure Repos](https://azure.microsoft.com/en-us/products/devops/repos) (and it's no a coincidence that both are Microsoft products).
+
+|Service|Max File Size|Total Git LFS Size|Bandwidth|
+|-------|---------------------------|------------------|---------|
+|GitHub|5 GB|1 GB free<br/>or<br/>$5 per 50 GB|1 GB free<br/>or<br/>$5 per 50 GB|
+|Azure Repos|50 GB*|Unlimited|Unlimited|
+
+\*The entire file must be uploaded in less than 1 hour.
 
 ### GitHub
 TODO: guide
