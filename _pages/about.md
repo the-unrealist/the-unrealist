@@ -3,6 +3,15 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+Hey, I'm Matt! I've been teaching myself the ins and outs of Unreal Engine since early 2022. This blog is my personal notebook dedicated to sharing the things I've learned along the way.
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+I'm a full stack software engineer at Google by day. I'm not actively seeking a change in career right now, but I am always open to interesting opportunities.
+
+Please send inquiries either by direct message on Twitter [@unrealist-matt](https://twitter.com/unrealist_matt) or by email at [inquiries@unrealist․org](mailto:inquiries@unrealist.org).
+
+## Mini Resume
+
+### Career History
+<img src="/assets/images/Google_logo.svg" style="height: 30px;" /><br/>Software Engineer<br/>2022 - Present
+<br/><br/>
+<img src="/assets/images/Microsoft_logo.svg" style="height: 30px;" /><br/>Software Engineer<br/>2019 - 2022
