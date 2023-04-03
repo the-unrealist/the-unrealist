@@ -16,39 +16,6 @@ The Unreal Editor provides a general-purpose graph system that is used by Bluepr
 
 There's [this fantastic tutorial on creating custom Blueprint nodes](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/). This page is intended as a supplement to the tutorial by providing additional information and reference tables, and for that reason, I recommend everyone to read the tutorial first.
 
-## Table of Contents
-1. [Create a Node](#create-a-node)
-2. [Node Customization](#node-customization)
-   - [Title](#title)
-   - [Menu Category](#menu-category)
-   - [Tooltips](#tooltips)
-   - [Keywords](#keywords)
-   - [Appearance](#appearance)
-       - [Colors](#colors)
-       - [Compact Node](#compact-node)
-       - [Bead Node](#bead-node)
-       - [Variable Node](#variable-node)
-       - [Control Point / Knot](#control-point--knot)
-       - [Icons](#icons)
-   - [Can Rename Node](#can-rename-node)
-   - [Purity](#purity)
-   - [Node Details](#node-details)
-   - [Text Caching](#text-caching)
-3. [Pins](#pins)
-   - [Create Pins](#create-pins)
-       - [Pin Categories](#pin-categories)
-       - [Reserved Pin Names](#reserved-pin-names)
-       - [Simple Example](#simple-example)
-   - [Wildcard Pins](#wildcard-pins)
-4. [Graph Compatibility](#graph-compatibility)
-   - [Check for Construction Script](#check-for-construction-script)
-   - [Check for Event Graph](#check-for-event-graph)
-   - [Check for Function Graph](#check-for-function-graph)
-   - [Check for Macro Graph](#check-for-macro-graph)
-   - [Require World Context](#require-world-context)
-   - [Blueprint Derives From a Class](#blueprint-derives-from-a-class)
-   - [Blueprint Implements an Interface](#blueprint-implements-an-interface)
-
 I plan on writing more about the following when I get the chance:
 - `ExpandNode` (for now, [read this article](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/))
 - Latent Nodes
