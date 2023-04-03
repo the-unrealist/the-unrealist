@@ -10,8 +10,6 @@ I'm a full stack software engineer at Google by day. I'm not actively seeking a 
 Please send inquiries either by direct message on Twitter [@unrealist-matt](https://twitter.com/unrealist_matt) or by email at [inquiries@unrealist․org](mailto:inquiries@unrealist.org).
 
 ## Mini Resume
-
-### Career History
 <img src="/assets/images/Google_logo.svg" style="height: 30px;" /><br/>Software Engineer<br/>2022 - Present
 <br/><br/>
 <img src="/assets/images/Microsoft_logo.svg" style="height: 30px;" /><br/>Software Engineer<br/>2019 - 2022
