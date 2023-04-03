@@ -288,7 +288,7 @@ There are many choices for cloud Git repo hosting but only a few support Git LFS
 
 |Service|Max File Size|Total Git LFS Size|Bandwidth|
 |-------|---------------------------|------------------|---------|
-|GitHub|5 GB|1 GB free<br/>or<br/>$5 per 50 GB|1 GB free<br/>or<br/>$5 per 50 GB|
+|GitHub|2 GB|1 GB free<br/>or<br/>$5 per 50 GB|1 GB free<br/>or<br/>$5 per 50 GB|
 |Azure Repos|50 GB*|Unlimited|Unlimited|
 
 \*The entire file must be uploaded in less than 1 hour.
