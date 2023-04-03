@@ -1,10 +1,13 @@
 ---
-layout: post
-tags: unreal commonui umg
+tags: 
+  - unreal
+  - CommonUI
+  - UMG
 title: "Common UI: Action Bar"
-categories: [Common UI]
+categories:
+  - Common UI
 author: Matt
-excerpt: "Learn how to create an action bar with the Common UI plugin."
+excerpt: "Let's create an action bar with the Common UI plugin."
 ---
 <img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-UMG-blueviolet" alt="UMG"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
 

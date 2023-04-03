@@ -1,10 +1,12 @@
 ---
-layout: post
-tags: unreal blueprints
+tags: 
+  - unreal
+  - blueprints
 title: "Custom Blueprint Nodes"
-categories: [Blueprints]
+categories: 
+  - Blueprints
 author: Matt
-excerpt: "A reference guide to creating custom Blueprint nodes in C++."
+excerpt: "A reference guide to custom Blueprint nodes in C++."
 ---
 
 <img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-Blueprints-blue" alt="Blueprints"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
