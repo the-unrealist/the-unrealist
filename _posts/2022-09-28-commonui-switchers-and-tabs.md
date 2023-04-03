@@ -17,11 +17,6 @@ Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engin
 
 For that reason, **this tutorial assumes you have a basic understanding of Common UI including setting up inputs and styling**.
 
-## Table of Contents
-* [Switchers](#switchers)
-* [Tabs](#tabs)
-* [Carousels](#carousels)
-
 ## Switchers
 A switcher is a widget that displays one child widget at a time and can switch to another child widget. It can act as a standalone widget or be linked to a tab list for a tabbed experience.
 
