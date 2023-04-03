@@ -5,7 +5,6 @@ tags:
 title: "Custom Blueprint Nodes"
 categories: 
   - Blueprints
-author: Matt
 excerpt: "A reference guide to custom Blueprint nodes in C++."
 ---
 
