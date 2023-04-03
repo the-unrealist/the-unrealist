@@ -6,7 +6,6 @@ tags:
 title: "Visualize Actor Components in the Editor with Component Visualizers"
 categories: 
   - Unreal Editor
-author: Matt
 excerpt: "Visualize actor components in the Unreal Editor with custom Component Visualizers."
 ---
 
