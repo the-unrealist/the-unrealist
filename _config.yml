@@ -21,6 +21,7 @@ twitter_username: unrealist_matt
 github_username: the-unrealist
 minimal_mistakes_skin: dark
 search: true
+repository: the-unrealist/the-unrealist
 
 # Build settings
 markdown: kramdown
@@ -84,7 +85,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
+      read_time: false
       comments: true
       share: true
       related: true
@@ -103,3 +104,13 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+  
+comments:
+  provider: "giscus"
+  giscus:
+    repo_id              : "R_kgDOIFvutA" # Shown during giscus setup at https://giscus.app
+    category_name        : "Announcements" # Full text name of the category
+    category_id          : "DIC_kwDOIFvutM4CRsVd" # Shown during giscus setup at https://giscus.app
+    discussion_term      : "og:title" # "pathname" (default), "url", "title", "og:title"
+    reactions_enabled    : "1" # '1' for enabled (default), '0' for disabled
+    theme                : "preferred_color_scheme" # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
