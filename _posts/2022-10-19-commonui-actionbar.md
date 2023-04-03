@@ -31,13 +31,6 @@ The Common UI plugin was originally developed for Fortnite and the action bar we
 In case you're not aware, this article is part of a series about the [Common UI plugin](https://docs.unrealengine.com/5.0/en-US/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine/).
 Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engine.
 
-## Table of Contents
-* [Setup](#setup)
-  * [1. Common Bound Action Button](#1-common-bound-action-button)
-  * [2. Common Bound Action Bar](#2-common-bound-action-bar)
-* [Input Action Icons](#input-action-icons)
-* [Registering Actions](#registering-actions)
-
 ## Setup
 ### 1. Common Bound Action Button
 First, we'll need to build our own button widget that will be used by the action bar for each available action. Go ahead and create a new Widget Blueprint based on `CommonBoundActionButton`.
