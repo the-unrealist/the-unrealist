@@ -146,6 +146,9 @@ TODO
 ## Deactivation
 TODO
 
+## Asset Manager
+TODO: Primary asset types to scan in project settings
+
 ## Pawn Spawning and World Settings
 ### Lyra Game Mode
 TODO
