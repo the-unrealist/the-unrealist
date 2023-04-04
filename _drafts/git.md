@@ -1,24 +1,3 @@
-1. [Introduction](#introduction)
-   - [What is version control?](#what-is-version-control)
-   - [Which version control system should I use?](#which-version-control-system-should-i-use)
-   - [Git and Git LFS](#git-and-git-lfs)
-   - [What's covered in this guide?](#whats-covered-in-this-guide)
-2. [Prerequisites](#prerequisites)
-   - [Install Git for Windows](#install-git-for-windows)
-   - [Verify Installation](#verify-installation)
-3. [Setup](#setup)
-   - [Create a repo](#create-a-repo)
-   - [Add .gitignore](#add-gitignore)
-   - [Add .gitattributes](#add-gitattributes)
-   - [Initial commit](#initial-commit)
-4. [Cloud Hosting](#cloud-hosting)
-   - [GitHub vs Azure Repos](#github-vs-azure-repos)
-   - [GitHub](#github)
-   - [Azure Repos](#azure-repos)
-6. [Unreal Editor and Git integration](#unreal-editor-and-git-integration)
-   - [Activate source control in the Unreal Editor](#activate-source-control-in-the-unreal-editor)
-   - [Submitting changes](#submitting-changes)
-
 ## Introduction
 ### What is version control?
 You've been working on your game for many days, months, or even *years*, but one day—*poof*—it's gone! Maybe your game was accidentally deleted or overwritten, or maybe your storage disk became corrupted. There are many reasons but it only takes one for all the hard work you've spent on your game to be wiped out.
