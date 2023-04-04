@@ -14,7 +14,7 @@ excerpt: "Lyra introduces the concept of Experiences which are essentially modul
 This is the second chapter in the [Lyra Deep Dive](https://unrealist.org/lyra-part-1) series.
 
 ## What are Experiences?
-TODO: Mention that most of the code is in the `GameModes` folder
+TODO: Explain what Lyra Experiences are and be sure to mention that most of the code for this feature is in the `GameModes` folder.
 
 ## Source Code
 [View the source code for this chapter ❭](https://github.com/the-unrealist/lyra-deep-dive/tree/chapter2-experiences)
@@ -22,11 +22,13 @@ TODO: Mention that most of the code is in the `GameModes` folder
 I recommend looking at the [diff](https://github.com/the-unrealist/lyra-deep-dive/compare/chapter1-introduction...chapter2-experiences) to see what's changed since the previous chapter.
 
 ## Plugins
+The Lyra Experiences system is driven by the combination of the **Game Features** and **Modular Gameplay** plugins. With the Game Features plugin, experiences are contained as standalone game feature plugins and loaded on demand. The Modular Gameplay plugin allows experiences to add components to actors, modify game state, add data sources, and much more.
+
 ### Game Features
-The Lyra Experience system makes use of the [Game Features plugin](https://docs.unrealengine.com/5.1/en-US/game-features-and-modular-gameplay-in-unreal-engine/) so that experiences can be contained as game feature plugins and loaded at runtime.
+TODO: Provide an overview of the Game Features plugin.
 
 ### Modular Gameplay
-The [Modular Gameplay plugin](https://docs.unrealengine.com/5.1/en-US/game-framework-component-manager-in-unreal-engine/) makes it possible for actors to register themselves as receivers for components. It's usually used in conjunction with the Game Features plugin to make actors extensible via plugins and avoid coupling the actor with the feature.
+The Modular Gameplay plugin enables actors to register themselves as receivers for components. It's usually used in conjunction with the Game Features plugin to make actors extensible via plugins and avoid coupling the actor with the feature.
 
 Actors you want to make modular will need to register themselves with the `UGameFrameworkComponentManager`. This is typically done in the `PreInitializeComponents` function of the actor.
 
@@ -66,10 +68,8 @@ To handle actor extensions, call `AddExtensionHandler` in the `UGameFrameworkCom
 // This snippet is placed where you want to start handling actor extensions.
 if (UGameFrameworkComponentManager* ComponentManager = UGameInstance::GetSubsystem<UGameFrameworkComponentManager>(GameInstance))
 {			
-    TSoftClassPtr<AActor> ReceiverClass = AMyModularActor::StaticClass();
-    
     TSharedPtr<FComponentRequestHandle> ExtensionRequestHandle = ComponentManager->AddExtensionHandler(
-        ReceiverClass,
+        AMyModularActor::StaticClass(),
         UGameFrameworkComponentManager::FExtensionHandlerDelegate::CreateUObject(this, &ThisClass::HandleActorExtension));
 }
 ```
@@ -91,7 +91,20 @@ void UMyActorExtensionHandler::HandleActorExtension(AActor* Actor, FName EventNa
 ```
 
 ### Modular Gameplay Actors
-TODO
+The `ModularGameplayActors` plugin contains subclasses of the [standard gameplay framework actors](https://docs.unrealengine.com/5.1/en-US/gameplay-framework-quick-reference-in-unreal-engine/) that are registered for extension via the Modular Gameplay plugin. While you can always register directly with `UGameFrameworkComponentManager` in your actors, this plugin makes it so that you don't need to do it manually.
+
+These actors are provided by this plugin:
+* `AModularAIController`
+* `AModularCharacter`
+* `AModularGameModeBase`
+* `AModularGameMode`
+* `AModularGameStateBase`
+* `AModularGameState`
+* `AModularPawn`
+* `AModularPlayerController`
+* `AModularPlayerState`
+
+This plugin does not come with Unreal Engine out of the box, so we need to manually create it. You can find this plugin in [the source code for this chapter](https://github.com/the-unrealist/lyra-deep-dive/tree/chapter2-experiences/LyraStarterGame/Plugins/ModularGameplayActors).
 
 ## Experience Definitions
 ### Experience Definition Data Asset
