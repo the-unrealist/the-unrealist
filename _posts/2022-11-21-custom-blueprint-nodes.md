@@ -4,7 +4,7 @@ tags:
   - blueprints
 title: "Custom Blueprint Nodes"
 categories: 
-  - Blueprints
+  - Unreal Editor
 excerpt: "A reference guide to custom Blueprint nodes in C++."
 ---
 
