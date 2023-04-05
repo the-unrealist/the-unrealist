@@ -13,10 +13,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Citrus Game Dev Notebook
+title: Matt's Game Dev Notebook
 email: matt@unrealist.org
 description: >- # this means to ignore newlines until "baseurl:"
-  Citrus Game Dev Notebook is a blog dedicated to sharing the knowledge and experience of an Unreal Engine enthusiast.
+   Matt's Game Dev Notebook is a blog dedicated to sharing the knowledge and experience of an Unreal Engine enthusiast.
 twitter_username: unrealist_matt
 github_username: the-unrealist
 minimal_mistakes_skin: dark
