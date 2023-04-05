@@ -33,15 +33,15 @@ With the Game Features plugin, the game can dynamically load and unload plugins 
 
 When you enable the Game Features plugin for your project and restart the editor, you'll see a couple of new plugin templates.
 
-<img src="/assets/game-feature-plugins.png" alt=""/>
+<img src="/assets/images/game-feature-plugins.png" alt="Screenshot of two additional plugin templates: Game Feature (Content Only) and Game Feature (with C++)."/>
 
 These templates include the required `UGameFeatureData` data asset for your standalone game feature. This data asset describes what actions to perform when the feature is loaded and how to find additional primary data assets within the plugin. Keep in mind that all game feature plugins must go in the `/Plugins/GameFeatures/` directory to be detected.
 
-The default set of available actions are: Add Components, Add Cheats, Add Data Registry, and Add Data Registry Source. This can be extended with custom actions. In fact, Lyra has custom actions such as Add Widget, Add Input Binding, and more. You can view all custom Game Feature actions in the `/LyraGame/GameFeatures/` directory. We'll take a deeper look at these in a future chapter.
+The default set of available actions are: Add Components, Add Cheats, Add Data Registry, and Add Data Registry Source. This can be extended with custom actions. In fact, Lyra has custom actions such as Add Widget, Add Input Binding, and more in the `/LyraGame/GameFeatures/` directory. We'll take a deeper look at these in a future chapter.
 
-You can control the initial state of a game feature plugin by editing it in the Plugins window. In Lyra, all game features have the initial state of **Registered**. This is because with the Lyra Experiences system, the feature will be loaded only when the server selects the experience.
+You can control the initial state of a game feature by editing the plugin in the Plugins window. In Lyra, all game features have the initial state of **Registered**. This is because with the Lyra Experiences system, the feature will be loaded only when the server selects the experience.
 
-<img src="/assets/shooter-core-registered.png" alt=""/>
+<img src="/assets/images/shooter-core-registered.png" alt="Screenshot of ShooterCore game feature plugin in Lyra with the initial state set to registered."/>
 
 ### Modular Gameplay
 The Modular Gameplay plugin enables actors to register themselves as receivers for components and senders of custom extension events.
@@ -102,7 +102,7 @@ void UMyActorExtension::HandleActorExtension(AActor* Actor, FName EventName)
         // Do something when the actor is ready.
     }
     
-    // Handle other extension events here if needed.
+    // Handle other extension events here.
 }
 ```
 
