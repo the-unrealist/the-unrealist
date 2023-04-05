@@ -225,7 +225,7 @@ FText UK2Node_Custom::GetNodeTitle(ENodeTitleType::Type TitleType) const
         return FText::FromString(UserDefinedTitle);
     }
     
-    return NSLOCTEXT("Citrus", "NodeTitle", "Custom Node Title");
+    return NSLOCTEXT("ExampleGame", "NodeTitle", "Custom Node Title");
 }
 
 void UK2Node_Custom::OnRenameNode(const FString& NewName)
@@ -270,7 +270,7 @@ FText UK2Node_Custom::GetNodeTitle(ENodeTitleType::Type TitleType) const
 {
     if (NodeTitleCache.IsOutOfDate(this))
     {
-        NodeTitleCache.SetCachedText(NSLOCTEXT("Citrus", "NodeTitle", "Custom Node Title"), this);
+        NodeTitleCache.SetCachedText(NSLOCTEXT("ExampleGame", "NodeTitle", "Custom Node Title"), this);
     }
     return NodeTitleCache;
 }
