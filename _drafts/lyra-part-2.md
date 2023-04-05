@@ -106,58 +106,20 @@ These actors are provided by this plugin:
 
 This plugin does not come with Unreal Engine out of the box, so we need to manually create it. You can find this plugin in [the source code for this chapter](https://github.com/the-unrealist/lyra-deep-dive/tree/chapter2-experiences/LyraStarterGame/Plugins/ModularGameplayActors).
 
-## Experience Definitions
-### Experience Definition Data Asset
+## Experience Definition Data Asset
 TODO
 
-### Action Sets
+## Action Sets
 TODO
 
-### User-Facing Experience Definition Data Asset
-TODO
-
-## Replicated Experience
-TODO: explain how an experience is replicated to all players. By the end of this section, the experience definition is replicated to all clients when changed.
-
-### Experience Manager Component
-TODO
-
-### Lyra Game State
-TODO
-
-### Lyra Asset Manager
-TODO
-
-## Experience Asset Loading
-TODO: Explain how an experience is loaded. By the end of this section, the experience definition asset and asset sets are loaded, and then all game feature plugins referenced by the definition and any asset sets are loaded too.
-
-### Experience Manager
-TODO
-
-### Experience Manager Component
-TODO
-
-## Execution
-TODO: Execute the experience definition's game feature actions and notify events.
-
-### Experience Manager Component
-TODO
-
-## Deactivation
+## User-Facing Experience Definition Data Asset
 TODO
 
 ## Asset Manager
-TODO: Primary asset types to scan in project settings
+TODO: Primary asset types to scan in project settings and game feature asset
 
-## Pawn Spawning and World Settings
-### Lyra Game Mode
-TODO
+## Chunks & DLC
+TODO: explain paks and how to create a DLC experience
 
-### Lyra World Settings
-TODO
-
-## Default Experience
-TODO: Create default Lyra experience definition, and set world settings.
-
-## Blueprint Nodes
-TODO: Talk about `AsyncAction_ExperienceReady` and any other blueprint nodes related to Lyra Experiences.
+## Next Steps
+TODO: explain what we'll do in next chapter
