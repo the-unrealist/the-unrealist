@@ -133,7 +133,9 @@ TODO
 TODO
 
 ## Asset Manager
-TODO: Primary asset types to scan in project settings and game feature asset
+TODO: Primary asset types to scan in project settings and game feature asset.
+
+Explain that experience definitions must go into /Game/System/Experiences directory  and user facing definitions in /Game/System/Playlists in Lyra by default, unless explicitly added under Specific Assets, or another directory is added. And LyraExperienceActionSet must be defined to be detected in dropdown list when the uproperty meta specifier is set.
 
 ## Chunks & DLC
 TODO: explain paks and how to create a DLC experience
