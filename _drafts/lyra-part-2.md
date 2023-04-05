@@ -14,6 +14,7 @@ excerpt: "Lyra introduces the concept of Experiences which are essentially modul
 This is the second chapter in the [Lyra Deep Dive](https://unrealist.org/lyra-part-1) series.
 
 ## What are Experiences?
+In Lyra, Experiences are an extension of the GameMode and GameState and can be switched at runtime.
 TODO: Explain what Lyra Experiences are and be sure to mention that most of the code for this feature is in the `GameModes` folder.
 
 ## Source Code
@@ -26,7 +27,7 @@ The Lyra Experiences system is driven by the combination of the **Game Features*
 
 With the Game Features plugin, experiences are contained as standalone game feature plugins and loaded on demand. The Modular Gameplay plugin allows experiences to add components to actors, modify game state, add data sources, and much more.
 
-Both plugins are commonly used in conjunction to make actors extensible via plugins and avoid coupling actors with features.
+Both plugins are commonly used together to make actors extensible via plugins and avoid coupling actors with features.
 
 ### Game Features
 With the Game Features plugin, the game can dynamically load and unload plugins at runtime. Game feature plugins can even be placed in separate standalone chunks to be distributed as downloadable content (DLC).
@@ -138,4 +139,4 @@ TODO: Primary asset types to scan in project settings and game feature asset
 TODO: explain paks and how to create a DLC experience
 
 ## Next Steps
-TODO: explain what we'll do in next chapter
+In the next chapter, we will explore the lifecycle of experiences including how they are loaded and applied to all players.
