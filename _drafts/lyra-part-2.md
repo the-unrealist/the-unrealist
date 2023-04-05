@@ -6,7 +6,7 @@ tags:
 title: "Lyra Deep Dive - Chapter 2: Experiences"
 categories: 
   - Lyra
-excerpt: "Lyra introduces the concept of Experiences which are essentially modular game modes. In this chapter, we'll walk through various data assets that define an Experience."
+excerpt: "Lyra introduces the concept of Experiences which are essentially modular game modes. In this chapter, we'll walk through various data assets that define a Lyra Experience."
 ---
 
 <img src="https://img.shields.io/badge/Unreal%20Engine-5.1-informational" alt="Written for Unreal Engine 5.1"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
@@ -22,15 +22,31 @@ TODO: Explain what Lyra Experiences are and be sure to mention that most of the 
 I recommend looking at the [diff](https://github.com/the-unrealist/lyra-deep-dive/compare/chapter1-introduction...chapter2-experiences) to see what's changed since the previous chapter.
 
 ## Plugins
-The Lyra Experiences system is driven by the combination of the **Game Features** and **Modular Gameplay** plugins. With the Game Features plugin, experiences are contained as standalone game feature plugins and loaded on demand. The Modular Gameplay plugin allows experiences to add components to actors, modify game state, add data sources, and much more.
+The Lyra Experiences system is driven by the combination of the **Game Features** and **Modular Gameplay** plugins.
+
+With the Game Features plugin, experiences are contained as standalone game feature plugins and loaded on demand. The Modular Gameplay plugin allows experiences to add components to actors, modify game state, add data sources, and much more.
+
+Both plugins are commonly used in conjunction to make actors extensible via plugins and avoid coupling actors with features.
 
 ### Game Features
-TODO: Provide an overview of the Game Features plugin.
+With the Game Features plugin, the game can dynamically load and unload plugins at runtime. Game feature plugins can even be placed in separate standalone chunks to be distributed as downloadable content (DLC).
+
+When you enable the Game Features plugin for your project and restart the editor, you'll see a couple of new plugin templates.
+
+<img src="/assets/game-feature-plugins.png" alt=""/>
+
+These templates include the required `UGameFeatureData` data asset for your standalone game feature. This data asset describes what actions to perform when the feature is loaded and how to find additional primary data assets within the plugin. Keep in mind that all game feature plugins must go in the `/Plugins/GameFeatures/` directory to be detected.
+
+The default set of available actions are: Add Components, Add Cheats, Add Data Registry, and Add Data Registry Source. This can be extended with custom actions. In fact, Lyra has custom actions such as Add Widget, Add Input Binding, and more. You can view all custom Game Feature actions in the `/LyraGame/GameFeatures/` directory. We'll take a deeper look at these in a future chapter.
+
+You can control the initial state of a game feature plugin by editing it in the Plugins window. In Lyra, all game features have the initial state of **Registered**. This is because with the Lyra Experiences system, the feature will be loaded only when the server selects the experience.
+
+<img src="/assets/shooter-core-registered.png" alt=""/>
 
 ### Modular Gameplay
-The Modular Gameplay plugin enables actors to register themselves as receivers for components. It's usually used in conjunction with the Game Features plugin to make actors extensible via plugins and avoid coupling the actor with the feature.
+The Modular Gameplay plugin enables actors to register themselves as receivers for components and senders of custom extension events.
 
-Actors you want to make modular will need to register themselves with the `UGameFrameworkComponentManager`. This is typically done in the `PreInitializeComponents` function of the actor.
+Actors you want to make modular will need to register themselves with the `UGameFrameworkComponentManager`. With the `AddGameFrameworkComponentReceiver` function, the actor notifies the Modular Gameplay subsystem that it is accepting new actor components. This is typically done in the `PreInitializeComponents` function of the actor.
 
 ```cpp
 void AMyModularActor::PreInitializeComponents()
@@ -40,7 +56,7 @@ void AMyModularActor::PreInitializeComponents()
 }
 ```
 
-Actors also need to unregister themselves when they're no longer accepting extensions. This is typically done in the `EndPlay` function of the actor.
+Actors also need to unregister themselves when they're no longer accepting components. This is typically done in the `EndPlay` function of the actor.
 
 ```cpp
 void AMyModularActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -50,9 +66,9 @@ void AMyModularActor::EndPlay(const EEndPlayReason::Type EndPlayReason)
 }
 ```
 
-Modular actors can create custom extension points by broadcasting custom events to any object listening to the actor.
+Modular actors can create custom extension points by broadcasting custom events to any object subscribed to the actor class via `UGameFrameworkComponentManager`.
 
-Most modular actors will want to send the `GameActorReady` event in `BeginPlay` so that listeners can execute code only when the actor is active.
+Most modular actors will want to send the `GameActorReady` event in `BeginPlay` so that extensions can execute code only when the actor is active.
 
 ```cpp
 void AMyModularActor::BeginPlay()
@@ -62,7 +78,7 @@ void AMyModularActor::BeginPlay()
 }
 ```
 
-To handle actor extensions, call `AddExtensionHandler` in the `UGameFrameworkComponentManager` subsystem. This will subscribe to all actors of the desired class for extension events. It must be an actor subclass and not the root `AActor` class, which means you _cannot_ subscribe to every single actor. This is intentionally checked to prevent significant performance impact to the game.
+To create an extension, call `AddExtensionHandler` in the `UGameFrameworkComponentManager` subsystem. This will subscribe to all actors of the desired class for extension events. It must be an actor subclass and not the root `AActor` class, which means you _cannot_ subscribe to every single actor. This is intentionally checked to prevent significant performance impact to the game.
 
 ```cpp
 // This snippet is placed where you want to start handling actor extensions.
@@ -79,7 +95,7 @@ Store `ExtensionRequestHandle` somewhere. Call `Unregister` on it to stop listen
 In the handler delegate, you typically would check the event name and execute code on the actor if it's an event you wish to handle.
 
 ```cpp
-void UMyActorExtensionHandler::HandleActorExtension(AActor* Actor, FName EventName)
+void UMyActorExtension::HandleActorExtension(AActor* Actor, FName EventName)
 {
     if (EventName == UGameFrameworkComponentManager::NAME_GameActorReady)
     {
