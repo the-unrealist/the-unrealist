@@ -6,7 +6,7 @@ tags:
 title: "Lyra Deep Dive - Chapter 2: Experiences"
 categories: 
   - Lyra
-excerpt: "Lyra introduces the concept of Experiences which are essentially modular game modes. In this chapter, we'll walk through how the Experiences system is implemented."
+excerpt: "Lyra introduces the concept of Experiences which are essentially modular game modes. In this chapter, we'll walk through various data assets that define an Experience."
 ---
 
 <img src="https://img.shields.io/badge/Unreal%20Engine-5.1-informational" alt="Written for Unreal Engine 5.1"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
