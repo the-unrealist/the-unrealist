@@ -28,7 +28,9 @@ Since experiences are completely modular, they don't even need to be in the same
 
 <img src="/assets/images/exploder-banner.png" alt="A banner demonstrating the top-down Exploder experience" />
 
-Most of the code related to Lyra Experiences can be found in the `/LyraGame/GameModes/` directory.
+Finally, an **User Facing Experience Definition** is used by the frontend to display information about an experience such as the icon, title, and description. This asset also specifies which map to play on and any extra URL options to pass to the game.
+
+Most of the code related to Lyra Experiences are found in the `/LyraGame/GameModes/` directory.
 
 ## Source Code
 [View the source code for this chapter ❭](https://github.com/the-unrealist/lyra-deep-dive/tree/chapter2-experiences)
