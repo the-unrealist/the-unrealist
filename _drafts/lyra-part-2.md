@@ -147,7 +147,9 @@ The experience definition has the following properties:
 |`ActionSets`|A list of action sets (discussed in the next section) to compose into this experience.|
 
 ## Action Sets
-Common game feature actions and plugins can be specified in an **Action Set** (`ULyraExperienceActionSet`). It would be cumbersome to keep all experiences in sync during development, so the standard set of game feature actions can be specified in an action set to be reused by multiple experiences.
+Common game feature actions and plugins can be specified in an **Action Set** (`ULyraExperienceActionSet`).
+
+It would be cumbersome to keep all experiences in sync during development, so a standard set of game feature actions are defined in an action set to be reused by multiple experiences.
 
 In Lyra, both the Elimination and Control experiences are based on the same input, actor components, and HUD widgets. For this reason, they are specified in the `LAS_ShooterGameSharedInput`, `LAS_ShooterGame_StandardComponents`, and `LAS_ShooterGame_StandardHUD` action sets and referenced in the `ActionSets` list in both experience blueprints. You can see this for yourself in `/Plugins/GameFeatures/ShooterCore/Content/Experiences/`.
 
@@ -158,8 +160,10 @@ Since action sets are meant to be "merged" into experiences, they have some of t
 |`GameFeaturesToEnable`|A list of game feature plugin names to load when the owning experience is loaded.|
 |`Actions`|A list of Game Feature actions to execute when the owning experience is loaded.|
 
-## User-Facing Experience Definition Data Asset
+## User-Facing Experience Definition
 A **User-Facing Experience Definition** (`ULyraUserFacingExperienceDefinition`) is used by the frontend to display information about an experience such as the icon, title, and description. This asset also specifies which map to play on and any extra URL options to pass to the game.
+
+Because this asset is not part of the experience lifecycle, I've excluded it from the source code for this chapter.
 
 ## Asset Manager
 TODO: Primary asset types to scan in project settings and game feature asset.
