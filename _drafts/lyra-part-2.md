@@ -14,7 +14,19 @@ excerpt: "Lyra introduces the concept of Experiences which are essentially modul
 This is the second chapter in the [Lyra Deep Dive](https://unrealist.org/lyra-part-1) series.
 
 ## What are Experiences?
-In Lyra, an experience is an extensible and modular combination of a GameMode and GameState that can be asynchronously loaded and switched at runtime. In a typical shooter game, Deathmatch and Capture-the-Flag both would be implemented as different experiences. Since experiences are completely modular, they don't even need to be in the same genre! Lyra demonstrates this by having one of the experiences completely transforms the game into a top-down party game.
+In Lyra, an experience is an extensible and modular combination of a GameMode and GameState that can be asynchronously loaded and switched at runtime. For example, in a typical shooter game, Deathmatch and Capture-the-Flag both would be implemented as different experiences.
+
+An **Experience Definition** describes what game features need to be enabled and what actions to perform in order to implement the experience.
+
+Common game feature actions and plugins can be specified in an **Action Set**. It would be cumbersome to keep all experiences in sync during development, so the standard set of game feature actions can be specified in an action set to be reused by multiple experiences.
+
+In Lyra, both the Elimination and Control experiences are based on the same third-person shooter game which has a standard set of HUD widgets and share the same player controller. 
+
+<img src="/assets/images/shooter-banner.png" alt="A banner demonstrating the first-person shooter experience" />
+
+Since experiences are completely modular, they don't even need to be in the same genre! Lyra demonstrates this by having one of the experiences completely transform the game into a top-down party game.
+
+<img src="/assets/images/exploder-banner.png" alt="A banner demonstrating the top-down Exploder experience" />
 
 Most of the code related to Lyra Experiences can be found in the `/LyraGame/GameModes/` directory.
 
