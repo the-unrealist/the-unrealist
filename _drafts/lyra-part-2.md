@@ -166,9 +166,23 @@ A **User-Facing Experience Definition** (`ULyraUserFacingExperienceDefinition`) 
 Because this asset is not part of the experience lifecycle, I've excluded it from the source code for this chapter.
 
 ## Asset Manager
-TODO: Primary asset types to scan in project settings and game feature asset.
+The **Asset Manager** is used to discover and stream assets. Primary assets can be detected and loaded by the asset manager while secondary assets are referenced by (and loaded along with) primary assets.
 
-Explain that experience definitions must go into /Game/System/Experiences directory  and user facing definitions in /Game/System/Playlists in Lyra by default, unless explicitly added under Specific Assets, or another directory is added. And LyraExperienceActionSet must be defined to be detected in dropdown list when the uproperty meta specifier is set.
+By default, the asset manager scans for levels only. Enabling the Game Features plugin will prompt you to add the `GameFeatureData` to the list of asset types to scan.
+
+In Lyra, the asset manager is configured to also scan for experience definitions and action sets as shown below:
+
+<img src="/assets/images/asset-manager-settings.png" alt="Screenshot of the asset manager settings in project settings."/>
+
+As you can see in the next screenshot, only experiences in the `/Game/System/Experiences/` directory will be found. You can either include individual assets with the _Specific Assets_ property or add more directories to search.
+
+<img src="/assets/images/experience-definition-asset-directories.png" alt="Screenshot of the asset manager settings for Lyra Experience Definition showing only one directory that's scanned."/>
+
+Game features extend this via the `GameFeatureData` asset. You can add more asset types to scan and indicate which directories to look inside to find them. For example, the ShooterCore game feature data indicates that experience definitions can also be found under `/Experiences/` and `/System/Experiences/` directories within the plugin.
+
+<img src="/assets/images/shooter-core-asset-manager.png" alt="Screenshot of the asset manager settings in the Game Feature Data for the ShooterCore plugin"/>
+
+Lyra uses `ULyraAssetManager` (in `/LyraGame/System/`) which is subclassed from the base `UAssetManager` class. The Lyra Asset Manager implements thread-safe asset loading functions and handles initial game load.
 
 ## Next Steps
 In the next chapter, we will explore the lifecycle of experiences including how they are applied to all players, loaded, and executed.
