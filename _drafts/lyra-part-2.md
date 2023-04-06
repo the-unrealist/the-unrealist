@@ -18,7 +18,7 @@ This is the second chapter in the [Lyra Deep Dive](https://unrealist.org/lyra-pa
 
 I recommend looking at the [diff](https://github.com/the-unrealist/lyra-deep-dive/compare/chapter1-introduction...chapter2-experiences) to see what's changed since the previous chapter.
 
-## What are Experiences?
+## What is an Experience?
 In Lyra, an experience is an extensible and modular combination of a Game Mode and Game State that can be asynchronously loaded and switched at runtime.
 
 For example, in a typical shooter game, game types will be implemented as different experiences. Lyra follows this pattern by having the ShooterCore game implement the Elimination and Control game types as standalone experiences.
@@ -141,7 +141,7 @@ The experience definition has the following properties:
 
 |Property|Description|
 |--------|-----------|
-|`GameFeaturesToEnable`|A list of game feature plugin names to load when this experience is loaded.|
+|`GameFeaturesToEnable`|A list of game feature plugins to load when this experience is loaded.|
 |`DefaultPawnData`|A `ULyraPawnData` object that contains data needed to create a player pawn (i.e., pawn class, abilities, input config, and camera mode).|
 |`Actions`|A list of Game Feature actions to execute when the experience is loaded.|
 |`ActionSets`|A list of action sets (discussed in the next section) to compose into this experience.|
@@ -157,7 +157,7 @@ Since action sets are meant to be "merged" into experiences, they have some of t
 
 |Property|Description|
 |--------|-----------|
-|`GameFeaturesToEnable`|A list of game feature plugin names to load when the owning experience is loaded.|
+|`GameFeaturesToEnable`|A list of game feature plugins to load when the owning experience is loaded.|
 |`Actions`|A list of Game Feature actions to execute when the owning experience is loaded.|
 
 ## User-Facing Experience Definition
