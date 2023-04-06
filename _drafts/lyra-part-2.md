@@ -13,29 +13,23 @@ excerpt: "Lyra introduces the concept of Experiences which are essentially modul
 
 This is the second chapter in the [Lyra Deep Dive](https://unrealist.org/lyra-part-1) series.
 
-## What are Experiences?
-In Lyra, an experience is an extensible and modular combination of a GameMode and GameState that can be asynchronously loaded and switched at runtime. For example, in a typical shooter game, Deathmatch and Capture-the-Flag both would be implemented as different experiences.
-
-An **Experience Definition** describes what game features need to be enabled and what actions to perform in order to implement the experience.
-
-Common game feature actions and plugins can be specified in an **Action Set**. It would be cumbersome to keep all experiences in sync during development, so the standard set of game feature actions can be specified in an action set to be reused by multiple experiences.
-
-In Lyra, both the Elimination and Control experiences are based on the same third-person shooter game which has a standard set of HUD widgets and share the same player controller. 
-
-<img src="/assets/images/shooter-banner.png" alt="A banner demonstrating the first-person shooter experience" />
-
-Since experiences are completely modular, they don't even need to be in the same genre! Lyra demonstrates this by having one of the experiences completely transform the game into a top-down party game.
-
-<img src="/assets/images/exploder-banner.png" alt="A banner demonstrating the top-down Exploder experience" />
-
-Finally, an **User Facing Experience Definition** is used by the frontend to display information about an experience such as the icon, title, and description. This asset also specifies which map to play on and any extra URL options to pass to the game.
-
-Most of the code related to Lyra Experiences are found in the `/LyraGame/GameModes/` directory.
-
 ## Source Code
 [View the source code for this chapter ❭](https://github.com/the-unrealist/lyra-deep-dive/tree/chapter2-experiences)
 
 I recommend looking at the [diff](https://github.com/the-unrealist/lyra-deep-dive/compare/chapter1-introduction...chapter2-experiences) to see what's changed since the previous chapter.
+
+## What are Experiences?
+In Lyra, an experience is an extensible and modular combination of a Game Mode and Game State that can be asynchronously loaded and switched at runtime.
+
+For example, in a typical shooter game, game types will be implemented as different experiences. Lyra follows this pattern by having the ShooterCore game implement the Elimination and Control game types as standalone experiences.
+
+<img src="/assets/images/shooter-banner.png" alt="A banner demonstrating the first-person shooter experience" />
+
+Since experiences are completely modular, they don't even need to be in the same genre! Lyra demonstrates this by having one of the experiences completely transform the game into a top-down party game called Exploder.
+
+<img src="/assets/images/exploder-banner.png" alt="A banner demonstrating the top-down Exploder experience" />
+
+Most of the code related to Lyra Experiences are found in the `/LyraGame/GameModes/` directory.
 
 ## Plugins
 The Lyra Experiences system is driven by the combination of the **Game Features** and **Modular Gameplay** plugins.
@@ -138,14 +132,34 @@ These actors are provided by this plugin:
 
 This plugin does not come with Unreal Engine out of the box, so we need to manually create it. You can find this plugin in [the source code for this chapter](https://github.com/the-unrealist/lyra-deep-dive/tree/chapter2-experiences/LyraStarterGame/Plugins/ModularGameplayActors).
 
-## Experience Definition Data Asset
-TODO
+## Experience Definition
+An **Experience Definition** describes what game features need to be enabled and what actions to perform in order to implement the experience.
+
+Although `ULyraExperienceDefinition` is a primary data asset, you should implement them as a blueprint so that they'll be detected by the asset manager. Keep in mind that you cannot subclass from another experience blueprint if you want to create a similar experience. Instead, you should use composition via Action Sets.
+
+The experience definition has the following properties:
+
+|Property|Description|
+|--------|-----------|
+|`GameFeaturesToEnable`|A list of game feature plugin names to load when this experience is loaded.|
+|`DefaultPawnData`|A `ULyraPawnData` object that contains data needed to create a player pawn (i.e., pawn class, abilities, input config, and camera mode).|
+|`Actions`|A list of Game Feature actions to execute when the experience is loaded.|
+|`ActionSets`|A list of action sets (discussed in the next section) to compose into this experience.|
 
 ## Action Sets
-TODO
+Common game feature actions and plugins can be specified in an **Action Set** (`ULyraExperienceActionSet`). It would be cumbersome to keep all experiences in sync during development, so the standard set of game feature actions can be specified in an action set to be reused by multiple experiences.
+
+In Lyra, both the Elimination and Control experiences are based on the same input, actor components, and HUD widgets. For this reason, they are specified in the `LAS_ShooterGameSharedInput`, `LAS_ShooterGame_StandardComponents`, and `LAS_ShooterGame_StandardHUD` action sets and referenced in the `ActionSets` list in both experience blueprints. You can see this for yourself in `/Plugins/GameFeatures/ShooterCore/Content/Experiences/`.
+
+Since action sets are meant to be "merged" into experiences, they have some of the same properties found in experience definitions:
+
+|Property|Description|
+|--------|-----------|
+|`GameFeaturesToEnable`|A list of game feature plugin names to load when the owning experience is loaded.|
+|`Actions`|A list of Game Feature actions to execute when the owning experience is loaded.|
 
 ## User-Facing Experience Definition Data Asset
-TODO
+A **User-Facing Experience Definition** (`ULyraUserFacingExperienceDefinition`) is used by the frontend to display information about an experience such as the icon, title, and description. This asset also specifies which map to play on and any extra URL options to pass to the game.
 
 ## Asset Manager
 TODO: Primary asset types to scan in project settings and game feature asset.
