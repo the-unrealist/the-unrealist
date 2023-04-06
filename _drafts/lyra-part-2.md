@@ -14,8 +14,9 @@ excerpt: "Lyra introduces the concept of Experiences which are essentially modul
 This is the second chapter in the [Lyra Deep Dive](https://unrealist.org/lyra-part-1) series.
 
 ## What are Experiences?
-In Lyra, Experiences are an extension of the GameMode and GameState and can be switched at runtime.
-TODO: Explain what Lyra Experiences are and be sure to mention that most of the code for this feature is in the `GameModes` folder.
+In Lyra, an experience is an extensible and modular combination of a GameMode and GameState that can be asynchronously loaded and switched at runtime. In a typical shooter game, Deathmatch and Capture-the-Flag both would be implemented as different experiences. Since experiences are completely modular, they don't even need to be in the same genre! Lyra demonstrates this by having one of the experiences completely transforms the game into a top-down party game.
+
+Most of the code related to Lyra Experiences can be found in the `/LyraGame/GameModes/` directory.
 
 ## Source Code
 [View the source code for this chapter ❭](https://github.com/the-unrealist/lyra-deep-dive/tree/chapter2-experiences)
