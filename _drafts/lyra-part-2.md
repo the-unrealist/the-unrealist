@@ -142,7 +142,7 @@ The experience definition has the following properties:
 |Property|Description|
 |--------|-----------|
 |`GameFeaturesToEnable`|A list of game feature plugins to load when this experience is loaded.|
-|`DefaultPawnData`|A `ULyraPawnData` object that contains data needed to create a player pawn (i.e., pawn class, abilities, input config, and camera mode).|
+|`DefaultPawnData`|A `ULyraPawnData` object that contains data needed to create a player pawn (i.e., pawn class, abilities, input config, and camera mode). This was omitted from this chapter's source code because we'll implement this when we cover pawn spawning in a future chapter.|
 |`Actions`|A list of Game Feature actions to execute when the experience is loaded.|
 |`ActionSets`|A list of action sets (discussed in the next section) to compose into this experience.|
 
@@ -182,7 +182,7 @@ Game features extend this via the `GameFeatureData` asset. You can add more asse
 
 <img src="/assets/images/shooter-core-asset-manager.png" alt="Screenshot of the asset manager settings in the Game Feature Data for the ShooterCore plugin"/>
 
-Lyra uses `ULyraAssetManager` (in `/LyraGame/System/`) which is subclassed from the base `UAssetManager` class. The Lyra Asset Manager implements thread-safe asset loading functions and handles initial game load.
+Lyra uses `ULyraAssetManager` (in `/LyraGame/System/`) which is subclassed from the base `UAssetManager` class. The Lyra Asset Manager implements thread-safe asset loading functions and handles initial game load. We'll take a deeper look at this in a future chapter.
 
 ## Next Steps
 In the next chapter, we will explore the lifecycle of experiences including how they are applied to all players, loaded, and executed.
