@@ -5,7 +5,7 @@ title: "About"
 
 Hey, I'm Matt! I've been teaching myself the ins and outs of Unreal Engine since early 2022. This blog is my personal notebook dedicated to sharing the things I've learned along the way.
 
-I'm a full stack software engineer at Google by day, and a hobbyist game dev by night. I'm not actively seeking a change in career right now, but I am always open to interesting opportunities.
+I'm a full stack software engineer by day and a hobbyist game dev by night. I'm not actively seeking a change in career right now, but I am always open to interesting opportunities.
 
 My experience at both Microsoft and Google involves developing internal tools for engineering, operations, and logistics. I'm interested in further specializing in this field by focusing on how to extend the Unreal Editor and create plugins to improve developer workflows.
 
