@@ -30,15 +30,8 @@ TODO
 ## Deactivation
 TODO
 
-## Pawn Spawning and World Settings
-### Lyra Game Mode
+## Lyra World Settings
 TODO
-
-### Lyra World Settings
-TODO
-
-## Default Experience
-TODO: Create default Lyra experience definition, and set world settings.
 
 ## Blueprint Nodes
 TODO: Talk about `AsyncAction_ExperienceReady` and any other blueprint nodes related to Lyra Experiences.
