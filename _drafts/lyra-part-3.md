@@ -39,8 +39,8 @@ flowchart TD
 
 |Function|Target|Outcome|
 |--------|------|-------|
-|`ServerSetCurrentExperience`|Server|Sets `CurrentExperience` which is replicated to all clients and calls `StartExperienceLoad` on the server.|
-|`OnRep_CurrentExperience`|Client|Calls `StartExperienceLoad`|
+|`ServerSetCurrentExperience`|Server|Set `CurrentExperience` which is replicated to all clients and call `StartExperienceLoad` on the server.|
+|`OnRep_CurrentExperience`|Client|Call `StartExperienceLoad`|
 |`StartExperienceLoad`|Client & Server|Load experience definition, associated assets, and asset bundles.|
 |`OnExperienceLoadComplete`|Client & Server|Load and activate game feature plugins.|
 |`OnExperienceFullLoadCompleted`|Client & Server|Execute game feature actions.|
