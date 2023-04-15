@@ -22,19 +22,14 @@ The loading process starts immediately on the server. For clients, the loading p
 
 ```mermaid
 flowchart TD
-  subgraph Unload[Unload Experience]
-  EndPlay[[EndPlay]] --> OnAllActionsDeactivated
-  OnAllActionsDeactivated[[OnAllActionsDeactivated]]
-  end
-  subgraph Load[Load Experience]
   ALyraGameMode[ALyraGameMode] --> ServerSetCurrentExperience
   ServerSetCurrentExperience[[ServerSetCurrentExperience]] -- Replicate to clients --> OnRep_CurrentExperience
   ServerSetCurrentExperience --> StartExperienceLoad
   OnRep_CurrentExperience[[OnRep_CurrentExperience]] --> StartExperienceLoad
   StartExperienceLoad[[StartExperienceLoad]] --> OnExperienceLoadComplete
   OnExperienceLoadComplete[[OnExperienceLoadComplete]] --> OnExperienceFullLoadCompleted
-  end
-  Load ~~~ Unload
+  EndPlay[[EndPlay]] --> OnAllActionsDeactivated
+  OnAllActionsDeactivated[[OnAllActionsDeactivated]]
 ```
 
 |Function|Target|Outcome|
@@ -130,3 +125,23 @@ void ULyraExperienceManagerComponent::OnRep_CurrentExperience()
 ```
 
 `OnRep_CurrentExperience` is executed on all clients when `CurrentExperience` is replicated from the server. This function then calls `StartExperienceLoad` to start the experience lifecycle on the client.
+
+## 1. Load Assets
+The experience definition and all assets are asynchronously loaded in `StartExperienceLoad`.
+
+In this function, we begin by populating a set of primary asset IDs in `BundleAssetList` with the experience definition itself and all action sets. 
+
+```cpp
+TSet<FPrimaryAssetId> BundleAssetList;
+
+BundleAssetList.Add(CurrentExperience->GetPrimaryAssetId()); 
+for (const TObjectPtr<ULyraExperienceActionSet>& ActionSet : CurrentExperience->ActionSets)
+{
+    if (ActionSet != nullptr)
+    {
+        BundleAssetList.Add(ActionSet->GetPrimaryAssetId());
+    }
+}
+```
+
+`RawAssetList` is currently not used at all, but its purpose is to specify secondary assets to load along with the experience.
