@@ -357,13 +357,5 @@ It clears all delegates after broadcasting. This means you should check whether 
 |`OnExperienceLoaded`|Spawning Pawns (`ALyraGameMode` and `ALyraPlayerState`)|
 |`OnExperienceLoaded_LowPriority`|Bots (`ULyraBotCreationComponent`)|
 
-After the experience is fully loaded, the graphics and audio settings may have changed while loading, so it reapplies certain settings again just in case.
-```cpp
-// Apply any necessary scalability settings
-#if !UE_SERVER
-    ULyraSettingsLocal::Get()->OnExperienceLoaded();
-#endif
-```
-
 ## Stage 5. Deactivate Experience
 TODO
