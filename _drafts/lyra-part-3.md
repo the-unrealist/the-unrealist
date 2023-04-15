@@ -38,7 +38,7 @@ flowchart TD
 |`OnRep_CurrentExperience`|Client|Call `StartExperienceLoad`|
 |`StartExperienceLoad`|Client & Server|Load experience definition, associated assets, and asset bundles.|
 |`OnExperienceLoadComplete`|Client & Server|Load and activate game feature plugins.|
-|`OnExperienceFullLoadCompleted`|Client & Server|Execute game feature actions.|
+|`OnExperienceFullLoadCompleted`|Client & Server|Chaos testing and execute game feature actions.|
 ||||
 |`EndPlay`|Client & Server|Deactivate and unload game features.|
 |`OnAllActionsDeactivated`|Client & Server|Clear `CurrentExperience`.|
@@ -134,6 +134,8 @@ Only assets that are directly referenced by the experience definition are loaded
 `StartExperienceLoad` begins by populating `BundleAssetList` with a set of primary asset IDs including the experience definition itself and any linked action sets.
 
 ```cpp
+// Function: StartExperienceLoad()
+
 TSet<FPrimaryAssetId> BundleAssetList;
 
 BundleAssetList.Add(CurrentExperience->GetPrimaryAssetId());
@@ -149,6 +151,8 @@ for (const TObjectPtr<ULyraExperienceActionSet>& ActionSet : CurrentExperience->
 Next, it determines the [asset bundles](https://docs.unrealengine.com/5.1/en-US/asset-management-in-unreal-engine/#assetbundles) to load.
 
 ```cpp
+// Function: StartExperienceLoad()
+
 TArray<FName> BundlesToLoad;
 BundlesToLoad.Add(FLyraBundles::Equipped);
 
@@ -167,13 +171,15 @@ if (bLoadServer)
 
 |Asset Bundle Name|Purpose|Used By|
 |-----------------|-------|-------|
-|`Equipped`|Assets in this bundle are always loaded.|None (as of 5.1)|
+|`Equipped`|Assets in this bundle are always loaded.|None (as of UE 5.1)|
 |`Client`|Assets to load on clients or PIE.|HUD Widgets, Input Configs, and Ability Sets|
 |`Server`|Assets to load on dedicated servers or PIE.|Input Configs and Ability Sets|
 
 The assets and asset bundles are loaded with a call to `ChangeBundleStateForPrimaryAssets`. You may notice that the async handle for this operation, `BundleLoadHandle`, is then combined with `RawLoadHandle`. `LoadAssetList` loads all secondary assets added to `RawAssetList`. However, this is unused right now and you won't need it.
 
 ```cpp
+// Function: StartExperienceLoad()
+
 const TSharedPtr<FStreamableHandle> BundleLoadHandle = AssetManager.ChangeBundleStateForPrimaryAssets(BundleAssetList.Array(), BundlesToLoad, {}, false, FStreamableDelegate(), FStreamableManager::AsyncLoadHighPriority);
 const TSharedPtr<FStreamableHandle> RawLoadHandle = AssetManager.LoadAssetList(RawAssetList.Array(), FStreamableDelegate(), FStreamableManager::AsyncLoadHighPriority, TEXT("StartExperienceLoad()"));
 
@@ -215,7 +221,8 @@ Game features are loaded and activated in this stage.
 `OnExperienceLoadComplete` begins by collecting all game feature plugins from the experience definition and all linked action sets, filtering out duplicates and invalid names.
 
 ```cpp
-// find the URLs for our GameFeaturePlugins - filtering out dupes and ones that don't have a valid mapping
+// Function: OnExperienceLoadComplete()
+
 GameFeaturePluginURLs.Reset();
 
 auto CollectGameFeaturePluginURLs = [This=this](const UPrimaryDataAsset* Context, const TArray<FString>& FeaturePluginList)
@@ -247,6 +254,8 @@ for (const TObjectPtr<ULyraExperienceActionSet>& ActionSet : CurrentExperience->
 When there is at least one valid game feature, it asynchronously loads and activates each one of them using a counter `NumGameFeaturePluginsLoading` to keep track of the number of plugins left to load.
 
 ```cpp
+// Function: OnExperienceLoadComplete()
+
 NumGameFeaturePluginsLoading = GameFeaturePluginURLs.Num();
 if (NumGameFeaturePluginsLoading > 0)
 {
@@ -278,4 +287,83 @@ void ULyraExperienceManagerComponent::OnGameFeaturePluginLoadComplete(const UE::
 }
 ```
 
-`OnExperienceFullLoadCompleted` is called when there are no more game features left to load. In the next stage, the actions in the experience definition will be executed.
+`OnExperienceFullLoadCompleted` is called when there are no more game features left to load which brings us to the next stage.
+
+## Stage 3. Chaos Testing
+This stage is optional and disabled by default. When enabled, a random delay is added to the load time here. This can help you test your game by having staggered client readiness.
+
+To configure chaos testing, use these console variables:
+|CVar|Description|
+|----|-----------|
+|`lyra.chaos.ExperienceDelayLoad.MinSecs`|This value (in seconds) will be added as a delay of load completion of the experience (along with the random value `lyra.chaos.ExperienceDelayLoad.RandomSecs`)|
+|`lyra.chaos.ExperienceDelayLoad.RandomSecs`|A random amount of time between 0 and this value (in seconds) will be added as a delay of load completion of the experience (along with the fixed value `lyra.chaos.ExperienceDelayLoad.MinSecs`)|
+
+## Stage 4. Execute Game Feature Actions
+Game feature actions are executed in the order as they appear in the experience definition and then each action set.
+
+```cpp
+FGameFeatureActivatingContext Context;
+
+// Only apply to our specific world context if set
+const FWorldContext* ExistingWorldContext = GEngine->GetWorldContextFromWorld(GetWorld());
+if (ExistingWorldContext)
+{
+    Context.SetRequiredWorldContextHandle(ExistingWorldContext->ContextHandle);
+}
+
+auto ActivateListOfActions = [&Context](const TArray<UGameFeatureAction*>& ActionList)
+{
+    for (UGameFeatureAction* Action : ActionList)
+    {
+        if (Action != nullptr)
+        {
+            Action->OnGameFeatureRegistering();
+            Action->OnGameFeatureLoading();
+            Action->OnGameFeatureActivating(Context);
+        }
+    }
+};
+
+ActivateListOfActions(CurrentExperience->Actions);
+for (const TObjectPtr<ULyraExperienceActionSet>& ActionSet : CurrentExperience->ActionSets)
+{
+    if (ActionSet != nullptr)
+    {
+        ActivateListOfActions(ActionSet->Actions);
+    }
+}
+```
+
+Finally, the experience is fully loaded at this point.
+
+The game is notified that the experience has finished loading via the `OnExperienceLoaded` delegates.
+
+```cpp
+OnExperienceLoaded_HighPriority.Broadcast(CurrentExperience);
+OnExperienceLoaded_HighPriority.Clear();
+
+OnExperienceLoaded.Broadcast(CurrentExperience);
+OnExperienceLoaded.Clear();
+
+OnExperienceLoaded_LowPriority.Broadcast(CurrentExperience);
+OnExperienceLoaded_LowPriority.Clear();
+```
+
+It clears all delegates after broadcasting. This means you should check whether you should register a callback with `IsExperienceLoaded()` first, otherwise your callback function may never execute!
+
+|Delegate|Used For|
+|--------|-------|
+|`OnExperienceLoaded_HighPriority`|Frontend (`ULyraFrontendStateComponent`) and Team Creation (`ULyraTeamCreationComponent`)|
+|`OnExperienceLoaded`|Spawning Pawns (`ALyraGameMode` and `ALyraPlayerState`)|
+|`OnExperienceLoaded_LowPriority`|Bots (`ULyraBotCreationComponent`)|
+
+After the experience is fully loaded, the graphics and audio settings may have changed while loading, so it reapplies certain settings again just in case.
+```cpp
+// Apply any necessary scalability settings
+#if !UE_SERVER
+    ULyraSettingsLocal::Get()->OnExperienceLoaded();
+#endif
+```
+
+## Stage 5. Deactivate Experience
+TODO
