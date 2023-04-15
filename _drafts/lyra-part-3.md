@@ -1,4 +1,4 @@
-This is the third chapter in the [Lyra Deep Dive](https://unrealist.org/lyra-part-1/) series.
+This is the **third** chapter in the [Lyra Deep Dive](https://unrealist.org/lyra-part-1/) series.
 
 In the [previous chapter](https://unrealist.org/lyra-part-2/), we've learned about how experiences are defined. In this chapter, we'll take a deep dive into the lifecycle of an experience.
 
@@ -7,7 +7,7 @@ In the [previous chapter](https://unrealist.org/lyra-part-2/), we've learned abo
 
 I recommend looking at the [diff](https://github.com/the-unrealist/lyra-deep-dive/compare/chapter2-experiences...chapter3-experience-lifecycle) to see what's changed since the previous chapter.
 
-## Lifecycle of an Experience
+## Experience Lifecycle
 `ALyraGameState` automatically adds `UExperienceManagerComponent` to itself in its constructor. This component handles the entire lifecycle of an experience.
 
 ```mermaid
@@ -205,9 +205,77 @@ else
 }
 ```
 
-Finally, when the async load operation is complete, it calls `OnExperienceLoadComplete` which brings us to the next stage.
+When the async load operation is complete, it calls `OnExperienceLoadComplete` which brings us to the next stage.
 
 At the end of `StartExperienceLoad`, certain assets may be preloaded without blocking the game. This is also unused at this time.
 
 ## Stage 2: Load Game Features
-TODO
+Game features are loaded and activated in this stage.
+
+`OnExperienceLoadComplete` begins by collecting all game feature plugins from the experience definition and all linked action sets, filtering out duplicates and invalid names.
+
+```cpp
+// find the URLs for our GameFeaturePlugins - filtering out dupes and ones that don't have a valid mapping
+GameFeaturePluginURLs.Reset();
+
+auto CollectGameFeaturePluginURLs = [This=this](const UPrimaryDataAsset* Context, const TArray<FString>& FeaturePluginList)
+{
+    for (const FString& PluginName : FeaturePluginList)
+    {
+        FString PluginURL;
+        if (UGameFeaturesSubsystem::Get().GetPluginURLByName(PluginName, /*out*/ PluginURL))
+        {
+            This->GameFeaturePluginURLs.AddUnique(PluginURL);
+        }
+        else
+        {
+            ensureMsgf(false, TEXT("OnExperienceLoadComplete failed to find plugin URL from PluginName %s for experience %s - fix data, ignoring for this run"), *PluginName, *Context->GetPrimaryAssetId().ToString());
+        }
+    }
+};
+
+CollectGameFeaturePluginURLs(CurrentExperience, CurrentExperience->GameFeaturesToEnable);
+for (const TObjectPtr<ULyraExperienceActionSet>& ActionSet : CurrentExperience->ActionSets)
+{
+    if (ActionSet != nullptr)
+    {
+        CollectGameFeaturePluginURLs(ActionSet, ActionSet->GameFeaturesToEnable);
+    }
+}
+```
+
+When there is at least one valid game feature, it asynchronously loads and activates each one of them using a counter `NumGameFeaturePluginsLoading` to keep track of the number of plugins left to load.
+
+```cpp
+NumGameFeaturePluginsLoading = GameFeaturePluginURLs.Num();
+if (NumGameFeaturePluginsLoading > 0)
+{
+    LoadState = ELyraExperienceLoadState::LoadingGameFeatures;
+    for (const FString& PluginURL : GameFeaturePluginURLs)
+    {
+        ULyraExperienceManager::NotifyOfPluginActivation(PluginURL);
+        UGameFeaturesSubsystem::Get().LoadAndActivateGameFeaturePlugin(PluginURL, FGameFeaturePluginLoadComplete::CreateUObject(this, &ThisClass::OnGameFeaturePluginLoadComplete));
+    }
+}
+else
+{
+    OnExperienceFullLoadCompleted();
+}
+```
+
+When a game feature is activated, it invokes `OnGameFeaturePluginLoadComplete` which decreases the counter.
+
+```cpp
+void ULyraExperienceManagerComponent::OnGameFeaturePluginLoadComplete(const UE::GameFeatures::FResult& Result)
+{
+    // decrement the number of plugins that are loading
+    NumGameFeaturePluginsLoading--;
+
+    if (NumGameFeaturePluginsLoading == 0)
+    {
+        OnExperienceFullLoadCompleted();
+    }
+}
+```
+
+`OnExperienceFullLoadCompleted` is called when there are no more game features left to load. In the next stage, the actions in the experience definition will be executed.
