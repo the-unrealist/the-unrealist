@@ -48,6 +48,28 @@ flowchart TD
 |`EndPlay`|Client & Server|Deactivate and unload game features.|
 |`OnAllActionsDeactivated`|Client & Server|Clear `CurrentExperience`.|
 
+The `LoadState` property reflects the current state of the experience. The following diagram shows the transition between states:
+
+```mermaid
+stateDiagram-v2
+    state has_game_features <<choice>>
+    state chaos_testing <<choice>>
+    [*] --> Unloaded
+    Unloaded --> Loading
+    Loading --> has_game_features
+    has_game_features --> LoadingGameFeatures: Has Game Features
+    has_game_features --> chaos_testing : No Game Features
+    LoadingGameFeatures --> chaos_testing
+    chaos_testing --> LoadingChaosTestingDelay: Chaos Testing Enabled
+    chaos_testing --> ExecutingActions: Chaos Testing Disabled
+    LoadingChaosTestingDelay --> ExecutingActions
+    ExecutingActions --> Loaded
+    Loaded --> Deactivating
+    Deactivating --> Unloaded2
+    Unloaded2: Unloaded
+    Unloaded2 --> [*]
+```
+
 Let's take a closer look at each stage of the lifecycle.
 
 ## Replication
