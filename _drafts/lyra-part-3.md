@@ -126,15 +126,17 @@ void ULyraExperienceManagerComponent::OnRep_CurrentExperience()
 
 `OnRep_CurrentExperience` is executed on all clients when `CurrentExperience` is replicated from the server. This function then calls `StartExperienceLoad` to start the experience lifecycle on the client.
 
-## 1. Load Assets
-The experience definition and all assets are asynchronously loaded in `StartExperienceLoad`.
+## Stage 1: Load Experience Definition
+The experience definition and all associated assets\* are asynchronously loaded in this stage.
 
-In this function, we begin by populating a set of primary asset IDs in `BundleAssetList` with the experience definition itself and all action sets. 
+Only assets that are directly referenced by the experience definition are loaded here like, for example, HUD widgets in the **Add Widgets** action. All other assets in game feature plugins are loaded in the next stage.
+
+`StartExperienceLoad` begins by populating `BundleAssetList` with a set of primary asset IDs including the experience definition itself and any linked action sets.
 
 ```cpp
 TSet<FPrimaryAssetId> BundleAssetList;
 
-BundleAssetList.Add(CurrentExperience->GetPrimaryAssetId()); 
+BundleAssetList.Add(CurrentExperience->GetPrimaryAssetId());
 for (const TObjectPtr<ULyraExperienceActionSet>& ActionSet : CurrentExperience->ActionSets)
 {
     if (ActionSet != nullptr)
@@ -144,4 +146,68 @@ for (const TObjectPtr<ULyraExperienceActionSet>& ActionSet : CurrentExperience->
 }
 ```
 
-`RawAssetList` is currently not used at all, but its purpose is to specify secondary assets to load along with the experience.
+Next, it determines the [asset bundles](https://docs.unrealengine.com/5.1/en-US/asset-management-in-unreal-engine/#assetbundles) to load.
+
+```cpp
+TArray<FName> BundlesToLoad;
+BundlesToLoad.Add(FLyraBundles::Equipped);
+
+const ENetMode OwnerNetMode = GetOwner()->GetNetMode();
+const bool bLoadClient = GIsEditor || (OwnerNetMode != NM_DedicatedServer);
+const bool bLoadServer = GIsEditor || (OwnerNetMode != NM_Client);
+if (bLoadClient)
+{
+    BundlesToLoad.Add(UGameFeaturesSubsystemSettings::LoadStateClient);
+}
+if (bLoadServer)
+{
+    BundlesToLoad.Add(UGameFeaturesSubsystemSettings::LoadStateServer);
+}
+```
+
+|Asset Bundle Name|Purpose|Used By|
+|-----------------|-------|-------|
+|`Equipped`|Assets in this bundle are always loaded.|None (as of 5.1)|
+|`Client`|Assets to load on clients or PIE.|HUD Widgets, Input Configs, and Ability Sets|
+|`Server`|Assets to load on dedicated servers or PIE.|Input Configs and Ability Sets|
+
+The assets and asset bundles are loaded with a call to `ChangeBundleStateForPrimaryAssets`. You may notice that the async handle for this operation, `BundleLoadHandle`, is then combined with `RawLoadHandle`. `LoadAssetList` loads all secondary assets added to `RawAssetList`. However, this is unused right now and you won't need it.
+
+```cpp
+const TSharedPtr<FStreamableHandle> BundleLoadHandle = AssetManager.ChangeBundleStateForPrimaryAssets(BundleAssetList.Array(), BundlesToLoad, {}, false, FStreamableDelegate(), FStreamableManager::AsyncLoadHighPriority);
+const TSharedPtr<FStreamableHandle> RawLoadHandle = AssetManager.LoadAssetList(RawAssetList.Array(), FStreamableDelegate(), FStreamableManager::AsyncLoadHighPriority, TEXT("StartExperienceLoad()"));
+
+// If both async loads are running, combine them
+TSharedPtr<FStreamableHandle> Handle = nullptr;
+if (BundleLoadHandle.IsValid() && RawLoadHandle.IsValid())
+{
+    Handle = AssetManager.GetStreamableManager().CreateCombinedHandle({ BundleLoadHandle, RawLoadHandle });
+}
+else
+{
+    Handle = BundleLoadHandle.IsValid() ? BundleLoadHandle : RawLoadHandle;
+}
+
+FStreamableDelegate OnAssetsLoadedDelegate = FStreamableDelegate::CreateUObject(this, &ThisClass::OnExperienceLoadComplete);
+if (!Handle.IsValid() || Handle->HasLoadCompleted())
+{
+    // Assets were already loaded, call the delegate now
+    FStreamableHandle::ExecuteDelegate(OnAssetsLoadedDelegate);
+}
+else
+{
+    Handle->BindCompleteDelegate(OnAssetsLoadedDelegate);
+
+    Handle->BindCancelDelegate(FStreamableDelegate::CreateLambda([OnAssetsLoadedDelegate]()
+    {
+        OnAssetsLoadedDelegate.ExecuteIfBound();
+    }));
+}
+```
+
+Finally, when the async load operation is complete, it calls `OnExperienceLoadComplete` which brings us to the next stage.
+
+At the end of `StartExperienceLoad`, certain assets may be preloaded without blocking the game. This is also unused at this time.
+
+## Stage 2: Load Game Features
+TODO
