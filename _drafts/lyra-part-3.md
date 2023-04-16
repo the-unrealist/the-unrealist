@@ -349,7 +349,7 @@ OnExperienceLoaded_LowPriority.Broadcast(CurrentExperience);
 OnExperienceLoaded_LowPriority.Clear();
 ```
 
-You may notice that it clears all delegates after broadcasting. The `CallOrRegister_OnExperienceLoaded` functions for all priorities check whether the experience has been loaded and executes the callback immediately if so. Otherwise, it adds to the delegate to be called later.
+You may notice that it clears all delegates after broadcasting. This is because the `CallOrRegister_OnExperienceLoaded` functions for all priorities check whether the experience has been loaded and executes the callback immediately if so. Otherwise, it adds to the delegate to be called later.
 
 |Delegate|Used For|
 |--------|-------|
