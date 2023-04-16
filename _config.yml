@@ -59,6 +59,7 @@ plugins:
   
 jekyll-spaceship:
   mermaid-processor:
+    mode: pre-fetch
     config:
       theme: dark
 
