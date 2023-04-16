@@ -358,4 +358,9 @@ You may notice that it clears all delegates after broadcasting. This is because 
 |`OnExperienceLoaded_LowPriority`|Bots (`ULyraBotCreationComponent`)|
 
 ## Stage 5. Deactivate Experience
-TODO
+When `EndPlay` on the component is triggered, all loaded game feature plugins are asynchronously deactivated.
+
+At this time, Lyra does not unload game features after they've been deactivated. Ideally, it should've called `UGameFeaturesSubsystem::UnloadGameFeaturePlugin` at some point in the deactivation logic. Maybe we'll see that in a future version.
+
+## Next Steps
+In the next chapter, we'll take a look at `ULyraPawnData` and learn how pawns are spawned. Stay tuned!
