@@ -59,6 +59,8 @@ plugins:
   - jekyll-spaceship
   
 jekyll-spaceship:
+  processors:
+    - mermaid-processor
   mermaid-processor:
     mode: pre-fetch
     config:
