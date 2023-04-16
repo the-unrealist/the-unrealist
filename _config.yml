@@ -61,18 +61,10 @@ plugins:
 jekyll-spaceship:
   processors:
     - mermaid-processor
-    - element-processor
   mermaid-processor:
     mode: pre-fetch
     config:
       theme: dark
-  element-processor:
-    css:
-      - svg:
-          props:
-            style:
-              display: block
-              margin: auto
 
 author:
   name   : "Matt"
