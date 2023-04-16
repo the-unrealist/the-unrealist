@@ -55,6 +55,7 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-spaceship
 
 author:
   name   : "Matt"
