@@ -56,6 +56,11 @@ plugins:
   - jemoji
   - jekyll-include-cache
   - jekyll-spaceship
+  
+jekyll-spaceship:
+  mermaid-processor:
+    config:
+      theme: dark
 
 author:
   name   : "Matt"
