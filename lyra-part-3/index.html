@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html lang="en" class="no-js">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Lyra Deep Dive - Chapter 3: Experience Lifecycle - Matt’s Game Dev Notebook</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="Matt">
+  
+  <meta property="article:author" content="Matt">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Matt's Game Dev Notebook">
+<meta property="og:title" content="Lyra Deep Dive - Chapter 3: Experience Lifecycle">
+<meta property="og:url" content="https://unrealist.org/lyra-part-3/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-04-16T00:00:00-07:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://unrealist.org/lyra-part-3/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://unrealist.org/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Matt's Game Dev Notebook Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVMW4VY2EL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GVMW4VY2EL');
+</script>
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Matt's Game Dev Notebook
+          
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://unrealist.org/">
+        <img src="/assets/images/orange.png" alt="Matt" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://unrealist.org/" itemprop="url">Matt</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Unreal Engine Enthusiast</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Lyra Deep Dive - Chapter 3: Experience Lifecycle">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2023-04-16T00:00:00-07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://unrealist.org/lyra-part-3/" class="u-url" itemprop="url">Lyra Deep Dive - Chapter 3: Experience Lifecycle
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-16T00:00:00-07:00">April 16, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+<li><a href="#lyra-deep-dive-series">Lyra Deep Dive Series</a></li>
+<li><a href="#experience-lifecycle">Experience Lifecycle</a></li>
+<li><a href="#replication">Replication</a></li>
+<li><a href="#stage-1-load-experience-definition">Stage 1: Load Experience Definition</a></li>
+<li><a href="#stage-2-load-game-features">Stage 2: Load Game Features</a></li>
+<li><a href="#stage-3-chaos-testing">Stage 3. Chaos Testing</a></li>
+<li><a href="#stage-4-execute-game-feature-actions">Stage 4. Execute Game Feature Actions</a></li>
+<li><a href="#stage-5-deactivate-experience">Stage 5. Deactivate Experience</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <style type="text/css">
+svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+</style>
+
+<p><img src="https://img.shields.io/badge/Unreal%20Engine-5.3-informational" alt="Written for Unreal Engine 5.3"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++"></p>
+
+<p>This is the <strong>third</strong> chapter in the <a href="https://unrealist.org/lyra-part-1/">Lyra Deep Dive</a> series.</p>
+
+<p>In the <a href="https://unrealist.org/lyra-part-2/">previous chapter</a>, we’ve learned about how experiences are defined. In this chapter, we’ll take a deep dive into the lifecycle of an experience.</p>
+
+<h2 id="lyra-deep-dive-series">Lyra Deep Dive Series</h2>
+<ul>
+  <li><a href="https://unrealist.org/lyra-part-1/">Chapter 1: Introduction</a></li>
+  <li><a href="https://unrealist.org/lyra-part-2/">Chapter 2: Experiences</a></li>
+  <li><a href="https://unrealist.org/lyra-part-3/">Chapter 3: Experience Lifecycle</a></li>
+  <li>
+<strong><em>Coming soon!</em></strong> Chapter 4: Experience Selection</li>
+</ul>
+
+<h2 id="experience-lifecycle">Experience Lifecycle</h2>
+<p><code class="language-plaintext highlighter-rouge">ALyraGameState</code> automatically adds <code class="language-plaintext highlighter-rouge">ULyraExperienceManagerComponent</code> to itself in its constructor. This component handles the entire lifecycle of an experience.</p>
+
+<svg class="mermaid" id="mermaid-svg" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 291.171875px;" viewbox="-8 -8 291.171875 218" role="graphics-document document" aria-roledescription="flowchart-v2" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mermaid-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-svg .error-icon{fill:#a44141;}#mermaid-svg .error-text{fill:#ddd;stroke:#ddd;}#mermaid-svg .edge-thickness-normal{stroke-width:2px;}#mermaid-svg .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-svg .marker.cross{stroke:lightgrey;}#mermaid-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-svg .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#ccc;}#mermaid-svg .cluster-label text{fill:#F9FFFE;}#mermaid-svg .cluster-label span,#mermaid-svg p{color:#F9FFFE;}#mermaid-svg .label text,#mermaid-svg span,#mermaid-svg p{fill:#ccc;color:#ccc;}#mermaid-svg .node rect,#mermaid-svg .node circle,#mermaid-svg .node ellipse,#mermaid-svg .node polygon,#mermaid-svg .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-svg .flowchart-label text{text-anchor:middle;}#mermaid-svg .node .label{text-align:center;}#mermaid-svg .node.clickable{cursor:pointer;}#mermaid-svg .arrowheadPath{fill:lightgrey;}#mermaid-svg .edgePath .path{stroke:lightgrey;stroke-width:2.0px;}#mermaid-svg .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-svg .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}#mermaid-svg .edgeLabel rect{opacity:0.5;background-color:hsl(0, 0%, 34.4117647059%);fill:hsl(0, 0%, 34.4117647059%);}#mermaid-svg .labelBkg{background-color:rgba(87.75, 87.75, 87.75, 0.5);}#mermaid-svg .cluster rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:rgba(255, 255, 255, 0.25);stroke-width:1px;}#mermaid-svg .cluster text{fill:#F9FFFE;}#mermaid-svg .cluster span,#mermaid-svg p{color:#F9FFFE;}#mermaid-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#ccc;}#mermaid-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker id="mermaid-svg_flowchart-pointEnd" class="marker flowchart" viewbox="0 0 10 10" refx="6" refy="5" markerunits="userSpaceOnUse" markerwidth="12" markerheight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-svg_flowchart-pointStart" class="marker flowchart" viewbox="0 0 10 10" refx="4.5" refy="5" markerunits="userSpaceOnUse" markerwidth="12" markerheight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-svg_flowchart-circleEnd" class="marker flowchart" viewbox="0 0 10 10" refx="11" refy="5" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-svg_flowchart-circleStart" class="marker flowchart" viewbox="0 0 10 10" refx="-1" refy="5" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-svg_flowchart-crossEnd" class="marker cross flowchart" viewbox="0 0 11 11" refx="12" refy="5.2" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-svg_flowchart-crossStart" class="marker cross flowchart" viewbox="0 0 11 11" refx="-1" refy="5.2" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M137.586,34L137.586,38.167C137.586,42.333,137.586,50.667,137.586,58.117C137.586,65.567,137.586,72.133,137.586,75.417L137.586,78.7" id="L-ALyraGameMode-ALyraGameState-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-ALyraGameMode LE-ALyraGameState" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path><path d="M137.586,118L137.586,122.167C137.586,126.333,137.586,134.667,137.586,142.117C137.586,149.567,137.586,156.133,137.586,159.417L137.586,162.7" id="L-ALyraGameState-ULyraExperienceManagerComponent-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-ALyraGameState LE-ULyraExperienceManagerComponent" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-ALyraGameMode-0" transform="translate(137.5859375, 17)"><rect class="basic label-container" style="" rx="0" ry="0" x="-66.2734375" y="-17" width="132.546875" height="34"></rect><g class="label" style="" transform="translate(-58.7734375, -9.5)"><rect></rect><foreignobject width="117.546875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">ALyraGameMode</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-ALyraGameState-1" transform="translate(137.5859375, 101)"><rect class="basic label-container" style="" rx="0" ry="0" x="-66.2421875" y="-17" width="132.484375" height="34"></rect><g class="label" style="" transform="translate(-58.7421875, -9.5)"><rect></rect><foreignobject width="117.484375" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">ALyraGameState</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-ULyraExperienceManagerComponent-3" transform="translate(137.5859375, 185)"><rect class="basic label-container" style="" rx="0" ry="0" x="-137.5859375" y="-17" width="275.171875" height="34"></rect><g class="label" style="" transform="translate(-130.0859375, -9.5)"><rect></rect><foreignobject width="260.171875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">ULyraExperienceManagerComponent</span></div></foreignobject></g></g></g></g></g><style>@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");</style></svg>
+
+<p>The lifecycle of an experience begins with <code class="language-plaintext highlighter-rouge">ALyraGameMode</code> on the server calling <code class="language-plaintext highlighter-rouge">SetCurrentExperience</code> and replicating <code class="language-plaintext highlighter-rouge">CurrentExperience</code> to all clients.</p>
+
+<p>The loading process starts immediately on the server. For clients, the loading process starts after <code class="language-plaintext highlighter-rouge">CurrentExperience</code> is replicated.</p>
+
+<svg class="mermaid" id="mermaid-svg" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 493.203125px;" viewbox="-8 -8 493.203125 489" role="graphics-document document" aria-roledescription="flowchart-v2" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mermaid-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-svg .error-icon{fill:#a44141;}#mermaid-svg .error-text{fill:#ddd;stroke:#ddd;}#mermaid-svg .edge-thickness-normal{stroke-width:2px;}#mermaid-svg .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-svg .marker.cross{stroke:lightgrey;}#mermaid-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-svg .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#ccc;}#mermaid-svg .cluster-label text{fill:#F9FFFE;}#mermaid-svg .cluster-label span,#mermaid-svg p{color:#F9FFFE;}#mermaid-svg .label text,#mermaid-svg span,#mermaid-svg p{fill:#ccc;color:#ccc;}#mermaid-svg .node rect,#mermaid-svg .node circle,#mermaid-svg .node ellipse,#mermaid-svg .node polygon,#mermaid-svg .node path{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-svg .flowchart-label text{text-anchor:middle;}#mermaid-svg .node .label{text-align:center;}#mermaid-svg .node.clickable{cursor:pointer;}#mermaid-svg .arrowheadPath{fill:lightgrey;}#mermaid-svg .edgePath .path{stroke:lightgrey;stroke-width:2.0px;}#mermaid-svg .flowchart-link{stroke:lightgrey;fill:none;}#mermaid-svg .edgeLabel{background-color:hsl(0, 0%, 34.4117647059%);text-align:center;}#mermaid-svg .edgeLabel rect{opacity:0.5;background-color:hsl(0, 0%, 34.4117647059%);fill:hsl(0, 0%, 34.4117647059%);}#mermaid-svg .labelBkg{background-color:rgba(87.75, 87.75, 87.75, 0.5);}#mermaid-svg .cluster rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:rgba(255, 255, 255, 0.25);stroke-width:1px;}#mermaid-svg .cluster text{fill:#F9FFFE;}#mermaid-svg .cluster span,#mermaid-svg p{color:#F9FFFE;}#mermaid-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(20, 1.5873015873%, 12.3529411765%);border:1px solid rgba(255, 255, 255, 0.25);border-radius:2px;pointer-events:none;z-index:100;}#mermaid-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#ccc;}#mermaid-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><marker id="mermaid-svg_flowchart-pointEnd" class="marker flowchart" viewbox="0 0 10 10" refx="6" refy="5" markerunits="userSpaceOnUse" markerwidth="12" markerheight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-svg_flowchart-pointStart" class="marker flowchart" viewbox="0 0 10 10" refx="4.5" refy="5" markerunits="userSpaceOnUse" markerwidth="12" markerheight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-svg_flowchart-circleEnd" class="marker flowchart" viewbox="0 0 10 10" refx="11" refy="5" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-svg_flowchart-circleStart" class="marker flowchart" viewbox="0 0 10 10" refx="-1" refy="5" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaid-svg_flowchart-crossEnd" class="marker cross flowchart" viewbox="0 0 11 11" refx="12" refy="5.2" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaid-svg_flowchart-crossStart" class="marker cross flowchart" viewbox="0 0 11 11" refx="-1" refy="5.2" markerunits="userSpaceOnUse" markerwidth="11" markerheight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M126.008,34L126.008,38.167C126.008,42.333,126.008,50.667,126.074,58.2C126.14,65.734,126.272,72.467,126.338,75.834L126.404,79.201" id="L-ALyraGameMode-SetCurrentExperience-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-ALyraGameMode LE-SetCurrentExperience" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path><path d="M150.35,118.5L158.33,124.167C166.311,129.833,182.273,141.167,190.324,151.783C198.376,162.4,198.517,172.3,198.588,177.25L198.659,182.201" id="L-SetCurrentExperience-OnRep_CurrentExperience-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-SetCurrentExperience LE-OnRep_CurrentExperience" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path><path d="M102.666,118.5L94.519,124.167C86.371,129.833,70.076,141.167,61.929,155.417C53.781,169.667,53.781,186.833,53.781,202.417C53.781,218,53.781,232,60.268,242.803C66.755,253.606,79.728,261.213,86.215,265.016L92.701,268.819" id="L-SetCurrentExperience-StartExperienceLoad-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-SetCurrentExperience LE-StartExperienceLoad" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path><path d="M198.734,221.5L198.651,225.583C198.568,229.667,198.401,237.833,191.993,245.712C185.585,253.591,172.936,261.182,166.611,264.977L160.287,268.773" id="L-OnRep_CurrentExperience-StartExperienceLoad-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-OnRep_CurrentExperience LE-StartExperienceLoad" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path><path d="M126.508,305.5L126.424,309.583C126.341,313.667,126.174,321.833,126.157,329.284C126.14,336.734,126.272,343.467,126.338,346.834L126.404,350.201" id="L-StartExperienceLoad-OnExperienceLoadComplete-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-StartExperienceLoad LE-OnExperienceLoadComplete" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path><path d="M126.508,389.5L126.424,393.583C126.341,397.667,126.174,405.833,126.091,413.2C126.008,420.567,126.008,427.133,126.008,430.417L126.008,433.7" id="L-OnExperienceLoadComplete-OnExperienceFullLoadCompleted-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-OnExperienceLoadComplete LE-OnExperienceFullLoadCompleted" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path><path d="M373.969,34.5L373.885,38.583C373.802,42.667,373.635,50.833,373.618,58.284C373.601,65.734,373.733,72.467,373.799,75.834L373.865,79.201" id="L-EndPlay-OnAllActionsDeactivated-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-EndPlay LE-OnAllActionsDeactivated" style="fill:none;" marker-end="url(#mermaid-svg_flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(198.234375, 152.5)"><g class="label" transform="translate(-69.5234375, -9.5)"><foreignobject width="139.046875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">Replicate to clients</span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-ALyraGameMode-0" transform="translate(126.0078125, 17)"><rect class="basic label-container" style="" rx="0" ry="0" x="-66.2734375" y="-17" width="132.546875" height="34"></rect><g class="label" style="" transform="translate(-58.7734375, -9.5)"><rect></rect><foreignobject width="117.546875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">ALyraGameMode</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-SetCurrentExperience-1" transform="translate(126.0078125, 101)"><polygon points="0,0 171.453125,0 171.453125,-34 0,-34 0,0 -8,0 179.453125,0 179.453125,-34 -8,-34 -8,0" class="label-container" transform="translate(-85.7265625,17)" style=""></polygon><g class="label" style="" transform="translate(-78.2265625, -9.5)"><rect></rect><foreignobject width="156.453125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">SetCurrentExperience</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-OnRep_CurrentExperience-3" transform="translate(198.234375, 204)"><polygon points="0,0 202.90625,0 202.90625,-34 0,-34 0,0 -8,0 210.90625,0 210.90625,-34 -8,-34 -8,0" class="label-container" transform="translate(-101.453125,17)" style=""></polygon><g class="label" style="" transform="translate(-93.953125, -9.5)"><rect></rect><foreignobject width="187.90625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">OnRep_CurrentExperience</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-StartExperienceLoad-5" transform="translate(126.0078125, 288)"><polygon points="0,0 163.140625,0 163.140625,-34 0,-34 0,0 -8,0 171.140625,0 171.140625,-34 -8,-34 -8,0" class="label-container" transform="translate(-81.5703125,17)" style=""></polygon><g class="label" style="" transform="translate(-74.0703125, -9.5)"><rect></rect><foreignobject width="148.140625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">StartExperienceLoad</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-OnExperienceLoadComplete-9" transform="translate(126.0078125, 372)"><polygon points="0,0 216.53125,0 216.53125,-34 0,-34 0,0 -8,0 224.53125,0 224.53125,-34 -8,-34 -8,0" class="label-container" transform="translate(-108.265625,17)" style=""></polygon><g class="label" style="" transform="translate(-100.765625, -9.5)"><rect></rect><foreignobject width="201.53125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">OnExperienceLoadComplete</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-OnExperienceFullLoadCompleted-11" transform="translate(126.0078125, 456)"><rect class="basic label-container" style="" rx="0" ry="0" x="-126.0078125" y="-17" width="252.015625" height="34"></rect><g class="label" style="" transform="translate(-118.5078125, -9.5)"><rect></rect><foreignobject width="237.015625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">OnExperienceFullLoadCompleted</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-EndPlay-12" transform="translate(373.46875, 17)"><polygon points="0,0 71.171875,0 71.171875,-34 0,-34 0,0 -8,0 79.171875,0 79.171875,-34 -8,-34 -8,0" class="label-container" transform="translate(-35.5859375,17)" style=""></polygon><g class="label" style="" transform="translate(-28.0859375, -9.5)"><rect></rect><foreignobject width="56.171875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">EndPlay</span></div></foreignobject></g></g><g class="node default default flowchart-label" id="flowchart-OnAllActionsDeactivated-13" transform="translate(373.46875, 101)"><polygon points="0,0 191.46875,0 191.46875,-34 0,-34 0,0 -8,0 199.46875,0 199.46875,-34 -8,-34 -8,0" class="label-container" transform="translate(-95.734375,17)" style=""></polygon><g class="label" style="" transform="translate(-88.234375, -9.5)"><rect></rect><foreignobject width="176.46875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">OnAllActionsDeactivated</span></div></foreignobject></g></g></g></g></g><style>@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");</style></svg>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Target</th>
+      <th>Outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SetCurrentExperience</code></td>
+      <td>Server</td>
+      <td>Set <code class="language-plaintext highlighter-rouge">CurrentExperience</code> which is replicated to all clients and call <code class="language-plaintext highlighter-rouge">StartExperienceLoad</code> on the server.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnRep_CurrentExperience</code></td>
+      <td>Client</td>
+      <td>Call <code class="language-plaintext highlighter-rouge">StartExperienceLoad</code>
+</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StartExperienceLoad</code></td>
+      <td>Client &amp; Server</td>
+      <td>Load experience definition, associated assets, and asset bundles.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnExperienceLoadComplete</code></td>
+      <td>Client &amp; Server</td>
+      <td>Load and activate game feature plugins.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnExperienceFullLoadCompleted</code></td>
+      <td>Client &amp; Server</td>
+      <td>Chaos testing and execute game feature actions.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EndPlay</code></td>
+      <td>Client &amp; Server</td>
+      <td>Deactivate and unload game features.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnAllActionsDeactivated</code></td>
+      <td>Client &amp; Server</td>
+      <td>Clear <code class="language-plaintext highlighter-rouge">CurrentExperience</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code class="language-plaintext highlighter-rouge">LoadState</code> property reflects the current state of the experience. The following diagram shows the transition between states:</p>
+
+<svg class="statediagram" id="mermaid-svg" width="100%" xmlns="http://www.w3.org/2000/svg" style="max-width: 414.703125px;" viewbox="0 0 414.703125 960" role="graphics-document document" aria-roledescription="stateDiagram" xmlns:xlink="http://www.w3.org/1999/xlink"><style>#mermaid-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}#mermaid-svg .error-icon{fill:#a44141;}#mermaid-svg .error-text{fill:#ddd;stroke:#ddd;}#mermaid-svg .edge-thickness-normal{stroke-width:2px;}#mermaid-svg .edge-thickness-thick{stroke-width:3.5px;}#mermaid-svg .edge-pattern-solid{stroke-dasharray:0;}#mermaid-svg .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-svg .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-svg .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-svg .marker.cross{stroke:lightgrey;}#mermaid-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-svg defs #statediagram-barbEnd{fill:lightgrey;stroke:lightgrey;}#mermaid-svg g.stateGroup text{fill:#81B1DB;stroke:none;font-size:10px;}#mermaid-svg g.stateGroup text{fill:#ccc;stroke:none;font-size:10px;}#mermaid-svg g.stateGroup .state-title{font-weight:bolder;fill:#e0dfdf;}#mermaid-svg g.stateGroup rect{fill:#1f2020;stroke:#81B1DB;}#mermaid-svg g.stateGroup line{stroke:lightgrey;stroke-width:1;}#mermaid-svg .transition{stroke:lightgrey;stroke-width:1;fill:none;}#mermaid-svg .stateGroup .composit{fill:#333;border-bottom:1px;}#mermaid-svg .stateGroup .alt-composit{fill:#e0e0e0;border-bottom:1px;}#mermaid-svg .state-note{stroke:hsl(180, 0%, 18.3529411765%);fill:hsl(180, 1.5873015873%, 28.3529411765%);}#mermaid-svg .state-note text{fill:rgb(183.8476190475, 181.5523809523, 181.5523809523);stroke:none;font-size:10px;}#mermaid-svg .stateLabel .box{stroke:none;stroke-width:0;fill:#1f2020;opacity:0.5;}#mermaid-svg .edgeLabel .label rect{fill:#1f2020;opacity:0.5;}#mermaid-svg .edgeLabel .label text{fill:#ccc;}#mermaid-svg .label div .edgeLabel{color:#ccc;}#mermaid-svg .stateLabel text{fill:#e0dfdf;font-size:10px;font-weight:bold;}#mermaid-svg .node circle.state-start{fill:#f4f4f4;stroke:#f4f4f4;}#mermaid-svg .node .fork-join{fill:#f4f4f4;stroke:#f4f4f4;}#mermaid-svg .node circle.state-end{fill:#cccccc;stroke:#333;stroke-width:1.5;}#mermaid-svg .end-state-inner{fill:#333;stroke-width:1.5;}#mermaid-svg .node rect{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-svg .node polygon{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-svg #statediagram-barbEnd{fill:lightgrey;}#mermaid-svg .statediagram-cluster rect{fill:#1f2020;stroke:#81B1DB;stroke-width:1px;}#mermaid-svg .cluster-label,#mermaid-svg .nodeLabel{color:#e0dfdf;}#mermaid-svg .statediagram-cluster rect.outer{rx:5px;ry:5px;}#mermaid-svg .statediagram-state .divider{stroke:#81B1DB;}#mermaid-svg .statediagram-state .title-state{rx:5px;ry:5px;}#mermaid-svg .statediagram-cluster.statediagram-cluster .inner{fill:#333;}#mermaid-svg .statediagram-cluster.statediagram-cluster-alt .inner{fill:#555;}#mermaid-svg .statediagram-cluster .inner{rx:0;ry:0;}#mermaid-svg .statediagram-state rect.basic{rx:5px;ry:5px;}#mermaid-svg .statediagram-state rect.divider{stroke-dasharray:10,10;fill:#555;}#mermaid-svg .note-edge{stroke-dasharray:5;}#mermaid-svg .statediagram-note rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:hsl(180, 0%, 18.3529411765%);stroke-width:1px;rx:0;ry:0;}#mermaid-svg .statediagram-note rect{fill:hsl(180, 1.5873015873%, 28.3529411765%);stroke:hsl(180, 0%, 18.3529411765%);stroke-width:1px;rx:0;ry:0;}#mermaid-svg .statediagram-note text{fill:rgb(183.8476190475, 181.5523809523, 181.5523809523);}#mermaid-svg .statediagram-note .nodeLabel{color:rgb(183.8476190475, 181.5523809523, 181.5523809523);}#mermaid-svg .statediagram .edgeLabel{color:red;}#mermaid-svg #dependencyStart,#mermaid-svg #dependencyEnd{fill:lightgrey;stroke:lightgrey;stroke-width:1;}#mermaid-svg .statediagramTitleText{text-anchor:middle;font-size:18px;fill:#ccc;}#mermaid-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+<g><defs><marker id="mermaid-svg_statediagram-barbEnd" refx="19" refy="7" markerwidth="20" markerheight="14" markerunits="strokeWidth" orient="auto"><path d="M 19,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M197.348,22L197.348,26.167C197.348,30.333,197.348,38.667,197.348,47C197.348,55.333,197.348,63.667,197.348,67.833L197.348,72" id="edge0" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M197.348,106L197.348,110.167C197.348,114.333,197.348,122.667,197.348,131C197.348,139.333,197.348,147.667,197.348,151.833L197.348,156" id="edge1" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M197.348,190L197.348,194.167C197.348,198.333,197.348,206.667,197.348,215C197.348,223.333,197.348,231.667,197.348,235.833L197.348,240" id="edge2" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M209.785,260.428L223.351,267.44C236.918,274.452,264.051,288.476,277.617,301.238C291.184,314,291.184,325.5,291.184,331.25L291.184,337" id="edge3" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M184.911,260.428L171.344,267.44C157.778,274.452,130.645,288.476,117.078,304.071C103.512,319.667,103.512,336.833,103.512,352.417C103.512,368,103.512,382,116.996,394.604C130.481,407.209,157.45,418.418,170.935,424.022L184.42,429.627" id="edge4" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M291.184,371L291.184,375.167C291.184,379.333,291.184,387.667,277.699,397.438C264.214,407.209,237.245,418.418,223.76,424.022L210.276,429.627" id="edge5" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M210.127,440.717L226.068,447.847C242.009,454.978,273.891,469.239,289.832,482.119C305.773,495,305.773,506.5,305.773,512.25L305.773,518" id="edge6" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M184.568,440.717L168.627,447.847C152.686,454.978,120.804,469.239,104.863,484.953C88.922,500.667,88.922,517.833,88.922,533.417C88.922,549,88.922,563,99.678,574.167C110.435,585.333,131.948,593.667,142.705,597.833L153.461,602" id="edge7" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M305.773,552L305.773,556.167C305.773,560.333,305.773,568.667,295.017,577C284.26,585.333,262.747,593.667,251.991,597.833L241.234,602" id="edge8" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M197.348,636L197.348,640.167C197.348,644.333,197.348,652.667,197.348,661C197.348,669.333,197.348,677.667,197.348,681.833L197.348,686" id="edge9" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M197.348,720L197.348,724.167C197.348,728.333,197.348,736.667,197.348,745C197.348,753.333,197.348,761.667,197.348,765.833L197.348,770" id="edge10" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M197.348,804L197.348,808.167C197.348,812.333,197.348,820.667,197.348,829C197.348,837.333,197.348,845.667,197.348,849.833L197.348,854" id="edge11" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path><path d="M197.348,888L197.348,892.167C197.348,896.333,197.348,904.667,197.348,913C197.348,921.333,197.348,929.667,197.348,933.833L197.348,938" id="edge12" class=" edge-thickness-normal transition" style="fill:none" marker-end="url(#mermaid-svg_statediagram-barbEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(291.18359375, 302.5)"><g class="label" transform="translate(-69.1328125, -9.5)"><rect rx="0" ry="0" width="138.265625" height="19"></rect><foreignobject width="138.265625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">Has Game Features</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(103.51171875, 354)"><g class="label" transform="translate(-65.859375, -9.5)"><rect rx="0" ry="0" width="131.71875" height="19"></rect><foreignobject width="131.71875" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">No Game Features</span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(305.7734375, 483.5)"><g class="label" transform="translate(-79.15625, -9.5)"><rect rx="0" ry="0" width="158.3125" height="19"></rect><foreignobject width="158.3125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">Chaos Testing Enabled</span></div></foreignobject></g></g><g class="edgeLabel" transform="translate(88.921875, 535)"><g class="label" transform="translate(-80.921875, -9.5)"><rect rx="0" ry="0" width="161.84375" height="19"></rect><foreignobject width="161.84375" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">Chaos Testing Disabled</span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><rect rx="0" ry="0" width="0" height="0"></rect><foreignobject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignobject></g></g></g><g class="nodes"><g class="node default" id="state-has_game_features-4" transform="translate(197.34765625, 254)"><polygon points="0,14 14,0 0,-14 -14,0" class="state-start" r="7" width="28" height="28"></polygon></g><g class="node default" id="state-chaos_testing-7" transform="translate(197.34765625, 435)"><polygon points="0,14 14,0 0,-14 -14,0" class="state-start" r="7" width="28" height="28"></polygon></g><g class="node default" id="state-root_start-0" transform="translate(197.34765625, 15)"><circle class="state-start" r="7" width="14" height="14"></circle></g><g class="node  statediagram-state undefined" id="state-Unloaded-1" transform="translate(197.34765625, 89)"><rect class="basic label-container" style="" x="-41.1953125" y="-17" width="82.390625" height="34"></rect><g class="label" style="" transform="translate(-33.6953125, -9.5)"><rect></rect><foreignobject width="67.390625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Unloaded</span></div></foreignobject></g></g><g class="node  statediagram-state undefined" id="state-Loading-2" transform="translate(197.34765625, 173)"><rect class="basic label-container" style="" x="-35.171875" y="-17" width="70.34375" height="34"></rect><g class="label" style="" transform="translate(-27.671875, -9.5)"><rect></rect><foreignobject width="55.34375" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Loading</span></div></foreignobject></g></g><g class="node  statediagram-state undefined" id="state-LoadingGameFeatures-5" transform="translate(291.18359375, 354)"><rect class="basic label-container" style="" x="-86.8125" y="-17" width="173.625" height="34"></rect><g class="label" style="" transform="translate(-79.3125, -9.5)"><rect></rect><foreignobject width="158.625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">LoadingGameFeatures</span></div></foreignobject></g></g><g class="node  statediagram-state undefined" id="state-LoadingChaosTestingDelay-8" transform="translate(305.7734375, 535)"><rect class="basic label-container" style="" x="-100.9296875" y="-17" width="201.859375" height="34"></rect><g class="label" style="" transform="translate(-93.4296875, -9.5)"><rect></rect><foreignobject width="186.859375" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">LoadingChaosTestingDelay</span></div></foreignobject></g></g><g class="node  statediagram-state undefined" id="state-ExecutingActions-9" transform="translate(197.34765625, 619)"><rect class="basic label-container" style="" x="-68.3671875" y="-17" width="136.734375" height="34"></rect><g class="label" style="" transform="translate(-60.8671875, -9.5)"><rect></rect><foreignobject width="121.734375" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">ExecutingActions</span></div></foreignobject></g></g><g class="node  statediagram-state undefined" id="state-Loaded-10" transform="translate(197.34765625, 703)"><rect class="basic label-container" style="" x="-33.328125" y="-17" width="66.65625" height="34"></rect><g class="label" style="" transform="translate(-25.828125, -9.5)"><rect></rect><foreignobject width="51.65625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Loaded</span></div></foreignobject></g></g><g class="node  statediagram-state undefined" id="state-Deactivating-11" transform="translate(197.34765625, 787)"><rect class="basic label-container" style="" x="-52.3515625" y="-17" width="104.703125" height="34"></rect><g class="label" style="" transform="translate(-44.8515625, -9.5)"><rect></rect><foreignobject width="89.703125" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Deactivating</span></div></foreignobject></g></g><g class="node  statediagram-state undefined" id="state-Unloaded2-12" transform="translate(197.34765625, 871)"><rect class="basic label-container" style="" x="-41.1953125" y="-17" width="82.390625" height="34"></rect><g class="label" style="" transform="translate(-33.6953125, -9.5)"><rect></rect><foreignobject width="67.390625" height="19"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">Unloaded</span></div></foreignobject></g></g><g class="node default" id="state-root_end-12" transform="translate(197.34765625, 945)"><circle class="state-start" r="7" width="14" height="14"></circle><circle class="state-end" r="5" width="10" height="10"></circle></g></g></g></g><style>@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");</style></svg>
+
+<p>Let’s take a closer look at each stage of the lifecycle.</p>
+
+<h2 id="replication">Replication</h2>
+<p><code class="language-plaintext highlighter-rouge">ULyraExperienceManagerComponent</code> has a function <code class="language-plaintext highlighter-rouge">SetCurrentExperience</code>.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: LyraExperienceManagerComponent.h</span>
+
+<span class="kt">void</span> <span class="nf">SetCurrentExperience</span><span class="p">(</span><span class="n">FPrimaryAssetId</span> <span class="n">ExperienceId</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: LyraExperienceManagerComponent.cpp</span>
+
+<span class="kt">void</span> <span class="n">ULyraExperienceManagerComponent</span><span class="o">::</span><span class="n">SetCurrentExperience</span><span class="p">(</span><span class="n">FPrimaryAssetId</span> <span class="n">ExperienceId</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ULyraAssetManager</span><span class="o">&amp;</span> <span class="n">AssetManager</span> <span class="o">=</span> <span class="n">ULyraAssetManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+    <span class="n">FSoftObjectPath</span> <span class="n">AssetPath</span> <span class="o">=</span> <span class="n">AssetManager</span><span class="p">.</span><span class="n">GetPrimaryAssetPath</span><span class="p">(</span><span class="n">ExperienceId</span><span class="p">);</span>
+    <span class="n">TSubclassOf</span><span class="o">&lt;</span><span class="n">ULyraExperienceDefinition</span><span class="o">&gt;</span> <span class="n">AssetClass</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UClass</span><span class="o">&gt;</span><span class="p">(</span><span class="n">AssetPath</span><span class="p">.</span><span class="n">TryLoad</span><span class="p">());</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">AssetClass</span><span class="p">);</span>
+    <span class="k">const</span> <span class="n">ULyraExperienceDefinition</span><span class="o">*</span> <span class="n">Experience</span> <span class="o">=</span> <span class="n">GetDefault</span><span class="o">&lt;</span><span class="n">ULyraExperienceDefinition</span><span class="o">&gt;</span><span class="p">(</span><span class="n">AssetClass</span><span class="p">);</span>
+
+    <span class="n">check</span><span class="p">(</span><span class="n">Experience</span> <span class="o">!=</span> <span class="nb">nullptr</span><span class="p">);</span>
+    <span class="n">check</span><span class="p">(</span><span class="n">CurrentExperience</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">);</span>
+    <span class="n">CurrentExperience</span> <span class="o">=</span> <span class="n">Experience</span><span class="p">;</span>
+    <span class="n">StartExperienceLoad</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In <code class="language-plaintext highlighter-rouge">SetCurrentExperience</code>, the server does the following:</p>
+
+<ol>
+  <li>Synchronously load the experience <em>definition</em>.</li>
+  <li>Verify the experience definition was loaded successfully.</li>
+  <li>Set CurrentExperience which will trigger replication to all clients.</li>
+  <li>Call <code class="language-plaintext highlighter-rouge">StartExperienceLoad</code> to start the experience lifecycle on the server.</li>
+</ol>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: LyraExperienceManagerComponent.h</span>
+
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">ReplicatedUsing</span><span class="o">=</span><span class="n">OnRep_CurrentExperience</span><span class="p">)</span>
+<span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">ULyraExperienceDefinition</span><span class="o">&gt;</span> <span class="n">CurrentExperience</span><span class="p">;</span>
+
+<span class="n">UFUNCTION</span><span class="p">()</span>
+<span class="kt">void</span> <span class="nf">OnRep_CurrentExperience</span><span class="p">();</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: LyraExperienceManagerComponent.cpp</span>
+
+<span class="kt">void</span> <span class="n">ULyraExperienceManagerComponent</span><span class="o">::</span><span class="n">OnRep_CurrentExperience</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">StartExperienceLoad</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">OnRep_CurrentExperience</code> is executed on all clients when <code class="language-plaintext highlighter-rouge">CurrentExperience</code> is replicated from the server. This function then calls <code class="language-plaintext highlighter-rouge">StartExperienceLoad</code> to start the experience lifecycle on the client.</p>
+
+<h2 id="stage-1-load-experience-definition">Stage 1: Load Experience Definition</h2>
+<p>The experience definition and all associated assets* are asynchronously loaded in this stage.</p>
+
+<p>*Only assets that are directly referenced by the experience definition are loaded here like, for example, HUD widgets in the <strong>Add Widgets</strong> action. All other assets in game feature plugins are loaded in the next stage.</p>
+
+<p><code class="language-plaintext highlighter-rouge">StartExperienceLoad</code> begins by populating <code class="language-plaintext highlighter-rouge">BundleAssetList</code> with a set of primary asset IDs including the experience definition itself and any linked action sets.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function: StartExperienceLoad()</span>
+
+<span class="n">TSet</span><span class="o">&lt;</span><span class="n">FPrimaryAssetId</span><span class="o">&gt;</span> <span class="n">BundleAssetList</span><span class="p">;</span>
+
+<span class="n">BundleAssetList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">CurrentExperience</span><span class="o">-&gt;</span><span class="n">GetPrimaryAssetId</span><span class="p">());</span>
+<span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">ULyraExperienceActionSet</span><span class="o">&gt;&amp;</span> <span class="n">ActionSet</span> <span class="o">:</span> <span class="n">CurrentExperience</span><span class="o">-&gt;</span><span class="n">ActionSets</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ActionSet</span> <span class="o">!=</span> <span class="nb">nullptr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">BundleAssetList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">ActionSet</span><span class="o">-&gt;</span><span class="n">GetPrimaryAssetId</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Next, it determines the <a href="https://docs.unrealengine.com/5.1/en-US/asset-management-in-unreal-engine/#assetbundles">asset bundles</a> to load.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function: StartExperienceLoad()</span>
+
+<span class="n">TArray</span><span class="o">&lt;</span><span class="n">FName</span><span class="o">&gt;</span> <span class="n">BundlesToLoad</span><span class="p">;</span>
+<span class="n">BundlesToLoad</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">FLyraBundles</span><span class="o">::</span><span class="n">Equipped</span><span class="p">);</span>
+
+<span class="k">const</span> <span class="n">ENetMode</span> <span class="n">OwnerNetMode</span> <span class="o">=</span> <span class="n">GetOwner</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetNetMode</span><span class="p">();</span>
+<span class="k">const</span> <span class="kt">bool</span> <span class="n">bLoadClient</span> <span class="o">=</span> <span class="n">GIsEditor</span> <span class="o">||</span> <span class="p">(</span><span class="n">OwnerNetMode</span> <span class="o">!=</span> <span class="n">NM_DedicatedServer</span><span class="p">);</span>
+<span class="k">const</span> <span class="kt">bool</span> <span class="n">bLoadServer</span> <span class="o">=</span> <span class="n">GIsEditor</span> <span class="o">||</span> <span class="p">(</span><span class="n">OwnerNetMode</span> <span class="o">!=</span> <span class="n">NM_Client</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">bLoadClient</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">BundlesToLoad</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">UGameFeaturesSubsystemSettings</span><span class="o">::</span><span class="n">LoadStateClient</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">bLoadServer</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">BundlesToLoad</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">UGameFeaturesSubsystemSettings</span><span class="o">::</span><span class="n">LoadStateServer</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Asset Bundle Name</th>
+      <th>Purpose</th>
+      <th>Used By</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Equipped</code></td>
+      <td>Assets in this bundle are always loaded.</td>
+      <td>None (as of UE 5.1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Client</code></td>
+      <td>Assets to load on clients or PIE.</td>
+      <td>HUD Widgets, Input Configs, and Ability Sets</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Server</code></td>
+      <td>Assets to load on dedicated servers or PIE.</td>
+      <td>Input Configs and Ability Sets</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The assets and asset bundles are loaded with a call to <code class="language-plaintext highlighter-rouge">ChangeBundleStateForPrimaryAssets</code>. You may notice that the async handle for this operation, <code class="language-plaintext highlighter-rouge">BundleLoadHandle</code>, is then combined with <code class="language-plaintext highlighter-rouge">RawLoadHandle</code>. <code class="language-plaintext highlighter-rouge">LoadAssetList</code> loads all secondary assets added to <code class="language-plaintext highlighter-rouge">RawAssetList</code>. However, this is unused right now and you won’t need it.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function: StartExperienceLoad()</span>
+
+<span class="k">const</span> <span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FStreamableHandle</span><span class="o">&gt;</span> <span class="n">BundleLoadHandle</span> <span class="o">=</span> <span class="n">AssetManager</span><span class="p">.</span><span class="n">ChangeBundleStateForPrimaryAssets</span><span class="p">(</span><span class="n">BundleAssetList</span><span class="p">.</span><span class="n">Array</span><span class="p">(),</span> <span class="n">BundlesToLoad</span><span class="p">,</span> <span class="p">{},</span> <span class="nb">false</span><span class="p">,</span> <span class="n">FStreamableDelegate</span><span class="p">(),</span> <span class="n">FStreamableManager</span><span class="o">::</span><span class="n">AsyncLoadHighPriority</span><span class="p">);</span>
+<span class="k">const</span> <span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FStreamableHandle</span><span class="o">&gt;</span> <span class="n">RawLoadHandle</span> <span class="o">=</span> <span class="n">AssetManager</span><span class="p">.</span><span class="n">LoadAssetList</span><span class="p">(</span><span class="n">RawAssetList</span><span class="p">.</span><span class="n">Array</span><span class="p">(),</span> <span class="n">FStreamableDelegate</span><span class="p">(),</span> <span class="n">FStreamableManager</span><span class="o">::</span><span class="n">AsyncLoadHighPriority</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">"StartExperienceLoad()"</span><span class="p">));</span>
+
+<span class="c1">// If both async loads are running, combine them</span>
+<span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FStreamableHandle</span><span class="o">&gt;</span> <span class="n">Handle</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">BundleLoadHandle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">RawLoadHandle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">Handle</span> <span class="o">=</span> <span class="n">AssetManager</span><span class="p">.</span><span class="n">GetStreamableManager</span><span class="p">().</span><span class="n">CreateCombinedHandle</span><span class="p">({</span> <span class="n">BundleLoadHandle</span><span class="p">,</span> <span class="n">RawLoadHandle</span> <span class="p">});</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="n">Handle</span> <span class="o">=</span> <span class="n">BundleLoadHandle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="o">?</span> <span class="n">BundleLoadHandle</span> <span class="o">:</span> <span class="n">RawLoadHandle</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">FStreamableDelegate</span> <span class="n">OnAssetsLoadedDelegate</span> <span class="o">=</span> <span class="n">FStreamableDelegate</span><span class="o">::</span><span class="n">CreateUObject</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ThisClass</span><span class="o">::</span><span class="n">OnExperienceLoadComplete</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">Handle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">()</span> <span class="o">||</span> <span class="n">Handle</span><span class="o">-&gt;</span><span class="n">HasLoadCompleted</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="c1">// Assets were already loaded, call the delegate now</span>
+    <span class="n">FStreamableHandle</span><span class="o">::</span><span class="n">ExecuteDelegate</span><span class="p">(</span><span class="n">OnAssetsLoadedDelegate</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="n">Handle</span><span class="o">-&gt;</span><span class="n">BindCompleteDelegate</span><span class="p">(</span><span class="n">OnAssetsLoadedDelegate</span><span class="p">);</span>
+
+    <span class="n">Handle</span><span class="o">-&gt;</span><span class="n">BindCancelDelegate</span><span class="p">(</span><span class="n">FStreamableDelegate</span><span class="o">::</span><span class="n">CreateLambda</span><span class="p">([</span><span class="n">OnAssetsLoadedDelegate</span><span class="p">]()</span>
+    <span class="p">{</span>
+        <span class="n">OnAssetsLoadedDelegate</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">();</span>
+    <span class="p">}));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>When the async load operation is complete, it calls <code class="language-plaintext highlighter-rouge">OnExperienceLoadComplete</code> which brings us to the next stage.</p>
+
+<p>At the end of <code class="language-plaintext highlighter-rouge">StartExperienceLoad</code>, certain assets may be preloaded without blocking the game. This is also unused at this time.</p>
+
+<h2 id="stage-2-load-game-features">Stage 2: Load Game Features</h2>
+<p>Game features are loaded and activated in this stage.</p>
+
+<p><code class="language-plaintext highlighter-rouge">OnExperienceLoadComplete</code> begins by collecting all game feature plugins from the experience definition and all linked action sets, filtering out duplicates and invalid names.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function: OnExperienceLoadComplete()</span>
+
+<span class="n">GameFeaturePluginURLs</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+
+<span class="k">auto</span> <span class="n">CollectGameFeaturePluginURLs</span> <span class="o">=</span> <span class="p">[</span><span class="n">This</span><span class="o">=</span><span class="k">this</span><span class="p">](</span><span class="k">const</span> <span class="n">UPrimaryDataAsset</span><span class="o">*</span> <span class="n">Context</span><span class="p">,</span> <span class="k">const</span> <span class="n">TArray</span><span class="o">&lt;</span><span class="n">FString</span><span class="o">&gt;&amp;</span> <span class="n">FeaturePluginList</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">FString</span><span class="o">&amp;</span> <span class="n">PluginName</span> <span class="o">:</span> <span class="n">FeaturePluginList</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">FString</span> <span class="n">PluginURL</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">UGameFeaturesSubsystem</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">GetPluginURLByName</span><span class="p">(</span><span class="n">PluginName</span><span class="p">,</span> <span class="cm">/*out*/</span> <span class="n">PluginURL</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">This</span><span class="o">-&gt;</span><span class="n">GameFeaturePluginURLs</span><span class="p">.</span><span class="n">AddUnique</span><span class="p">(</span><span class="n">PluginURL</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">ensureMsgf</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">"OnExperienceLoadComplete failed to find plugin URL from PluginName %s for experience %s - fix data, ignoring for this run"</span><span class="p">),</span> <span class="o">*</span><span class="n">PluginName</span><span class="p">,</span> <span class="o">*</span><span class="n">Context</span><span class="o">-&gt;</span><span class="n">GetPrimaryAssetId</span><span class="p">().</span><span class="n">ToString</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">CollectGameFeaturePluginURLs</span><span class="p">(</span><span class="n">CurrentExperience</span><span class="p">,</span> <span class="n">CurrentExperience</span><span class="o">-&gt;</span><span class="n">GameFeaturesToEnable</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">ULyraExperienceActionSet</span><span class="o">&gt;&amp;</span> <span class="n">ActionSet</span> <span class="o">:</span> <span class="n">CurrentExperience</span><span class="o">-&gt;</span><span class="n">ActionSets</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ActionSet</span> <span class="o">!=</span> <span class="nb">nullptr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">CollectGameFeaturePluginURLs</span><span class="p">(</span><span class="n">ActionSet</span><span class="p">,</span> <span class="n">ActionSet</span><span class="o">-&gt;</span><span class="n">GameFeaturesToEnable</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>When there is at least one valid game feature, it asynchronously loads and activates each one of them using a counter <code class="language-plaintext highlighter-rouge">NumGameFeaturePluginsLoading</code> to keep track of the number of plugins left to load.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Function: OnExperienceLoadComplete()</span>
+
+<span class="n">NumGameFeaturePluginsLoading</span> <span class="o">=</span> <span class="n">GameFeaturePluginURLs</span><span class="p">.</span><span class="n">Num</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">NumGameFeaturePluginsLoading</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LoadState</span> <span class="o">=</span> <span class="n">ELyraExperienceLoadState</span><span class="o">::</span><span class="n">LoadingGameFeatures</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">FString</span><span class="o">&amp;</span> <span class="n">PluginURL</span> <span class="o">:</span> <span class="n">GameFeaturePluginURLs</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ULyraExperienceManager</span><span class="o">::</span><span class="n">NotifyOfPluginActivation</span><span class="p">(</span><span class="n">PluginURL</span><span class="p">);</span>
+        <span class="n">UGameFeaturesSubsystem</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">LoadAndActivateGameFeaturePlugin</span><span class="p">(</span><span class="n">PluginURL</span><span class="p">,</span> <span class="n">FGameFeaturePluginLoadComplete</span><span class="o">::</span><span class="n">CreateUObject</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ThisClass</span><span class="o">::</span><span class="n">OnGameFeaturePluginLoadComplete</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="n">OnExperienceFullLoadCompleted</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>When a game feature is activated, it invokes <code class="language-plaintext highlighter-rouge">OnGameFeaturePluginLoadComplete</code> which decreases the counter.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">ULyraExperienceManagerComponent</span><span class="o">::</span><span class="n">OnGameFeaturePluginLoadComplete</span><span class="p">(</span><span class="k">const</span> <span class="n">UE</span><span class="o">::</span><span class="n">GameFeatures</span><span class="o">::</span><span class="n">FResult</span><span class="o">&amp;</span> <span class="n">Result</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// decrement the number of plugins that are loading</span>
+    <span class="n">NumGameFeaturePluginsLoading</span><span class="o">--</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">NumGameFeaturePluginsLoading</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">OnExperienceFullLoadCompleted</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">OnExperienceFullLoadCompleted</code> is called when there are no more game features left to load which brings us to the next stage.</p>
+
+<h2 id="stage-3-chaos-testing">Stage 3. Chaos Testing</h2>
+<p>This stage is optional and disabled by default. When enabled, a random delay is added to the load time here. This can help you test your game by having staggered client readiness.</p>
+
+<p>To configure chaos testing, use these console variables:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>CVar</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lyra.chaos.ExperienceDelayLoad.MinSecs</code></td>
+      <td>This value (in seconds) will be added as a delay of load completion of the experience (along with the random value <code class="language-plaintext highlighter-rouge">lyra.chaos.ExperienceDelayLoad.RandomSecs</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">lyra.chaos.ExperienceDelayLoad.RandomSecs</code></td>
+      <td>A random amount of time between 0 and this value (in seconds) will be added as a delay of load completion of the experience (along with the fixed value <code class="language-plaintext highlighter-rouge">lyra.chaos.ExperienceDelayLoad.MinSecs</code>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="stage-4-execute-game-feature-actions">Stage 4. Execute Game Feature Actions</h2>
+<p>Game feature actions are executed in the order as they appear in the experience definition and then each action set.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FGameFeatureActivatingContext</span> <span class="n">Context</span><span class="p">;</span>
+
+<span class="c1">// Only apply to our specific world context if set</span>
+<span class="k">const</span> <span class="n">FWorldContext</span><span class="o">*</span> <span class="n">ExistingWorldContext</span> <span class="o">=</span> <span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">GetWorldContextFromWorld</span><span class="p">(</span><span class="n">GetWorld</span><span class="p">());</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">ExistingWorldContext</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Context</span><span class="p">.</span><span class="n">SetRequiredWorldContextHandle</span><span class="p">(</span><span class="n">ExistingWorldContext</span><span class="o">-&gt;</span><span class="n">ContextHandle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">auto</span> <span class="n">ActivateListOfActions</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="n">Context</span><span class="p">](</span><span class="k">const</span> <span class="n">TArray</span><span class="o">&lt;</span><span class="n">UGameFeatureAction</span><span class="o">*&gt;&amp;</span> <span class="n">ActionList</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">UGameFeatureAction</span><span class="o">*</span> <span class="n">Action</span> <span class="o">:</span> <span class="n">ActionList</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">Action</span> <span class="o">!=</span> <span class="nb">nullptr</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Action</span><span class="o">-&gt;</span><span class="n">OnGameFeatureRegistering</span><span class="p">();</span>
+            <span class="n">Action</span><span class="o">-&gt;</span><span class="n">OnGameFeatureLoading</span><span class="p">();</span>
+            <span class="n">Action</span><span class="o">-&gt;</span><span class="n">OnGameFeatureActivating</span><span class="p">(</span><span class="n">Context</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">ActivateListOfActions</span><span class="p">(</span><span class="n">CurrentExperience</span><span class="o">-&gt;</span><span class="n">Actions</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">ULyraExperienceActionSet</span><span class="o">&gt;&amp;</span> <span class="n">ActionSet</span> <span class="o">:</span> <span class="n">CurrentExperience</span><span class="o">-&gt;</span><span class="n">ActionSets</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ActionSet</span> <span class="o">!=</span> <span class="nb">nullptr</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">ActivateListOfActions</span><span class="p">(</span><span class="n">ActionSet</span><span class="o">-&gt;</span><span class="n">Actions</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Finally, the experience is fully loaded at this point.</p>
+
+<p>The game is notified that the experience has finished loading via the <code class="language-plaintext highlighter-rouge">OnExperienceLoaded</code> delegates.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">OnExperienceLoaded_HighPriority</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">CurrentExperience</span><span class="p">);</span>
+<span class="n">OnExperienceLoaded_HighPriority</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+
+<span class="n">OnExperienceLoaded</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">CurrentExperience</span><span class="p">);</span>
+<span class="n">OnExperienceLoaded</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+
+<span class="n">OnExperienceLoaded_LowPriority</span><span class="p">.</span><span class="n">Broadcast</span><span class="p">(</span><span class="n">CurrentExperience</span><span class="p">);</span>
+<span class="n">OnExperienceLoaded_LowPriority</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>You may notice that it clears all delegates after broadcasting. This is because the <code class="language-plaintext highlighter-rouge">CallOrRegister_OnExperienceLoaded</code> functions for all priorities check whether the experience has been loaded and executes the callback immediately if so. Otherwise, it adds to the delegate to be called later.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Delegate</th>
+      <th>Used For</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnExperienceLoaded_HighPriority</code></td>
+      <td>Frontend (<code class="language-plaintext highlighter-rouge">ULyraFrontendStateComponent</code>) and Team Creation (<code class="language-plaintext highlighter-rouge">ULyraTeamCreationComponent</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnExperienceLoaded</code></td>
+      <td>Spawning Pawns (<code class="language-plaintext highlighter-rouge">ALyraGameMode</code> and <code class="language-plaintext highlighter-rouge">ALyraPlayerState</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">OnExperienceLoaded_LowPriority</code></td>
+      <td>Bots (<code class="language-plaintext highlighter-rouge">ULyraBotCreationComponent</code>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="stage-5-deactivate-experience">Stage 5. Deactivate Experience</h2>
+<p>When <code class="language-plaintext highlighter-rouge">EndPlay</code> on the component is triggered, all loaded game feature plugins are asynchronously deactivated.</p>
+
+<p>At this time, Lyra does not unload game features after they’ve been deactivated. Ideally, it should’ve called <code class="language-plaintext highlighter-rouge">UGameFeaturesSubsystem::UnloadGameFeaturePlugin</code> at some point in the deactivation logic. Maybe we’ll see that in a future version.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+<p>In the next chapter, we’ll take a closer look at how an experience is selected for loading.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#lyra" class="page__taxonomy-item p-category" rel="tag">Lyra</a><span class="sep">, </span>
+    
+      <a href="/tags/#unreal" class="page__taxonomy-item p-category" rel="tag">unreal</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#lyra" class="page__taxonomy-item p-category" rel="tag">Lyra</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-04-16T00:00:00-07:00">April 16, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Lyra+Deep+Dive+-+Chapter+3%3A+Experience+Lifecycle%20https%3A%2F%2Funrealist.org%2Flyra-part-3%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Funrealist.org%2Flyra-part-3%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Funrealist.org%2Flyra-part-3%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/lyra-part-2/" class="pagination--pager" title="Lyra Deep Dive - Chapter 2: Experiences
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="giscus-comments"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You May Also Enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-2/" rel="permalink">Lyra Deep Dive - Chapter 2: Experiences
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-07T00:00:00-07:00">April 7, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-1/" rel="permalink">Lyra Deep Dive - Chapter 1: Introduction
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-02T00:00:00-07:00">April 2, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/component-visualizers/" rel="permalink">Visualize Actor Components in the Editor with Component Visualizers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-02-19T00:00:00-08:00">February 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/custom-blueprint-nodes/" rel="permalink">A Reference Guide to Custom Blueprint Nodes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-11-21T00:00:00-08:00">November 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2023 Matt's Game Dev Notebook. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'the-unrealist/the-unrealist');
+    script.setAttribute('data-repo-id', 'R_kgDOIFvutA');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDOIFvutM4CRsVd');
+    script.setAttribute('data-mapping', 'og:title');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'preferred_color_scheme');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
+
+
+
+
+
+  </body>
+</html>

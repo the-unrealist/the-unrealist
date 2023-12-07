@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html lang="en" class="no-js">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Common UI: Switchers and Tabs - Matt’s Game Dev Notebook</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="Matt">
+  
+  <meta property="article:author" content="Matt">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Matt's Game Dev Notebook">
+<meta property="og:title" content="Common UI: Switchers and Tabs">
+<meta property="og:url" content="https://unrealist.org/commonui-switchers-and-tabs/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-09-28T00:00:00-07:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://unrealist.org/commonui-switchers-and-tabs/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://unrealist.org/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Matt's Game Dev Notebook Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVMW4VY2EL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GVMW4VY2EL');
+</script>
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Matt's Game Dev Notebook
+          
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://unrealist.org/">
+        <img src="/assets/images/orange.png" alt="Matt" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://unrealist.org/" itemprop="url">Matt</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Unreal Engine Enthusiast</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Common UI: Switchers and Tabs">
+    <meta itemprop="description" content=" ">
+    <meta itemprop="datePublished" content="2022-09-28T00:00:00-07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://unrealist.org/commonui-switchers-and-tabs/" class="u-url" itemprop="url">Common UI: Switchers and Tabs
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-09-28T00:00:00-07:00">September 28, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+<li><a href="#switchers">Switchers</a></li>
+<li>
+<a href="#tabs">Tabs</a><ul>
+<li><a href="#1-tab-buttons">1. Tab Buttons</a></li>
+<li><a href="#2-tab-list">2. Tab List</a></li>
+<li><a href="#3-linking-to-a-switcher">3. Linking to a Switcher</a></li>
+<li><a href="#4-register-tabs">4. Register Tabs</a></li>
+</ul>
+</li>
+<li><a href="#carousels">Carousels</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-UMG-blueviolet" alt="UMG"></p>
+
+<p>In this article, we’ll learn about the types of switchers in the <a href="https://docs.unrealengine.com/5.0/en-US/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine/">Common UI plugin</a> and how to leverage them to create tabs.</p>
+
+<p>Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engine 5. There are few <a href="https://www.youtube.com/watch?v=TTB5y-03SnE">talks</a> on YouTube covering the basics of Common UI and <a href="https://www.youtube.com/watch?v=u06GAVxyIag">how it’s used in Lyra</a>, but they haven’t explained how to create <strong>switchers</strong>, <strong>tabs</strong>, and <strong>carousels</strong>. There is a lack of documentation for Common UI that I’m hoping to help fill in here.</p>
+
+<p>For that reason, <strong>this tutorial assumes you have a basic understanding of Common UI including setting up inputs and styling</strong>.</p>
+
+<h2 id="switchers">Switchers</h2>
+<p>A switcher is a widget that displays one child widget at a time and can switch to another child widget. It can act as a standalone widget or be linked to a tab list for a tabbed experience.</p>
+
+<details open="" style="margin-bottom: 1em;">
+  <summary class="toggle-link">Show/hide animated preview</summary>
+  <img src="/assets/images/basic-switcher.gif" style="height: 384px;" alt="Animated GIF demonstrating a switcher using the default Fade transition effect as it switches between 4 visually distinct panels">
+  <p><small><a href="https://www.flaticon.com/free-icons/fruit" title="fruit icons">Fruit icons created by Prosymbols - Flaticon</a></small></p>
+</details>
+
+<p>The <strong><a href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonAnimatedSwitcher/">Common Animated Switcher</a></strong> is derived from UMG Widget Switcher and animates the transition between child widgets.</p>
+
+<p>At the time of writing, this widget describes itself as “a widget switcher that activates / deactivates CommonActivatableWidgets, allowing for associated animations to trigger.”</p>
+
+<p>This is incorrect! The Common Animated Switcher does <em>not</em> activate widgets.</p>
+
+<p>That’s where the <strong><a href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonActivatableWidgetSwitcher/">Common Activatable Widget Switcher</a></strong> comes in. It is derived from the Common Animated Switcher, and makes it so that it <em>does</em> activate widgets.</p>
+
+<p>Keep in mind that the next widget is not activated until the previous widget has transitioned fully out of view.</p>
+<table>
+ <thead>
+  <tr>
+<th>Activatable Widget Event</th>
+<th>Trigger</th>
+</tr>
+ </thead>
+ <tbody>
+  <tr>
+<td>On Activated</td>
+<td>Previous widget is fully out of view. This widget will be active while it's appearing.</td>
+</tr>
+  <tr>
+<td>On Deactivated</td>
+<td>Immediately when switching. This widget will be inactive while it's disappearing.</td>
+</tr>
+ </tbody>
+</table>
+
+<p>For both widgets above, there are four transition animations you can use:</p>
+<table>
+ <thead>
+  <tr>
+<th>Transition</th>
+<th>Behavior</th>
+</tr>
+ </thead>
+ <tbody>
+  <tr>
+<td>Fade Only</td>
+<td>Fade transition only with no movement</td>
+</tr>
+  <tr>
+<td>Horizontal</td>
+<td>Increasing the active index goes right, decreasing goes left</td>
+</tr>
+  <tr>
+<td>Vertical</td>
+<td>Increasing the active index goes up, decreasing goes down</td>
+</tr>
+  <tr>
+<td>Zoom</td>
+<td>Increasing the active index zooms in, decreasing zooms out</td>
+</tr>
+ </tbody>
+</table>
+
+<p>The only other transition parameters you can adjust are the curve type and duration. Anything else will require modifying <code class="language-plaintext highlighter-rouge">SCommonAnimatedSwitcher.cpp</code> in the Common UI plugin’s C++ source.</p>
+
+<p>For your convenience, here’s an overview of all relevant functions you can use in Blueprints.
+<img src="/assets/images/switcher-blueprint-functions.png" alt="Screenshot of a collection of Blueprint nodes in clockwise order starting from top left: Activate Next Widget, Activate Previous Widget, Is Currently Switching, Has Widgets, Set Active Widget Index, Set Active Widget, and Set Disable Transition Animation."></p>
+
+<p>Finally, there’s the <strong><a href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonVisibilitySwitcher/">Common Visibility Switcher</a></strong> which is a bit different from above in that it is derived from UMG Overlay widget and is identical to UMG Widget Switcher in that there are no animations and only one widget can be visible at a time. However, it does activate widgets whenever they become visible.</p>
+
+<h2 id="tabs">Tabs</h2>
+<p>To create a tabbed experience, a <strong><a href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonTabListWidgetBase/">Common Tab List Widget</a></strong> must be linked to a switcher. Only the Common Animated Switcher or Common Activatable Widget Switcher may be used with a tab list. Generally, you’ll want to use the Common Activatable Widget Switcher so that the input can be routed to the tab page’s contents.</p>
+
+<details open="" style="margin-bottom: 1em;">
+  <summary class="toggle-link">Show/hide animated preview</summary>
+  <img src="/assets/images/tab-demo.gif" alt="Animated GIF demonstrating tabs linked to a switcher">
+</details>
+
+<p>Set the value for <em>Transition Duration</em> to 0 for instant switching.</p>
+
+<details open="" style="margin-bottom: 1em;">
+  <summary class="toggle-link">Show/hide animated preview</summary>
+  <img src="/assets/images/tab-demo-instant.gif" alt="Animated GIF demonstrating tabs linked to a switcher with no transition animation">
+</details>
+
+<p>Common UI doesn’t provide a usable tab list widget out of the box, so there is a multi-step process to get it to work.</p>
+
+<h3 id="1-tab-buttons">1. Tab Buttons</h3>
+<p>Create a button widget based on <code class="language-plaintext highlighter-rouge">CommonButtonBase</code> for each tab, or create a generic one and look up a data table based on the Tab Name ID input in the Handle Tab Creation event (shown below). In this tutorial, I’m doing it in the simplest way possible which is to have a separate button widget for each tab. There’s a unique style for each tab in my demo, but you likely will have one just style for all tab buttons.</p>
+
+<p><img src="/assets/images/tab-buttons.png" alt="A tab button widget and style for each tab in my demo: Cucumber, Kiwi, Melon, and Orange"></p>
+
+<h3 id="2-tab-list">2. Tab List</h3>
+<p>Create a Blueprint class based on <code class="language-plaintext highlighter-rouge">CommonTabListWidgetBase</code>. This will be the container for the tab buttons.</p>
+
+<p>Add a Horizontal Box to the hierarchy and make it a variable. A Vertical Box can be used instead for vertical tabs.</p>
+
+<p><img src="/assets/images/tab-list-hierarchy.png" alt="Screenshot of the hierarchy for TabList. A Horizontal Box is the only child widget."></p>
+
+<p>Open the Graph view. Override <em>Handle Tab Creation</em> to add the tab button to the container, and override <em>Handle Tab Removal</em> to remove the button from the container.</p>
+
+<p><img src="/assets/images/tab-list-overrides.png" alt="Screenshot of the implementation of the overriden Handle Tab Removal and Handle Tab Creation functions in Blueprints. The Event Handle Tab Creation node is linked to Add Child node, and the Event Handle Tab Removal node is linked to Remove Child node. For both nodes, the Target pin is linked to the container widget. The Content pin is linked to the event's Tab Button pin."></p>
+
+<h3 id="3-linking-to-a-switcher">3. Linking to a Switcher</h3>
+<p>Open (or create) the widget that contains both the tab list and switcher. In the <em>On Initialized</em> event of this widget, link the tab list to the switcher.</p>
+
+<p><img src="/assets/images/set-linked-switcher.png" alt="Screenshot of implementation for On Initialized event. The exec pin is linked to Set Linked Switcher function with the tab list as the target and the switcher as the Common Switcher."></p>
+
+<h3 id="4-register-tabs">4. Register Tabs</h3>
+<p>The switcher first needs to be populated with a widget representing each page.</p>
+
+<p><img src="/assets/images/tab-switcher-hierarchy.png" alt="Screenshot of a widget hierarchy showing a Vertical Box with two children: a tab list and a Common Activatable Widget Switcher"></p>
+
+<p>Now, we can register the tabs. To register a tab, you need to specify a unique identifier, the tab button widget, and the content widget.</p>
+
+<p><img src="/assets/images/register-tabs.png" alt="Sreenshot of Register Tab function being called for each tab page."></p>
+
+<p>You’re all done here!</p>
+
+<h2 id="carousels">Carousels</h2>
+<p>A carousel is different from a switcher in that both the previous and next widgets are simultaneously visible during the transition. A switcher waits for the previous widget to fade out or move out of sight before bringing in the next widget. A carousel is much more like a scroll box where widgets are scrolled into and out of view.</p>
+
+<p>Common UI has a <strong><a href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonWidgetCarousel/">Common Widget Carousel</a></strong> that may be optionally linked to a <strong><a href="https://docs.unrealengine.com/5.0/en-US/API/Plugins/CommonUI/UCommonWidgetCarouselNavBar/">Common Widget Carousel Nav Bar</a></strong>.</p>
+
+<p>Unfortunately, I was not able to get it to appear in my UI. It does scroll through widgets as expected so it does technically “work”, but for some reason it never gets painted onto the screen in the editor or game. I spent a long time debugging and analyzing the source and still couldn’t understand why it’s not visible.</p>
+
+<p>At this point, I believe it’s bugged and probably cannot be used yet. If anyone knows how to make it work, please let me know on Twitter: <a href="https://twitter.com/unrealist_matt">@unrealist_matt</a> :)</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#commonui" class="page__taxonomy-item p-category" rel="tag">CommonUI</a><span class="sep">, </span>
+    
+      <a href="/tags/#umg" class="page__taxonomy-item p-category" rel="tag">UMG</a><span class="sep">, </span>
+    
+      <a href="/tags/#unreal" class="page__taxonomy-item p-category" rel="tag">unreal</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#common-ui" class="page__taxonomy-item p-category" rel="tag">Common UI</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-09-28T00:00:00-07:00">September 28, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Common+UI%3A+Switchers+and+Tabs%20https%3A%2F%2Funrealist.org%2Fcommonui-switchers-and-tabs%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Funrealist.org%2Fcommonui-switchers-and-tabs%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Funrealist.org%2Fcommonui-switchers-and-tabs%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/commonui-actionbar/" class="pagination--pager" title="Common UI: Action Bar
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="giscus-comments"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You May Also Enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-3/" rel="permalink">Lyra Deep Dive - Chapter 3: Experience Lifecycle
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-16T00:00:00-07:00">April 16, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-2/" rel="permalink">Lyra Deep Dive - Chapter 2: Experiences
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-07T00:00:00-07:00">April 7, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-1/" rel="permalink">Lyra Deep Dive - Chapter 1: Introduction
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-02T00:00:00-07:00">April 2, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/component-visualizers/" rel="permalink">Visualize Actor Components in the Editor with Component Visualizers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-02-19T00:00:00-08:00">February 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2023 Matt's Game Dev Notebook. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'the-unrealist/the-unrealist');
+    script.setAttribute('data-repo-id', 'R_kgDOIFvutA');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDOIFvutM4CRsVd');
+    script.setAttribute('data-mapping', 'og:title');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'preferred_color_scheme');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html lang="en" class="no-js">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Common UI: Action Bar - Matt’s Game Dev Notebook</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="Matt">
+  
+  <meta property="article:author" content="Matt">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Matt's Game Dev Notebook">
+<meta property="og:title" content="Common UI: Action Bar">
+<meta property="og:url" content="https://unrealist.org/commonui-actionbar/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-10-19T00:00:00-07:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://unrealist.org/commonui-actionbar/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://unrealist.org/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Matt's Game Dev Notebook Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVMW4VY2EL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GVMW4VY2EL');
+</script>
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Matt's Game Dev Notebook
+          
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://unrealist.org/">
+        <img src="/assets/images/orange.png" alt="Matt" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://unrealist.org/" itemprop="url">Matt</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Unreal Engine Enthusiast</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Common UI: Action Bar">
+    <meta itemprop="description" content="  ">
+    <meta itemprop="datePublished" content="2022-10-19T00:00:00-07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://unrealist.org/commonui-actionbar/" class="u-url" itemprop="url">Common UI: Action Bar
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-10-19T00:00:00-07:00">October 19, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+<li>
+<a href="#setup">Setup</a><ul>
+<li><a href="#1-common-bound-action-button">1. Common Bound Action Button</a></li>
+<li><a href="#2-common-bound-action-bar">2. Common Bound Action Bar</a></li>
+</ul>
+</li>
+<li><a href="#input-action-icons">Input Action Icons</a></li>
+<li>
+<a href="#registering-actions">Registering Actions</a><ul>
+<li><a href="#back-handler">Back Handler</a></li>
+<li><a href="#custom-actions">Custom Actions</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-UMG-blueviolet" alt="UMG"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++"></p>
+
+<p>When the user interface is open in most modern games, you’ll find a list of actions available to the player. This is typically a horizontal bar located at the bottom of the screen.</p>
+
+<p>Here are some examples:</p>
+
+<p><strong>Destiny 2</strong></p>
+
+<p><img src="/assets/images/action-bar-destiny2.png" alt="Screenshot of the action bar in Destiny 2 showing the following actions: Toggle Subscreen bound to the S key, Gear Stats bound to the E key, and Dismiss bound to the Escape key"></p>
+
+<p><strong>Animal Crossing: New Horizons</strong></p>
+
+<p><img src="/assets/images/action-bar-animal-crossing.png" alt="Screenshot of the action bar in Animal Crossing showing the following actions: Take Off bound to the X button, Cancel bound to the B button, Change bound to the A button, and Done bound to the plus button"></p>
+
+<p>And, of course… <strong>Fortnite</strong>!</p>
+
+<p><img src="/assets/images/action-bar-fortnite.png" alt="Screenshot of the action bar in Fortnite showing the following actions: View Match Stats bound to the V key, Report Player not bound to any key, and Leave Match not bound to any key"></p>
+
+<p>The Common UI plugin was originally developed for Fortnite and the action bar we’ll be creating in this tutorial is the same as the one used in the game! 
+In case you’re not aware, this article is part of a series about the <a href="https://docs.unrealengine.com/5.0/en-US/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine/">Common UI plugin</a>.
+Common UI is a cross-platform UI plugin developed by Epic Games for Unreal Engine.</p>
+
+<h2 id="setup">Setup</h2>
+<h3 id="1-common-bound-action-button">1. Common Bound Action Button</h3>
+<p>First, we’ll need to build our own button widget that will be used by the action bar for each available action. Go ahead and create a new Widget Blueprint based on <code class="language-plaintext highlighter-rouge">CommonBoundActionButton</code>.</p>
+
+<p><img src="/assets/images/new-widget-commonboundactionbutton.png" alt="A screenshot showing that CommonBoundActionButton is selected as the widget blueprint's parent class"></p>
+
+<p>Just like with the <code class="language-plaintext highlighter-rouge">CommonButtonBase</code>, we’ll need to provide a layout for the button. In the <strong>Bind Widgets</strong> panel, the properties required by the parent <code class="language-plaintext highlighter-rouge">CommonBoundActionButton</code> class are listed here.</p>
+
+<p><img src="/assets/images/bound-action-button-bind-widgets.png" alt="Bind Widgets panel showing a Common Text property named Text_ActionName is required, and a Common Action Widget property named InputActionWidget is optional."></p>
+
+<p>This means our button must have a Common Text widget and it must be named <code class="language-plaintext highlighter-rouge">Text_ActionName</code>, or else, it will fail to compile.</p>
+
+<p>Let’s start off with an Overlay and a Common Text.</p>
+
+<p><img src="/assets/images/bound-action-button-initial-layout.png" alt="A screenshot of the hierarchy panel for the button showing a Common Text widget wrapped in an Overlay panel."></p>
+
+<p>At this point, if we go back to the Bind Widgets panel, we will see a checkmark indicating that the property is bound.</p>
+
+<p><img src="/assets/images/bound-action-button-bind-widgets-2.png" alt="Bind Widgets panel showing a checkmark next to the Common Text property."></p>
+
+<p>This part is optional, but in this tutorial we’ll add a Common Action Widget, name it <code class="language-plaintext highlighter-rouge">InputActionWidget</code>, and put it in a Horizontal Box along with the text. This widget will automatically display the input icon associated with the action.</p>
+
+<p><img src="/assets/images/bound-action-button-layout-with-icon.png" alt="A screenshot of the hierarchy panel for the button showing a Common Action Widget and a Common Text widget wrapped together in a Horizontal Box."></p>
+
+<p>The Bind Widgets panel will update to confirm that the icon is also bound.</p>
+
+<p><img src="/assets/images/bound-action-button-bind-widgets-4.png" alt="Bind Widgets panel showing a checkmark next to the Common Text property and the Common Action Widget property."></p>
+
+<p>There are additional properties that can be set in the Details panel for the Common Action Widget.</p>
+
+<p><img src="/assets/images/common-action-widget-details.png" alt="Details panel showing properties under the Common Action Widget category. The properties are Progress Material Brush, Progress Material Param, Icon Rim Brush, and an array of Input Actions."></p>
+
+<table>
+ <thead>
+  <tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+ </thead>
+ <tbody>
+  <tr>
+<td>Progress Material Brush</td>
+<td>The material used to draw the progress indicator for actions that require holding down input. This is drawn on top of the button icon.</td>
+</tr>
+  <tr>
+<td>Progress Material Param</td>
+<td>The name of a scalar parameter used by the material. A percentage value between 0-1 will be provided via this parameter.</td>
+</tr>
+  <tr>
+<td>Icon Rim Brush</td>
+<td>The image or material that's drawn behind the button icon.</td>
+</tr>
+ </tbody>
+</table>
+
+<h3 id="2-common-bound-action-bar">2. Common Bound Action Bar</h3>
+<p>Put the Common Bound Action Bar wherever it makes sense in a widget blueprint. A good place is in your game’s root UI container widget. In this tutorial, we’ll put it underneath a Common Activatable Widget Stack that we’ll use to push activatable widgets.</p>
+
+<p><img src="/assets/images/action-bar-sample-layout.png" alt="A screenshot of the widget blueprint designer showing a Vertical Box with a Common Activatable Widget Stack and a Common Bound Action Bar."></p>
+
+<p>Under <strong>Entry Layout</strong> in the Details panel, set the <strong>Action Button Class</strong> to the button widget we created earlier. Under <strong>Dynamic Entry Box</strong>, the <strong>Entry Box Type</strong> property sets how the buttons are laid out. This can be further customized with the properties under the Entry Layout category.</p>
+
+<p>The action bar works out of the box so there’s nothing else you need to do here.</p>
+
+<h2 id="input-action-icons">Input Action Icons</h2>
+<p>Let’s do a quick run through on how to set up input action icons for each controller type.</p>
+
+<p>Create a Blueprint and select <code class="language-plaintext highlighter-rouge">CommonInputBaseControllerData</code> as the parent class.</p>
+
+<p><img src="/assets/images/common-input-base-controller-data.png" alt="New Blueprint dialog with the Common Input Base Controller Data selected as the parent class"></p>
+
+<p>We’ll create one to represent the Generic gamepad which is used as the default in case we do not have one specific to the gamepad that’s being used. Import an icon for each button as a texture.</p>
+
+<p>This needs to be done for each input device you want to support.</p>
+
+<p><img src="/assets/images/generic-gamepad-brushes.png" alt="Content browser for a folder containing a Common Input Base Controller Data asset named Generic Gamepad Brushes and a texture representing each one of the four face buttons of a gamepad."></p>
+
+<p>In the Blueprint, add an entry for each input type to the <strong>Input Brush Data Map</strong>.</p>
+
+<p><img src="/assets/images/generic-gamepad-brushes-data.png" alt="Details view for the Common Input Base Controller Data asset with the Input Brush Data Map expanded to show entries mapping each one of the four face buttons of a gamepad to its texture."></p>
+
+<p>For the Generic gamepad, the <strong>Input Type</strong> is set to <strong>Gamepad</strong> and the <strong>Gamepad Name</strong> is set to <strong>Generic</strong>. If you have source code access to consoles in Unreal Engine, then you’ll see other options for gamepads belonging to specific consoles such as the Xbox or Nintendo Switch here.</p>
+
+<p><img src="/assets/images/generic-gamepad-brushes-data-2.png" alt="Details view for the Common Input Base Controller Data asset with the Input Type set to Gamepad and the Gamepad Name set to Generic."></p>
+
+<p>Now, open <strong>Project Settings &gt; Game &gt; Common Input Settings</strong>. For each supported platform (Windows in this example), add a reference to the relevant Controller Data assets. On platforms that support generic gamepads (e.g., Windows), make sure the <strong>Default Gamepad Name</strong> is set to <strong>Generic</strong>, otherwise, use the selected name in the Controller Data asset.</p>
+
+<p><img src="/assets/images/project-settings-common-input-settings.png" alt="Common Input Settings in Project Settings showing the Controller Data array with one entry pointing to Generic Gamepad Brushes asset and another pointing to Keyboard Brushes asset."></p>
+
+<p>At this point, Common Acton Widgets will automatically display the appropriate icon based on the active input device.</p>
+
+<h2 id="registering-actions">Registering Actions</h2>
+<h3 id="back-handler">Back Handler</h3>
+<p><strong>Common Activatable Widgets</strong> can register a binding for the default Back input action by setting <strong>Is Back Handler</strong> to true. The default behavior is to deactivate the widget. This can be changed by overriding the <strong>On Handle Back Action</strong> function of the Common Activatable Widget.</p>
+
+<p>To display the Back input action in the Action Bar, both <strong>Is Back Action Displayed in Action Bar</strong> <em>and</em> <strong>Display in Action Bar</strong> need to be set to true.</p>
+
+<h3 id="custom-actions">Custom Actions</h3>
+<p>While it’s straightforward to handle the Back input, it gets a rather tricky if you want to bind more inputs. This will require C++, but there is a workaround if you want to do it in Blueprints only. The workaround is to add invisible (zero-width) Common Buttons to a Common Activatable Widget.</p>
+
+<p>Otherwise, you’ll need to jump into C++ and call <code class="language-plaintext highlighter-rouge">RegisterUIActionBinding</code> in <code class="language-plaintext highlighter-rouge">UCommonUserWidget</code>, which is, unfortunately, not exposed to Blueprints.</p>
+
+<p>It’s not difficult to resolve this issue. My solution is to create a C++ class based on <code class="language-plaintext highlighter-rouge">UCommonActivatableWidget</code> and add <code class="language-plaintext highlighter-rouge">BlueprintCallable</code> functions so that I can register input bindings entirely in Blueprints as you can see below:</p>
+
+<p><img src="/assets/images/extendedactivatablewidgetfunctions3.png" alt="Screenshot of custom Blueprint functions: Register Binding, Unregister Binding, and Unregister All Bindings"></p>
+
+<p>First, you’ll need to add <code class="language-plaintext highlighter-rouge">CommonUI</code> and <code class="language-plaintext highlighter-rouge">CommonInput</code> to <code class="language-plaintext highlighter-rouge">PublicDependencyModuleNames</code> for your game’s module. Then, add <code class="language-plaintext highlighter-rouge">ExtendedCommonActivatableWidget.h</code> and <code class="language-plaintext highlighter-rouge">ExtendedCommonActivatableWidget.cpp</code> to your game’s source.</p>
+
+<script src="https://gist.github.com/0297fbda19afe1e4d0f3afba92104ffd.js"> </script>
+
+<p>The purpose of <code class="language-plaintext highlighter-rouge">FInputActionBindingHandle</code> is to represent an opaque Blueprintable handle provided by <code class="language-plaintext highlighter-rouge">RegisterBinding</code> that can be used to unregister the binding. This is optional as all bindings created by the widget will be unregistered when it’s destroyed, but can be useful in some cases.</p>
+
+<p>Hope this helps!</p>
+
+<p><img src="/assets/images/action-bar-demo.png" alt="Screenshot of an Action Bar created with my custom C++ class that I shared above"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#commonui" class="page__taxonomy-item p-category" rel="tag">CommonUI</a><span class="sep">, </span>
+    
+      <a href="/tags/#umg" class="page__taxonomy-item p-category" rel="tag">UMG</a><span class="sep">, </span>
+    
+      <a href="/tags/#unreal" class="page__taxonomy-item p-category" rel="tag">unreal</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#common-ui" class="page__taxonomy-item p-category" rel="tag">Common UI</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-10-19T00:00:00-07:00">October 19, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Common+UI%3A+Action+Bar%20https%3A%2F%2Funrealist.org%2Fcommonui-actionbar%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Funrealist.org%2Fcommonui-actionbar%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Funrealist.org%2Fcommonui-actionbar%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/commonui-switchers-and-tabs/" class="pagination--pager" title="Common UI: Switchers and Tabs
+">Previous</a>
+    
+    
+      <a href="/custom-blueprint-nodes/" class="pagination--pager" title="A Reference Guide to Custom Blueprint Nodes
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="giscus-comments"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You May Also Enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-3/" rel="permalink">Lyra Deep Dive - Chapter 3: Experience Lifecycle
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-16T00:00:00-07:00">April 16, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-2/" rel="permalink">Lyra Deep Dive - Chapter 2: Experiences
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-07T00:00:00-07:00">April 7, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-1/" rel="permalink">Lyra Deep Dive - Chapter 1: Introduction
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-02T00:00:00-07:00">April 2, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/component-visualizers/" rel="permalink">Visualize Actor Components in the Editor with Component Visualizers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-02-19T00:00:00-08:00">February 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2023 Matt's Game Dev Notebook. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'the-unrealist/the-unrealist');
+    script.setAttribute('data-repo-id', 'R_kgDOIFvutA');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDOIFvutM4CRsVd');
+    script.setAttribute('data-mapping', 'og:title');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'preferred_color_scheme');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
+
+
+
+
+
+  </body>
+</html>

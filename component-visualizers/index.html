@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html lang="en" class="no-js">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Visualize Actor Components in the Editor with Component Visualizers - Matt’s Game Dev Notebook</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="Matt">
+  
+  <meta property="article:author" content="Matt">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Matt's Game Dev Notebook">
+<meta property="og:title" content="Visualize Actor Components in the Editor with Component Visualizers">
+<meta property="og:url" content="https://unrealist.org/component-visualizers/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-02-19T00:00:00-08:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://unrealist.org/component-visualizers/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://unrealist.org/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Matt's Game Dev Notebook Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVMW4VY2EL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GVMW4VY2EL');
+</script>
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Matt's Game Dev Notebook
+          
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://unrealist.org/">
+        <img src="/assets/images/orange.png" alt="Matt" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://unrealist.org/" itemprop="url">Matt</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Unreal Engine Enthusiast</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Visualize Actor Components in the Editor with Component Visualizers">
+    <meta itemprop="description" content=" ">
+    <meta itemprop="datePublished" content="2023-02-19T00:00:00-08:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://unrealist.org/component-visualizers/" class="u-url" itemprop="url">Visualize Actor Components in the Editor with Component Visualizers
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-02-19T00:00:00-08:00">February 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#create-the-component-visualizer">Create the Component Visualizer</a></li>
+<li><a href="#register-the-component-visualizer">Register the Component Visualizer</a></li>
+<li>
+<a href="#primitive-drawing-functions">Primitive Drawing Functions</a><ul>
+<li>
+<a href="#examples">Examples</a><ul>
+<li><a href="#drawpoint">DrawPoint</a></li>
+<li><a href="#drawline">DrawLine</a></li>
+<li><a href="#drawtranslucentline">DrawTranslucentLine</a></li>
+<li><a href="#drawflatarrow">DrawFlatArrow</a></li>
+<li><a href="#drawdirectionalarrow">DrawDirectionalArrow</a></li>
+</ul>
+</li>
+<li>
+<a href="#drawing-functions-reference-list">Drawing Functions Reference List</a><ul>
+<li><a href="#primitive-drawing-interface">Primitive Drawing Interface</a></li>
+<li><a href="#primitive-utility-functions">Primitive Utility Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><img src="https://img.shields.io/badge/Unreal%20Engine-5.1-informational" alt="Written for Unreal Engine 5.1"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++"></p>
+
+<h2 id="introduction">Introduction</h2>
+<p>Working with actor components that don’t have a physical representation may be challenging. Recently, I learned about Component Visualizers which makes it possible to draw anything in the Unreal Editor for each component when selected.</p>
+
+<p>In my sandbox construction game, each building piece has a set of polar connection points that may be either positive or negative. Two points with the same polarity cannot be attached to each other. That is, a positive point may only be attached to a negative point and vice-versa. Each connection point is represented by a custom Scene Component that has a polarity property. There are three relevant properties here: Location, Rotation, and Polarity. It would be helpful if I can visualize all three properties as a colored arrow, but only in the Unreal Editor when I’m designing a building piece.</p>
+
+<p>Fortunately, Unreal Engine makes it easy to do this with <a href="https://docs.unrealengine.com/5.1/en-US/API/Editor/UnrealEd/FComponentVisualizer/"><code class="language-plaintext highlighter-rouge">FComponentVisualizer</code></a>. Component visualizers are drawn when a component is selected.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+<p>Component visualizers must be in an editor-only module that’s loaded after the engine has been initialized. Create one if you do not have one yet.</p>
+
+<div class="language-jsonc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: MyGame.uproject</span><span class="w">
+
+</span><span class="nl">"Modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyGame"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Runtime"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"LoadingPhase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyGameEditor"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Editor"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"LoadingPhase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PostEngineInit"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Add <code class="language-plaintext highlighter-rouge">UnrealEd</code> and <code class="language-plaintext highlighter-rouge">ComponentVisualizers</code> to the editor module’s dependencies.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: MyGameEditor.Build.cs</span>
+
+<span class="n">PublicDependencyModuleNames</span><span class="p">.</span><span class="nf">AddRange</span><span class="p">(</span>
+    <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span>
+    <span class="p">{</span>
+        <span class="s">"Core"</span><span class="p">,</span>
+        <span class="s">"MyGame"</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="nf">AddRange</span><span class="p">(</span>
+    <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span>
+    <span class="p">{</span>
+        <span class="s">"CoreUObject"</span><span class="p">,</span>
+        <span class="s">"Engine"</span><span class="p">,</span>
+        <span class="s">"UnrealEd"</span><span class="p">,</span>
+        <span class="s">"ComponentVisualizers"</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="create-the-component-visualizer">Create the Component Visualizer</h2>
+
+<p>In the editor module, create a class derived from <code class="language-plaintext highlighter-rouge">FComponentVisualizer</code>. Override either <code class="language-plaintext highlighter-rouge">DrawVisualization</code> or <code class="language-plaintext highlighter-rouge">DrawVisualizationHUD</code> depending on whether the visualization renders inside the scene or on the editor’s viewport.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: MyComponentVisualizer.h</span>
+
+<span class="cp">#pragma once
+</span>
+<span class="cp">#include "ComponentVisualizer.h"
+</span>
+<span class="k">class</span> <span class="nc">FMyComponentVisualizer</span> <span class="o">:</span> <span class="k">public</span> <span class="n">FComponentVisualizer</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="c1">// Override this to draw in the scene</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">DrawVisualization</span><span class="p">(</span><span class="k">const</span> <span class="n">UActorComponent</span><span class="o">*</span> <span class="n">Component</span><span class="p">,</span> <span class="k">const</span> <span class="n">FSceneView</span><span class="o">*</span> <span class="n">View</span><span class="p">,</span>
+        <span class="n">FPrimitiveDrawInterface</span><span class="o">*</span> <span class="n">PDI</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+	
+    <span class="c1">// Override this to draw on the editor's viewport</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">DrawVisualizationHUD</span><span class="p">(</span><span class="k">const</span> <span class="n">UActorComponent</span><span class="o">*</span> <span class="n">Component</span><span class="p">,</span> <span class="k">const</span> <span class="n">FViewport</span><span class="o">*</span> <span class="n">Viewport</span><span class="p">,</span>
+        <span class="k">const</span> <span class="n">FSceneView</span><span class="o">*</span> <span class="n">View</span><span class="p">,</span> <span class="n">FCanvas</span><span class="o">*</span> <span class="n">Canvas</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: MyComponentVisualizer.cpp</span>
+
+<span class="cp">#include "MyComponentVisualizer.h"
+#include "MyComponent.h"
+</span>
+<span class="kt">void</span> <span class="n">FMyComponentVisualizer</span><span class="o">::</span><span class="n">DrawVisualization</span><span class="p">(</span><span class="k">const</span> <span class="n">UActorComponent</span><span class="o">*</span> <span class="n">Component</span><span class="p">,</span> <span class="k">const</span> <span class="n">FSceneView</span><span class="o">*</span> <span class="n">View</span><span class="p">,</span>
+    <span class="n">FPrimitiveDrawInterface</span><span class="o">*</span> <span class="n">PDI</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Draw a visualization here using PDI (or Canvas if using DrawVisualizationHUD)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">FPrimitiveDrawInterface</code> provides basic drawing functions such as <code class="language-plaintext highlighter-rouge">DrawLine</code> and <code class="language-plaintext highlighter-rouge">DrawMesh</code>. Utility functions for drawing boxes, sphere, torus, and other advanced shapes are also available. Check out <a href="#primitive-drawing-functions">Primitive Drawing Functions</a> for a comprehensive list and examples.</p>
+
+<p>⚠️ The component’s <strong>absolute</strong> location and rotation should be used in the drawing functions. If the relative location is used, then the visualization will be rendered incorrectly when the component’s owning actor is selected in the level editor.</p>
+
+<h2 id="register-the-component-visualizer">Register the Component Visualizer</h2>
+<p>The component visualizer is registered in <code class="language-plaintext highlighter-rouge">StartupModule</code> and unregistered in <code class="language-plaintext highlighter-rouge">ShutdownModule</code>. Call <code class="language-plaintext highlighter-rouge">RegisterComponentVisualizer</code> with the name of the component that should be visualized.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// File: MyGameEditor.cpp</span>
+
+<span class="cp">#include "MyGameEditor.h"
+</span>
+<span class="cp">#include "MyComponent.h"
+#include "MyComponentVisualizer.h"
+#include "UnrealEdGlobals.h"
+#include "Editor/UnrealEdEngine.h"
+</span>
+<span class="cp">#define LOCTEXT_NAMESPACE "FMyGameEditorModule"
+</span>
+<span class="kt">void</span> <span class="n">FMyGameEditorModule</span><span class="o">::</span><span class="n">StartupModule</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">GUnrealEd</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FMyComponentVisualizer</span><span class="o">&gt;</span> <span class="n">Visualizer</span> <span class="o">=</span> <span class="n">MakeShareable</span><span class="p">(</span><span class="k">new</span> <span class="n">FMyComponentVisualizer</span><span class="p">());</span>
+        <span class="n">GUnrealEd</span><span class="o">-&gt;</span><span class="n">RegisterComponentVisualizer</span><span class="p">(</span><span class="n">UMyComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetFName</span><span class="p">(),</span> <span class="n">Visualizer</span><span class="p">);</span>
+        <span class="n">Visualizer</span><span class="o">-&gt;</span><span class="n">OnRegister</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">FMyGameEditorModule</span><span class="o">::</span><span class="n">ShutdownModule</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">GUnrealEd</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">GUnrealEd</span><span class="o">-&gt;</span><span class="n">UnregisterComponentVisualizer</span><span class="p">(</span><span class="n">UMyComponent</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetFName</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#undef LOCTEXT_NAMESPACE
+</span>    
+<span class="n">IMPLEMENT_MODULE</span><span class="p">(</span><span class="n">FMyGameEditorModule</span><span class="p">,</span> <span class="n">MyGameEditor</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>That’s it! :)</p>
+
+<h2 id="primitive-drawing-functions">Primitive Drawing Functions</h2>
+<h3 id="examples">Examples</h3>
+<h4 id="drawpoint"><code class="language-plaintext highlighter-rouge">DrawPoint</code></h4>
+<p><img src="/assets/images/component-visualizer-draw-point.png" alt="A screenshot of a yellow point being drawn at the component's location."></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">FMyComponentVisualizer</span><span class="o">::</span><span class="n">DrawVisualization</span><span class="p">(</span><span class="k">const</span> <span class="n">UActorComponent</span><span class="o">*</span> <span class="n">Component</span><span class="p">,</span> <span class="k">const</span> <span class="n">FSceneView</span><span class="o">*</span> <span class="n">View</span><span class="p">,</span>
+    <span class="n">FPrimitiveDrawInterface</span><span class="o">*</span> <span class="n">PDI</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="n">UMyComponent</span><span class="o">*</span> <span class="n">MyComponent</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UMyComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">MyComponent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">double</span> <span class="n">Thickness</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+    <span class="n">PDI</span><span class="o">-&gt;</span><span class="n">DrawPoint</span><span class="p">(</span><span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentLocation</span><span class="p">(),</span> <span class="n">FLinearColor</span><span class="o">::</span><span class="n">Yellow</span><span class="p">,</span> <span class="n">Thickness</span><span class="p">,</span> <span class="n">SDPG_World</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="drawline"><code class="language-plaintext highlighter-rouge">DrawLine</code></h4>
+<p><img src="/assets/images/component-visualizer-draw-line.jpg" alt="A screenshot of a yellow line being drawn on the X axis."></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">FMyComponentVisualizer</span><span class="o">::</span><span class="n">DrawVisualization</span><span class="p">(</span><span class="k">const</span> <span class="n">UActorComponent</span><span class="o">*</span> <span class="n">Component</span><span class="p">,</span> <span class="k">const</span> <span class="n">FSceneView</span><span class="o">*</span> <span class="n">View</span><span class="p">,</span>
+    <span class="n">FPrimitiveDrawInterface</span><span class="o">*</span> <span class="n">PDI</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="n">UMyComponent</span><span class="o">*</span> <span class="n">MyComponent</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UMyComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">MyComponent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">double</span> <span class="n">Length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">Thickness</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+	
+    <span class="n">FVector</span> <span class="n">Start</span> <span class="o">=</span> <span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentLocation</span><span class="p">();</span>
+    <span class="n">FVector</span> <span class="n">End</span> <span class="o">=</span> <span class="n">Start</span> <span class="o">+</span> <span class="n">FRotationMatrix</span><span class="p">(</span><span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentRotation</span><span class="p">()).</span><span class="n">GetScaledAxis</span><span class="p">(</span><span class="n">EAxis</span><span class="o">::</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">Length</span><span class="p">;</span>
+
+    <span class="n">PDI</span><span class="o">-&gt;</span><span class="n">DrawLine</span><span class="p">(</span><span class="n">Start</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">FLinearColor</span><span class="o">::</span><span class="n">Yellow</span><span class="p">,</span> <span class="n">SDPG_World</span><span class="p">,</span> <span class="n">Thickness</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="drawtranslucentline"><code class="language-plaintext highlighter-rouge">DrawTranslucentLine</code></h4>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">FMyComponentVisualizer</span><span class="o">::</span><span class="n">DrawVisualization</span><span class="p">(</span><span class="k">const</span> <span class="n">UActorComponent</span><span class="o">*</span> <span class="n">Component</span><span class="p">,</span> <span class="k">const</span> <span class="n">FSceneView</span><span class="o">*</span> <span class="n">View</span><span class="p">,</span>
+    <span class="n">FPrimitiveDrawInterface</span><span class="o">*</span> <span class="n">PDI</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="n">UMyComponent</span><span class="o">*</span> <span class="n">MyComponent</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UMyComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">MyComponent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">double</span> <span class="n">Length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">Thickness</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+	
+    <span class="n">FVector</span> <span class="n">Start</span> <span class="o">=</span> <span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentLocation</span><span class="p">();</span>
+    <span class="n">FVector</span> <span class="n">End</span> <span class="o">=</span> <span class="n">Start</span> <span class="o">+</span> <span class="n">FRotationMatrix</span><span class="p">(</span><span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentRotation</span><span class="p">()).</span><span class="n">GetScaledAxis</span><span class="p">(</span><span class="n">EAxis</span><span class="o">::</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">Length</span><span class="p">;</span>
+
+    <span class="n">FLinearColor</span> <span class="n">Color</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span> <span class="c1">// RGBA in floating-point format (between 0 and 1)</span>
+    <span class="n">PDI</span><span class="o">-&gt;</span><span class="n">DrawTranslucentLine</span><span class="p">(</span><span class="n">Start</span><span class="p">,</span> <span class="n">End</span><span class="p">,</span> <span class="n">Color</span><span class="p">,</span> <span class="n">SDPG_World</span><span class="p">,</span> <span class="n">Thickness</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="drawflatarrow"><code class="language-plaintext highlighter-rouge">DrawFlatArrow</code></h4>
+<p><img src="/assets/images/draw-flat-arrow.png" alt="A screenshot of a yellow flat arrow drawn along the X axis."></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">FMyComponentVisualizer</span><span class="o">::</span><span class="n">DrawVisualization</span><span class="p">(</span><span class="k">const</span> <span class="n">UActorComponent</span><span class="o">*</span> <span class="n">Component</span><span class="p">,</span> <span class="k">const</span> <span class="n">FSceneView</span><span class="o">*</span> <span class="n">View</span><span class="p">,</span>
+    <span class="n">FPrimitiveDrawInterface</span><span class="o">*</span> <span class="n">PDI</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="n">UMyComponent</span><span class="o">*</span> <span class="n">MyComponent</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UMyComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">MyComponent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">FVector</span> <span class="n">ComponentLocation</span> <span class="o">=</span> <span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentLocation</span><span class="p">();</span>
+    <span class="n">FRotationMatrix</span> <span class="n">ComponentRotation</span> <span class="o">=</span> <span class="n">FRotationMatrix</span><span class="p">(</span><span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentRotation</span><span class="p">());</span>
+    <span class="n">FColor</span> <span class="n">Color</span> <span class="o">=</span> <span class="n">FColor</span><span class="o">::</span><span class="n">Yellow</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">Length</span> <span class="o">=</span> <span class="mf">100.</span><span class="n">f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">Width</span> <span class="o">=</span> <span class="mf">20.</span><span class="n">f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">Thickness</span> <span class="o">=</span> <span class="mf">1.</span><span class="n">f</span><span class="p">;</span>
+
+    <span class="n">DrawFlatArrow</span><span class="p">(</span><span class="n">PDI</span><span class="p">,</span> <span class="n">ComponentLocation</span><span class="p">,</span>
+        <span class="n">ComponentRotation</span><span class="p">.</span><span class="n">GetScaledAxis</span><span class="p">(</span><span class="n">EAxis</span><span class="o">::</span><span class="n">X</span><span class="p">),</span>
+        <span class="n">ComponentRotation</span><span class="p">.</span><span class="n">GetScaledAxis</span><span class="p">(</span><span class="n">EAxis</span><span class="o">::</span><span class="n">Y</span><span class="p">),</span>
+        <span class="n">Color</span><span class="p">,</span>
+        <span class="n">Length</span><span class="p">,</span>
+        <span class="n">Width</span><span class="p">,</span>
+        <span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">GeomMaterial</span><span class="o">-&gt;</span><span class="n">GetRenderProxy</span><span class="p">(),</span>
+        <span class="n">SDPG_World</span><span class="p">,</span>
+        <span class="n">Thickness</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="drawdirectionalarrow"><code class="language-plaintext highlighter-rouge">DrawDirectionalArrow</code></h4>
+<p><img src="/assets/images/directional-arrow.png" alt="A screenshot of a yellow 3D arrow drawn along the X axis."></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">FMyComponentVisualizer</span><span class="o">::</span><span class="n">DrawVisualization</span><span class="p">(</span><span class="k">const</span> <span class="n">UActorComponent</span><span class="o">*</span> <span class="n">Component</span><span class="p">,</span> <span class="k">const</span> <span class="n">FSceneView</span><span class="o">*</span> <span class="n">View</span><span class="p">,</span>
+    <span class="n">FPrimitiveDrawInterface</span><span class="o">*</span> <span class="n">PDI</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="n">UMyComponent</span><span class="o">*</span> <span class="n">MyComponent</span> <span class="o">=</span> <span class="n">Cast</span><span class="o">&lt;</span><span class="n">UMyComponent</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Component</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">MyComponent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">FLinearColor</span> <span class="n">Color</span> <span class="o">=</span> <span class="n">FLinearColor</span><span class="o">::</span><span class="n">Yellow</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">Length</span> <span class="o">=</span> <span class="mf">100.</span><span class="n">f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">Width</span> <span class="o">=</span> <span class="mf">20.</span><span class="n">f</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">Thickness</span> <span class="o">=</span> <span class="mf">1.</span><span class="n">f</span><span class="p">;</span>
+
+    <span class="n">FMatrix</span> <span class="n">Matrix</span> <span class="o">=</span> <span class="n">FScaleRotationTranslationMatrix</span><span class="p">(</span>
+        <span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentScale</span><span class="p">(),</span>
+        <span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentRotation</span><span class="p">(),</span>
+        <span class="n">MyComponent</span><span class="o">-&gt;</span><span class="n">GetComponentLocation</span><span class="p">());</span>
+	
+    <span class="n">DrawDirectionalArrow</span><span class="p">(</span><span class="n">PDI</span><span class="p">,</span> <span class="n">Matrix</span><span class="p">,</span> <span class="n">Color</span><span class="p">,</span> <span class="n">Length</span><span class="p">,</span> <span class="n">Width</span><span class="p">,</span> <span class="n">SDPG_World</span><span class="p">,</span> <span class="n">Thickness</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="drawing-functions-reference-list">Drawing Functions Reference List</h3>
+<h4 id="primitive-drawing-interface">Primitive Drawing Interface</h4>
+<ul>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawPoint/"><code class="language-plaintext highlighter-rouge">DrawPoint</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawLine/"><code class="language-plaintext highlighter-rouge">DrawLine</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawTranslucentLine/"><code class="language-plaintext highlighter-rouge">DrawTranslucentLine</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawSprite/"><code class="language-plaintext highlighter-rouge">DrawSprite</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/FPrimitiveDrawInterface/DrawMesh/"><code class="language-plaintext highlighter-rouge">DrawMesh</code></a></li>
+</ul>
+
+<h4 id="primitive-utility-functions">Primitive Utility Functions</h4>
+<p>To set the color for most of the geometry functions in this list, you’ll need to use <code class="language-plaintext highlighter-rouge">FDynamicColoredMaterialRenderProxy</code>. This will require adding <code class="language-plaintext highlighter-rouge">RenderCore</code> to your module’s dependencies.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">auto</span><span class="o">*</span> <span class="n">Proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">FDynamicColoredMaterialRenderProxy</span><span class="p">(</span><span class="n">GEngine</span><span class="o">-&gt;</span><span class="n">GeomMaterial</span><span class="o">-&gt;</span><span class="n">GetRenderProxy</span><span class="p">(),</span> <span class="n">FLinearColor</span><span class="o">::</span><span class="n">Yellow</span><span class="p">);</span>
+<span class="n">PDI</span><span class="o">-&gt;</span><span class="n">RegisterDynamicResource</span><span class="p">(</span><span class="n">Proxy</span><span class="p">);</span>
+
+<span class="n">DrawPlane10x10</span><span class="p">(</span><span class="n">PDI</span><span class="p">,</span> <span class="n">Plane</span><span class="p">,</span> <span class="n">Radii</span><span class="p">,</span> <span class="n">UVMin</span><span class="p">,</span> <span class="n">UVMax</span><span class="p">,</span> <span class="n">Proxy</span><span class="p">,</span> <span class="n">SDPG_World</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawPlane10x10/"><code class="language-plaintext highlighter-rouge">DrawPlane10x10</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawTriangle/"><code class="language-plaintext highlighter-rouge">DrawTriangle</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawBox/"><code class="language-plaintext highlighter-rouge">DrawBox</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawSphere/"><code class="language-plaintext highlighter-rouge">DrawSphere</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCone/"><code class="language-plaintext highlighter-rouge">DrawCone</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCylinder/"><code class="language-plaintext highlighter-rouge">DrawCylinder</code></a></li>
+  <li><code class="language-plaintext highlighter-rouge">DrawTorus</code></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawDisc/"><code class="language-plaintext highlighter-rouge">DrawDisc</code></a></li>
+  <li><code class="language-plaintext highlighter-rouge">DrawRectangleMesh</code></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawFlatArrow/"><code class="language-plaintext highlighter-rouge">DrawFlatArrow</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireBox/"><code class="language-plaintext highlighter-rouge">DrawWireBox</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCircle/"><code class="language-plaintext highlighter-rouge">DrawCircle</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawArc/"><code class="language-plaintext highlighter-rouge">DrawArc</code></a></li>
+  <li><code class="language-plaintext highlighter-rouge">DrawRectangle</code></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireSphere/"><code class="language-plaintext highlighter-rouge">DrawWireSphere</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireSphereAutoSides/"><code class="language-plaintext highlighter-rouge">DrawWireSphereAutoSides</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireCylinder/"><code class="language-plaintext highlighter-rouge">DrawWireCylinder</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireCapsule/"><code class="language-plaintext highlighter-rouge">DrawWireCapsule</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireChoppedCone/"><code class="language-plaintext highlighter-rouge">DrawWireChoppedCone</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireCone/"><code class="language-plaintext highlighter-rouge">DrawWireCone</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireSphereCappedCone/"><code class="language-plaintext highlighter-rouge">DrawWireSphereCappedCone</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawOrientedWireBox/"><code class="language-plaintext highlighter-rouge">DrawOrientedWireBox</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawDirectionalArrow/"><code class="language-plaintext highlighter-rouge">DrawDirectionalArrow</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawConnectedArrow/"><code class="language-plaintext highlighter-rouge">DrawConnectedArrow</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireStar/"><code class="language-plaintext highlighter-rouge">DrawWireStar</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawDashedLine/"><code class="language-plaintext highlighter-rouge">DrawDashedLine</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawWireDiamond/"><code class="language-plaintext highlighter-rouge">DrawWireDiamond</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawCoordinateSystem/"><code class="language-plaintext highlighter-rouge">DrawCoordinateSystem</code></a></li>
+  <li><a href="https://docs.unrealengine.com/5.1/en-US/API/Runtime/Engine/DrawFrustumWireframe/"><code class="language-plaintext highlighter-rouge">DrawFrustumWireframe</code></a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#components" class="page__taxonomy-item p-category" rel="tag">components</a><span class="sep">, </span>
+    
+      <a href="/tags/#editor" class="page__taxonomy-item p-category" rel="tag">editor</a><span class="sep">, </span>
+    
+      <a href="/tags/#unreal" class="page__taxonomy-item p-category" rel="tag">unreal</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#unreal-editor" class="page__taxonomy-item p-category" rel="tag">Unreal Editor</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-02-19T00:00:00-08:00">February 19, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Visualize+Actor+Components+in+the+Editor+with+Component+Visualizers%20https%3A%2F%2Funrealist.org%2Fcomponent-visualizers%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Funrealist.org%2Fcomponent-visualizers%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Funrealist.org%2Fcomponent-visualizers%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/custom-blueprint-nodes/" class="pagination--pager" title="A Reference Guide to Custom Blueprint Nodes
+">Previous</a>
+    
+    
+      <a href="/lyra-part-1/" class="pagination--pager" title="Lyra Deep Dive - Chapter 1: Introduction
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="giscus-comments"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You May Also Enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-3/" rel="permalink">Lyra Deep Dive - Chapter 3: Experience Lifecycle
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-16T00:00:00-07:00">April 16, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-2/" rel="permalink">Lyra Deep Dive - Chapter 2: Experiences
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-07T00:00:00-07:00">April 7, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-1/" rel="permalink">Lyra Deep Dive - Chapter 1: Introduction
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-02T00:00:00-07:00">April 2, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/custom-blueprint-nodes/" rel="permalink">A Reference Guide to Custom Blueprint Nodes
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-11-21T00:00:00-08:00">November 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2023 Matt's Game Dev Notebook. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'the-unrealist/the-unrealist');
+    script.setAttribute('data-repo-id', 'R_kgDOIFvutA');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDOIFvutM4CRsVd');
+    script.setAttribute('data-mapping', 'og:title');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'preferred_color_scheme');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+--><html lang="en" class="no-js">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>A Reference Guide to Custom Blueprint Nodes - Matt’s Game Dev Notebook</title>
+<meta name="description" content="">
+
+
+  <meta name="author" content="Matt">
+  
+  <meta property="article:author" content="Matt">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Matt's Game Dev Notebook">
+<meta property="og:title" content="A Reference Guide to Custom Blueprint Nodes">
+<meta property="og:url" content="https://unrealist.org/custom-blueprint-nodes/">
+
+
+  <meta property="og:description" content="">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-11-21T00:00:00-08:00">
+
+
+
+
+
+
+<link rel="canonical" href="https://unrealist.org/custom-blueprint-nodes/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "https://unrealist.org/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Matt's Game Dev Notebook Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GVMW4VY2EL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GVMW4VY2EL');
+</script>
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Matt's Game Dev Notebook
+          
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="https://unrealist.org/">
+        <img src="/assets/images/orange.png" alt="Matt" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="https://unrealist.org/" itemprop="url">Matt</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Unreal Engine Enthusiast</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="A Reference Guide to Custom Blueprint Nodes">
+    <meta itemprop="description" content=" ">
+    <meta itemprop="datePublished" content="2022-11-21T00:00:00-08:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://unrealist.org/custom-blueprint-nodes/" class="u-url" itemprop="url">A Reference Guide to Custom Blueprint Nodes
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-11-21T00:00:00-08:00">November 21, 2022</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title">
+<i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#create-a-node">Create a Node</a></li>
+<li>
+<a href="#node-customization">Node Customization</a><ul>
+<li><a href="#title">Title</a></li>
+<li><a href="#menu-category">Menu Category</a></li>
+<li><a href="#tooltips">Tooltips</a></li>
+<li><a href="#keywords">Keywords</a></li>
+<li>
+<a href="#appearance">Appearance</a><ul>
+<li><a href="#colors">Colors</a></li>
+<li><a href="#compact-node">Compact Node</a></li>
+<li><a href="#bead-node">Bead Node</a></li>
+<li><a href="#variable-node">Variable Node</a></li>
+<li><a href="#control-point--knot">Control Point / Knot</a></li>
+<li><a href="#icons">Icons</a></li>
+</ul>
+</li>
+<li><a href="#can-rename-node">Can Rename Node</a></li>
+<li><a href="#purity">Purity</a></li>
+<li><a href="#node-details">Node Details</a></li>
+<li><a href="#text-caching">Text Caching</a></li>
+</ul>
+</li>
+<li>
+<a href="#pins">Pins</a><ul>
+<li>
+<a href="#create-pins">Create Pins</a><ul>
+<li><a href="#pin-categories">Pin Categories</a></li>
+<li><a href="#reserved-pin-names">Reserved Pin Names</a></li>
+<li><a href="#simple-example">Simple Example</a></li>
+</ul>
+</li>
+<li><a href="#wildcard-pins">Wildcard Pins</a></li>
+</ul>
+</li>
+<li>
+<a href="#graph-compatibility">Graph Compatibility</a><ul>
+<li><a href="#check-for-construction-script">Check for Construction Script</a></li>
+<li><a href="#check-for-event-graph">Check for Event Graph</a></li>
+<li><a href="#check-for-function-graph">Check for Function Graph</a></li>
+<li><a href="#check-for-macro-graph">Check for Macro Graph</a></li>
+<li><a href="#require-world-context">Require World Context</a></li>
+<li><a href="#blueprint-derives-from-a-class">Blueprint Derives From a Class</a></li>
+<li><a href="#blueprint-implements-an-interface">Blueprint Implements an Interface</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p><img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++"></p>
+
+<h2 id="introduction">Introduction</h2>
+<p>The Unreal Editor provides a general-purpose graph system that is used by Blueprints, materials, Niagara, and other graph-based features. In this reference guide, we’ll focus on <code class="language-plaintext highlighter-rouge">K2Node</code> from which all Blueprint nodes are derived.</p>
+
+<p>There’s <a href="https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/">this fantastic tutorial on creating custom Blueprint nodes</a>. This page is intended as a supplement to the tutorial by providing additional information and reference tables, and for that reason, I recommend everyone to read the tutorial first.</p>
+
+<h2 id="create-a-node">Create a Node</h2>
+<p>All Blueprint nodes need to be in a <code class="language-plaintext highlighter-rouge">UncookedOnly</code> module. Create a new module and set the <code class="language-plaintext highlighter-rouge">Type</code> to <code class="language-plaintext highlighter-rouge">UncookedOnly</code> in the <code class="language-plaintext highlighter-rouge">uproject</code> or <code class="language-plaintext highlighter-rouge">uplugin</code> file.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"Modules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyPluginUncooked"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UncookedOnly"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"LoadingPhase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Default"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The modules <code class="language-plaintext highlighter-rouge">BlueprintGraph</code> and <code class="language-plaintext highlighter-rouge">UnrealEd</code> need to be referenced in <code class="language-plaintext highlighter-rouge">&lt;ModuleName&gt;.Build.cs</code>.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PrivateDependencyModuleNames</span><span class="p">.</span><span class="nf">AddRange</span><span class="p">(</span>
+    <span class="k">new</span> <span class="kt">string</span><span class="p">[]</span>
+    <span class="p">{</span>
+        <span class="s">"CoreUObject"</span><span class="p">,</span>
+        <span class="s">"Engine"</span><span class="p">,</span>
+        <span class="s">"BlueprintGraph"</span><span class="p">,</span>
+        <span class="s">"UnrealEd"</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>The simplest node that can be placed in any Blueprint graph requires creating a class derived from <code class="language-plaintext highlighter-rouge">UK2Node</code> and then overriding <code class="language-plaintext highlighter-rouge">GetMenuActions</code> to add itself to the Blueprint action database. Unreal Engine automatically detects and calls <code class="language-plaintext highlighter-rouge">GetMenuActions</code> on all classes derived from <code class="language-plaintext highlighter-rouge">UK2Node</code>.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.h</span>
+
+<span class="cp">#pragma once
+</span>
+<span class="cp">#include "CoreMinimal.h"
+#include "K2Node.h"
+#include "K2Node_Custom.generated.h"
+</span>
+<span class="n">UCLASS</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">MYPLUGINUNCOOKED_API</span> <span class="n">UK2Node_Custom</span> <span class="o">:</span> <span class="k">public</span> <span class="n">UK2Node</span>
+<span class="p">{</span>
+    <span class="n">GENERATED_BODY</span><span class="p">()</span>
+    
+<span class="nl">public:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">GetMenuActions</span><span class="p">(</span><span class="n">FBlueprintActionDatabaseRegistrar</span><span class="o">&amp;</span> <span class="n">ActionRegistrar</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.cpp</span>
+
+<span class="cp">#include "K2Node_Custom.h"
+#include "BlueprintActionDatabaseRegistrar.h"
+#include "BlueprintNodeSpawner.h"
+</span>
+<span class="kt">void</span> <span class="n">UK2Node_Custom</span><span class="o">::</span><span class="n">GetMenuActions</span><span class="p">(</span><span class="n">FBlueprintActionDatabaseRegistrar</span><span class="o">&amp;</span> <span class="n">ActionRegistrar</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="n">UClass</span><span class="o">*</span> <span class="n">ActionKey</span> <span class="o">=</span> <span class="n">GetClass</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ActionRegistrar</span><span class="p">.</span><span class="n">IsOpenForRegistration</span><span class="p">(</span><span class="n">ActionKey</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">UBlueprintNodeSpawner</span><span class="o">*</span> <span class="n">NodeSpawner</span> <span class="o">=</span> <span class="n">UBlueprintNodeSpawner</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">GetClass</span><span class="p">());</span>
+        <span class="n">check</span><span class="p">(</span><span class="n">NodeSpawner</span><span class="p">);</span>
+
+        <span class="n">ActionRegistrar</span><span class="p">.</span><span class="n">AddBlueprintAction</span><span class="p">(</span><span class="n">ActionKey</span><span class="p">,</span> <span class="n">NodeSpawner</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>It’ll appear at the bottom of the actions list labeled as the class name. Clicking on it will spawn a default node without any pins.
+<img src="/assets/images/empty_node.png" alt="A screenshot of a custom node in Blueprints. It has no pins."></p>
+
+<h2 id="node-customization">Node Customization</h2>
+<p>There are various functions that can be overriden to customize how your node appears in graphs and menus.</p>
+
+<h3 id="title">Title</h3>
+<p>The title of the node. This can vary based on where it’s being displayed. By default, this is the class name for all title types.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="n">FText</span> <span class="n">GetNodeTitle</span><span class="p">(</span><span class="n">ENodeTitleType</span><span class="o">::</span><span class="n">Type</span> <span class="n">TitleType</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+<table>
+   <thead>
+      <tr>
+<th>Title Type</th>
+<th>Description</th>
+</tr>
+   </thead>
+   <tbody>
+      <tr>
+<td><code>FullTitle</code></td>
+<td>Displayed on the node in graphs. This can have multiple lines.</td>
+</tr>
+      <tr>
+<td><code>ListView</code></td>
+<td>A more concise, single-line title. Displayed in search results including "Find References".</td>
+</tr>
+      <tr>
+<td><code>EditableTitle</code></td>
+<td>For nodes that can be renamed, this should be the user-provided value.</td>
+</tr>
+      <tr>
+<td><code>MenuTitle</code></td>
+<td>Displayed in the Blueprint actions menu and context menus.</td>
+</tr>
+   </tbody>
+</table>
+
+<h3 id="menu-category">Menu Category</h3>
+<p>The category to put the node under in the Blueprint actions menu. By default or when it’s an empty value, the action is placed under the top-level category. Subcategories are created by using the pipe <code class="language-plaintext highlighter-rouge">|</code> character as a delimiter, i.e. <code class="language-plaintext highlighter-rouge">"Category|Subcategory"</code>.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="n">FText</span> <span class="n">GetMenuCategory</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="tooltips">Tooltips</h3>
+<p>The tooltip appears in both the graph and the Blueprint actions menu. The tooltip heading is the smaller text above the tooltip text. It’s visible only after a node was placed. Unreal Editor uses it to display information of some status that may affect how the node behaves, such as “Replicated” when a variable is replicated.</p>
+
+<p><img src="/assets/images/node_tooltip.png" alt="A screenshot of a custom node with its tooltip visible."></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="n">FText</span> <span class="n">GetTooltipText</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+<span class="k">virtual</span> <span class="n">FText</span> <span class="n">GetToolTipHeading</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="keywords">Keywords</h3>
+<p>This defines the keywords to help users find this action using the search box in the Blueprint actions menu.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="n">FText</span> <span class="n">GetKeywords</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="appearance">Appearance</h3>
+
+<h4 id="colors">Colors</h4>
+<p>Override these functions to set the color of the node. <code class="language-plaintext highlighter-rouge">GetNodeTitleColor</code> provides the color for the title bar. <code class="language-plaintext highlighter-rouge">GetNodeBodyTintColor</code> is not used by any Blueprint node, but it does work if you want to make your node stand out!</p>
+
+<p><img src="/assets/images/colorful_nodes.png" alt="A series of nodes in various colors"></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="n">FLinearColor</span> <span class="n">GetNodeTitleColor</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+<span class="k">virtual</span> <span class="n">FLinearColor</span> <span class="n">GetNodeBodyTintColor</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="compact-node">Compact Node</h4>
+<p>This makes the title centered in the node and displayed in a larger font. To make the node compact, override <code class="language-plaintext highlighter-rouge">ShouldDrawCompact</code> to return <code class="language-plaintext highlighter-rouge">true</code>. By default, <code class="language-plaintext highlighter-rouge">GetCompactNodeTitle</code> uses the full title of the node, but you can override <code class="language-plaintext highlighter-rouge">GetCompactNodeTitle</code> to change this.</p>
+
+<p><img src="/assets/images/compact_nodes.png" alt="Examples of compact nodes (Add integers, subsystem, and boolean OR nodes)"></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">ShouldDrawCompact</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+<span class="k">virtual</span> <span class="n">FText</span> <span class="n">GetCompactNodeTitle</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="bead-node">Bead Node</h4>
+<p>This node has no fixed location. It is always located in the middle between the input node and the output node. No Blueprint nodes use this as of Unreal Engine 5, and it appears to be a legacy option.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">ShouldDrawAsBead</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="variable-node">Variable Node</h4>
+<p>This makes the node appear as a variable node. In other words, the title is hidden and only the pins are visible.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">DrawNodeAsVariable</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="control-point--knot">Control Point / Knot</h4>
+<p>This makes the node appear as a knot like reroute nodes. Your node needs to have just one input and one output pin. You also need to provide the input and output pin (typically <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">1</code> respectively).</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">ShouldDrawNodeAsControlPointOnly</span><span class="p">(</span><span class="n">int32</span><span class="o">&amp;</span> <span class="n">OutInputPinIndex</span><span class="p">,</span> <span class="n">int32</span><span class="o">&amp;</span> <span class="n">OutOutputPinIndex</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+<span class="p">{</span>
+    <span class="n">OutInputPinIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">OutOutputPinIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="icons">Icons</h4>
+<p>Override <code class="language-plaintext highlighter-rouge">GetIconAndTint</code> to set the icon that appears on the title bar. <code class="language-plaintext highlighter-rouge">ShowPaletteIconOnNode</code> controls whether this icon is visible. <code class="language-plaintext highlighter-rouge">GetCornerIcon</code> sets the icon that appears on the top-right corner of the node.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="n">FSlateIcon</span> <span class="nf">GetIconAndTint</span><span class="p">(</span><span class="n">FLinearColor</span><span class="o">&amp;</span> <span class="n">OutColor</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span>
+<span class="p">{</span>
+     <span class="k">static</span> <span class="k">const</span> <span class="n">FSlateIcon</span> <span class="n">Icon</span> <span class="o">=</span> <span class="n">FSlateIcon</span><span class="p">(</span><span class="s">"EditorStyle"</span><span class="p">,</span> <span class="s">"GraphEditor.Default_16x"</span><span class="p">);</span>
+     <span class="k">return</span> <span class="n">Icon</span><span class="p">;</span>
+<span class="err">}</span>
+<span class="k">virtual</span> <span class="kt">bool</span> <span class="n">ShowPaletteIconOnNode</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+<span class="k">virtual</span> <span class="n">FName</span> <span class="nf">GetCornerIcon</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">"Graph.Latent.LatentIcon"</span><span class="p">);</span> <span class="err">}</span>
+</code></pre></div></div>
+
+<h3 id="can-rename-node">Can Rename Node</h3>
+<p>Set <code class="language-plaintext highlighter-rouge">bCanRenameNode</code> to <code class="language-plaintext highlighter-rouge">1</code> to allow users to rename the node. Alternatively, you may override <code class="language-plaintext highlighter-rouge">GetCanRenameNode</code> to return <code class="language-plaintext highlighter-rouge">true</code>. Beware that <code class="language-plaintext highlighter-rouge">bCanRenameNode</code> exists only when the <code class="language-plaintext highlighter-rouge">WITH_EDITORONLY_DATA</code> flag exists, so you’ll need to put it in between <code class="language-plaintext highlighter-rouge">#if WITH_EDITORONLY_DATA</code> and <code class="language-plaintext highlighter-rouge">#endif</code> just like in the example below.</p>
+
+<p>You must also override <code class="language-plaintext highlighter-rouge">MakeNameValidator</code> function to provide a name validator or it will cause the editor to crash. You’ll need to store the value in a field in <code class="language-plaintext highlighter-rouge">OnRenameNode</code> and return it in <code class="language-plaintext highlighter-rouge">GetNodeTitle</code> when the title type is <code class="language-plaintext highlighter-rouge">EditableTitle</code>.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.h</span>
+
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">UK2Node_Custom</span><span class="p">();</span>
+    <span class="k">virtual</span> <span class="n">FText</span> <span class="n">GetNodeTitle</span><span class="p">(</span><span class="n">ENodeTitleType</span><span class="o">::</span><span class="n">Type</span> <span class="n">TitleType</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">OnRenameNode</span><span class="p">(</span><span class="k">const</span> <span class="n">FString</span><span class="o">&amp;</span> <span class="n">NewName</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">INameValidatorInterface</span><span class="o">&gt;</span> <span class="n">MakeNameValidator</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">UPROPERTY</span><span class="p">()</span>
+    <span class="n">FString</span> <span class="n">UserDefinedTitle</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.cpp</span>
+
+<span class="n">UK2Node_Custom</span><span class="o">::</span><span class="n">UK2Node_Custom</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="cp">#if WITH_EDITORONLY_DATA
+</span>    <span class="n">bCanRenameNode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="cp">#endif
+</span><span class="p">}</span>
+
+<span class="n">FText</span> <span class="n">UK2Node_Custom</span><span class="o">::</span><span class="n">GetNodeTitle</span><span class="p">(</span><span class="n">ENodeTitleType</span><span class="o">::</span><span class="n">Type</span> <span class="n">TitleType</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>    
+    <span class="k">if</span> <span class="p">(</span><span class="n">TitleType</span> <span class="o">==</span> <span class="n">ENodeTitleType</span><span class="o">::</span><span class="n">EditableTitle</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">UserDefinedTitle</span><span class="p">.</span><span class="n">IsEmpty</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">FText</span><span class="o">::</span><span class="n">FromString</span><span class="p">(</span><span class="n">UserDefinedTitle</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">NSLOCTEXT</span><span class="p">(</span><span class="s">"ExampleGame"</span><span class="p">,</span> <span class="s">"NodeTitle"</span><span class="p">,</span> <span class="s">"Custom Node Title"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">UK2Node_Custom</span><span class="o">::</span><span class="n">OnRenameNode</span><span class="p">(</span><span class="k">const</span> <span class="n">FString</span><span class="o">&amp;</span> <span class="n">NewName</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">UserDefinedTitle</span> <span class="o">=</span> <span class="n">NewName</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">INameValidatorInterface</span><span class="o">&gt;</span> <span class="n">UK2Node_Custom</span><span class="o">::</span><span class="n">MakeNameValidator</span><span class="p">()</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="c1">// Use the default name validator. Custom validators will need to derive from FKismetNameValidator.</span>
+    <span class="k">return</span> <span class="n">MakeShareable</span><span class="p">(</span><span class="k">new</span> <span class="n">FKismetNameValidator</span><span class="p">(</span><span class="n">GetBlueprint</span><span class="p">()));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="purity">Purity</h3>
+<p>To make the compiler recognize this node as being pure, override <code class="language-plaintext highlighter-rouge">IsNodePure</code> to return <code class="language-plaintext highlighter-rouge">true</code>.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsNodePure</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="node-details">Node Details</h3>
+<p>If enabled, all visible properties appear in the details window when the node is selected. A property is visible when it has any of the “Edit” or “Visible” specifiers such as <code class="language-plaintext highlighter-rouge">EditAnywhere</code> or <code class="language-plaintext highlighter-rouge">VisibleAnywhere</code>.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">ShouldShowNodeProperties</span><span class="p">()</span> <span class="k">const</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+	
+<span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span> <span class="n">Category</span><span class="o">=</span><span class="s">"My Custom Node"</span><span class="p">)</span>
+<span class="n">UObject</span><span class="o">*</span> <span class="n">CustomProperty</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="text-caching">Text Caching</h3>
+<p>Many of the customization functions mentioned in this reference guide are frequently called and generating a <code class="language-plaintext highlighter-rouge">FText</code> can be expensive. For this reason, it’s recommended to cache text with <code class="language-plaintext highlighter-rouge">FNodeTextCache</code>. Some user actions like changing the input pin connections will automatically mark the cache as dirty. If needed, you can refresh the cache with the <code class="language-plaintext highlighter-rouge">MarkAsDirty</code> function.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.h</span>
+
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">FNodeTextCache</span> <span class="n">NodeTitleCache</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.cpp</span>
+
+<span class="n">FText</span> <span class="n">UK2Node_Custom</span><span class="o">::</span><span class="n">GetNodeTitle</span><span class="p">(</span><span class="n">ENodeTitleType</span><span class="o">::</span><span class="n">Type</span> <span class="n">TitleType</span><span class="p">)</span> <span class="k">const</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">NodeTitleCache</span><span class="p">.</span><span class="n">IsOutOfDate</span><span class="p">(</span><span class="k">this</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">NodeTitleCache</span><span class="p">.</span><span class="n">SetCachedText</span><span class="p">(</span><span class="n">NSLOCTEXT</span><span class="p">(</span><span class="s">"ExampleGame"</span><span class="p">,</span> <span class="s">"NodeTitle"</span><span class="p">,</span> <span class="s">"Custom Node Title"</span><span class="p">),</span> <span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">NodeTitleCache</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="pins">Pins</h2>
+<h3 id="create-pins">Create Pins</h3>
+<p><code class="language-plaintext highlighter-rouge">AllocateDefaultPins</code> is called whenever the node needs to be created for a multitude of reasons, i.e., spawning the node or reopening its containing Blueprint graph. Override this function and call <code class="language-plaintext highlighter-rouge">CreatePin</code> to create the input and output pins.</p>
+
+<p>There are many overrides for <code class="language-plaintext highlighter-rouge">CreatePin</code> with different sets of parameters, but you’ll likely use one of the following:</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">UEdGraphPin</span><span class="o">*</span> <span class="nf">CreatePin</span><span class="p">(</span><span class="n">EEdGraphPinDirection</span> <span class="n">Dir</span><span class="p">,</span> <span class="k">const</span> <span class="n">FName</span> <span class="n">PinCategory</span><span class="p">,</span> <span class="k">const</span> <span class="n">FName</span> <span class="n">PinName</span><span class="p">,</span> <span class="k">const</span> <span class="n">FCreatePinParams</span><span class="o">&amp;</span> <span class="n">PinParams</span> <span class="o">=</span> <span class="n">FCreatePinParams</span><span class="p">());</span>
+<span class="n">UEdGraphPin</span><span class="o">*</span> <span class="nf">CreatePin</span><span class="p">(</span><span class="n">EEdGraphPinDirection</span> <span class="n">Dir</span><span class="p">,</span> <span class="k">const</span> <span class="n">FName</span> <span class="n">PinCategory</span><span class="p">,</span> <span class="k">const</span> <span class="n">FName</span> <span class="n">PinSubCategory</span><span class="p">,</span> <span class="k">const</span> <span class="n">FName</span> <span class="n">PinName</span><span class="p">,</span> <span class="k">const</span> <span class="n">FCreatePinParams</span><span class="o">&amp;</span> <span class="n">PinParams</span> <span class="o">=</span> <span class="n">FCreatePinParams</span><span class="p">());</span>
+<span class="n">UEdGraphPin</span><span class="o">*</span> <span class="nf">CreatePin</span><span class="p">(</span><span class="n">EEdGraphPinDirection</span> <span class="n">Dir</span><span class="p">,</span> <span class="k">const</span> <span class="n">FName</span> <span class="n">PinCategory</span><span class="p">,</span> <span class="n">UObject</span><span class="o">*</span> <span class="n">PinSubCategoryObject</span><span class="p">,</span> <span class="k">const</span> <span class="n">FName</span> <span class="n">PinName</span><span class="p">,</span> <span class="k">const</span> <span class="n">FCreatePinParams</span><span class="o">&amp;</span> <span class="n">PinParams</span> <span class="o">=</span> <span class="n">FCreatePinParams</span><span class="p">());</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Dir</code></td>
+      <td>Specifies whether this pin is an input (<code>EGPD_Input</code>) or output (<code>EGPD_Output</code>) pin.</td>
+    </tr>
+    <tr>
+      <td><code>PinCategory</code></td>
+      <td>This is the main type of the pin. Refer to the Pin Categories table below for a list of available categories.</td>
+    </tr>
+    <tr>
+      <td><code>PinSubCategory</code></td>
+      <td>The sub-type of the pin. This is used by a small number of pin types. Refer to the Pin Categories table below for more information.</td>
+    </tr>
+    <tr>
+      <td><code>PinSubCategoryObject</code></td>
+      <td>The sub-type of the pin using the provided object. For example, if the pin is a class reference, then this would be the class type.</td>
+    </tr>
+    <tr>
+      <td><code>PinName</code></td>
+      <td>A name for the pin. The name needs to be unique within the node. Certain names have special meaning. Refer to the Special Pin Names table below for more information.</td>
+    </tr>
+    <tr>
+      <td><code>PinParams</code></td>
+      <td>
+          Additional parameters for the pin.<br><br>
+          <table>
+            <tbody>
+              <tr>
+<td><code>ContainerType</code></td>
+<td>Sets whether this pin is an array, set, map, or a single value.</td>
+</tr>
+              <tr>
+<td><code>bIsReference</code></td>
+<td>Sets whether to pass the value as a reference.</td>
+</tr>
+              <tr>
+<td><code>bIsConst</code></td>
+<td>Sets whether the value is immutable.</td>
+</tr>
+              <tr>
+<td><code>Index</code></td>
+<td>Sets the position of this pin in the pin list. By default, pins are appended to the list.</td>
+</tr>
+              <tr>
+<td><code>ValueTerminalType</code></td>
+<td>Sets the value type if the container type is a map.</td>
+</tr>
+            </tbody>
+          </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="pin-categories">Pin Categories</h4>
+<p>Pin categories and subcategories are defined in <code class="language-plaintext highlighter-rouge">UEdGraphSchema_K2</code>.</p>
+<table>
+  <thead>
+    <tr>
+<th>Name</th>
+<th><code>PinCategory</code></th>
+<th><code>PinSubCategory</code></th>
+<th><code>PinSubCategoryObject</code></th>
+</tr>
+  </thead>
+  <tbody>
+    <tr>
+<td>Exec</td>
+<td><code>PC_Exec</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+    <tr>
+<td>Boolean</td>
+<td><code>PC_Boolean</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+    <tr>
+<td>Byte</td>
+<td><code>PC_Byte</code></td>
+<td>For bitmask, use <code>PSC_Bitmask</code>
+</td>
+<td>-</td>
+</tr>
+    <tr>
+<td>Integer</td>
+<td><code>PC_Int</code></td>
+<td>For bitmask, use <code>PSC_Bitmask</code>
+</td>
+<td>-</td>
+</tr>
+    <tr>
+<td>Integer64</td>
+<td><code>PC_Int64</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+    <tr>
+<td>Float</td>
+<td><code>PC_Real</code></td>
+<td><table style="margin: 0;"><tbody>
+<tr>
+<td>Single-precision</td>
+<td><code>PC_Float</code></td>
+</tr>
+<tr>
+<td>Double-precision</td>
+<td><code>PC_Double</code></td>
+</tr>
+</tbody></table></td>
+<td>-</td>
+</tr>
+    <tr>
+<td>Name</td>
+<td><code>PC_Name</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+    <tr>
+<td>String</td>
+<td><code>PC_String</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+    <tr>
+<td>Text</td>
+<td><code>PC_Text</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+    <tr>
+<td>Class Reference</td>
+<td><code>PC_Class</code></td>
+<td>For "self", use <code>PSC_Self</code>
+</td>
+<td>
+<code>UClass*</code> for the class type</td>
+</tr>
+    <tr>
+<td>Soft Class Reference</td>
+<td><code>PC_SoftClass</code></td>
+<td>-</td>
+<td>
+<code>UClass*</code> for the class type</td>
+</tr>
+    <tr>
+<td>Object Reference</td>
+<td><code>PC_Object</code></td>
+<td>For "self", use <code>PSC_Self</code>
+</td>
+<td>
+<code>UClass*</code> for the class type</td>
+</tr>
+    <tr>
+<td>Soft Object Reference</td>
+<td><code>PC_SoftObject</code></td>
+<td>-</td>
+<td>
+<code>UClass*</code> for the class type</td>
+</tr>
+    <tr>
+<td>Struct</td>
+<td><code>PC_Struct</code></td>
+<td>-</td>
+<td>
+<code>UScriptStruct*</code> for the struct type</td>
+</tr>
+    <tr>
+<td>Enum</td>
+<td><code>PC_Enum</code></td>
+<td>-</td>
+<td>
+<code>UEnum*</code> for the enum type</td>
+</tr>
+    <tr>
+<td>Delegate (Event)</td>
+<td><code>PC_Delegate</code></td>
+<td>-</td>
+<td>
+<code>UFunction*</code> for the function signature, or <code>nullptr</code> to accept any function/event</td>
+</tr>
+    <tr>
+<td>Interface*</td>
+<td><code>PC_Interface</code></td>
+<td>-</td>
+<td>
+<code>UClass*</code> for the interface type</td>
+</tr>
+    <tr>
+<td>Wildcard</td>
+<td><code>PC_Wildcard</code></td>
+<td>If the pin represents an index in a list, use <code>PSC_Index</code> to allow Integer, Bool, Byte, and Enum values</td>
+<td>-</td>
+</tr>
+  </tbody>
+</table>
+
+<p>*This pin accepts a reference to an object that implements the specified interface.</p>
+
+<h4 id="reserved-pin-names">Reserved Pin Names</h4>
+<p>There are many “reserved” pin names defined in <code class="language-plaintext highlighter-rouge">UEdGraphSchema_K2</code>. Some of the common ones are:</p>
+
+<table>
+  <thead>
+    <tr>
+<th>Name</th>
+<th>Input / Output</th>
+<th>Pin Category</th>
+</tr>
+  </thead>
+  <tbody>
+    <tr>
+<td>
+<code>PN_Execute</code><br>Unnamed input exec pin</td>
+<td>Input</td>
+<td><code>PC_Exec</code></td>
+</tr>
+    <tr>
+<td>
+<code>PN_Then</code><br>Unnamed output exec pin</td>
+<td>Output</td>
+<td><code>PC_Exec</code></td>
+</tr>
+    <tr>
+<td>
+<code>PN_ReturnValue</code><br>The return object</td>
+<td>Output</td>
+<td><code>PC_Object</code></td>
+</tr>
+  </tbody>
+</table>
+
+<h4 id="simple-example">Simple Example</h4>
+<p>Here’s an example of a simple node. Examples of more advanced pins are provided in later sections.</p>
+
+<p><img src="/assets/images/example_node.png" alt="An example node with input and output exec pins and a floating point input pin"></p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.h</span>
+
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">AllocateDefaultPins</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.cpp</span>
+
+<span class="kt">void</span> <span class="n">UK2Node_CustomBlueprintNode</span><span class="o">::</span><span class="n">AllocateDefaultPins</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Super</span><span class="o">::</span><span class="n">AllocateDefaultPins</span><span class="p">();</span>
+
+    <span class="c1">// Input exec pin</span>
+    <span class="n">CreatePin</span><span class="p">(</span><span class="n">EGPD_Input</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Exec</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PN_Execute</span><span class="p">);</span>
+
+    <span class="c1">// Output exec pin</span>
+    <span class="n">CreatePin</span><span class="p">(</span><span class="n">EGPD_Output</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Exec</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PN_Then</span><span class="p">);</span>
+
+    <span class="c1">// Example float input pin</span>
+    <span class="k">static</span> <span class="n">FName</span> <span class="n">ExamplePinName</span> <span class="o">=</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">"Some Value"</span><span class="p">);</span>
+    <span class="n">CreatePin</span><span class="p">(</span><span class="n">EGPD_Input</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Real</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Double</span><span class="p">,</span> <span class="n">ExamplePinName</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="wildcard-pins">Wildcard Pins</h3>
+<p>There’s some work required to make wildcard pins behave as expected. If you create the pin and do nothing else, then the type of the pin will not change when another node is connected to it. This means we need to override <code class="language-plaintext highlighter-rouge">NotifyPinConnectionListChanged</code> to check the wildcard pin and set its type if it’s connected to another node. This function is called each time a pin is connected or disconnected, so it’s the perfect place to put our type checking logic.</p>
+
+<p>In this example, we’ll create a wildcard input and output pin. Our goal is to make the output pin type match the input pin type. By the way, it’s a good practice to define the pin name outside the function but to make it simple, the pin names are inlined.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.cpp</span>
+
+<span class="kt">void</span> <span class="n">UK2Node_CustomBlueprintNode</span><span class="o">::</span><span class="n">AllocateDefaultPins</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">Super</span><span class="o">::</span><span class="n">AllocateDefaultPins</span><span class="p">();</span>
+
+    <span class="n">CreatePin</span><span class="p">(</span><span class="n">EGPD_Input</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Exec</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PN_Execute</span><span class="p">);</span>
+    <span class="n">CreatePin</span><span class="p">(</span><span class="n">EGPD_Output</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Exec</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PN_Then</span><span class="p">);</span>
+
+    <span class="n">CreatePin</span><span class="p">(</span><span class="n">EGPD_Input</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Wildcard</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">"WildcardInput"</span><span class="p">));</span>
+    <span class="n">CreatePin</span><span class="p">(</span><span class="n">EGPD_Output</span><span class="p">,</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Wildcard</span><span class="p">,</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">"WildcardOutput"</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Override <code class="language-plaintext highlighter-rouge">NotifyPinConnectionListChanged</code>. Let’s begin by checking both the input and output pin and reset their type to wildcard if they’re both disconnected. We want to check for both at the same time because we don’t want to reset the pin type if either pin is already connected to another node. Next, if either wildcard pin is connected, we want to check the pin that was connected to it. If it’s also a wildcard, then we still don’t know the type and must do nothing. Finally, when the wildcard pin’s type has changed, we change all other wildcard pins to have the same type and break any pin connections that are no longer valid.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.h</span>
+
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">NotifyPinConnectionListChanged</span><span class="p">(</span><span class="n">UEdGraphPin</span><span class="o">*</span> <span class="n">Pin</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.cpp</span>
+
+<span class="kt">void</span> <span class="n">UK2Node_CustomBlueprintNode</span><span class="o">::</span><span class="n">NotifyPinConnectionListChanged</span><span class="p">(</span><span class="n">UEdGraphPin</span><span class="o">*</span> <span class="n">Pin</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Super</span><span class="o">::</span><span class="n">NotifyPinConnectionListChanged</span><span class="p">(</span><span class="n">Pin</span><span class="p">);</span>
+
+    <span class="n">UEdGraphPin</span><span class="o">*</span> <span class="n">InputPin</span> <span class="o">=</span> <span class="n">FindPin</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"WildcardInput"</span><span class="p">));</span>
+    <span class="n">UEdGraphPin</span><span class="o">*</span> <span class="n">OutputPin</span> <span class="o">=</span> <span class="n">FindPin</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"WildcardOutput"</span><span class="p">));</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">InputPin</span><span class="o">-&gt;</span><span class="n">LinkedTo</span><span class="p">.</span><span class="n">Num</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">OutputPin</span><span class="o">-&gt;</span><span class="n">LinkedTo</span><span class="p">.</span><span class="n">Num</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Reset input pin to wildcard</span>
+        <span class="n">InputPin</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">.</span><span class="n">PinCategory</span> <span class="o">=</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Wildcard</span><span class="p">;</span>
+        <span class="n">InputPin</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">.</span><span class="n">PinSubCategory</span> <span class="o">=</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+        <span class="n">InputPin</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">.</span><span class="n">PinSubCategoryObject</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+
+        <span class="c1">// Reset output pin to wildcard</span>
+        <span class="n">OutputPin</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">.</span><span class="n">PinCategory</span> <span class="o">=</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Wildcard</span><span class="p">;</span>
+        <span class="n">OutputPin</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">.</span><span class="n">PinSubCategory</span> <span class="o">=</span> <span class="n">TEXT</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+        <span class="n">OutputPin</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">.</span><span class="n">PinSubCategoryObject</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">Pin</span> <span class="o">==</span> <span class="n">InputPin</span> <span class="o">||</span> <span class="n">Pin</span> <span class="o">==</span> <span class="n">OutputPin</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">Pin</span><span class="o">-&gt;</span><span class="n">LinkedTo</span><span class="p">.</span><span class="n">Num</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">Pin</span><span class="o">-&gt;</span><span class="n">LinkedTo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">.</span><span class="n">PinCategory</span> <span class="o">!=</span> <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">PC_Wildcard</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Set the wildcard pin type to the connected pin type.</span>
+        <span class="n">Pin</span><span class="o">-&gt;</span><span class="n">PinType</span> <span class="o">=</span> <span class="n">Pin</span><span class="o">-&gt;</span><span class="n">LinkedTo</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">;</span>
+
+        <span class="c1">// Update all wildcard pins to have the same type.</span>
+        <span class="n">InputPin</span><span class="o">-&gt;</span><span class="n">PinType</span> <span class="o">=</span> <span class="n">Pin</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">;</span>
+        <span class="n">OutputPin</span><span class="o">-&gt;</span><span class="n">PinType</span> <span class="o">=</span> <span class="n">Pin</span><span class="o">-&gt;</span><span class="n">PinType</span><span class="p">;</span>
+
+        <span class="c1">// Break any connection if it's no longer valid.</span>
+        <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">ValidateExistingConnections</span><span class="p">(</span><span class="n">InputPin</span><span class="p">);</span>
+        <span class="n">UEdGraphSchema_K2</span><span class="o">::</span><span class="n">ValidateExistingConnections</span><span class="p">(</span><span class="n">OutputPin</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This screenshot demonstrates the logic we implemented in <code class="language-plaintext highlighter-rouge">NotifyPinConnectionListChanged</code>:</p>
+
+<p><img src="/assets/images/wildcard_pins.png" alt="A screenshot of a custom node with wildcard pins"></p>
+
+<h2 id="graph-compatibility">Graph Compatibility</h2>
+<p>By default, you can spawn your node in any Blueprint graph including construction scripts, functions, and macros. Override <code class="language-plaintext highlighter-rouge">IsCompatibleWithGraph</code> to restrict placement on certain graphs or even Blueprint classes.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.h</span>
+
+<span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsCompatibleWithGraph</span><span class="p">(</span><span class="n">UEdGraph</span> <span class="k">const</span><span class="o">*</span> <span class="n">Graph</span><span class="p">)</span> <span class="k">const</span> <span class="k">override</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// K2Node_Custom.cpp</span>
+
+<span class="kt">bool</span> <span class="n">UK2Node_Custom</span><span class="o">::</span><span class="n">IsCompatibleWithGraph</span><span class="p">(</span><span class="k">const</span> <span class="n">UEdGraph</span><span class="o">*</span> <span class="n">TargetGraph</span><span class="p">)</span> <span class="k">const</span> 
+<span class="p">{</span>
+    <span class="n">UBlueprint</span><span class="o">*</span> <span class="n">Blueprint</span> <span class="o">=</span> <span class="n">FBlueprintEditorUtils</span><span class="o">::</span><span class="n">FindBlueprintForGraph</span><span class="p">(</span><span class="n">TargetGraph</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">Blueprint</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Don't let this node spawn in construction scripts</span>
+    <span class="kt">bool</span> <span class="n">bIsCompatible</span> <span class="o">=</span> <span class="n">FBlueprintEditorUtils</span><span class="o">::</span><span class="n">FindUserConstructionScript</span><span class="p">(</span><span class="n">Blueprint</span><span class="p">)</span> <span class="o">!=</span> <span class="n">TargetGraph</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">Super</span><span class="o">::</span><span class="n">IsCompatibleWithGraph</span><span class="p">(</span><span class="n">TargetGraph</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">bIsCompatible</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You may want to use one or more of the following booleans in your implementation of <code class="language-plaintext highlighter-rouge">IsCompatibleWithGraph</code>:</p>
+
+<h3 id="check-for-construction-script">Check for Construction Script</h3>
+<p>Construction scripts execute in the editor, so you may need this if your node is intended to not execute at edit time.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">bIsConstructionScript</span> <span class="o">=</span> <span class="n">FBlueprintEditorUtils</span><span class="o">::</span><span class="n">FindUserConstructionScript</span><span class="p">(</span><span class="n">Blueprint</span><span class="p">)</span> <span class="o">==</span> <span class="n">TargetGraph</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="check-for-event-graph">Check for Event Graph</h3>
+<p>If your node expands into multiple distinct nodes (i.e. events), then you need to require it to be placed in only Event Graphs.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">bIsEventGraph</span> <span class="o">=</span> <span class="n">TargetGraph</span><span class="o">-&gt;</span><span class="n">GetSchema</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetGraphType</span><span class="p">(</span><span class="n">TargetGraph</span><span class="p">)</span> <span class="o">==</span> <span class="n">GT_Ubergraph</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="check-for-function-graph">Check for Function Graph</h3>
+<p>If your node expands into latent actions, then you need to prevent it from being placed in functions.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">bIsFunction</span> <span class="o">=</span> <span class="n">TargetGraph</span><span class="o">-&gt;</span><span class="n">GetSchema</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetGraphType</span><span class="p">(</span><span class="n">TargetGraph</span><span class="p">)</span> <span class="o">==</span> <span class="n">GT_Function</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="check-for-macro-graph">Check for Macro Graph</h3>
+<p>Unlike Event Graphs, macros can only have one input node. If your node expands into multiple input nodes, then you need to prevent it from being placed in macros.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">bIsMacro</span> <span class="o">=</span> <span class="n">TargetGraph</span><span class="o">-&gt;</span><span class="n">GetSchema</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetGraphType</span><span class="p">(</span><span class="n">TargetGraph</span><span class="p">)</span> <span class="o">==</span> <span class="n">GT_Macro</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="require-world-context">Require World Context</h3>
+<p>Blueprint function libraries don’t have a world context. If your node requires a world context, then you may want to check for this. Alternatively, you can expose the World Context pin as needed.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">bHasWorldContext</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="o">-&gt;</span><span class="n">GeneratedClass</span><span class="o">-&gt;</span><span class="n">GetDefaultObject</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">ImplementsGetWorld</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="blueprint-derives-from-a-class">Blueprint Derives From a Class</h3>
+<p>If your node is relevant only to a class, you can check to see if the Blueprint is derived from a class.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">bIsValidSubclass</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="o">-&gt;</span><span class="n">ParentClass</span> <span class="o">&amp;&amp;</span> <span class="n">Blueprint</span><span class="o">-&gt;</span><span class="n">ParentClass</span><span class="o">-&gt;</span><span class="n">IsChildOf</span><span class="p">(</span><span class="n">UMyClass</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h3 id="blueprint-implements-an-interface">Blueprint Implements an Interface</h3>
+<p>Unlike <code class="language-plaintext highlighter-rouge">Blueprint-&gt;GeneratedClass-&gt;ImplementsInterface(...)</code>, the following code will detect interfaces added via the Blueprint editor — even before the Blueprint has been compiled.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UClass</span><span class="o">*&gt;</span> <span class="n">ImplementedInterfaces</span><span class="p">;</span>
+<span class="n">FBlueprintEditorUtils</span><span class="o">::</span><span class="n">FindImplementedInterfaces</span><span class="p">(</span><span class="n">Blueprint</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="n">ImplementedInterfaces</span><span class="p">);</span>
+<span class="kt">bool</span> <span class="n">bImplementsInterface</span> <span class="o">=</span> <span class="n">ImplementedInterfaces</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="n">UBlendableInterface</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#blueprints" class="page__taxonomy-item p-category" rel="tag">blueprints</a><span class="sep">, </span>
+    
+      <a href="/tags/#unreal" class="page__taxonomy-item p-category" rel="tag">unreal</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#unreal-editor" class="page__taxonomy-item p-category" rel="tag">Unreal Editor</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-11-21T00:00:00-08:00">November 21, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=A+Reference+Guide+to+Custom+Blueprint+Nodes%20https%3A%2F%2Funrealist.org%2Fcustom-blueprint-nodes%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Funrealist.org%2Fcustom-blueprint-nodes%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Funrealist.org%2Fcustom-blueprint-nodes%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/commonui-actionbar/" class="pagination--pager" title="Common UI: Action Bar
+">Previous</a>
+    
+    
+      <a href="/component-visualizers/" class="pagination--pager" title="Visualize Actor Components in the Editor with Component Visualizers
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="giscus-comments"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You May Also Enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-3/" rel="permalink">Lyra Deep Dive - Chapter 3: Experience Lifecycle
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-16T00:00:00-07:00">April 16, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-2/" rel="permalink">Lyra Deep Dive - Chapter 2: Experiences
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-07T00:00:00-07:00">April 7, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/lyra-part-1/" rel="permalink">Lyra Deep Dive - Chapter 1: Introduction
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-04-02T00:00:00-07:00">April 2, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/component-visualizers/" rel="permalink">Visualize Actor Components in the Editor with Component Visualizers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-02-19T00:00:00-08:00">February 19, 2023</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/unrealist_matt" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+          <li><a href="https://github.com/the-unrealist" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2023 Matt's Game Dev Notebook. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    <script>
+  'use strict';
+
+  (function () {
+    var commentContainer = document.querySelector('#giscus-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    script.setAttribute('data-repo', 'the-unrealist/the-unrealist');
+    script.setAttribute('data-repo-id', 'R_kgDOIFvutA');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDOIFvutM4CRsVd');
+    script.setAttribute('data-mapping', 'og:title');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-theme', 'preferred_color_scheme');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+  
+
+
+
+
+
+  </body>
+</html>
