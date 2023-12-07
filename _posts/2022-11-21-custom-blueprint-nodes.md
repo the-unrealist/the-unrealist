@@ -7,16 +7,12 @@ categories:
   - Unreal Editor
 ---
 
-<img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-Blueprints-blue" alt="Blueprints"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
+<img src="https://img.shields.io/badge/Unreal%20Engine-5.0-informational" alt="Written for Unreal Engine 5.0"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
 
 ## Introduction
 The Unreal Editor provides a general-purpose graph system that is used by Blueprints, materials, Niagara, and other graph-based features. In this reference guide, we'll focus on `K2Node` from which all Blueprint nodes are derived.
 
 There's [this fantastic tutorial on creating custom Blueprint nodes](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/). This page is intended as a supplement to the tutorial by providing additional information and reference tables, and for that reason, I recommend everyone to read the tutorial first.
-
-I plan on writing more about the following when I get the chance:
-- `ExpandNode` (for now, [read this article](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/))
-- Latent Nodes
 
 ## Create a Node
 All Blueprint nodes need to be in a `UncookedOnly` module. Create a new module and set the `Type` to `UncookedOnly` in the `uproject` or `uplugin` file.
