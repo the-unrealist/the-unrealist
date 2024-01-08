@@ -25,7 +25,7 @@ repository: the-unrealist/the-unrealist
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-minima
+remote_theme: jekyll/minima
 # Outputting
 permalink: /:title/
 paginate: 8 # amount of posts to show
