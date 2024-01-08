@@ -79,7 +79,6 @@ defaults:
       type: posts
     values:
       layout: single
-      classes: wide
       author_profile: false
       read_time: false
       comments: true
@@ -94,7 +93,6 @@ defaults:
       type: pages
     values:
       layout: single
-      classes: wide
       author_profile: false
 
 category_archive:
