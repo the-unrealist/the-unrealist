@@ -16,22 +16,24 @@
 title: Matt's Game Dev Notebook
 email: matt@unrealist.org
 description: >- # this means to ignore newlines until "baseurl:"
-   Matt's Game Dev Notebook is a blog dedicated to sharing the knowledge and experience of an Unreal Engine enthusiast.
+   This is my personal Unreal Engine game dev notebook.
 website: https://unrealist.org
 twitter_username: unrealist_matt
 github_username: the-unrealist
-minimal_mistakes_skin: dark
 search: true
 repository: the-unrealist/the-unrealist
 
 # Build settings
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
+theme: jekyll-theme-minima
 # Outputting
 permalink: /:title/
-paginate: 5 # amount of posts to show
+paginate: 8 # amount of posts to show
 paginate_path: /page:num/
 timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+minima:
+  skin: dark
 
 include:
   - _pages
