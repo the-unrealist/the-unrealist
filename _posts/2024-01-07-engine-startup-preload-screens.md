@@ -31,10 +31,10 @@ At this point, the engine has not even started loading yet. This means the splas
 
 The platform splash screen does not use Slate. It runs on its own thread with its own window created via platform-specific hooks. It's as low-level as it gets. The game window has not been created yet.
 
-#### Using a BMP image
+### Using a BMP image
 The Unreal Automation Tool (UAT) specifically looks for a bitmap file named `Splash.bmp` to copy when packaging. This means **bitmap is the recommended image format** to use for the splash screen. When you use a bitmap, the splash screen "just works" in a packaged build.
 
-#### Using a PNG or JPEG image
+### Using a PNG or JPEG image
 To use PNG or JPEG, you must manually stage the image in Project Settings or `DefaultGame.ini`.
 
 The "Additional Non-Asset Directories To Copy" setting is found under Project > Packaging. Make sure `Splash` is included in this setting.
