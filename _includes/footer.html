@@ -2,6 +2,11 @@
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
+
+    <div class="social-links">
+      {%- include social.html -%}
+    </div>
+    
     {% if page.id %}
     <script src="https://giscus.app/client.js"
             data-repo="the-unrealist/the-unrealist"
