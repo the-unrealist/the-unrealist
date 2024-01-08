@@ -66,14 +66,14 @@ jekyll-spaceship:
     config:
       theme: dark
 
-author:
-  name   : "Matt"
-  avatar : "/assets/images/orange.png"
-  bio    : "Unreal Engine Enthusiast"
-  links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/unrealist_matt"
+# author:
+#   name   : "Matt"
+#   avatar : "/assets/images/orange.png"
+#   bio    : "Unreal Engine Enthusiast"
+#   links:
+#     - label: "Twitter"
+#       icon: "fab fa-fw fa-twitter-square"
+#       url: "https://twitter.com/unrealist_matt"
 
 footer:
   links:
