@@ -1,12 +1,12 @@
 ---
 tags: 
   - unreal
-  - engine
+  - slate
 title: "Engine Startup Preload Screens"
 categories:
   - Engine
 ---
-<img src="https://img.shields.io/badge/Unreal%20Engine-5.3-informational" alt="Written for Unreal Engine 5.3"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++">
+<img src="https://img.shields.io/badge/Unreal%20Engine-5.3-informational" alt="Written for Unreal Engine 5.3"> <img src="https://img.shields.io/badge/-C%2B%2B-orange" alt="C++"> <img src="https://img.shields.io/badge/-Slate-purple" alt="Slate">
 
 Up to *four* different **engine preloading screens** may be shown when an Unreal Engine game launches—one for each engine startup phase. While these screens are being displayed, the engine is initializing and the game has not even started loading yet.
 
@@ -56,9 +56,9 @@ As the engine goes through each initialization stage, more Unreal Engine feature
 
 |Preload Screen Type|Module Load Phase|Available Features|
 |-------------------|-----------------|------------------|
-|`CustomSplashScreen`|`PostSplashScreen`|<ul><li>Slate</li><li>Localization</li></ul>|
-|`EarlyStartupScreen`|`PreEarlyLoadingScreen`|<ul><li>Slate</li><li>Localization</li><li>Config (raw access via `GConfig`)</li></ul>|
-|`EngineLoadingScreen`|`PreLoadingScreen`|<ul><li>Slate</li><li>Localization</li><li>Config (via `UCLASS` and `UPROPERTY` specifiers)</li><li>`UObject`</li></ul>|
+|`CustomSplashScreen`|`PostSplashScreen`|Slate &amp; Localization|
+|`EarlyStartupScreen`|`PreEarlyLoadingScreen`|Slate, Localization, &amp; Config (raw access via `GConfig`)|
+|`EngineLoadingScreen`|`PreLoadingScreen`|Slate, Localization, Config (via `UCLASS` and `UPROPERTY` specifiers), &amp; `UObject`</ul>|
 
 ## Creating a preload screen
 `FPreLoadScreenBase` is used for all Slate-based engine preloading screens.
