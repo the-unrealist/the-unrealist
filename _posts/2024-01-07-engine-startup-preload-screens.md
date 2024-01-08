@@ -58,7 +58,7 @@ As the engine goes through each initialization stage, more Unreal Engine feature
 |-------------------|-----------------|------------------|
 |`CustomSplashScreen`|`PostSplashScreen`|Slate &amp; Localization|
 |`EarlyStartupScreen`|`PreEarlyLoadingScreen`|Slate, Localization, &amp; Config (raw access via `GConfig`)|
-|`EngineLoadingScreen`|`PreLoadingScreen`|Slate, Localization, Config (via `UCLASS` and `UPROPERTY` specifiers), &amp; `UObject`</ul>|
+|`EngineLoadingScreen`|`PreLoadingScreen`|Slate, Localization, Config (via `UCLASS` and `UPROPERTY` specifiers), &amp; `UObject`|
 
 ## Creating a preload screen
 `FPreLoadScreenBase` is used for all Slate-based engine preloading screens.
