@@ -15,12 +15,9 @@
 # in the templates via {{ site.myvariable }}.
 title: Matt's Game Dev Notebook
 email: matt@unrealist.org
-description: >- # this means to ignore newlines until "baseurl:"
-   This is my personal Unreal Engine game dev notebook.
 website: https://unrealist.org
 twitter_username: unrealist_matt
 github_username: the-unrealist
-search: true
 repository: the-unrealist/the-unrealist
 
 # Build settings
@@ -28,7 +25,7 @@ markdown: kramdown
 remote_theme: jekyll/minima
 # Outputting
 permalink: /:title/
-paginate: 8 # amount of posts to show
+paginate: 10 # amount of posts to show
 paginate_path: /page:num/
 timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
