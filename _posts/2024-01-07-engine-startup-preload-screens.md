@@ -52,7 +52,6 @@ A word of caution: all files under the `/Content/Splash/` directory will be copi
 ## Engine preloading screens
 After the platform splash screen, the game window is created. All screens from here on are platform-independent and have access to the game's Slate application.
 
-### Engine phases & feature availability
 As the engine goes through each initialization stage, more Unreal Engine features become available to use in your custom preload screens.
 
 |Preload Screen Type|Module Load Phase|Available Features|
@@ -61,7 +60,7 @@ As the engine goes through each initialization stage, more Unreal Engine feature
 |`EarlyStartupScreen`|`PreEarlyLoadingScreen`|<ul><li>Slate</li><li>Localization</li><li>Config (raw access via `GConfig`)</li></ul>|
 |`EngineLoadingScreen`|`PreLoadingScreen`|<ul><li>Slate</li><li>Localization</li><li>Config (via `UCLASS` and `UPROPERTY` specifiers)</li><li>`UObject`</li></ul>|
 
-### Creating a preload screen
+## Creating a preload screen
 `FPreLoadScreenBase` is used for all Slate-based engine preloading screens.
 
 Preload screens of all types should override `Init`, `GetPreLoadScreenType`, and `GetWidget`.
@@ -185,7 +184,7 @@ Finally, in `.uplugin` or `.uproject`, make sure the module uses the correct loa
 }
 ```
 
-### Custom splash screen
+## Custom splash screen
 This is the second screen that may be displayed under the following conditions:
 
 * It's not running as a dedicated server or commandlet.
@@ -194,7 +193,7 @@ This is the second screen that may be displayed under the following conditions:
 
 Unlike the platform splash screen, this screen will appear on all platforms and runs on the Slate render thread. In practice, there's not really a good reason to have a custom splash screen. It will block the engine from loading any further while it's visible (unless you create a new thread but that's beyond the scope of this article). Not to mention the time between the custom splash screen and the early startup screen is insignificant.
 
-### Early startup screen
+## Early startup screen
 This is the third screen that's displayed under the following conditions:
 
 * It's not running as a dedicated server or commandlet.
@@ -206,7 +205,7 @@ A custom early startup screen is displayed if, and only if, there are no startup
 
 Since `UObject` is not available in this phase, you must use `GConfig` to read and parse config values manually.
 
-### Engine loading screen
+## Engine loading screen
 This is the final engine preloading screen that's displayed under the following conditions:
 
 * It's not running as a dedicated server or commandlet.
