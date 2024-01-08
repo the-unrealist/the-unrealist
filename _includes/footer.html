@@ -2,6 +2,7 @@
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
+    {% if page.id %}
     <script src="https://giscus.app/client.js"
             data-repo="the-unrealist/the-unrealist"
             data-repo-id="R_kgDOIFvutA"
@@ -17,6 +18,7 @@
             crossorigin="anonymous"
             async>
     </script>
+    {% endif %}
   </div>
 
 </footer>
