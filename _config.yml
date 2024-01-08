@@ -16,7 +16,6 @@
 title: Matt's Game Dev Notebook
 email: matt@unrealist.org
 website: https://unrealist.org
-twitter_username: unrealist_matt
 github_username: the-unrealist
 repository: the-unrealist/the-unrealist
 
@@ -31,6 +30,8 @@ timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_databas
 
 minima:
   skin: dark
+  social_links:
+    - { platform: twitter, user_url: "https://twitter.com/unrealist_matt" }
 
 include:
   - _pages
