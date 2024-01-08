@@ -30,7 +30,7 @@ paginate_path: /page:num/
 timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 minima:
-  skin: dark
+  skin: solarized-dark
 
 include:
   - _pages
