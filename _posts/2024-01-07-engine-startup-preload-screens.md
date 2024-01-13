@@ -170,7 +170,7 @@ IMPLEMENT_MODULE(FMyCustomPreloadScreenModule, MyCustomPreloadScreen)
 
 ```
 
-Finally, in `.uplugin` or `.uproject`, make sure the module uses the correct loading phase. Refer to [the table above](#engine-phases--feature-availability) to determine which loading phase to use.
+Finally, in `.uplugin` or `.uproject`, make sure the module uses the correct loading phase. Refer to [the table above](#engine-preloading-screens) to determine which loading phase to use.
 
 ```json
 {
@@ -201,7 +201,7 @@ This is the third screen that's displayed under the following conditions:
 * There are no startup movies to play *OR* the platform does not support early playback.
 * A module with the `PreEarlyLoadingScreen` load phase contains a `FPreLoadScreenBase` subclass with the type set to `EarlyStartupScreen` and registered with `FPreLoadScreenManager`.
 
-A custom early startup screen is displayed if, and only if, there are no startup movies or the platform doesn't support early playback of startup movies. As far as I can tell, this is supported on Android, iOS, and Windows.
+A custom early startup screen is displayed if, and only if, there are no startup movies or the platform doesn't support early playback of startup movies. As far as I can tell, early playback is supported on Android, iOS, and Windows.
 
 Since `UObject` is not available in this phase, you must use `GConfig` to read and parse config values manually.
 
