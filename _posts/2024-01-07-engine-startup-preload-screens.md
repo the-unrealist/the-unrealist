@@ -22,10 +22,10 @@ The game displays a small splash screen on desktop platforms (Windows, MacOS and
 
 This is displayed under the following conditions:
 
+* A splash image is selected for the platform in Project Settings (e.g., Platforms > Windows > Splash).
 * It's running on a desktop OS.
 * It's not running as a dedicated server or commandlet.
 * The game was *not* launched with the `-nosplash` commandline argument.
-* A splash image is selected for the platform in Project Settings (e.g., Platforms > Windows > Splash).
 
 At this point, the engine has not even started loading yet. This means the splash image must exist outside the Unreal File System (UFS) as a standalone file in the packaged build, i.e., `<Game>/Content/Splash/Splash.bmp`.
 
@@ -196,9 +196,9 @@ Unlike the platform splash screen, this screen will appear on all platforms and 
 ## Early startup screen
 This is the third screen that's displayed under the following conditions:
 
+* There are no startup movies to play *OR* the platform does not support early playback.
 * It's not running as a dedicated server or commandlet.
 * The game was *not* launched with the `-noloadingscreen` commandline argument.
-* There are no startup movies to play *OR* the platform does not support early playback.
 * A module with the `PreEarlyLoadingScreen` load phase contains a `FPreLoadScreenBase` subclass with the type set to `EarlyStartupScreen` and registered with `FPreLoadScreenManager`.
 
 A custom early startup screen is displayed if, and only if, there are no startup movies or the platform doesn't support early playback of startup movies. As far as I can tell, early playback is supported on Android, iOS, and Windows.
@@ -208,9 +208,9 @@ Since `UObject` is not available in this phase, you must use `GConfig` to read a
 ## Engine loading screen
 This is the final engine preloading screen that's displayed under the following conditions:
 
+* There are no startup movies to play.
 * It's not running as a dedicated server or commandlet.
 * The game was *not* launched with the `-noloadingscreen` commandline argument.
-* There are no startup movies to play.
 * A module with the `PreLoadingScreen` load phase contains a `FPreLoadScreenBase` subclass with the type set to `EngineLoadingScreen` and registered with `FPreLoadScreenManager`.
 
 This is the easiest preload screen to implement because you have access to most engine features at this point, especially `UObject`. Keep in mind that `UGameInstance`, `UWorld`, and other game-related singletons do not exist until *after* the engine loading screen.
