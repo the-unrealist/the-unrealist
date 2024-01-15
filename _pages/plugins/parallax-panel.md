@@ -3,12 +3,12 @@ permalink: /plugins/parallax-panel
 title: "Parallax Panel"
 ---
 
-![Icon for the plugin showing a stylized scene of a mountain with clouds and trees.](https://github.com/the-unrealist/parallax-panel/blob/main/Resources/Icon128.png)
+![Icon for the plugin showing a stylized scene of a mountain with clouds and trees.](https://github.com/the-unrealist/parallax-panel/blob/main/Resources/Icon128.png?raw=true)
 
 ## Parallax Panel
 A 2D panel widget that simulates a 3D depth effect in user interfaces.
 
-![An animated GIF showing a simple cityscape with each layer moving at different speeds.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/parallax-preview.gif)
+![An animated GIF showing a simple cityscape with each layer moving at different speeds.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/parallax-preview.gif?raw=true)
 
 ### Features
 * Simple and lightweight panel
@@ -18,22 +18,22 @@ A 2D panel widget that simulates a 3D depth effect in user interfaces.
 ### User Guide
 In a widget blueprint, create a Parallax Panel widget from the palette.
 
-![Screenshot showing Parallax Panel categorized under Panel in the Palette window.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/01-palette.png)
+![Screenshot showing Parallax Panel categorized under Panel in the Palette window.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/01-palette.png?raw=true)
 <br /><br />
 
 Add child widgets to the panel. Each child widget is a layer.
 
-![Screenshot showing a Parallax Panel widget with three different image child widgets in the hierarchy.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/02b-hierarchy.png)
+![Screenshot showing a Parallax Panel widget with three different image child widgets in the hierarchy.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/02b-hierarchy.png?raw=true)
 <br /><br />
 
 Set the **Distance** of each layer under *Slot (Parallax Panel Slot)* in the Details panel.
 
-![Screenshot showing the Distance property in the details panel for a child widget. The property is marked with a red arrow.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/02-layer-distance.png)
+![Screenshot showing the Distance property in the details panel for a child widget. The property is marked with a red arrow.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/02-layer-distance.png?raw=true)
 <br /><br />
 
 Use the **Offset** property in the Parallax Panel to control the perspective.
 
-![Screenshot showing the Offset property in the details panel for a Parallax Panel widget.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/03-panel-offset.png)
+![Screenshot showing the Offset property in the details panel for a Parallax Panel widget.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/03-panel-offset.png?raw=true)
 <br /><br />
 
 The parallax scrolling equation used in this plugin is $Transform = Offset\cdot\frac{1}{1+(\frac{Distance}{100})}$. A layer with a distance of 100 will move twice less than as a layer with a distance of zero.
