@@ -8,7 +8,10 @@ title: "Parallax Panel"
 ## Parallax Panel
 A 2D panel widget that simulates a 3D depth effect in user interfaces.
 
-![An animated GIF showing a simple cityscape with each layer moving at different speeds.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/parallax-preview.gif?raw=true)
+<details open style="margin-bottom: 1em;">
+  <summary class="toggle-link" style="cursor: pointer;">Show/hide animated preview</summary>
+  <img src="https://github.com/the-unrealist/parallax-panel/blob/main/.images/parallax-preview.gif?raw=true" alt="Animated GIF showing a simple cityscape with each layer moving at different speeds.">
+</details>
 
 ### Download
 [Get the source code on GitHub ❭](https://github.com/the-unrealist/parallax-panel)
