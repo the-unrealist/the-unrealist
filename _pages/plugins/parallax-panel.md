@@ -5,17 +5,17 @@ title: "Parallax Panel"
 
 ![Icon for the plugin showing a stylized scene of a mountain with clouds and trees.](https://github.com/the-unrealist/parallax-panel/blob/main/Resources/Icon128.png)
 
-# Parallax Panel
+## Parallax Panel
 A 2D panel widget that simulates a 3D depth effect in user interfaces.
 
 ![An animated GIF showing a simple cityscape with each layer moving at different speeds.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/parallax-preview.gif)
 
-## Features
+### Features
 * Simple and lightweight panel
 * Any widget can be a layer
 * Supports [widget animations](https://docs.unrealengine.com/5.3/en-US/animating-umg-widgets-in-unreal-engine/)
 
-## User Guide
+### User Guide
 In a widget blueprint, create a Parallax Panel widget from the palette.
 
 ![Screenshot showing Parallax Panel categorized under Panel in the Palette window.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/01-palette.png)
