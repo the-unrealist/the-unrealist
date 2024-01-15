@@ -33,6 +33,9 @@ minima:
   social_links:
     - { platform: twitter, user_url: "https://twitter.com/unrealist_matt" }
 
+header_pages:
+  - about.md
+
 include:
   - _pages
 
