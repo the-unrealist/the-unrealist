@@ -15,7 +15,7 @@ The Unreal Editor provides a general-purpose graph system that is used by Bluepr
 There's [this fantastic tutorial on creating custom Blueprint nodes](https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-ue4-blueprint-usability-with-custom-nodes-r5694/). This page is intended as a supplement to the tutorial by providing additional information and reference tables, and for that reason, I recommend everyone to read the tutorial first.
 
 ## Create a Node
-All Blueprint nodes need to be in a `UncookedOnly` module. Create a new module and set the `Type` to `UncookedOnly` in the `uproject` or `uplugin` file.
+All Blueprint nodes should be in a `UncookedOnly` module. Create a new module and set the `Type` to `UncookedOnly` in the `uproject` or `uplugin` file.
 
 ```json
 "Modules": [
