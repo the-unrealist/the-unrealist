@@ -10,6 +10,9 @@ A 2D panel widget that simulates a 3D depth effect in user interfaces.
 
 ![An animated GIF showing a simple cityscape with each layer moving at different speeds.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/parallax-preview.gif?raw=true)
 
+### Download
+[Get the source code on GitHub ❭](https://github.com/the-unrealist/parallax-panel)
+
 ### Features
 * Simple and lightweight panel
 * Any widget can be a layer
