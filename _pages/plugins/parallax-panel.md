@@ -42,7 +42,7 @@ Use the **Offset** property in the Parallax Panel to control the perspective.
 ![Screenshot showing the Offset property in the details panel for a Parallax Panel widget.](https://github.com/the-unrealist/parallax-panel/blob/main/.images/03-panel-offset.png?raw=true)
 <br /><br />
 
-The parallax scrolling equation used in this plugin is $$Transform = Offset\cdot\frac{1}{1+(\frac{Distance}{100})}$$. A layer with a distance of 100 will move twice less than as a layer with a distance of zero.
+The parallax scrolling equation used in this plugin is $$Transform = Offset\cdot\frac{1}{1+(\frac{Distance}{100})}$$. A layer with a distance of 100 will move twice less than a layer with a distance of zero.
 
 ---------------------
 
