@@ -34,7 +34,8 @@ minima:
     - { platform: twitter, user_url: "https://twitter.com/unrealist_matt" }
 
 header_pages:
-  - about.md
+  - _pages/about.md
+  - _pages/plugins.md
 
 include:
   - _pages
