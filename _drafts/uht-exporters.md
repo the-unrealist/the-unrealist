@@ -37,7 +37,7 @@ UHT implements these exporters under `/Engine/Source/Programs/Shared/EpicGames.U
 |Json|No|A sample exporter that shows how to output files. This exporter dumps all UObjects as a JSON file for each package.|
 |Stats|No|A sample exporter that shows how to log details about types in the codebase.|
 
-Exporters that are not enabled by default can be triggered by adding `-<EXPORTER_NAME>` to the commandline arguments.
+Exporters that are not enabled by default are triggered by adding `-<EXPORTER_NAME>` to the commandline arguments.
 
 The following command will execute both the `Stats` and `Json` exporters. Replace `MyGameEditor`, `Win64`, and `Development` with the desired target, platform, and build configuration. 
 
@@ -52,4 +52,35 @@ I created a UBT plugin called [**Specifier Reference Viewer**](https://github.co
 
 Let's walk through how I developed this plugin.
 
+### 1. Create a plugin
+Create a `.uplugin` with at least one module. A module is required even if you're not outputting any file, and it must have the `Runtime` type.
 
+```jsonc
+{
+    // ...
+    "EnabledByDefault": false,
+    "Modules": [
+        {
+            "Name": "SpecifierReferenceViewer",
+            "Type": "Runtime",
+            "LoadingPhase": "PreDefault"
+        }
+    ]
+}
+```
+
+### 2. Enable the plugin in the editor
+In your game's `.uproject` file, explicitly enable the plugin for the `Editor` target.
+```jsonc
+{
+    "Plugins": [
+        {
+            "Name": "SpecifierReferenceViewer",
+            "Enabled": true,
+            "TargetAllowList": [
+                "Editor"
+            ]
+        }
+    ]
+}
+```
