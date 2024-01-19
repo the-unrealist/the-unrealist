@@ -98,7 +98,7 @@ In your game's `.uproject`, enable the plugin only for the `Editor` target.
 A module must have at least one `UObject` in it to be added to the `.uhtmanifest` file. An empty module will not be added to the `.uhtmanifest` file which means the custom exporter will not execute.
 
 ### 4. Create the C# project
-Create a C# project file named `PluginName.ubtplugin.csproj`. It must have the `.ubtplugin.csproj` extension to be detected by UHT.
+Create a C# project file with the `.ubtplugin.csproj` extension. It must have this extension to be detected by UHT.
 
 This file should be configured to:
 * import `/Engine/Source/Programs/Shared/UnrealEngine.csproj.props`,
