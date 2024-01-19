@@ -53,11 +53,10 @@ I created a UBT plugin called [**Specifier Reference Viewer**](https://github.co
 Let's walk through how I developed this plugin.
 
 ### 1. Create a plugin
-Create a `.uplugin` with at least one module. A module is required even if you're not outputting any file, and it must have the `Runtime` type.
+I created a `.uplugin` with at least one module. A module is required even if we're not outputting any file, and it must have the `Runtime` type.
 
-```jsonc
+```json
 {
-    // ...
     "EnabledByDefault": false,
     "Modules": [
         {
@@ -70,8 +69,9 @@ Create a `.uplugin` with at least one module. A module is required even if you'r
 ```
 
 ### 2. Enable the plugin in the editor
-In your game's `.uproject` file, explicitly enable the plugin for the `Editor` target.
-```jsonc
+In my game's `.uproject`, I enabled the plugin only for the `Editor` target.
+
+```json
 {
     "Plugins": [
         {
@@ -84,3 +84,22 @@ In your game's `.uproject` file, explicitly enable the plugin for the `Editor` t
     ]
 }
 ```
+
+### 3. Add code to the module
+A module must have at least one `UObject` in it to be added to the `.uhtmanifest` file.
+
+An empty module will not be added to the `.uhtmanifest` file and the custom exporter will not execute. For this reason, I added a [placeholder class](https://github.com/the-unrealist/specifier-reference-viewer/blob/main/Source/SpecifierReferenceViewer/Private/Placeholder.h).
+
+### 4. Create the C# project
+I created a C# project file named `ReferenceGenerator.ubtplugin.csproj`.
+
+It must have the `.ubtplugin.csproj` extension to be detected by UHT. This file should be configured to:
+* import `/Engine/Source/Programs/Shared/UnrealEngine.csproj.props`,
+* reference the `EpicGames.Build`, `EpicGames.Core`, `EpicGames.UHT`, and `UnrealBuildTool` assemblies, and
+* output the compiled binaries to `<PROJECT_NAME>/Binaries/DotNET/UnrealBuildTool/Plugins/<PLUGIN_NAME>`.
+
+Instead of creating the project file from scratch, it may be easier to [copy it from my plugin](https://github.com/the-unrealist/specifier-reference-viewer/blob/main/Source/ReferenceGenerator/ReferenceGenerator.ubtplugin.csproj) and then edit the `EngineDir`, `GeneratorName`, and `RootNamespace` properties.
+
+The Visual Studio solution file (`.sln`) is not necessary. The C# project will be rebuilt each time the game is built.
+
+### 
