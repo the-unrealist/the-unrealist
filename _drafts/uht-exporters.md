@@ -46,21 +46,23 @@ C:\UE_5.3\Engine\Build\BatchFiles>RunUBT.bat -Mode=UnrealHeaderTool -Stats -Json
 ```
 
 ## Extending the UHT with plugins
-The Unreal Build Tool (UBT) scans for [extension plugins](https://docs.unrealengine.com/5.3/en-US/unreal-header-tool-for-unreal-engine/#extendinguhtwithscriptgenerators) in both engine and your game's source, and automatically activates them. At this time, only exporters are supported in plugins.
+The Unreal Build Tool (UBT) scans for [extension plugins](https://docs.unrealengine.com/5.3/en-US/unreal-header-tool-for-unreal-engine/#extendinguhtwithscriptgenerators) in both engine and your game's source, and automatically activates them.
+
+At this time, only exporters are supported in plugins.
 
 I created a UBT plugin called [**Specifier Reference Viewer**](https://github.com/the-unrealist/specifier-reference-viewer) that scans for all specifier keywords used in the source code for the engine, game, and all plugins. At the time of writing, it only generates [a JSON file with every specifier in use](https://github.com/the-unrealist/specifier-reference-viewer/blob/main/specifiers.json), but I plan on extending it to integrate with the editor in several ways.
 
-Let's walk through how I developed this plugin.
+Let's walk through the steps needed to create an exporter plugin.
 
 ### 1. Create a plugin
-I created a `.uplugin` with at least one module. A module is required even if we're not outputting any file, and it must have the `Runtime` type.
+Create a `.uplugin` with at least one module. A module is required even if you're not outputting any file, and it must have the `Runtime` type.
 
 ```json
 {
     "EnabledByDefault": false,
     "Modules": [
         {
-            "Name": "SpecifierReferenceViewer",
+            "Name": "MyCustomExporter",
             "Type": "Runtime",
             "LoadingPhase": "PreDefault"
         }
@@ -69,13 +71,13 @@ I created a `.uplugin` with at least one module. A module is required even if we
 ```
 
 ### 2. Enable the plugin in the editor
-In my game's `.uproject`, I enabled the plugin only for the `Editor` target.
+In your game's `.uproject`, enable the plugin only for the `Editor` target.
 
 ```json
 {
     "Plugins": [
         {
-            "Name": "SpecifierReferenceViewer",
+            "Name": "MyCustomExporterPlugin",
             "Enabled": true,
             "TargetAllowList": [
                 "Editor"
@@ -86,14 +88,12 @@ In my game's `.uproject`, I enabled the plugin only for the `Editor` target.
 ```
 
 ### 3. Add code to the module
-A module must have at least one `UObject` in it to be added to the `.uhtmanifest` file.
-
-An empty module will not be added to the `.uhtmanifest` file and the custom exporter will not execute. For this reason, I added a [placeholder class](https://github.com/the-unrealist/specifier-reference-viewer/blob/main/Source/SpecifierReferenceViewer/Private/Placeholder.h).
+A module must have at least one `UObject` in it to be added to the `.uhtmanifest` file. An empty module will not be added to the `.uhtmanifest` file and the custom exporter will not execute.
 
 ### 4. Create the C# project
-I created a C# project file named `ReferenceGenerator.ubtplugin.csproj`.
+Create a C# project file named `PluginName.ubtplugin.csproj`. It must have the `.ubtplugin.csproj` extension to be detected by UHT.
 
-It must have the `.ubtplugin.csproj` extension to be detected by UHT. This file should be configured to:
+This file should be configured to:
 * import `/Engine/Source/Programs/Shared/UnrealEngine.csproj.props`,
 * reference the `EpicGames.Build`, `EpicGames.Core`, `EpicGames.UHT`, and `UnrealBuildTool` assemblies, and
 * output the compiled binaries to `<PROJECT_NAME>/Binaries/DotNET/UnrealBuildTool/Plugins/<PLUGIN_NAME>`.
@@ -102,4 +102,34 @@ Instead of creating the project file from scratch, it may be easier to [copy it 
 
 The Visual Studio solution file (`.sln`) is not necessary. The C# project will be rebuilt each time the game is built.
 
-### 
+### 5. Create the exporter
+Next, create a class and static method to serve as the main entry point for the exporter.
+
+The class must have the `[UnrealHeaderTool]` attribute, and the exporter's method must have the `[UhtExporter]` attribute. The `Name` and `ModuleName` properties are required.
+
+```csharp
+using EpicGames.UHT.Tables;
+using EpicGames.UHT.Utils;
+
+[UnrealHeaderTool]
+public static class Exporter
+{
+    [UhtExporter(Name = "MyCustomExporter", ModuleName = "MyCustomExporter", Options = UhtExporterOptions.Default)]
+    public static void Generate(IUhtExportFactory factory)
+    {
+        // Process parsed code via factory.Session here.
+        factory.Session.LogInfo("MyCustomExporter executed!");
+    }
+}
+```
+
+`UhtExporterOptions.Default` indicates that this exporter will be automatically executed each time UBT executes. Remove it or use `UhtExporterOptions.None` to make it opt-in just like the [sample exporters](#exporters).
+
+### 6. Build
+Build the game. Logs emitted by your exporter will appear in the build output.
+
+```
+0>  Running Internal UnrealHeaderTool C:\Path\To\MyGame.uproject C:\Path\To\MyGame\Intermediate\Build\Win64\MyGameEditor\Development\MyGameEditor.uhtmanifest -WarningsAsErrors -installed
+0>Total of 0 written
+0>C:\UE_5.3\Engine\Source\UnknownSource(1): Info: MyCustomExporter executed!
+```
