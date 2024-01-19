@@ -66,7 +66,6 @@ Create a `.uplugin` with at least one module. A module is required even if you'r
 
 ```json
 {
-    "EnabledByDefault": false,
     "Modules": [
         {
             "Name": "MyCustomExporter",
@@ -77,27 +76,10 @@ Create a `.uplugin` with at least one module. A module is required even if you'r
 }
 ```
 
-### 2. Enable the plugin in the editor
-In your game's `.uproject`, enable the plugin only for the `Editor` target.
-
-```json
-{
-    "Plugins": [
-        {
-            "Name": "MyCustomExporterPlugin",
-            "Enabled": true,
-            "TargetAllowList": [
-                "Editor"
-            ]
-        }
-    ]
-}
-```
-
-### 3. Add code to the module
+### 2. Add code to the module
 A module must have at least one `UObject` in it to be added to the `.uhtmanifest` file. An empty module will not be added to the `.uhtmanifest` file which means the custom exporter will not execute.
 
-### 4. Create the C# project
+### 3. Create the C# project
 Create a C# project file with the `.ubtplugin.csproj` extension. It must have this extension to be detected by UHT.
 
 This file should be configured to:
@@ -109,7 +91,7 @@ Instead of creating the project file from scratch, it may be easier to [copy it 
 
 The Visual Studio solution file (`.sln`) is not necessary. The C# project will be rebuilt each time the game is built.
 
-### 5. Create the exporter
+### 4. Create the exporter
 Next, create a class and static method to serve as the main entry point for the exporter.
 
 The class must have the `[UnrealHeaderTool]` attribute, and the exporter's method must have the `[UhtExporter]` attribute. The `Name` and `ModuleName` properties are required.
@@ -132,7 +114,7 @@ public static class Exporter
 
 `UhtExporterOptions.Default` indicates that this exporter will be automatically executed each time UBT executes. Remove it or use `UhtExporterOptions.None` to make it opt-in just like the [sample exporters](#exporters).
 
-### 6. Build
+### 5. Build
 Build the game. Logs emitted by your exporter will appear in the build output.
 
 ```
