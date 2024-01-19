@@ -41,10 +41,10 @@ UHT implements these exporters under `/Engine/Source/Programs/Shared/EpicGames.U
 |Name|Enabled by default?|Purpose|
 |----|-------------------|-------|
 |CodeGen|Yes|Generates C++ code for the `UObject` system.|
-|Json|No|A sample exporter that shows how to output files. This exporter dumps all UObjects as a JSON file for each package.|
+|Json|No|A sample exporter that shows how to output files. This exporter dumps all UObjects into a JSON file for each package.|
 |Stats|No|A sample exporter that shows how to log details about types in the codebase.|
 
-Exporters that are not enabled by default are triggered by adding `-<EXPORTER_NAME>` to the commandline arguments.
+Exporters that are not enabled by default are triggered by adding `-<EXPORTER_NAME>` to the commandline arguments for the UHT.
 
 The following command will execute both the `Stats` and `Json` exporters. Replace `MyGameEditor`, `Win64`, and `Development` with the desired target, platform, and build configuration. 
 
@@ -52,12 +52,12 @@ The following command will execute both the `Stats` and `Json` exporters. Replac
 C:\UE_5.3\Engine\Build\BatchFiles>RunUBT.bat -Mode=UnrealHeaderTool -Stats -Json "-Target=MyGameEditor Win64 Development -Project=\"C:/Path/To/MyGame.uproject\""
 ```
 
-## Extending the UHT with plugins
+## Extend the UHT with plugins
 The Unreal Build Tool (UBT) scans for [extension plugins](https://docs.unrealengine.com/5.3/en-US/unreal-header-tool-for-unreal-engine/#extendinguhtwithscriptgenerators) in both engine and your game's source, and automatically activates them.
 
-At this time, only exporters are supported in plugins.
+At this time, only exporters are supported in UBT plugins.
 
-I created a UBT plugin called [**Specifier Reference Viewer**](https://github.com/the-unrealist/specifier-reference-viewer) that scans for all specifier keywords used in the source code for the engine, game, and all plugins. At the time of writing, it only generates [a JSON file with every specifier in use](https://github.com/the-unrealist/specifier-reference-viewer/blob/main/specifiers.json), but I plan on extending it to integrate with the editor in several ways.
+I created a UBT plugin called [**Specifier Reference Viewer**](https://github.com/the-unrealist/specifier-reference-viewer) that scans for all specifier keywords used in the source code for the engine, game, and all plugins. I recommend looking at my plugin's source code to learn more about creating UBT plugins.
 
 Let's walk through the steps needed to create an exporter plugin.
 
