@@ -1,7 +1,7 @@
 ---
 tags: 
   - unreal
-title: "Extend the Unreal Header Tool (UHT) with Plugins"
+title: "Extend the Unreal Header Tool with Plugins"
 categories:
   - Engine
 ---
