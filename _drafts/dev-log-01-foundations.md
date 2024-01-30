@@ -16,6 +16,10 @@ That's why **the first thing I did was design my game's structure** based on les
 ### Goals
 Let's begin with a set of three overarching goals I hope to achieve with my architecture:
 
+1. **Modular**: Develop features as self-contained plugins.
+2. **Designer-focused**: Create building blocks in C++ and assemble features in Blueprints.
+3. **Data-driven**: Configure features with data assets, data tables, and registries.
+
 #### 1. Modular: Develop features as self-contained plugins
 With the aptly named [Game Features](https://docs.unrealengine.com/5.3/en-US/game-features-and-modular-gameplay-in-unreal-engine/) plugin, features exist as self-contained plugins. Deactivating any game feature will not prevent the game from running.
 
