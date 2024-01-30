@@ -169,7 +169,7 @@ While entirely optional, I prefer starting with at least one startup movie to ob
 Optional as well, a temporary splash image can serve as inspiration. I've created a simple placeholder splash with my project's name on it.
 
 ##### Sunshine
-Content for the sandbox will be located in this folder. Assets should 
+Content specific to the sandbox will be located in this folder. Assets should be grouped together in directories based on purpose—not their type.
 
 ##### Legal
 Software licenses must be taken seriously, even as an indie developer.
