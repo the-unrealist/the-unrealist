@@ -61,7 +61,7 @@ Suppose there is a flower pot that can be picked up by the player. The incorrect
 
 Instead, I will create an archetype for each actor type and use data assets to set each actor's behavior and appearance.
 
-Using the above example, there is an `AWorldObject` actor class and a corresponding primary data asset class, `UWorldObjectData`. The actor class has a `FPrimaryAssetId` property that points to the data asset. This data asset contains properties that control the appearance and behavior of the world object, such as a flag indicating whether it can be picked up by the player, the physical space it occupies, and how it should be rendered.
+Using the above example, there is an `AWorldObject` actor class and a corresponding data asset class, `UWorldObjectData`. The actor class has a property that points to a data asset of this type. This data asset contains properties that control the appearance and behavior of the world object, such as a flag indicating whether it can be picked up by the player, the physical space it occupies, and how it should be rendered.
 
 Data tables, and in some cases, [data registries](https://docs.unrealengine.com/5.3/en-US/data-registries-in-unreal-engine/), are used to register features for use within the sandbox.
 
