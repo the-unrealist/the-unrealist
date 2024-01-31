@@ -103,7 +103,7 @@ My project is created with the following hierarchy and a few assets:
 
 `Sunshine` is my project name. Most custom systems and classes will have `Sunshine` as the prefix, e.g., `USunshineAssetManager`. It's not the final name of my game.
 
-[JetBrians Rider](https://www.jetbrains.com/rider/) is my IDE and it works directly with `.uproject`. That's why I don't have a Visual Studio `.sln` solution file.
+[JetBrains Rider](https://www.jetbrains.com/rider/) is my IDE and it works directly with `.uproject`. That's why I don't have a Visual Studio `.sln` solution file.
 
 ### EditorConfig
 Both Visual Studio and JetBrains Rider support [EditorConfig](https://editorconfig.org/). **By placing an `.editorconfig` file in the project's root folder, I enforce a consistent code style throughout the entire project**.
