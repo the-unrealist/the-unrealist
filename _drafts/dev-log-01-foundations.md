@@ -21,7 +21,7 @@ Let's begin with a set of three overarching goals I hope to achieve with my arch
 2. **Designer-focused**: Create building blocks in C++ and assemble features in Blueprints.
 3. **Data-driven**: Configure features with data assets, data tables, and registries.
 
-#### Develop features as self-contained plugins
+### Develop features as self-contained plugins
 With the aptly named [Game Features](https://docs.unrealengine.com/5.3/en-US/game-features-and-modular-gameplay-in-unreal-engine/) plugin, features exist as self-contained plugins. Deactivating any game feature will not prevent the game from running.
 
 Of course, there has to be some mechanism for one feature to interact with another. Game features rely on a suite of "system" libraries for interoperability. More on this in [System Libraries](#system-libraries).
@@ -52,12 +52,12 @@ And these are *not* features:
 
 *Items cannot exist without an inventory system, therefore the inventory system is a game mechanic within the sandbox, and not a feature.
 
-#### Create building blocks in C++ and assemble features in Blueprints
+### Create building blocks in C++ and assemble features in Blueprints
 **Systems, APIs, and tools are written in C++ and then called in Blueprints**. Designers use these as building blocks to implement a feature. This is the intended way of using Unreal Engine. If I tried to create the whole game in either C++ or Blueprints alone, I would end up fighting against the engine.
 
 As a solo developer, I will take on multiple roles: producer, writer, designer, programmer, and more. I write code in my role as a programmer that I can use in my role as a technical designer.
 
-#### Define content with data assets, data tables, and registries
+### Define content with data assets, data tables, and registries
 !!! TODO: Rewrite this section !!!
 
 ```
@@ -105,8 +105,8 @@ My project is created with the following hierarchy and a few assets:
 
 [JetBrians Rider](https://www.jetbrains.com/rider/) is my IDE and it works directly with `.uproject`. That's why I don't have a Visual Studio `.sln` solution file.
 
-#### EditorConfig
-Both Visual Studio and JetBrains Rider support [EditorConfig](https://editorconfig.org/). By placing an `.editorconfig` file in the project's root folder, I enforce a consistent code style throughout the entire project.
+### EditorConfig
+Both Visual Studio and JetBrains Rider support [EditorConfig](https://editorconfig.org/). **By placing an `.editorconfig` file in the project's root folder, I enforce a consistent code style throughout the entire project**.
 
 I recommend having the following global ruleset to ensure all files are encoded and formatted the same way.
 
@@ -124,7 +124,7 @@ insert_final_newline = true
 
 Feel free to copy my [.editorconfig file](https://gist.github.com/the-unrealist/861fdc90c0e13b88c46be68a6418b80d). Note that most of the rules were automatically added by Rider so I am unsure if they work in Visual Studio.
 
-#### Git
+### Git
 Although Perforce is the industry standard, I'm very conscious of my budget as a solo developer and don't want to pay for cloud hosting if I can avoid it. This is why I am pleased to learn that **[Azure DevOps](https://azure.microsoft.com/en-us/products/devops) offers free unlimited Git Large File Storage (LFS) hosting**! For this reason, I use Git and Git LFS as my game's version control system.
 
 To enable Git LFS, I created a `.gitattributes` file targeting `.uasset`, `.umap`, and other binary files. These assets will use binary-compatible Git LFS instead of text-based Git for diffs. This is absolutely essential for game development.
@@ -165,7 +165,7 @@ DerivedDataCache/
 Build/
 ```
 
-#### Config
+### Config
 `DefaultSunshine.ini` stores the project-level config for all of my [custom building blocks and game features](#2-designer-focused-create-building-blocks-in-c-and-assemble-features-in-blueprints). This assists in my mission to be designer-focused by clearly delineating game-related config for designers to modify. `DefaultGame.ini` is still used for configuring most Unreal Engine features.
 
 By default, Unreal will not cook any custom configuration file. `DefaultSunshine.ini` must be allowlisted in `DefaultGame.ini`.
@@ -175,45 +175,45 @@ By default, Unreal will not cook any custom configuration file. `DefaultSunshine
 +AllowedConfigFiles=Sunshine/Config/DefaultSunshine.ini
 ```
 
-#### Content
+### Content
 
-##### Developers
+#### Developers
 To support experimentation and development, I enabled the [Developers folder](https://docs.unrealengine.com/5.3/en-US/developers-folder-in-unreal-engine/).
 
 Having my own sandbox folder allows me to freely create Blueprints and assets without worrying about cleanup afterwards. Additionally, I've excluded this folder from cooked builds in Packaging Settings to avoid accidentally including test assets in the distributed game.
 
-##### Maps
+#### Maps
 This folder contains internal system maps such as an empty `L_Default` map that is used as the fallback map. Maps for the game belong in Game Feature plugins.
 
-##### Movies
+#### Movies
 While entirely optional, I prefer starting with at least one startup movie to observe the transition from startup into the first map, i.e., the title screen. The [animated Unreal Engine logo](https://www.unrealengine.com/en-US/branding) is used as a placeholder.
 
-##### Splash
+#### Splash
 Optional as well, a temporary splash image can serve as inspiration. I've created a simple placeholder splash with my project's name on it.
 
-##### Sunshine
-Assets for the sandbox are located in this folder.
+#### Sunshine
+Assets for my game's sandbox are located in this folder.
 
-##### Legal
+#### Legal
 Software licenses must be taken seriously, even as an indie developer.
 
 All applicable third-party licenses are tracked in `ThirdPartyNotices.txt`. When using an open-source plugin I haven't created, I add the plugin's name and its license (usually the MIT License) to this file.
 
 I configured *Additional Non-Asset Directories To Copy* in Packaging Settings to automatically include this folder for distribution.
 
-#### Plugins
+### Plugins
 There are three categories under which I'll organize my plugins:
 
-##### Game features
+#### Game features
 Game Feature plugins provide "content" to my game. Since the sandbox must be built first before features can be added, this folder remains empty for now.
 
-##### System
+#### System
 [System libraries](#system-libraries) provide APIs to the sandbox. Game Feature plugins extend and interact with the sandbox using one or more system libraries.
 
-##### UI
+#### UI
 Plugins that provide reusable Slate and UMG widgets for the game are placed under this folder. This makes it easier to distribute useful widgets for use in other games or on the marketplace.
 
-#### Source
+### Source
 This folder holds the source code for the sandbox.
 
 I created two game modules: `SunshineGame` and `SunshineEditor`. `SunshineGame` contains all the code needed to implement the sandbox, and `SunshineEditor` contains editor-only tooling to make development easier.
