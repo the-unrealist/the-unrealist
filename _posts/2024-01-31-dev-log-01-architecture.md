@@ -176,7 +176,7 @@ Build/
 ```
 
 ### Config
-`DefaultSunshine.ini` stores the project-level config for all of my [custom building blocks and game features](#2-designer-focused-create-building-blocks-in-c-and-assemble-features-in-blueprints). This clearly delineates game-related config for designers to modify. `DefaultGame.ini` is still used for configuring most Unreal Engine features.
+`DefaultSunshine.ini` stores the project-level config for all of my [custom building blocks and game features](#2-develop-building-blocks-in-c-and-implement-features-in-blueprints). This clearly delineates game-related config for designers to modify. `DefaultGame.ini` is still used for configuring most Unreal Engine features.
 
 **By default, Unreal will not cook any custom configuration file**. `DefaultSunshine.ini` must be allowlisted in `DefaultGame.ini`.
 
