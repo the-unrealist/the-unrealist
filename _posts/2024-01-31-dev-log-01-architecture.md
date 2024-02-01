@@ -1,7 +1,7 @@
 ---
 tags: 
   - unreal
-title: "Dev Log 01: Designing a modular and designer-focused architecture"
+title: "Dev Log 01: Designing a Modular and Designer-focused Architecture"
 categories:
   - Dev Logs
 ---
