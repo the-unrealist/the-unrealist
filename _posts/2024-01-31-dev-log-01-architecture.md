@@ -76,7 +76,7 @@ flowchart TB
     archetype--Data-->npc2
 @endmermaid
 
-**This completely decouples content from the sandbox**, allowing me to make significant changes to actor archetypes and other parts of the sandbox without potentially invalidating hundreds of downstream assets.
+**This completely decouples content from the sandbox**, allowing me to make significant changes to actor archetypes and other parts of the sandbox without potentially invalidating hundreds of downstream assets. Actor components attached to the archetype bring it to life using data from the data asset.
 
 Data tables and [data registries](https://docs.unrealengine.com/5.3/en-US/data-registries-in-unreal-engine/) are also useful for the same reason.
 
