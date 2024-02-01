@@ -69,9 +69,9 @@ For actors, this means creating an archetype actor with a property that points t
 
 @startmermaid
 flowchart TB
-    archetype["ASunshineCharacter\n(AActor)"]
-    npc1["NPC 1\n(UPrimaryDataAsset)"]
-    npc2["NPC 2\n(UPrimaryDataAsset)"]
+    archetype["ASunshineCharacter (AActor)"]
+    npc1["NPC 1 (UPrimaryDataAsset)"]
+    npc2["NPC 2 (UPrimaryDataAsset)"]
     archetype--Data-->npc1
     archetype--Data-->npc2
 @endmermaid
