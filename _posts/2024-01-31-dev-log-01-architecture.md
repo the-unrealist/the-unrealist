@@ -67,14 +67,14 @@ I prefer composition over inheritance for content.
 
 For actors, this means creating an archetype actor with a property that points to a data asset which defines the appearance and behavior of the actor.
 
-```mermaid
+@startmermaid
 flowchart TB
     archetype["ASunshineCharacter\n(AActor)"]
     npc1["NPC 1\n(UPrimaryDataAsset)"]
     npc2["NPC 2\n(UPrimaryDataAsset)"]
     archetype--Data-->npc1
     archetype--Data-->npc2
-```
+@endmermaid
 
 **This completely decouples content from the sandbox**, allowing me to make significant changes to actor archetypes and other parts of the sandbox without potentially invalidating hundreds of downstream assets.
 
