@@ -69,7 +69,7 @@ flowchart TB
     archetype--Data-->npc2
 ```
 
-This completely decouples content from the sandbox, allowing me to make significant changes to actor archetypes and other parts of the sandbox without potentially invalidating hundreds of downstream assets.
+**This completely decouples content from the sandbox**, allowing me to make significant changes to actor archetypes and other parts of the sandbox without potentially invalidating hundreds of downstream assets.
 
 Data tables and [data registries](https://docs.unrealengine.com/5.3/en-US/data-registries-in-unreal-engine/) are also useful for the same reason.
 
@@ -106,7 +106,7 @@ My project is created with the following hierarchy and a few assets:
 
 `Sunshine` is the working title of my project. Most custom systems and classes will have this as the prefix, e.g., `USunshineAssetManager`. It's not the final name of my game.
 
-I use [JetBrians Rider](https://www.jetbrains.com/rider/) as my IDE, and it directly works with `.uproject`. That's why I don't have a Visual Studio `.sln` solution file.
+By the way, I use [JetBrians Rider](https://www.jetbrains.com/rider/) as my IDE, and it directly works with `.uproject`. That's why I don't have a Visual Studio `.sln` solution file.
 
 ### EditorConfig
 Both Visual Studio and JetBrains Rider support [EditorConfig](https://editorconfig.org/). By placing an `.editorconfig` file in the project's root folder, I enforce a consistent code style throughout the entire project.
@@ -171,7 +171,7 @@ Build/
 ### Config
 `DefaultSunshine.ini` stores the project-level config for all of my [custom building blocks and game features](#2-designer-focused-create-building-blocks-in-c-and-assemble-features-in-blueprints). This clearly delineates game-related config for designers to modify. `DefaultGame.ini` is still used for configuring most Unreal Engine features.
 
-By default, Unreal will not cook any custom configuration file. `DefaultSunshine.ini` must be allowlisted in `DefaultGame.ini`.
+**By default, Unreal will not cook any custom configuration file**. `DefaultSunshine.ini` must be allowlisted in `DefaultGame.ini`.
 
 ```ini
 [Staging]
@@ -186,7 +186,7 @@ To support experimentation and development, I enabled the [Developers folder](ht
 Having my own sandbox folder allows me to freely create Blueprints and assets without worrying about cleanup afterwards. Additionally, I've excluded this folder from cooked builds in Packaging Settings to avoid accidentally including test assets in the distributed game.
 
 #### Maps
-This folder contains internal system maps such as an empty `L_Default` map that is used as the fallback map. Maps for the game belong in Game Feature plugins.
+This folder contains internal system maps such as an empty `L_Default` map that is used as the fallback map. Maps for the game are content and belong in Game Feature plugins.
 
 #### Movies
 While entirely optional, I prefer starting with at least one startup movie to observe the transition from startup into the first map, i.e., the title screen. The [animated Unreal Engine logo](https://www.unrealengine.com/en-US/branding) is used as a placeholder.
