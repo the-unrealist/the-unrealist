@@ -14,11 +14,9 @@ In these dev logs, **I share my thought process and decision-making in hopes tha
 ## Designing my game's architecture
 The architecture of a game makes a lasting impact in every way, yet is very difficult to change later on. **A well-designed architecture is the glue that holds any software—especially games—together**.
 
-Poorly designed architecture not only makes it harder to implement features but also manifests in visible ways, such as longer loading times and a less polished player experience.
+Poorly designed architecture not only makes it harder to implement features but also manifests in visible ways, such as longer loading times and a less polished player experience. This goes the other way; an architecture that is too rigid will have the same negative impact on a game.
 
-When I mentioned this to my friend, an engineer at 343 Industries, about this, he warned me that "how well [the] architecture is defined lends into how hard is to adapt more/new features." An architecture that is too rigid will have the same negative impact on a game as one that is too flexible.
-
-Now, how do I know if my architecture is *just right*? The best one can do is learn from prior experience. In my role as a software engineer at Google (and formerly at Microsoft), I've been fortunate to have the opportunity to dive deep into well-designed software systems. Although I did not work on games, general software engineering principles and best practices absolutely do apply to video games.
+Now, how do I know if my architecture is *just right*? The best one can do is learn from prior experience. In my role as a software engineer, I've been fortunate to have the opportunity to dive deep into well-designed software systems. Although I did not work on games, general software engineering principles and best practices absolutely do apply to video games.
 
 **I will make mistakes as I develop my game**. My architecture may not represent the "best" way of doing things. All I can do is learn from my mistakes as well as learn from others. A game developer must make a lifetime commitment to learning.
 
