@@ -7,7 +7,7 @@ categories:
 ---
 <img src="https://img.shields.io/badge/Unreal%20Engine-5.3-informational" alt="Written for Unreal Engine 5.3"> <img src="https://img.shields.io/badge/-Dev%20Log-red" alt="Dev Log">
 
-[Cozy games](https://www.reddit.com/r/CozyGamers/)—with their relaxing and stress-relieving experience—have gained in popularity, and I am a huge fan of them. Unfortunately, I haven't found a game that feels sufficiently satisfying, inspiring me to make my own cozy life simulation game centered around two things I enjoy: trains and traveling!
+I am a huge fan of [cozy games](https://www.reddit.com/r/CozyGamers/) because they are relaxing and stress-relieving, which is what I want after a long day at work. Unfortunately, I haven't found a game that feels sufficiently satisfying yet, inspiring me to make my own cozy life simulation game centered around two things I enjoy: trains and traveling!
 
 In these dev logs, **I share my thought process and decision-making in hopes that others find it interesting**. The logs will cover both technical and game design topics.
 
