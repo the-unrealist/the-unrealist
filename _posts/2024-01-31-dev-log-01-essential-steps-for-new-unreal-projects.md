@@ -1,7 +1,7 @@
 ---
 tags: 
   - unreal
-title: "Dev Log 01: A Modular and Designer-focused Architecture"
+title: "Dev Log 01: 9 Essential Steps When Starting an Unreal Engine Project"
 categories:
   - Dev Logs
 ---
@@ -11,7 +11,9 @@ I am a huge fan of [cozy games](https://www.reddit.com/r/CozyGamers/) because th
 
 In these dev logs, **I share my thought process and decision-making in hopes that others find it interesting**. The logs will cover both technical and game design topics.
 
-## Designing my game's architecture
+Let's begin with the 9 essential steps I always take when creating a new Unreal Engine project:
+
+## 1. Think about the game's architecture
 The architecture of a game makes a lasting impact in every way, yet is very difficult to change later on. **A well-designed architecture is the glue that holds any software—especially games—together**.
 
 Poorly designed architecture not only makes it harder to implement features but also manifests in visible ways, such as longer loading times and a less polished player experience. This goes the other way; an architecture that is too rigid will have the same negative impact on a game.
@@ -26,14 +28,12 @@ Let's start with three overarching goals I hope to achieve with my architecture:
 2. **Designer-focused**—Develop building blocks in C++ and implement features in Blueprints.
 3. **Data-driven**—Create content with data assets, data tables, and registries.
 
-### 1. Organize content into self-contained plugins
-With the [Game Features](https://docs.unrealengine.com/5.3/en-US/game-features-and-modular-gameplay-in-unreal-engine/) plugin, content is organized into self-contained plugins. Deactivating any Game Feature plugin won't hinder the game from running.
+### Organize content into self-contained plugins
+With the [Game Features](https://docs.unrealengine.com/5.3/en-US/game-features-and-modular-gameplay-in-unreal-engine/) plugin, content is organized into self-contained plugins. Deactivating any Game Feature plugin must not hinder the game from running.
 
 Now, let's define what I mean by "content". In my view, content is anything that adds to the core sandbox experience. Here, **the sandbox is the minimum viable player experience**, and content is an extension built upon this sandbox. Individual pieces of content are bundled together as a Game Feature plugin, serving as a content pack.
 
 Why does the definition matter? With a clear definition, I can easily determine whether an asset or class belongs in the sandbox or should be added as a Game Feature plugin.
-
-And of course, there has to be some mechanism for one piece of content to interact with another. Content relies on a suite of system libraries to interact with the sandbox. For more details, refer to [System Libraries](#system-libraries).
 
 These *are* content:
 * Characters (except archetypes)
@@ -48,19 +48,18 @@ These *are* content:
 And these are *not* content:
 
 * I/O systems (e.g., input, game saves, UI, haptics)
-* Scalability, audio, and accessibility settings
 * `AGameState` and `APlayerState`
 * Character archetypes
 * Inventory system*
 
-*Items cannot exist without an inventory system, therefore the inventory system is a game mechanic within the sandbox, and not content.
+*The inventory system is a core game mechanic within the sandbox, and most content will have a dependency on the inventory system. For this reason, it is not content.
 
-### 2. Develop building blocks in C++ and implement features in Blueprints
+### Develop building blocks in C++ and implement features in Blueprints
 **Systems, APIs, and tools are coded in C++ and then called from Blueprint graphs**. These serve as building blocks that designers use to implement features. When a Blueprint graph becomes overly complex, then parts of it will be broken down and refactored into C++.
 
 My understanding is that this is the intended way of using Unreal Engine. Developing the entire game solely in either C++ or Blueprints would be needlessly challenging, so I am using both.
 
-### 3. Create content with data assets, data tables, and registries
+### Create content with data assets, data tables, and registries
 I prefer composition over inheritance for content.
 
 For actors, this means creating an archetype actor with a property that points to a data asset which defines the appearance and behavior of the actor.
@@ -78,7 +77,7 @@ flowchart TB
 
 Data tables and [data registries](https://docs.unrealengine.com/5.3/en-US/data-registries-in-unreal-engine/) are also useful for the same reason.
 
-## Creating the initial project
+## 2. Create the initial project
 My project is created with the following hierarchy and a few assets:
 
 ```
@@ -109,11 +108,11 @@ My project is created with the following hierarchy and a few assets:
  └── Sunshine.uproject
 ```
 
-`Sunshine` is the working title of my project. Most custom systems and classes will have this as the prefix, e.g., `USunshineAssetManager`. It's not the final name of my game.
+`Sunshine` is the working title of my project. It's not the final name of my game. I need to pick (and stick to) a working title so that I can add a prefix to all of my C++ types, e.g., `USunAssetManager`. This prevents conflicting with engine types.
 
 By the way, I use [JetBrians Rider](https://www.jetbrains.com/rider/) as my IDE, and it directly works with `.uproject`. That's why I don't have a Visual Studio `.sln` solution file.
 
-### EditorConfig
+### 3. Make an EditorConfig
 Both Visual Studio and JetBrains Rider support [EditorConfig](https://editorconfig.org/). By placing an `.editorconfig` file in the project's root folder, I enforce a consistent code style throughout the entire project.
 
 I recommend having these global rules to ensure all files are encoded and formatted the same way:
@@ -132,7 +131,7 @@ insert_final_newline = true
 
 Feel free to grab a copy of my [.editorconfig file](https://gist.github.com/the-unrealist/861fdc90c0e13b88c46be68a6418b80d). Just bear in mind that most of these rules were added by Rider, so it's unclear to me whether Visual Studio understands them.
 
-### Git
+### 4. Setup source control
 Although Perforce is the industry standard, I'm very conscious of my budget as a solo developer and don't want to pay for cloud hosting if I can avoid it. This is why I am pleased to learn that **[Azure DevOps](https://azure.microsoft.com/en-us/products/devops) offers free unlimited Git Large File Storage (LFS) hosting**! For this reason, I use Git and Git LFS as my game's version control system.
 
 To enable Git LFS, I created a `.gitattributes` file targeting `.uasset`, `.umap`, and other binary files. These assets will use binary-compatible Git LFS instead of text-based Git for diffs. This is absolutely essential for game development.
@@ -173,8 +172,10 @@ DerivedDataCache/
 Build/
 ```
 
-### Config
-`DefaultSunshine.ini` stores the project-level config for all of my [custom building blocks and game features](#2-develop-building-blocks-in-c-and-implement-features-in-blueprints). This clearly delineates game-related config for designers to modify. `DefaultGame.ini` is still used for configuring most Unreal Engine features.
+### 5. Create a project config
+`DefaultSunshine.ini` stores the project-level config for all of my [building blocks and game features](#develop-building-blocks-in-c-and-implement-features-in-blueprints). By adding `Config=Sunshine` to the `UCLASS` macro, config properties will be written to this file.
+
+Having a separate config file helps clearly delineate game-related config for designers to modify. `DefaultGame.ini` is still used for configuring most Unreal Engine features.
 
 **By default, Unreal will not cook any custom configuration file**. `DefaultSunshine.ini` must be allowlisted in `DefaultGame.ini`.
 
@@ -183,7 +184,7 @@ Build/
 +AllowedConfigFiles=Sunshine/Config/DefaultSunshine.ini
 ```
 
-### Content
+### 6. Add initial assets
 
 #### Developers
 To support experimentation and development, I enabled the [Developers folder](https://docs.unrealengine.com/5.3/en-US/developers-folder-in-unreal-engine/).
@@ -205,48 +206,14 @@ Assets for my game's sandbox are located in this folder.
 #### Legal
 Software licenses must be taken seriously, even as an indie developer.
 
-All applicable third-party licenses are tracked in `ThirdPartyNotices.txt`. When using an open-source plugin I haven't created, I add the plugin's name and its license (usually the MIT License) to this file.
+All applicable third-party licenses are tracked in `ThirdPartyNotices.txt`. When using an open-source plugin or asset, I add their license to this file.
 
 I configured *Additional Non-Asset Directories To Copy* in Packaging Settings to automatically include this folder for distribution.
 
-### Plugins
-There are three categories under which I'll organize my plugins:
-
-#### Game Features
-Game Feature plugins provide content to my game. Since the sandbox must be built first before features can be added, this folder remains empty for now.
-
-#### System
-[System libraries](#system-libraries) provide APIs to the sandbox. Content extends and interacts with the sandbox using one or more system libraries.
-
-#### UI
-Plugins that provide reusable Slate and UMG widgets for the game are placed under this folder. This makes it easier to distribute useful widgets for use in other games or on the marketplace.
-
-### Source
-This folder holds the source code for the sandbox.
-
+### 7. Create game and editor modules in C++
 I created two game modules specifically for the sandbox: `SunshineGame` and `SunshineEditor`. `SunshineGame` contains all the code needed to implement the sandbox, and `SunshineEditor` contains editor-only tooling.
 
-## System libraries
-The sandbox functions as a black box with controlled access through system libraries. These libraries are APIs consisting of Blueprint-callable functions or [custom Blueprint nodes](https://unrealist.org/custom-blueprint-nodes/).
-
-Most content requires access to only specific parts of the sandbox, and some libraries may require different module load phases. For these reasons, I've organized the system libraries into this (non-exhaustive) set of plugins:
-
-|Plugin name|Provides access to...|
-|-------------------|----------------------|
-|EventStream|Pub/sub system for events and messaging|
-|Observability|Logging and telemetry|
-|Input|Input contexts and actions|
-|ScreenElements|Player HUD|
-|Menu|Modals and menus|
-|Settings|Settings system|
-|Conversations|NPC dialogue system|
-|Inventory|Inventory system|
-|Abilities|Gameplay ability system|
-|PersistentState|Save game system|
-
-More plugins will be created as the need arises.
-
-## Preparing for a multilingual audience
+## 8. Prepare for a multilingual audience
 Sharing my game with the whole world would be fantastic, but for this to happen, the game must first be translated into different languages.
 
 It would be a mistake to think about localization as an afterthought. In my project, localization was set up right from the beginning, even before writing the first line of text.
@@ -277,14 +244,12 @@ Some of the generated text files are encoded as UTF-16 with a byte order mark (B
 *.manifest diff working-tree-encoding=UTF-16LE-BOM eol=CRLF
 ```
 
-## Verifying packages
+## 9. Package a shipping build
 Before each commit to my git repo, I package a shipping build to catch packaging errors early on. I do *not* want to find out something's seriously wrong with my project when it's deep into the development cycle.
 
 Some day, I would like to set up continuous integration and delivery (CI/CD) using the [Unreal Automation Tool](https://docs.unrealengine.com/5.3/en-US/unreal-automation-tool-for-unreal-engine/) to automate this process.
 
 ## What's next?
-I'm glad you've made it this far!
+Stay tuned for more dev logs as I make progress on my game in the coming months.
 
-Stay tuned for more dev logs as I make progress on my game in the coming months. The next one probably will showcase the custom UI widgets I recently created.
-
-I'd love to hear your thoughts! Don't hesitate to drop your feedback in the comments below (requires a GitHub account). Thanks for being a part of this journey!
+Please don't hesitate to drop your feedback in the comments below (requires a GitHub account).
