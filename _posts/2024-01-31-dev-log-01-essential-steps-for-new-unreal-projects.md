@@ -112,7 +112,7 @@ My project is created with the following hierarchy and a few assets:
 
 By the way, I use [JetBrians Rider](https://www.jetbrains.com/rider/) as my IDE, and it directly works with `.uproject`. That's why I don't have a Visual Studio `.sln` solution file.
 
-### 3. Make an EditorConfig
+## 3. Make an EditorConfig
 Both Visual Studio and JetBrains Rider support [EditorConfig](https://editorconfig.org/). By placing an `.editorconfig` file in the project's root folder, I enforce a consistent code style throughout the entire project.
 
 I recommend having these global rules to ensure all files are encoded and formatted the same way:
@@ -131,7 +131,7 @@ insert_final_newline = true
 
 Feel free to grab a copy of my [.editorconfig file](https://gist.github.com/the-unrealist/861fdc90c0e13b88c46be68a6418b80d). Just bear in mind that most of these rules were added by Rider, so it's unclear to me whether Visual Studio understands them.
 
-### 4. Setup source control
+## 4. Setup source control
 Although Perforce is the industry standard, I'm very conscious of my budget as a solo developer and don't want to pay for cloud hosting if I can avoid it. This is why I am pleased to learn that **[Azure DevOps](https://azure.microsoft.com/en-us/products/devops) offers free unlimited Git Large File Storage (LFS) hosting**! For this reason, I use Git and Git LFS as my game's version control system.
 
 To enable Git LFS, I created a `.gitattributes` file targeting `.uasset`, `.umap`, and other binary files. These assets will use binary-compatible Git LFS instead of text-based Git for diffs. This is absolutely essential for game development.
@@ -172,7 +172,7 @@ DerivedDataCache/
 Build/
 ```
 
-### 5. Create a project config
+## 5. Create a project config
 `DefaultSunshine.ini` stores the project-level config for all of my [building blocks and game features](#develop-building-blocks-in-c-and-implement-features-in-blueprints). By adding `Config=Sunshine` to the `UCLASS` macro, config properties will be written to this file.
 
 Having a separate config file helps clearly delineate game-related config for designers to modify. `DefaultGame.ini` is still used for configuring most Unreal Engine features.
@@ -184,33 +184,33 @@ Having a separate config file helps clearly delineate game-related config for de
 +AllowedConfigFiles=Sunshine/Config/DefaultSunshine.ini
 ```
 
-### 6. Add initial assets
+## 6. Add initial assets
 
-#### Developers
+### Developers
 To support experimentation and development, I enabled the [Developers folder](https://docs.unrealengine.com/5.3/en-US/developers-folder-in-unreal-engine/).
 
 Having my own sandbox folder allows me to freely create Blueprints and assets without worrying about cleanup afterwards. Additionally, I've excluded this folder from cooked builds in Packaging Settings to avoid accidentally including test assets in the distributed game.
 
-#### Maps
+### Maps
 This folder contains internal system maps such as an empty `L_Default` map that is used as the fallback map. Maps for the game are content and belong in Game Feature plugins.
 
-#### Movies
+### Movies
 While entirely optional, I prefer starting with at least one startup movie to observe the transition from startup into the first map, i.e., the title screen. The [animated Unreal Engine logo](https://www.unrealengine.com/en-US/branding) is used as a placeholder.
 
-#### Splash
+### Splash
 Optional as well, a temporary splash image can serve as inspiration. I've created a simple placeholder splash with my project's name on it.
 
-#### Sunshine
+### Sunshine
 Assets for my game's sandbox are located in this folder.
 
-#### Legal
+### Legal
 Software licenses must be taken seriously, even as an indie developer.
 
 All applicable third-party licenses are tracked in `ThirdPartyNotices.txt`. When using an open-source plugin or asset, I add their license to this file.
 
 I configured *Additional Non-Asset Directories To Copy* in Packaging Settings to automatically include this folder for distribution.
 
-### 7. Create game and editor modules in C++
+## 7. Create game and editor modules in C++
 I created two game modules specifically for the sandbox: `SunshineGame` and `SunshineEditor`. `SunshineGame` contains all the code needed to implement the sandbox, and `SunshineEditor` contains editor-only tooling.
 
 ## 8. Prepare for a multilingual audience
