@@ -1,7 +1,7 @@
 ---
 tags: 
   - unreal
-title: "Dev Log 01: 9 Essential Steps When Starting an Unreal Engine Project"
+title: "Dev Log 01 — Ten Essential Steps When Starting an Unreal Engine Project"
 categories:
   - Dev Logs
 ---
@@ -11,7 +11,7 @@ I am a huge fan of [cozy games](https://www.reddit.com/r/CozyGamers/) because th
 
 In these dev logs, **I share my thought process and decision-making in hopes that others find it interesting**. The logs will cover both technical and game design topics.
 
-Let's begin with the 9 essential steps I always take when creating a new Unreal Engine project:
+Let's begin with the ten essential steps I always take when creating a new Unreal Engine project:
 
 ## 1. Think about the game's architecture
 The architecture of a game makes a lasting impact in every way, yet is very difficult to change later on. **A well-designed architecture is the glue that holds any software—especially games—together**.
@@ -112,7 +112,33 @@ My project is created with the following hierarchy and a few assets:
 
 By the way, I use [JetBrians Rider](https://www.jetbrains.com/rider/) as my IDE, and it directly works with `.uproject`. That's why I don't have a Visual Studio `.sln` solution file.
 
-## 3. Make an EditorConfig
+## 3. Add initial assets
+
+### Maps
+This folder contains internal system maps such as an empty `L_Default` map that is used as the fallback map. Maps for the game are content and belong in Game Feature plugins.
+
+### Movies
+While entirely optional, I prefer starting with at least one startup movie to observe the transition from startup into the first map, i.e., the title screen. The [animated Unreal Engine logo](https://www.unrealengine.com/en-US/branding) is used as a placeholder.
+
+### Splash
+Optional as well, a temporary splash image can serve as inspiration. I've created a simple placeholder splash with my project's name on it.
+
+### Sunshine
+Assets for my game's sandbox are located in this folder.
+
+### Legal
+Software licenses must be taken seriously, even as an indie developer.
+
+All applicable third-party licenses are tracked in `ThirdPartyNotices.txt`. When using an open-source plugin or asset, I add their license to this file.
+
+I configured *Additional Non-Asset Directories To Copy* in Packaging Settings to automatically include this folder for distribution.
+
+## 4. Enable the Developers folder
+To support experimentation and development, I enabled the [Developers folder](https://docs.unrealengine.com/5.3/en-US/developers-folder-in-unreal-engine/).
+
+Having my own sandbox folder allows me to freely create Blueprints and assets without worrying about cleanup afterwards. Additionally, I've excluded this folder from cooked builds in Packaging Settings to avoid accidentally including test assets in the distributed game.
+
+## 5. Make an EditorConfig
 Both Visual Studio and JetBrains Rider support [EditorConfig](https://editorconfig.org/). By placing an `.editorconfig` file in the project's root folder, I enforce a consistent code style throughout the entire project.
 
 I recommend having these global rules to ensure all files are encoded and formatted the same way:
@@ -131,7 +157,10 @@ insert_final_newline = true
 
 Feel free to grab a copy of my [.editorconfig file](https://gist.github.com/the-unrealist/861fdc90c0e13b88c46be68a6418b80d). Just bear in mind that most of these rules were added by Rider, so it's unclear to me whether Visual Studio understands them.
 
-## 4. Setup source control
+## 6. Create game and editor modules in C++
+I created two game modules specifically for the sandbox: `SunshineGame` and `SunshineEditor`. `SunshineGame` contains all the code needed to implement the sandbox, and `SunshineEditor` contains editor-only tooling.
+
+## 7. Setup source control
 Although Perforce is the industry standard, I'm very conscious of my budget as a solo developer and don't want to pay for cloud hosting if I can avoid it. This is why I am pleased to learn that **[Azure DevOps](https://azure.microsoft.com/en-us/products/devops) offers free unlimited Git Large File Storage (LFS) hosting**! For this reason, I use Git and Git LFS as my game's version control system.
 
 To enable Git LFS, I created a `.gitattributes` file targeting `.uasset`, `.umap`, and other binary files. These assets will use binary-compatible Git LFS instead of text-based Git for diffs. This is absolutely essential for game development.
@@ -172,7 +201,7 @@ DerivedDataCache/
 Build/
 ```
 
-## 5. Create a project config
+## 8. Create a project config
 `DefaultSunshine.ini` stores the project-level config for all of my [building blocks and game features](#develop-building-blocks-in-c-and-implement-features-in-blueprints). By adding `Config=Sunshine` to the `UCLASS` macro, config properties will be written to this file.
 
 Having a separate config file helps clearly delineate game-related config for designers to modify. `DefaultGame.ini` is still used for configuring most Unreal Engine features.
@@ -184,36 +213,7 @@ Having a separate config file helps clearly delineate game-related config for de
 +AllowedConfigFiles=Sunshine/Config/DefaultSunshine.ini
 ```
 
-## 6. Add initial assets
-
-### Developers
-To support experimentation and development, I enabled the [Developers folder](https://docs.unrealengine.com/5.3/en-US/developers-folder-in-unreal-engine/).
-
-Having my own sandbox folder allows me to freely create Blueprints and assets without worrying about cleanup afterwards. Additionally, I've excluded this folder from cooked builds in Packaging Settings to avoid accidentally including test assets in the distributed game.
-
-### Maps
-This folder contains internal system maps such as an empty `L_Default` map that is used as the fallback map. Maps for the game are content and belong in Game Feature plugins.
-
-### Movies
-While entirely optional, I prefer starting with at least one startup movie to observe the transition from startup into the first map, i.e., the title screen. The [animated Unreal Engine logo](https://www.unrealengine.com/en-US/branding) is used as a placeholder.
-
-### Splash
-Optional as well, a temporary splash image can serve as inspiration. I've created a simple placeholder splash with my project's name on it.
-
-### Sunshine
-Assets for my game's sandbox are located in this folder.
-
-### Legal
-Software licenses must be taken seriously, even as an indie developer.
-
-All applicable third-party licenses are tracked in `ThirdPartyNotices.txt`. When using an open-source plugin or asset, I add their license to this file.
-
-I configured *Additional Non-Asset Directories To Copy* in Packaging Settings to automatically include this folder for distribution.
-
-## 7. Create game and editor modules in C++
-I created two game modules specifically for the sandbox: `SunshineGame` and `SunshineEditor`. `SunshineGame` contains all the code needed to implement the sandbox, and `SunshineEditor` contains editor-only tooling.
-
-## 8. Prepare for a multilingual audience
+## 9. Prepare for a multilingual audience
 Sharing my game with the whole world would be fantastic, but for this to happen, the game must first be translated into different languages.
 
 It would be a mistake to think about localization as an afterthought. In my project, localization was set up right from the beginning, even before writing the first line of text.
@@ -244,7 +244,7 @@ Some of the generated text files are encoded as UTF-16 with a byte order mark (B
 *.manifest diff working-tree-encoding=UTF-16LE-BOM eol=CRLF
 ```
 
-## 9. Package a shipping build
+## 10. Package a shipping build
 Before each commit to my git repo, I package a shipping build to catch packaging errors early on. I do *not* want to find out something's seriously wrong with my project when it's deep into the development cycle.
 
 Some day, I would like to set up continuous integration and delivery (CI/CD) using the [Unreal Automation Tool](https://docs.unrealengine.com/5.3/en-US/unreal-automation-tool-for-unreal-engine/) to automate this process.
