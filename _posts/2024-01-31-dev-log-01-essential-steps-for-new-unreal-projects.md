@@ -1,11 +1,11 @@
 ---
 tags: 
   - unreal
-title: "Dev Log 01 — Ten Essential Steps When Starting an Unreal Engine Project"
+title: "Dev Log 01: Ten Essential Steps When Starting an Unreal Engine Project"
 categories:
   - Dev Logs
 ---
-<img src="https://img.shields.io/badge/Unreal%20Engine-5.3-informational" alt="Written for Unreal Engine 5.3"> <img src="https://img.shields.io/badge/-Dev%20Log-red" alt="Dev Log">
+<img src="https://img.shields.io/badge/Unreal%20Engine-5-informational" alt="Written for Unreal Engine 5"> <img src="https://img.shields.io/badge/-Dev%20Log-red" alt="Dev Log">
 
 I am a huge fan of [cozy games](https://www.reddit.com/r/CozyGamers/) because they are relaxing and stress-relieving, which is what I want after a long day at work. Unfortunately, I haven't found a game that feels sufficiently satisfying yet, inspiring me to make my own cozy life simulation game centered around two things I enjoy: trains and traveling!
 
