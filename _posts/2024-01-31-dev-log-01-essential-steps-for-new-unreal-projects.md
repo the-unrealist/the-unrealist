@@ -123,9 +123,6 @@ While entirely optional, I prefer starting with at least one startup movie to ob
 ### Splash
 Optional as well, a temporary splash image can serve as inspiration. I've created a simple placeholder splash with my project's name on it.
 
-### Sunshine
-Assets for my game's sandbox are located in this folder.
-
 ### Legal
 Software licenses must be taken seriously, even as an indie developer.
 
