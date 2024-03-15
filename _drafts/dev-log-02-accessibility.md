@@ -1,7 +1,7 @@
 ---
 tags: 
   - unreal
-title: "Dev Log 02: How I'm making my game accessible from day one"
+title: "Dev Log 02: How I'm making my game accessible"
 categories:
   - Dev Logs
 ---
