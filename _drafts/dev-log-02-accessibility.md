@@ -78,11 +78,11 @@ Using the `BaseStruct` metadata for the `Parameters` property, I limit the param
 // Each Value UPROPERTY needs the `EditAnywhere` modifier.
 
 USTRUCT() struct FSunParameterBase;
-USTRUCT(DisplayName="Feature Flag") struct FSunFlagParameter { bool Value; };
-USTRUCT(DisplayName="Scalar") struct FSunScalarParameter { float Value; };
-USTRUCT(DisplayName="Color") struct FSunLinearColorParameter { FLinearColor Value; };
-USTRUCT(DisplayName="Brush") struct FSunSlateBrushParameter { FSlateBrush Value; };
-USTRUCT(DisplayName="Font") struct FSunSlateFontParameter { FSlateFontInfo Value; };
+USTRUCT(DisplayName="Feature Flag") struct FSunFlagParameter : public FSunParameterBase { bool Value; };
+USTRUCT(DisplayName="Scalar") struct FSunScalarParameter : public FSunParameterBase { float Value; };
+USTRUCT(DisplayName="Color") struct FSunLinearColorParameter : public FSunParameterBase { FLinearColor Value; };
+USTRUCT(DisplayName="Brush") struct FSunSlateBrushParameter : public FSunParameterBase { FSlateBrush Value; };
+USTRUCT(DisplayName="Font") struct FSunSlateFontParameter : public FSunParameterBase { FSlateFontInfo Value; };
 ```
 
 Unreal Editor has built-in detail customization for `FInstancedStruct`. When adding a parameter to a Parameter Collection, I'm able to pick any one of above structs as the value type.
