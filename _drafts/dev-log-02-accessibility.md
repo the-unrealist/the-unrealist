@@ -44,7 +44,7 @@ Gameplay tags are used for parameter names.
 
 Any `UObject` may query a global parameter. All accessors have a default fallback value for when the parameter is not set.
 
-<img src="dev-log-02-accessors.png" alt="Pure Blueprint nodes for getting the value from global flag, color, brush, font, and scalar parameters.">
+<img src="/assets/images/dev-log-02-accessors.png" alt="Pure Blueprint nodes for getting the value from global flag, color, brush, font, and scalar parameters.">
 
 ### Parameter collections
 Parameters are defined in a custom data asset, `USunParameterCollection`. This is similar to `UMaterialParameterCollection`, but it supports more than just scalar and vector values.
@@ -87,7 +87,7 @@ USTRUCT(DisplayName="Font") struct FSunSlateFontParameter { FSlateFontInfo Value
 
 Unreal Editor has built-in detail customization for `FInstancedStruct`. When adding a parameter to a Parameter Collection, I'm able to pick any one of above structs as the value type.
 
-<img src="dev-log-02-collection.png" alt="Details panel for a Parameter Collection data asset. A font parameter and a scalar parameter are visible. Pop-up menu is visible with None, Feature Flag, Color, Scalar, Brush, and Font options.">
+<img src="/assets/images/dev-log-02-collection.png" alt="Details panel for a Parameter Collection data asset. A font parameter and a scalar parameter are visible. Pop-up menu is visible with None, Feature Flag, Color, Scalar, Brush, and Font options.">
 
 Each collection has a `Priority` property that provides control over how multiple collections are simultaneously loaded at runtime.
 
@@ -157,7 +157,7 @@ This approach makes changes to a parameter collection apply in realtime during a
 ### Observing changes
 Rather than querying in each tick, an `UObject` may subscribe to one or more parameters.
 
-<img src="dev-log-02-observing.png" alt="Blueprint graph with Construct event linked to Add Global Parameter Observer with gameplay tags as input. Destruct event is linked to Remove Global Parameter Observer. On Global Parameter Changed event is linked to Switch On Gameplay Tag.">
+<img src="/assets/images/dev-log-02-observing.png" alt="Blueprint graph with Construct event linked to Add Global Parameter Observer with gameplay tags as input. Destruct event is linked to Remove Global Parameter Observer. On Global Parameter Changed event is linked to Switch On Gameplay Tag.">
 
 `HidePin` and `DefaultToSelf` metadata modifiers are used to implicitly select the calling object as the observer.
 
@@ -188,11 +188,11 @@ There are two ways to load and unload Parameter Collections.
 
 Use the `AddGlobalParameterCollection` and `RemoveGlobalParameterCollection` Blueprint functions.
 
-<img src="dev-log-02-add-collection.png" alt="Blueprint graph of On Save Game Loaded function linked to Add Global Parameter Collection with a parameter collection as input.">
+<img src="/assets/images/dev-log-02-add-collection.png" alt="Blueprint graph of On Save Game Loaded function linked to Add Global Parameter Collection with a parameter collection as input.">
 
 …or use the `Add Global Parameter Collection` Game Feature action.
 
-<img src="dev-log-02-overview.png" alt="Details panel for a Game Feature data asset. Add Global Parameter Collection action has a reference to a parameter collection asset.">
+<img src="/assets/images/dev-log-02-overview.png" alt="Details panel for a Game Feature data asset. Add Global Parameter Collection action has a reference to a parameter collection asset.">
 
 Using the Game Feature action is the preferred approach. When the Game Feature is activated (or deactivated), the collection is added (or removed) for each world context.
 
