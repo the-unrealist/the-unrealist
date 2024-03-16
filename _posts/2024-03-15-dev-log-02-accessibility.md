@@ -19,7 +19,7 @@ Retrofitting a game with accessible features is hard, and this is why many games
 Yes. And it works really well!
 
 <details open style="margin-bottom: 1em;">
-  <summary class="toggle-link" style="cursor: pointer;"><a href='#'>Toggle animated preview</a></summary>
+  <summary class="toggle-link" style="cursor: pointer;">Toggle animated preview</summary>
   <img src="/assets/images/accessibility-plugin2.gif" style="height: 400px;" alt="The high contrast and large text settings are applied to a dialog box when the Game Feature is activated. It reverts to the default styling when deactivated.">
 </details>
 
