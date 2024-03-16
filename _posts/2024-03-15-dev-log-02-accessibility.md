@@ -118,9 +118,9 @@ Accessible UI requires fluid layouts and that's hard to get right. There will be
 
 I ended up with a custom `UEngineSubsystem`. My subsystem maps each World Context's handle to a runtime collection. This means the editor and each PIE session have their own separate runtime state.
 
-A runtime collection maintains a list of pointers to collections, sorted by priority, for each parameter.
+A runtime collection maintains a list of pointers to collection assets, sorted by priority, for each parameter.
 
-When a parameter is queried, the collection with the highest priority is returned. A templated function in the Blueprint function library reads the value directly from the collection.
+When a parameter is queried, the collection asset with the highest priority is returned. A templated function in the Blueprint function library reads the value directly from the collection.
 
 ```cpp
 UCLASS(MinimalAPI)
