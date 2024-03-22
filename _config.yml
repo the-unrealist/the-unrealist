@@ -18,6 +18,7 @@ email: matt@unrealist.org
 website: https://unrealist.org
 github_username: the-unrealist
 repository: the-unrealist/the-unrealist
+url: https://unrealist.org
 
 # Build settings
 markdown: kramdown
