@@ -60,8 +60,6 @@ And these are *not* content:
 My understanding is that this is the intended way of using Unreal Engine. Developing the entire game solely in either C++ or Blueprints would be needlessly challenging, so I am using both.
 
 ### Create content with data assets, data tables, and registries
-I prefer composition over inheritance for content.
-
 For actors, this means creating an archetype actor with a property that points to a data asset which defines the appearance and behavior of the actor.
 
 @startmermaid
