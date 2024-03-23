@@ -2,7 +2,7 @@
 tags: 
   - unreal
   - blueprints
-title: "A Reference Guide to Custom Blueprint Nodes"
+title: "Reference Guide to Custom Blueprint Nodes"
 categories: 
   - Unreal Editor
 ---
